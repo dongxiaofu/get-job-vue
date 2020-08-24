@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工作列表</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="header">
+        <div class="inner home-inner">
+            <div id="logo">
+                <a href="#">
+                    <span>BOSS直聘</span></a>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">职位</a></li>
+                    <li><a class="nav-school-new" href="#">校园</a></li>
+                    <li><a href="#">公司</a></li>
+                    <li><a href="#">APP</a></li>
+                    <li><a href="#">资讯</a></li>
+                </ul>
+            </div>
+            <div id="user-nav">
+                <div class="btns">
+                    <a class="link-sign-resume" href="#">上传简历</a>
+                    <a class="link-sign-resume user-nav-find-job" href="#">我要找工作</a>
+                    <a class="user-nav-employ" href="#">我要招聘</a>
+                    <a class="btn btn-outline" href="#">注册</a>
+                    <a class="btn btn-outline" href="#">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="filter-box">
+        <div class="inner home-inner">
+            <div class="search-box">
+                <div class="search-form-con">
+                    <div class="city">
+                        <i class="line"></i>
+                        <span class="label-text">
+                            <b>武汉</b>
+                            <i class="icon-arrow-down"></i>
+                        </span>
+                    </div>
+                    <div class="company">
+                        <i class="line"></i>
+                        <span class="label-text">
+                            <b>公司行业</b>
+                            <i class="icon-arrow-down"></i>
+                        </span>
+                    </div>
+                    <div class="position">
+                        <i class="line"></i>
+                        <span class="label-text">
+                            <b>职位类型</b>
+                            <i class="icon-arrow-down"></i>
+                        </span>
+                    </div>
+                    <p class="ipt-wrap">
+                        <input class="ipt-search" type="text" placeholder="搜索职位、公司">
+                    </p>
+                </div>
+                <button class="btn btn-search">搜索</button>
+            </div>
+            <div class="condition-box">
+                <dl class="condition-city">
+                    <dd class="city-wrapper">
+                        <a class="disabled" href="javascript:;">武汉</a>
+                        <em class="icon-arrow-right"></em>
+                        <a class="link-city selected" href="javascript:;">不限</a>
+                        <em class="icon-arrow-right"></em>
+                        <span class="hot-text">热门城市：</span>
+                        <a href="/c100010000/" ka="sel-city-100010000">全国</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">北京</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">上海</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">广州</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">深圳</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">杭州</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">天津</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">全国</a>
+                        <a href="/c100010000/" ka="sel-city-100010000">全国</a>
+                    </dd>
+                </dl>
+                <dl class="condition-district">
+                    <dd class="district-wrapper">
+                        <a class="selected first" href="/c101200100/" ka="sel-business-0">不限</a>
+                        <a href="/c101200100/b_%E6%B4%AA%E5%B1%B1%E5%8C%BA/" ka="sel-business-0">洪山区</a>
+                        <a href="/c101200100/b_%E6%AD%A6%E6%98%8C%E5%8C%BA/" ka="sel-business-1">武昌区</a>
+                        <a href="/c101200100/b_%E6%B1%9F%E5%A4%8F%E5%8C%BA/" ka="sel-business-2">江夏区</a>
+                        <a href="/c101200100/b_%E6%B1%9F%E6%B1%89%E5%8C%BA/" ka="sel-business-3">江汉区</a>
+                        <a href="/c101200100/b_%E6%B1%9F%E5%B2%B8%E5%8C%BA/" ka="sel-business-4">江岸区</a>
+                        <a href="/c101200100/b_%E6%B1%89%E9%98%B3%E5%8C%BA/" ka="sel-business-5">汉阳区</a>
+                        <a href="/c101200100/b_%E7%A1%9A%E5%8F%A3%E5%8C%BA/" ka="sel-business-6">硚口区</a>
+                        <a href="/c101200100/b_%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA/" ka="sel-business-7">东西湖区</a>
+                        <a href="/c101200100/b_%E8%94%A1%E7%94%B8%E5%8C%BA/" ka="sel-business-8">蔡甸区</a>
+                        <a href="/c101200100/b_%E9%9D%92%E5%B1%B1%E5%8C%BA/" ka="sel-business-9">青山区</a>
+                        <a href="/c101200100/b_%E9%BB%84%E9%99%82%E5%8C%BA/" ka="sel-business-10">黄陂区</a>
+                        <a href="/c101200100/b_%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA/" ka="sel-business-7">湖北武汉东西湖区</a>
+                        <a href="/c101200100/b_%E6%96%B0%E6%B4%B2%E5%8C%BA/" ka="sel-business-11">新洲区</a>
+                        <a href="/c101200100/b_%E6%B1%89%E5%8D%97%E5%8C%BA/" ka="sel-business-12">汉南区</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="filter-select-box">
+                <span class="dropdown-select first">
+                    工作经验
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <span class="dropdown-select">
+                    学历要求
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <span class="dropdown-select">
+                    薪资要求
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <span class="dropdown-select">
+                    融资阶段
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <span class="dropdown-select">
+                    公司规模
+                    <i class="icon-arrow-down"></i>
+                </span>
+                <a class="last" href="#">清空筛选条件</a>
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="inner home-inner">
+        <div class="job-box">
+            <div class="side-bar">
+                <div class="login-box">
+                    <div class="login-pannel">
+                        <div class="form-row form-title">各大行业职位任你选</div>
+                        <div class="form-row">
+                            <span class="dropdown-select">
+                                <i class="icon-arrow-down"></i>
+                                <em>+86</em>
+                            </span>
+                            <span class="ipt-phone">
+                                <i class="icon-phone"></i>
+                                <input class="ipt-phone-number" type="text"/>
+                            </span>
+                        </div>
+                        <!--<div class="form-row"></div>-->
+                        <div class="form-row">
+                            <span class="sms-code">
+                                <i class="icon-sms"></i>
+                                <input class="ipt-sms" type="text"/>
+                            </span>
+                            <span class="btn-send-sms">
+                                <i class="line"></i>
+                                <button>发送验证码</button>
+                            </span>
+                        </div>
+                        <div class="form-row login-btn">
+                            <button class="login-register-btn">登录/注册</button>
+                        </div>
+                        <div class="agreement">
+                            <input type="checkbox">我我已同意<a href="#">用户协议及隐私政策</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="upload-btn">
+                    <a>上传简历一键注册</a>
+                </div>
+                <div class="history">
+                    <div class="history-title-wapper">
+                        <div class="history-title">看过的职位</div>
+                        <!--<h3>看过的职位</h3>-->
+                    </div>
+                    <div class="history-list">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>
+                                    <p>今日头条</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>
+                                    <p>今日头条</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>
+                                    <p>今日头条</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>
+                                    <p>今日头条</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>
+                                    <p>今日头条</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ads">
+                    <ul>
+                        <li><a href="#"> <img src="pro-1.png"></a></li>
+                        <li><a href="#"> <img src="pro-2.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="job-list">
+                <ul>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="primary-job-info">
+                            <div class="job-info-wrapper">
+                                <div class="job-info">
+                                    <span class="job-name">
+                                        <a href="#">
+                                            室内设计师
+                                            <span class="job-area">武汉·硚口区·古田</span>
+                                        </a>
+                                    </span>
+                                    <span class="job-jd">
+                                        <span class="salary">5-10K</span>
+                                        <span class="ages">3-5年<i class="line"></i></span>
+                                        <span class="grade">
+                                            大专
+                                        </span>
+                                        <span class="employer">
+                                            <img src="icon-chat-v2.png">
+                                            <span class="person">朱先生</span>
+                                            <i class="line"></i>
+                                            <span class="title">设计总监</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="company-wrapper">
+                                <div class="company-info">
+                                    <span class="company-name">太子家居</span>
+                                    <span class="company-append-info">
+                                        <a href="#">
+                                            <span>
+                                                家具/家电/家居
+                                                <i class="line"></i>
+                                            </span>
+                                            <span>不需要融资<i class="line"></i></span>
+                                            <span>1000-9999人</span>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="company-logo">
+                                    <img src="company-logo.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="append-job-info">
+                            <div class="tags">
+                                <span class="tag-item">全屋定制设计</span>
+                                <span class="tag-item">装饰装修</span>
+                                <span class="tag-item">设计师</span>
+                                <span class="tag-item">整套施工图</span>
+                                <span class="tag-item">签单</span>
+                            </div>
+                            <div class="prize">
+                                带薪年假，包住，全勤奖，包吃，员工旅游，年终奖
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="page">
+                    <ul>
+                        <li class="pre"><a href="#"><i class="icon-arrow-left"></i></a></li>
+                        <li class="cur"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li>...</li>
+                        <li class="next"><a href="#"><i class="icon-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feedback">
+                feedback
+            </div>
+            <div class="pos-bread">
+                pos-bread
+            </div>
+        </div>
+    </div>
+    <div id="link-box">Link Box</div>
+    <div id="footer">Footer</div>
+    <div id="side-bar">Side Bar</div>
+</div>
+</body>
+</html>
