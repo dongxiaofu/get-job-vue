@@ -1114,7 +1114,7 @@ ul {
     position: relative;
 }
 
-.feedback-textarea .txt{
+.feedback-textarea .txt {
     float: left;
     width: 69%;
     /*!*height: 60%;*!无效*/
@@ -1134,8 +1134,26 @@ ul {
     font-size: 14px;
     color: #ffffff;
     cursor: pointer;
-    position: absolute;/*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
-    top:20px;
+    position: absolute; /*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
+    top: 20px;
     right: 0px;
 
 }
+
+.pos-bread {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #9fa4b0;
+    font-weight: 200;
+}
+
+.pos-bread a {
+    font-size: 13px;
+    color: #9fa4b0;
+    font-weight: 200;
+}
+
+.pos-bread a:hover {
+    text-decoration: underline;
+}
+
