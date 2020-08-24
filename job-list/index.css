@@ -1157,3 +1157,67 @@ ul {
     text-decoration: underline;
 }
 
+#link-box {
+    width: 100%;
+    height: 250px;
+    background-color: #fff;
+    margin-top: 20px;
+    color: #9fa4b0;
+
+    /*border: 1px solid red;*/
+}
+
+.link-nav-wrapper {
+    padding-left: 77px;
+    height: 90px;
+
+    /*border: 1px solid green;*/
+}
+
+.link-nav-wrapper .link-nav .cur {
+    color: #5dd5c8;
+}
+
+.link-nav-wrapper span {
+    float: left;
+    display: inline-block;
+    width: 25%;
+    cursor: pointer;
+}
+
+.link-nav-wrapper .link-nav {
+    height: 20px;
+    font-size: 17px;
+    padding-top: 17px;
+
+}
+
+.link-nav-wrapper .links {
+    margin-top: 40px;
+    height: 70px;
+
+}
+
+.link-nav-wrapper .links li {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+}
+
+.link-nav-wrapper .links li a {
+    color: #9fa4b0;
+}
+
+.link-nav-wrapper .links li a:hover {
+    color: #5dd5c8;
+}
+
+.clear {
+    clear: both;
+}
+
+.channel-introduce {
+    padding-left: 77px;
+}
+
