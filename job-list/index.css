@@ -1017,7 +1017,7 @@ ul {
     background-color: #ffffff;
 }
 
-.page ul .pre  .icon-arrow-left {
+.page ul .pre .icon-arrow-left {
     position: absolute;
     background-position: 9px -830px;
     width: 16px;
@@ -1036,4 +1036,106 @@ ul {
     background-position: 4px -886px;
     left: 7px;
     top: 7px;
+}
+
+/*feedback*/
+.feedback {
+    margin-right: 340px;
+    margin-top: 30px;
+    height: 140px;
+    border: 1px solid #eff1ec;
+    background-color: #fff;
+}
+
+.feedback-wrapper {
+    padding: 10px 30px;
+    height: 120px;
+}
+
+.feedback-emoj {
+    float: left;
+    width: 39%;
+
+}
+
+.feedback-textarea {
+    float: right;
+    width: 59%;
+
+}
+
+.feedback-emoj div {
+    float: left;
+    margin-right: 40px;
+    width: 50px;
+    height: 80px;
+    position: relative;
+}
+
+.emoj-not-statisfy {
+    background-position: 4px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: 0px;
+}
+
+.emoj-just-so-so {
+    background-position: -92px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
+.emoj-ok {
+    background-position: -188px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
+.emoj-not-statisfy, .emoj-just-so-so, .emoj-ok {
+    position: absolute;
+    display: inline-block;
+    background-image: url("smile-face.png");
+    background-repeat: no-repeat;
+}
+
+/*像素和百分比混合使用，苦恼；使用像素，网页放大或缩小时会出现问题吗？*/
+.feedback-textarea-wrapper {
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    position: relative;
+}
+
+.feedback-textarea .txt{
+    float: left;
+    width: 69%;
+    /*!*height: 60%;*!无效*/
+    height: 80px;
+    border: 1px solid #eff1ec;
+    /*background-color: #eff1ec;*/
+    outline: none;
+}
+
+.feedback-textarea .btn {
+    float: right;
+    width: 23%;
+    border: 1px solid #5dd5c8;
+    background-color: #5dd5c8;
+    outline: none;
+    height: 40px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;/*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
+    top:20px;
+    right: 0px;
+
 }
