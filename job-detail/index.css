@@ -246,6 +246,131 @@ ul {
     /*border-left: none;*/
 }
 
+#job-banner {
+    background: #444c60 url("detail-bg.jpg") center center no-repeat;
+    height: auto;
+    padding: 24px 0px;
+    color: #fff;
+}
+
+#job-banner a {
+    color: #fff;
+}
+
+#job-banner .banner-job-detail {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+}
+
+#job-banner .banner-job-detail .job-info {
+    float: left;
+    width: 650px;
+}
+
+#job-banner .job-name {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 40px;
+}
+
+#job-banner .salary {
+    color: red;
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+#job-banner .tag-container {
+    margin-top: 30px;
+}
+
+#job-banner .tag-container span {
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #5dd5c8;
+    border-radius: 15px;
+    text-align: center;
+    margin-right: 10px;
+    color: #5dd5c8;
+}
+
+#job-banner .job-op {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    width: 370px;
+    height: 120px;
+
+    /*border: 1px solid red;*/
+}
+
+#job-banner .contact {
+    width: 100%;
+    background-color: #5dd5c8;
+    border: 1px solid #5dd5c8;
+    height: 60px;
+    font-size: 18px;
+    color: #fff;
+
+    cursor: pointer;
+
+}
+
+#job-banner .write-resume {
+    position: absolute;
+    bottom: 0px;
+    left: 31px;
+
+    font-size: 16px;
+    color: coral;
+}
+
+#job-banner .upload-resume {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+
+    font-size: 16px;
+    color: coral;
+}
+/*对i使用absolute定位，这里十分混乱，不能确定定位的基准元素是哪个。*/
+.write-resume i {
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+    background-image: url("icon-resume.png");
+    background-repeat: no-repeat;
+}
+
+.upload-resume i {
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+    background-image: url("icon-upload.png");
+    background-repeat: no-repeat;
+}
+
+#job-banner .write-resume i {
+    position: absolute;
+    bottom: 4px;
+    left: -31px;
+
+    background-position: center center;
+    background-size: contain;
+}
+
+
+#job-banner .upload-resume i {
+    position: absolute;
+    bottom: 4px;
+    left: -29px;
+
+    background-position: center center;
+    background-size: contain;
+}
+
 .side-bar {
     float: right;
     width: 300px;
@@ -612,7 +737,7 @@ ul {
 #job-banner {
     width: 100%;
     height: 265px;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 .detail-op {
@@ -905,7 +1030,7 @@ ul {
     position: relative;
 }
 
-.job-name:hover{
+.job-name:hover {
     color: #5dd5c8;
 }
 
@@ -914,7 +1039,7 @@ ul {
     font-size: 12px;
 }
 
-.recommend-job-box .salary{
+.recommend-job-box .salary {
     color: red;
     position: absolute;
     right: 0px;
