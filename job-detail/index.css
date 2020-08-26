@@ -16,7 +16,7 @@ em {
 
 .icon-arrow-down, .btn-search, .icon-arrow-right,
 .icon-arrow-left, .icon-weibo, .icon-boss, .icon-wechat,
-.icon-vip {
+.icon-vip, .search-btn {
     display: inline-block;
     background-image: url("icons.png");
     background-repeat: no-repeat;
@@ -544,7 +544,7 @@ ul {
 .link-nav-wrapper {
     /*padding-left: 77px;*/
     /*height: 90px;*//*好像可有可无*/
-    width: 100%;    /*该元素A内的元素，不会超过A的宽度，如果是float，会自动换行*/
+    width: 100%; /*该元素A内的元素，不会超过A的宽度，如果是float，会自动换行*/
 
     margin: 0px auto;
 
@@ -723,28 +723,29 @@ ul {
     color: #9fa3b0;
 }
 
-.related-job{
+.related-job {
     margin-top: 30px;
-    height: 250px;
+    height: 150px;
 }
 
-.related-job .title{
-    height: 40px;   /*能防止float后被其他元素环绕。不知道这个方法，能否取代clear:both。后者，有弊端，增加空白。*/
+.related-job .title {
+    height: 40px; /*能防止float后被其他元素环绕。不知道这个方法，能否取代clear:both。后者，有弊端，增加空白。*/
     padding-right: 18px;
 }
-.related-job .title span{
+
+.related-job .title span {
     float: left;
     font-size: 15px;
 }
 
-.related-job .title a{
+.related-job .title a {
     float: right;
     font-size: 13px;
     position: relative;
 }
 
 
-.related-job .title .icon-arrow-right{
+.related-job .title .icon-arrow-right {
     position: absolute;
     background-position: -25px 2px;
     width: 16px;
@@ -776,7 +777,7 @@ ul {
 
     border: 1px solid #e3e7ec;
 
-    /*float: left;*/    /*有display:inline-block就够了*/
+    /*float: left;*/ /*有display:inline-block就够了*/
 
     margin-right: 14px;
 }
@@ -785,23 +786,112 @@ ul {
     border: 1px solid #5dd5c8;
 }
 
-.related-job .more-job .company-logo{
+.related-job .more-job .company-logo {
     float: left;
 }
 
-.related-job .more-job .job-info{
-    margin-left: 71px;          /*没有使用float，使用margin-left实现水平显示效果*/
+.related-job .more-job .job-info {
+    margin-left: 71px; /*没有使用float，使用margin-left实现水平显示效果*/
 }
 
-.related-job .more-job .job-info p{
-    white-space: nowrap;    /*不折行。*/
+.related-job .more-job .job-info p {
+    white-space: nowrap; /*不折行。*/
     overflow: hidden;
-    text-overflow:ellipsis;     /*超出文字用省略号代替*/
+    text-overflow: ellipsis; /*超出文字用省略号代替*/
 }
 
-.related-job .more-job .job-info .red{
+.related-job .more-job .job-info .red {
     color: red;
 }
+
+/*搜索框*/
+.search-form {
+    width: auto;
+    /*border: 1px solid #5dd5c8;*/
+
+    height: 44px;
+
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.search-form-con {
+    border: 1px solid gray;
+    /*border-right: none;*/
+    width: 746px;
+    padding: 0;
+    position: relative;
+}
+
+.search-form-con:hover {
+    border: 1px solid #5dd5c8;
+}
+
+.search-form-con .search-ipt {
+    width: 610px;
+    height: 28px;
+    border: none;
+    margin: 0;
+    outline: none;
+
+    padding: 6px 20px;
+
+    background-color: #fff;
+}
+
+.search-form-con .city-box {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    /*border: 1px solid gray;*/
+    border-left: 1px solid gray;
+    /*border-top: 1px solid gray;*/
+    padding: 0px 6px;
+    line-height: 40px;
+    color: #414a60;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    cursor: pointer;
+}
+
+.search-form-con .city-box .icon-arrow-down {
+    background-position: 1px -52px;
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    top: 13px;
+    right: 28px;
+}
+
+.search-form .search-btn {
+    display: inline-block;
+    width: 88px;
+    height: 42px;
+    line-height: 42px;
+    background-color: #5dd5c8;
+    background-position: 34px -136px;
+    font-size: 0px;
+
+    border: 1px solid #5dd5c8;
+    outline: none;
+
+    cursor: pointer;
+}
+
+/*<div class="search-form">*/
+/*<div class="search-form-con">*/
+/*<input type="text" class="search-ipt" />*/
+/*<div class="city-box">*/
+/*<i class="icon-arrow-down"></i>*/
+/*武汉*/
+/*</div>*/
+/*</div>*/
+/*<button class="search-btn">搜索</button>*/
+/*</div>*/
 
 /*footer*/
 
