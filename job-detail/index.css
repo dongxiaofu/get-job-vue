@@ -882,16 +882,47 @@ ul {
     cursor: pointer;
 }
 
-/*<div class="search-form">*/
-/*<div class="search-form-con">*/
-/*<input type="text" class="search-ipt" />*/
-/*<div class="city-box">*/
-/*<i class="icon-arrow-down"></i>*/
-/*武汉*/
-/*</div>*/
-/*</div>*/
-/*<button class="search-btn">搜索</button>*/
-/*</div>*/
+/*推荐职位*/
+
+.recommend-job {
+    margin-top: 20px;
+}
+
+.recommend-job-box ul li {
+    display: none;
+}
+
+.recommend-job-box ul li.cur {
+    display: block;
+}
+
+.recommend-job-box ul li a {
+    display: inline-block;
+    width: 357px;
+    height: 46px;
+    padding: 20px 3px 8px 35px;
+
+    position: relative;
+}
+
+.job-name:hover{
+    color: #5dd5c8;
+}
+
+.recommend-job-box ul li p {
+    line-height: 40px;
+    font-size: 12px;
+}
+
+.recommend-job-box .salary{
+    color: red;
+    position: absolute;
+    right: 0px;
+}
+
+.recommend-job-box {
+    border: solid 1px #eef0f5
+}
 
 /*footer*/
 
