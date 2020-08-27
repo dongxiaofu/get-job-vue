@@ -209,7 +209,7 @@ ul {
 
 }
 
-.user-info {
+.resume-content {
     margin-right: 340px;
     min-height: 1500px;
     width: auto;
@@ -228,7 +228,7 @@ ul {
     /*position: relative;*/
 }
 
-.update-time{
+.update-time {
     float: left;
     /*position: absolute;*/
     /*left: 0px;*/
@@ -239,7 +239,7 @@ ul {
 
 }
 
-.review{
+.review {
     float: right;
     /*position: absolute;*/
     /*right: 0px;*/
@@ -248,6 +248,148 @@ ul {
     cursor: pointer;
 }
 
+.edit-user-info-wrapper {
+    padding: 20px 30px;
+    margin: 0px -30px;
+
+    height: 480px;
+
+    position: relative;
+
+    border: 1px solid greenyellow;
+}
+
+.item-label {
+    margin-bottom: 10px;
+}
+
+.edit-user-info-wrapper input {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+}
+
+.edit-user-info-wrapper span {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-item {
+    display: inline-block;
+    width: 39%;
+    height: 64px;
+    padding: 0px 30px;
+    margin-bottom: 30px;
+
+    border: 1px solid blue;
+}
+
+.edit-user-info-wrapper .form-btn {
+    position: absolute;
+    bottom: 0px;
+    right: 93px;
+}
+
+.edit-user-info-wrapper .form-btn button {
+    width: 100px;
+    height: 30px;
+
+    margin-right: 20px;
+}
+
+.edit-user-info-wrapper .form-btn button.cancel-btn {
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+.edit-user-info-wrapper .form-btn button.submit-btn {
+    background-color: #5dd5c8;
+    border: 1px solid #5dd5c8;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+#gender {
+    position: relative;
+}
+
+#gender-man {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#gender-woman {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+
+.form-item .radio {
+    display: inline-block;
+    width: 150px;
+    height: 35px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    text-align: center;
+    line-height: 12px;
+    /*vertical-align: text-top;*/
+
+    cursor: pointer;
+}
+
+.form-item .radio:hover {
+    /*display: inline-block;*/
+    /*width: 150px;*/
+    /*height: 35px;*/
+
+    background-color: #fff;
+    border: 1px solid #5dd5c8;
+
+    /*text-align: center;*/
+    /*line-height: 12px;*/
+    /*!*vertical-align: text-top;*!*/
+
+    /*cursor: pointer;*/
+}
+
+.form-item .radio-checked {
+    display: inline-block;
+    width: 150px;
+    height: 35px;
+
+    background-color: #effbfa;
+    border: 1px solid #5dd5c8;
+
+    text-align: center;
+    line-height: 12px;
+    /*vertical-align: text-top;*/
+
+    cursor: pointer;
+}
+
+.form-item .radio input[type=radio] {
+    display: none;
+}
+
+.beauty-radio {
+    display: inline-block;
+
+}
 
 .side-bar {
     float: right;
@@ -1077,13 +1219,13 @@ ul {
     position: absolute;
     width: 100px;
     height: 100px;
-    top:-150px;
+    top: -150px;
     right: -25px;
 
     background-color: #fff;
 }
 
-.footer-icon .wechat-qr{
+.footer-icon .wechat-qr {
     position: relative;
 }
 

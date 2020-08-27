@@ -121,14 +121,105 @@
                     </ul>
                 </div>
             </div>
-            <div class="user-info">
-                <div class="user-info-edit">
-                    <div class="last-update">
-                        <span class="update-time">最后更新 2020.07.30 09:11</span>
-                        <span class="review">预览简历</span>
-                    </div>
+            <div class="resume-content">
+                <div class="last-update">
+                    <span class="update-time">最后更新 2020.07.30 09:11</span>
+                    <span class="review">预览简历</span>
                 </div>
-                <div id="advantage">个人优势</div>
+                <div class="resume-box">
+                    <!--编辑个人信息 start-->
+                    <div class="edit-user-info">
+                        <div class="edit-user-info-wrapper">
+                            <h3>编辑个人信息</h3>
+                            <form action="#">
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        姓名
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="fname" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        当前求职状态
+                                    </div>
+                                    <div class="item-content">
+                                        <span class="job-status">在职-暂不考虑</span>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        性别
+                                    </div>
+                                    <div class="item-content" id="gender">
+                                        <label class="radio radio-checked" id="gender-man">
+                                        <span>
+                                            <input type="radio" value="1" name="gender">
+                                            <i class="beauty-radio"></i>
+                                        </span>
+                                            男
+                                        </label>
+                                        <label class="radio"  id="gender-woman">
+                                        <span>
+                                            <input type="radio" value="2" name="gender">
+                                            <i class="beauty-radio"></i>
+                                        </span>
+                                            女
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        我的牛人身份
+                                    </div>
+                                    <div class="item-content">
+                                        <span>职场人</span>
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        生日
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="birthday" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        微信号（选填）
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="wechat" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        电话
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="phone" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        邮箱
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="email" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-btn">
+                                    <button class="cancel-btn">取消</button>
+                                    <button class="submit-btn">完成</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--编辑个人信息 end-->
+                    <div id="advantage">个人优势</div>
+                </div>
             </div>
         </div>
     </div>
