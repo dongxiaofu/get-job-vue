@@ -144,8 +144,17 @@
                                     <div class="item-label">
                                         当前求职状态
                                     </div>
-                                    <div class="item-content">
-                                        <span class="job-status">在职-暂不考虑</span>
+                                    <div class="item-content job-status-dropdown">
+                                        <span class="job-status">
+                                            在职-暂不考虑
+                                            <i class="icon-arrow-right"></i>
+                                        </span>
+                                        <ul class="ui-dropdown-list">
+                                            <li class="ui-select-item">离职-随时到岗</li>
+                                            <li class="ui-select-item ui-select-item-selected">在职-暂不考虑</li>
+                                            <li class="ui-select-item">在职-考虑机会</li>
+                                            <li class="ui-select-item">在职-月内到岗</li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="form-item">
@@ -153,20 +162,22 @@
                                         性别
                                     </div>
                                     <div class="item-content" id="gender">
-                                        <label class="radio radio-checked" id="gender-man">
+                                        <span>
+                                            <label class="radio radio-checked" id="gender-man">
                                         <span>
                                             <input type="radio" value="1" name="gender">
                                             <i class="beauty-radio"></i>
                                         </span>
                                             男
                                         </label>
-                                        <label class="radio"  id="gender-woman">
+                                        <label class="radio" id="gender-woman">
                                         <span>
                                             <input type="radio" value="2" name="gender">
                                             <i class="beauty-radio"></i>
                                         </span>
                                             女
                                         </label>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-item">
@@ -174,7 +185,8 @@
                                         我的牛人身份
                                     </div>
                                     <div class="item-content">
-                                        <span>职场人</span>
+                                        <!--<input>-->
+                                        <span class="role">职场人</span>
                                     </div>
                                 </div>
                                 <div class="form-item">

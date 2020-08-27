@@ -31,7 +31,7 @@ a {
     color: #414a60;
 }
 
-div, ul, li, a, p, dl, dd, span, img, dt {
+div, ul, li, a, p, dl, dd, span, img, dt，label {
     margin: 0px;
     padding: 0px;
 }
@@ -274,6 +274,60 @@ ul {
     outline: none;
 }
 
+.edit-user-info-wrapper .job-status {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+
+    line-height: 30px;
+
+    padding-left: 10px;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.edit-user-info-wrapper .job-status:hover{
+    border: 1px solid #5dd5c8;
+}
+
+/*职场身份*/
+.form-item .role{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+
+    line-height: 30px;
+
+    padding-left: 10px;
+}
+
+.edit-user-info-wrapper .job-status .icon-arrow-right{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+
+    background-position: 0px -51px;
+
+    right: 6px;
+    top: 8px;
+}
+
+.ui-dropdown-list {
+    display: none;
+}
+
 .edit-user-info-wrapper span {
     display: inline-block;
     width: 100%;
@@ -320,33 +374,51 @@ ul {
     cursor: pointer;
 }
 
-#gender {
+.job-status-dropdown {
     position: relative;
 }
 
-#gender-man {
+.ui-dropdown-list {
     position: absolute;
+    top: 32px;
     left: 0px;
-    top: 0px;
+    display: inline-block;
+
+    width: 103%;    /*为啥不能是100%?103是肉眼观察调出来的效果*/
+
+    background-color: #fff;
+
+    /*border: 1px solid red;*/
 }
 
-#gender-woman {
-    position: absolute;
-    right: 0px;
-    top: 0px;
+.ui-dropdown-list li {
+    /*margin-top: 20px;*/
+
+    padding: 10px 0px 10px 10px;
+
+
 }
 
+.ui-dropdown-list li.ui-select-item-selected{
+    color: #5dd5c8;
+}
+
+.ui-dropdown-list li:hover {
+    background-color: #e3e7ed;
+
+    padding: 10px 0px 10px 10px;
+}
 
 .form-item .radio {
     display: inline-block;
     width: 150px;
-    height: 35px;
+    height: 30px;
 
     background-color: #fff;
     border: 1px solid #e3e7ed;
 
     text-align: center;
-    line-height: 12px;
+    line-height: 11px;
     /*vertical-align: text-top;*/
 
     cursor: pointer;
@@ -370,13 +442,13 @@ ul {
 .form-item .radio-checked {
     display: inline-block;
     width: 150px;
-    height: 35px;
+    height: 30px;
 
     background-color: #effbfa;
     border: 1px solid #5dd5c8;
 
     text-align: center;
-    line-height: 12px;
+    line-height: 11px;
     /*vertical-align: text-top;*/
 
     cursor: pointer;
