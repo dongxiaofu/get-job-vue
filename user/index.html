@@ -230,7 +230,218 @@
                         </div>
                     </div>
                     <!--编辑个人信息 end-->
-                    <div id="advantage">个人优势</div>
+                    <div id="advantage">
+                        <div class="item-primary">
+                            <h4 class="title">个人优势</h4>
+                            <div class="item-info">
+                                <div class="item-txt pre-line">
+                                    1.6年PHP开发经验，两次从零开始开发项目至上线。
+                                    2.自学能力强；能拆分开发任务、胜任全部常规开发，懂架构，有初步的技术管理能力。
+                                </div>
+                                <div class="op">
+                                    <i class="icon-edit"></i>
+                                    编辑
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-form" >
+                            <div class="item-textarea">
+                                <h4>编辑个人优势</h4>
+                                <textarea name="advantage"></textarea>
+                            </div>
+                            <div class="btns">
+                                <button class="cancel-btn">取消</button>
+                                <button class="submit-btn">完成</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history">
+                        <div class="item-primary">
+                            <h3 class="title">工作经历</h3>
+                            <ul>
+                                <li class="experience">
+                                    <div class="item-info">
+                                        <div class="item-txt">
+                                            <span class="title">XXX公司</span>
+                                            <span class="work-period">2017.05-2019.10</span>
+                                        </div>
+                                        <div class="position-name">PHP</div>
+                                        <div class="item-txt pre-line">
+                                            <span class="txt-type">内容</span>1.游戏接口编写和接口性能优化
+                                            2.数据统计功能开发
+                                            3.微信登录、微信支付、微信打款开发
+                                            4.代码版本控制与发布
+                                            5.参与服务器日常维护
+                                            6.指导初级工程师开发
+                                        </div>
+                                        <div class="item-txt pre-line">
+                                            <span class="txt-type">业绩</span>1.使用docker在单机上建立压测环境，使用XHProf查找PHP接口性能瓶颈，优化php-fpm.conf
+                                            配置项，使部分接口的压测速度由23秒下降至1秒。
+                                            2.使用 “shell + 软链接” 简化项目发布过程，使代码发布与回退非常平滑和快速。
+                                            3. 建立微信openId和用户ID的映射表，来加快用户数据的查询速度。
+                                            4. 使用简单的SQL语句，通过在PHP中处理业务逻辑拼装数据，完成复杂的统计需求。
+                                        </div>
+                                        <div class="keywords">
+                                            <span class="keyword">后端开发</span>
+                                            <span class="keyword">PHP</span>
+                                            <span class="keyword">系统架构</span>
+                                        </div>
+                                        <div class="op delete-op">
+                                        <span class="delete">
+                                            <i class="icon-delete"></i>
+                                            删除
+                                        </span>
+                                            <span class="edit">
+                                            <i class="icon-edit"></i>
+                                            编辑
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="item-form">
+                                        <h3>编辑工作经历</h3>
+                                        <div class="ipts">
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">公司名称</div>
+                                                    <input type="text" name="compnay" value="XX公司">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">所属行业</div>
+                                                    <input type="text" name="compnay" value="游戏">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">所属部门（选填）</div>
+                                                    <input type="text" name="compnay" placeholder="技术部">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">职位名称（选填）</div>
+                                                    <input type="text" name="compnay" value="PHP高级开发工程师">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">职位类型</div>
+                                                    <input type="text" name="compnay" value="硬件产品经理">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item">
+                                                <div class="ipt">
+                                                    <div class="item-label">在职时间</div>
+                                                    <input type="text" name="compnay" value="2019.05-2022.10">
+                                                </div>
+                                            </div>
+                                            <div class="one-line form-item-all">
+                                                <div class="ipt all">
+                                                    <div class="item-label">技能标签</div>
+                                                    <input type="text" name="compnay" value="C端产品">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="textareas form-item-all">
+                                            <div class="big-ipt">
+                                                <div class="item-label">工作内容</div>
+                                                <div class="item-content">
+                                                    <textarea name="experience"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="textareas form-item-all">
+                                            <div class="big-ipt">
+                                                <div class="item-label">工作业绩（选填)</div>
+                                                <div class="item-content">
+                                                    <textarea name="achievement"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btns">
+                                            <button class="cancel">取消</button>
+                                            <button class="submit">完成</button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="experience">
+                                    <div class="item-txt">
+                                        <span class="title">XXX公司</span>
+                                        <span class="work-period">2017.05-2019.10</span>
+                                    </div>
+                                    <div class="position-name">PHP</div>
+                                    <div class="item-txt pre-line">
+                                        <span class="txt-type">内容</span>1.游戏接口编写和接口性能优化
+                                        2.数据统计功能开发
+                                        3.微信登录、微信支付、微信打款开发
+                                        4.代码版本控制与发布
+                                        5.参与服务器日常维护
+                                        6.指导初级工程师开发
+                                    </div>
+                                    <div class="item-txt pre-line">
+                                        <span class="txt-type">业绩</span>1.使用docker在单机上建立压测环境，使用XHProf查找PHP接口性能瓶颈，优化php-fpm.conf
+                                        配置项，使部分接口的压测速度由23秒下降至1秒。
+                                        2.使用 “shell + 软链接” 简化项目发布过程，使代码发布与回退非常平滑和快速。
+                                        3. 建立微信openId和用户ID的映射表，来加快用户数据的查询速度。
+                                        4. 使用简单的SQL语句，通过在PHP中处理业务逻辑拼装数据，完成复杂的统计需求。
+                                    </div>
+                                    <div class="keywords">
+                                        <span class="keyword">后端开发</span>
+                                        <span class="keyword">PHP</span>
+                                        <span class="keyword">系统架构</span>
+                                    </div>
+                                    <div class="op delete-op">
+                                        <span class="delete">
+                                            <i class="icon-delete"></i>
+                                            删除
+                                        </span>
+                                        <span class="edit">
+                                            <i class="icon-edit"></i>
+                                            编辑
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="experience">
+                                    <div class="item-txt">
+                                        <span class="title">XXX公司</span>
+                                        <span class="work-period">2017.05-2019.10</span>
+                                    </div>
+                                    <div class="position-name">PHP</div>
+                                    <div class="item-txt pre-line">
+                                        <span class="txt-type">内容</span>1.游戏接口编写和接口性能优化
+                                        2.数据统计功能开发
+                                        3.微信登录、微信支付、微信打款开发
+                                        4.代码版本控制与发布
+                                        5.参与服务器日常维护
+                                        6.指导初级工程师开发
+                                    </div>
+                                    <div class="item-txt pre-line">
+                                        <span class="txt-type">业绩</span>1.使用docker在单机上建立压测环境，使用XHProf查找PHP接口性能瓶颈，优化php-fpm.conf
+                                        配置项，使部分接口的压测速度由23秒下降至1秒。
+                                        2.使用 “shell + 软链接” 简化项目发布过程，使代码发布与回退非常平滑和快速。
+                                        3. 建立微信openId和用户ID的映射表，来加快用户数据的查询速度。
+                                        4. 使用简单的SQL语句，通过在PHP中处理业务逻辑拼装数据，完成复杂的统计需求。
+                                    </div>
+                                    <div class="keywords">
+                                        <span class="keyword">后端开发</span>
+                                        <span class="keyword">PHP</span>
+                                        <span class="keyword">系统架构</span>
+                                    </div>
+                                    <div class="op delete-op">
+                                        <span class="delete">
+                                            <i class="icon-delete"></i>
+                                            删除
+                                        </span>
+                                        <span class="edit">
+                                            <i class="icon-edit"></i>
+                                            编辑
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

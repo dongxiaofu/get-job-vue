@@ -274,6 +274,39 @@ ul {
     outline: none;
 }
 
+.experience input {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+}
+
+.experience form-item-all input {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+}
+
+.experience .form-item-all textarea {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+}
+
 .edit-user-info-wrapper .job-status {
     display: inline-block;
     width: 100%;
@@ -343,6 +376,16 @@ ul {
     border: 1px solid blue;
 }
 
+.form-item-all {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0px 30px;
+    margin-bottom: 15px;
+
+    border: 1px solid blue;
+}
+
 .edit-user-info-wrapper .form-btn {
     position: absolute;
     bottom: 0px;
@@ -374,12 +417,32 @@ ul {
     cursor: pointer;
 }
 
+.cancel-btn {
+    background-color: #fff;
+    border: 1px solid #e3e7ed;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+/*.submit-btn 无效*/
+/*我认为，CSS选择器优先使用符合选择器*/
+.item-form .btns .submit-btn {
+    background-color: #5dd5c8;
+    border: 1px solid #5dd5c8;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
 .job-status-dropdown {
     position: relative;
 }
 
 /*1.span支持focus；2.改变兄弟元素而不是改变自身*/
-.edit-user-info-wrapper .job-status:focus + .ui-dropdown-list{
+.edit-user-info-wrapper .job-status:focus + .ui-dropdown-list {
     display: inline-block;
 }
 
@@ -466,6 +529,204 @@ ul {
 .beauty-radio {
     display: inline-block;
 
+}
+
+.item-info {
+    position: relative;
+}
+
+h4 {
+    padding: 0;
+    margin: 10px;
+}
+
+/*.item-info .item-txt {*/
+/*white-space: pre-wrap; !*使用它后，div自带默认高度，为何？*!*/
+/*padding: 0px 15px;*/
+/*line-height: 20px;*/
+/*}*/
+/*第一次体会到组合选择器的好处。不必写冗余CSS代码。*/
+.item-txt {
+    /*white-space: pre-line; !*使用它后，div自带默认高度，为何？*!*/
+    padding: 0px 15px;
+    line-height: 20px;
+}
+
+.pre-line {
+    white-space: pre-line; /*使用它后，div自带默认高度，为何？*/
+}
+
+.item-txt .title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/*不满意这个标题的CSS，我希望它能使用和它的具体内容用同一套CSS代码实现*/
+.position-name {
+    font-size: 16px;
+    font-weight: 700;
+
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.item-txt span.txt-type {
+    margin-right: 0px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.item-txt span.txt-type::after {
+    content: ':';
+    padding-right: 10px;
+
+}
+
+.item-txt .work-period {
+    font-size: 12px;
+    color: #80919a;
+}
+
+.item-txt span {
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.keywords {
+    padding: 0px 15px;
+
+    margin-top: 20px;
+}
+
+.keyword {
+    width: auto;
+    height: 10px;
+
+    padding: 0px 15px;
+
+    border: 1px solid #9fa3b0;
+
+    border-radius: 10px;
+
+    border:1px solid #cfd1d7;
+}
+
+.experience {
+    height: auto;
+    width: 100%;
+
+    padding: 10px 0px;
+
+    border: 1px solid red;
+}
+
+
+.experience:hover {
+    background-color: #8d92a1;
+}
+
+/*work-period*/
+
+.item-info:hover {
+    background-color: #8d92a1;
+}
+
+.icon-edit {
+    position: relative; /*需加上定位，top等才有效*/
+    top: 2px;
+
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url("edit.ico");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.icon-delete {
+    position: relative; /*需加上定位，top等才有效*/
+    top: 2px;
+
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url("delete.ico");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.item-info .op {
+    position: absolute; /*子元素使用relative，父元使用absolute，有效*/
+    right: 15px;
+    top: 0px;
+
+    cursor: pointer;
+}
+
+.experience{
+    position: relative;
+}
+/*有一次组合选择器的使用*/
+.delete-op{
+    position: absolute;
+    top: 6px;   /*与它左边的元素水平对齐。肉眼观察设置数据。很不满意这种实现方式。有自动对齐的方法吗？*/
+    right: 15px;
+}
+
+/*不明白这里为啥用负数margin*/
+.item-form {
+    padding: 20px 30px;
+    margin: 0px -30px;
+
+    /*border: 1px solid green;*/
+
+    position: relative;
+}
+
+.item-form .item-textarea {
+
+    margin: 0px 60px;
+
+    width: 100%;
+
+    /*border: 1px solid red;*/
+}
+
+.item-form .item-textarea textarea {
+    width: 80%;
+    height: 100px;
+
+    outline: none;
+
+    color: #414a60;
+    background-color: #fff;
+}
+
+.item-form .btns {
+    /*margin-top: 20px;       !*使用absolute定位后，此熟悉失效。原因，不明*!*/
+
+    position: absolute;
+    bottom: -30px;
+    right: 131px;
+}
+
+.item-form .btns button {
+    margin-left: 30px;
+
+    width: 100px;
+    height: 30px;
+
+    border: 1px solid #e3e7ed;
+    background-color: #fff;
+
+    cursor: pointer;
+
+    outline: none;
 }
 
 .side-bar {
@@ -1007,110 +1268,6 @@ ul {
     background-position: 4px -886px;
     left: 7px;
     top: 7px;
-}
-
-/*feedback*/
-.feedback {
-    margin-right: 340px;
-    margin-top: 30px;
-    height: 140px;
-    border: 1px solid #eff1ec;
-    background-color: #fff;
-}
-
-.feedback-wrapper {
-    padding: 10px 30px;
-    height: 120px;
-}
-
-.feedback-emoj {
-    float: left;
-    width: 39%;
-
-}
-
-.feedback-textarea {
-    float: right;
-    width: 59%;
-
-}
-
-.feedback-emoj div {
-    float: left;
-    margin-right: 40px;
-    width: 50px;
-    height: 80px;
-    position: relative;
-}
-
-.emoj-not-statisfy {
-    background-position: 4px 0;
-    width: 40px;
-    height: 40px;
-    top: 26px;
-    left: 0px;
-}
-
-.emoj-just-so-so {
-    background-position: -92px 0;
-    width: 40px;
-    height: 40px;
-    top: 26px;
-    left: -8px;
-}
-
-.emoj-ok {
-    background-position: -188px 0;
-    width: 40px;
-    height: 40px;
-    top: 26px;
-    left: -8px;
-}
-
-.emoj-not-statisfy, .emoj-just-so-so, .emoj-ok {
-    position: absolute;
-    display: inline-block;
-    background-image: url("smile-face.png");
-    background-repeat: no-repeat;
-}
-
-/*像素和百分比混合使用，苦恼；使用像素，网页放大或缩小时会出现问题吗？*/
-.feedback-textarea-wrapper {
-    padding: 0px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    position: relative;
-}
-
-.feedback-textarea .txt {
-    float: left;
-    width: 69%;
-    /*!*height: 60%;*!无效*/
-    height: 80px;
-    border: 1px solid #eff1ec;
-    /*background-color: #eff1ec;*/
-    outline: none;
-    resize: none;
-    color: #414a60;
-}
-
-.feedback-textarea .btn {
-    float: right;
-    width: 23%;
-    border: 1px solid #5dd5c8;
-    background-color: #5dd5c8;
-    outline: none;
-    height: 40px;
-    font-size: 14px;
-    color: #ffffff;
-    cursor: pointer;
-    position: absolute; /*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
-    top: 20px;
-    right: 0px;
-
 }
 
 .pos-bread {

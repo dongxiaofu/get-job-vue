@@ -484,6 +484,7 @@ ul {
 .job-box {
     /*float: left;*/
     margin-top: 30px;
+    min-height: 1300px;
 }
 
 .side-bar {
