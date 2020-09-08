@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <style>
     </style>
+    <script>
+
+    </script>
 </head>
 <body>
 <div id="wrap">
@@ -54,12 +57,54 @@
                             <i class="icon-arrow-down"></i>
                         </span>
                     </div>
-                    <div class="position">
+                    <div class="position" tabindex="-1">
                         <i class="line"></i>
                         <span class="label-text">
                             <b>职位类型</b>
                             <i class="icon-arrow-down"></i>
                         </span>
+                    </div>
+                    <div class="position-type-list">
+                        <ul class="position-list-tree1">
+                            <li data-id="0" class="">不限</li>
+                            <li data-id="310000" class="">高级管理</li>
+                            <li data-id="100000" class="">技术</li>
+                            <li data-id="110000" class="selected">产品</li>
+                            <li data-id="120000" class="">设计</li>
+                            <li data-id="130000" class="">运营</li>
+                            <li data-id="140000">市场</li>
+                            <li data-id="150000">人事/财务/行政</li>
+                            <li data-id="160000">销售</li>
+                            <li data-id="170000">传媒</li>
+                            <li data-id="180000">金融</li>
+                            <li data-id="190000">教育培训</li>
+                            <li data-id="210000">医疗健康</li>
+                            <li data-id="250000">采购/贸易</li>
+                            <li data-id="240000">供应链/物流</li>
+                            <li data-id="220000">房地产/建筑</li>
+                            <li data-id="260000">咨询/翻译/法律</li>
+                            <li data-id="280000">旅游</li>
+                            <li data-id="290000">服务业</li>
+                            <li data-id="300000">生产制造</li>
+                            <li data-id="200000">其他</li>
+                        </ul>
+                        <ul class="position-list-tree2">
+                            <li data-id="110100">产品经理</li>
+                            <li data-id="110300">高端产品职位</li>
+                            <li data-id="110400">其他产品职位</li>
+                        </ul>
+                        <ul class="position-list-tree3">
+                            <li data-val="100211">UE4</li>
+                            <li data-val="100299">移动开发</li>
+                            <li data-val="100201">HTML5</li>
+                            <li data-val="100202">Android</li>
+                            <li data-val="100203">iOS</li>
+                            <li data-val="100205">移动web前端</li>
+                            <li data-val="100206">Flash开发</li>
+                            <li data-val="100208">JavaScript</li>
+                            <li data-val="100209">U3D</li>
+                            <li data-val="100210">COCOS2DX</li>
+                        </ul>
                     </div>
                     <p class="ipt-wrap">
                         <input class="ipt-search" type="text" placeholder="搜索职位、公司">
@@ -1152,8 +1197,12 @@
     <!--<div id="side-bar">Side Bar</div>难度比较大，不实现-->
 </div>
 <!--搜索框地址弹出-->
-<div id="dialog-wrap">
-    <div id="dialog-container-layer">
+<div id="dialog-wrap" style="display: none">
+    <!--css实现关闭弹窗-->
+    <!--<div id="dialog-container-close" tabindex="-1">-->
+    <!--<i></i>-->
+    <!--</div>-->
+    <div id="dialog-container-layer"></div>
     <div id="dialog-container">
         <div id="dialog-container-close">
             <i></i>
@@ -1169,36 +1218,6 @@
                     <li>WXYZ</li>
                 </ul>
                 <ul id="section-city">
-                    <li class="classify-city">
-                        <div class="city-title">A</div>
-                        <ul class="city-main">
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                            <li class="city">鞍山</li>
-                        </ul>
-                    </li>
                     <li class="classify-city">
                         <div class="city-title">A</div>
                         <ul class="city-main">

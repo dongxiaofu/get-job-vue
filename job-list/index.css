@@ -285,6 +285,8 @@ ul {
     border-left: none;
     padding: 6px 15px 8px 15px;
     cursor: pointer;
+
+    outline: none;
 }
 
 #filter-box .position .icon-arrow-down {
@@ -315,6 +317,7 @@ ul {
 .search-form-con {
     float: left;
     width: 794px;
+    position: relative;
 }
 
 .btn-search {
@@ -1396,7 +1399,10 @@ a.wechat-qr:hover img {
     top: 0;
     left: 0;
 
-    background-color: rgba(151, 154, 145, 0.51);
+    /*background-color: rgba(151, 154, 145, 0.51);*/
+
+    background: rgba(37, 40, 48, .7); /*这组数值，效果更好*/
+
     opacity: 1.2;
 }
 
@@ -1412,7 +1418,7 @@ a.wechat-qr:hover img {
     /*background-color: rgba(151, 154, 145, 0.51);*/
     /*opacity: 1.2;*/
 
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     background-color: #fff;
 }
 
@@ -1421,9 +1427,16 @@ a.wechat-qr:hover img {
     height: 16px;
 
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 30px;
+    top: 14px;
+
+    cursor: pointer;
 }
+
+/*能使父元素隐藏，但失去焦点后，父元素又出现了，不好用*/
+/*#dialog-container-close:focus-within ~ div{*/
+/*display: none;*/
+/*}*/
 
 #dialog-container-close i::before {
     content: "\00D7";
@@ -1438,6 +1451,11 @@ a.wechat-qr:hover img {
     padding: 10px 30px;
 }
 
+#dialog-con #dialog-title {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 #dialog-con #city #section-province {
     width: 100%;
     height: 30px;
@@ -1448,7 +1466,7 @@ a.wechat-qr:hover img {
     border: 1px solid #f9fafb;
 }
 
-#dialog-con #city #section-province li{
+#dialog-con #city #section-province li {
     width: 131px;
     height: 39px;
     line-height: 39px;
@@ -1462,7 +1480,7 @@ a.wechat-qr:hover img {
 
     padding: unset;
 
-    position:relative;
+    position: relative;
 
     /*padding-left: 10px;*/
     /*padding-right: 10px;*/
@@ -1470,13 +1488,13 @@ a.wechat-qr:hover img {
     /*border: 1px solid green;*/
 }
 
-#dialog-con #city #section-province li.active{
+#dialog-con #city #section-province li.active {
     background-color: #f9fafb;
     color: #5dd5c8;
 }
 
 /*实现下划线。用border不能实现下划线与文字等长。*/
-#dialog-con #city #section-province li.active::before{
+#dialog-con #city #section-province li.active::before {
     content: "";
     position: absolute;
     top: unset;
@@ -1488,7 +1506,134 @@ a.wechat-qr:hover img {
 }
 
 
-#dialog-con #city #section-province li:hover{
+#dialog-con #city #section-province li:hover {
     /*border-bottom: 1px solid #f9fafb;*/
     color: #5dd5c8;
 }
+
+#section-city {
+    margin: 20px 0px; /*没这句，这个元素只会显示左边很少一部分。原因不知*/
+    height: 378px;
+    overflow: auto; /*与下面这句好像效果相同*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll;*/
+}
+
+#section-city .classify-city {
+    width: 100%;
+    /*height: 100%;*/
+
+    /*border: 1px solid red;*/
+}
+
+#section-city .city-title {
+    float: left;
+    width: 11.2%;
+    font-size: 15px;
+    /*font-weight: 500;*/
+    color: #5dd5c8;
+    /*width: 40px;*/
+    /*height: auto;*/
+}
+
+#section-city .city-main {
+    float: left;
+    width: 88.8%;
+    /*width: 600px;!*746px;*!*/
+    /*height: auto;*/
+}
+
+#section-city .city-main li {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+
+    /*border: 1px solid red;*/
+}
+
+#section-city .city-main li:hover {
+    color: #5dd5c8;
+}
+
+/*搜索框职位类型*/
+.position-type-list {
+    border: 1px solid #80919a;
+
+    width: 500px;
+    height: 200px;
+
+    position: absolute;
+    right: -306px;
+    bottom: -200px;
+
+    z-index: 3;
+    background: #fff; /*若没有这个背景色，类型列表不能覆盖其他元素，文字混合在一起，模糊看不清*/
+    color: #9fa3b0;
+
+    display: none;
+
+}
+
+.position-type-list .position-list-tree1 {
+    width: 33.3%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    border-right: 1px solid #80919a;
+
+
+    float: left;
+    overflow: auto;
+}
+
+
+.position-type-list .position-list-tree2 {
+    width: 33.3%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    border-right: 1px solid #80919a;
+
+    float: left;
+    overflow: auto;
+
+}
+
+
+.position-type-list .position-list-tree3 {
+    width: 33%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    /*border-right: 1px solid #80919a;*/
+
+    float: left;
+    overflow: auto;
+}
+
+
+.position-type-list li {
+    /*margin-top: 15px;*/
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+
+.position-type-list li.selected {
+    background-color: #f2f5f9;
+}
+
+.position-type-list li:hover {
+    background-color: #f2f5f9;
+}
+
+/*还是用JS实现隐藏和显示效果好*/
+#filter-box .position:focus + .position-type-list{
+    display: block;
+    /*display: none; 不能写在html才有效*/
+}
+
+
