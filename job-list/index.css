@@ -486,6 +486,14 @@ ul {
     background-position: 0px -2044px;
 }
 
+.filter-select-box .ipt{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%;
+}
+
 /*主体部分*/
 .job-box {
     /*float: left;*/
@@ -1676,3 +1684,43 @@ a.wechat-qr:hover img {
 #filter-box .company:focus +  .industry-box{
     display: block;
 }
+
+/*筛选框工作经验*/
+.filter-select-box .dropdown-select .require-list{
+    position: absolute;
+    left: 0px;
+    width: 150px;
+    height: 150px;
+    overflow: auto;
+    background-color: #fff;
+    z-index: 1;
+    /*padding: 5px 10px;*/
+    /*border: 1px solid red;*/
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+
+    display: none;
+}
+
+.filter-select-box .dropdown-select .require-list li{
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30px;
+    line-height: 30px;
+    /*margin-bottom: 10px;*/
+
+    /*border: 1px solid green;*/
+
+
+
+}
+
+.filter-select-box .dropdown-select .require-list li:hover{
+    background-color: #f2f5f9;
+}
+
+/*无效，因为 二者之间有其他元素*/
+/*.filter-select-box .ipt:hover + .filter-select-box .dropdown-select .require-list{*/
+    /*display: block;*/
+/*}*/
