@@ -486,7 +486,7 @@ ul {
     background-position: 0px -2044px;
 }
 
-.filter-select-box .ipt{
+.filter-select-box .ipt {
     border: none;
     outline: none;
     cursor: pointer;
@@ -709,7 +709,6 @@ ul {
 
 /*历史记录*/
 .history {
-    margin: 30px 0px;
     width: 300px;
     height: 400px;
     background: #fff;
@@ -769,7 +768,7 @@ ul {
 
 /*右侧广告*/
 .ads {
-
+    margin-top: 20px;
 }
 
 .ads ul li {
@@ -1642,13 +1641,13 @@ a.wechat-qr:hover img {
 }
 
 /*还是用JS实现隐藏和显示效果好*/
-#filter-box .position:focus + .position-type-list{
+#filter-box .position:focus + .position-type-list {
     display: block;
     /*display: none; 不能写在html才有效*/
 }
 
 /*搜索框公司行业*/
-.industry-box{
+.industry-box {
     position: absolute;
     top: 50px;
     width: 106%;
@@ -1661,12 +1660,12 @@ a.wechat-qr:hover img {
 
     /*border: 1px solid #80919a;*/
     /*不确定该项的作用*/
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
     /*默认隐藏。不能写在html中，否则无法在CSS中改变该元素的属性*/
     display: none;
 }
 
-.industry-box ul li{
+.industry-box ul li {
     float: left;
     width: 20%;
     height: 25px;
@@ -1677,16 +1676,16 @@ a.wechat-qr:hover img {
     /*border: 1px solid green;*/
 }
 
-.industry-box ul li:hover{
+.industry-box ul li:hover {
     background-color: #f2f5f9;
 }
 
-#filter-box .company:focus +  .industry-box{
+#filter-box .company:focus + .industry-box {
     display: block;
 }
 
 /*筛选框工作经验*/
-.filter-select-box .dropdown-select .require-list{
+.filter-select-box .dropdown-select .require-list {
     position: absolute;
     left: 0px;
     width: 150px;
@@ -1696,12 +1695,12 @@ a.wechat-qr:hover img {
     z-index: 1;
     /*padding: 5px 10px;*/
     /*border: 1px solid red;*/
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
 
     display: none;
 }
 
-.filter-select-box .dropdown-select .require-list li{
+.filter-select-box .dropdown-select .require-list li {
     width: 100%;
     padding-left: 10px;
     padding-top: 5px;
@@ -1711,16 +1710,13 @@ a.wechat-qr:hover img {
     /*margin-bottom: 10px;*/
 
     /*border: 1px solid green;*/
-
-
-
 }
 
-.filter-select-box .dropdown-select .require-list li:hover{
+.filter-select-box .dropdown-select .require-list li:hover {
     background-color: #f2f5f9;
 }
 
 /*无效，因为 二者之间有其他元素*/
 /*.filter-select-box .ipt:hover + .filter-select-box .dropdown-select .require-list{*/
-    /*display: block;*/
+/*display: block;*/
 /*}*/
