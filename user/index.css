@@ -1028,88 +1028,127 @@ h4 {
 }
 
 /*框中的元素，让里面的元素上下左右居中，有更好的方法？此处，使用肉眼观察调整数值。*/
-.upload-btn {
+/*.upload-btn {*/
+    /*width: 300px;*/
+    /*height: 80px;*/
+    /*border: 1px solid #fff;*/
+    /*margin: 20px auto;*/
+    /*!*padding: 20px 10px;*!*/
+    /*text-align: center;*/
+    /*!*vertical-align: middle;*!*/
+    /*padding-top: 40px;*/
+    /*!*padding-bottom: 20px;*!*/
+    /*background: #fff;*/
+/*}*/
+
+/*.upload-btn a {*/
+    /*display: inline-block;*/
+    /*width: 230px;*/
+    /*height: 40px;*/
+    /*!*border: 1px solid green;*!*/
+    /*line-height: 40px;*/
+    /*background: #5dd5c8;*/
+    /*color: #f6f6f8;*/
+    /*cursor: pointer;*/
+/*}*/
+
+.resume-attachment {
     width: 300px;
-    height: 80px;
+    height: 150px;
     border: 1px solid #fff;
     margin: 20px auto;
-    /*padding: 20px 10px;*/
-    text-align: center;
+    padding: 5px 10px;
+    /*text-align: center;*/
     /*vertical-align: middle;*/
-    padding-top: 40px;
+    /*padding-top: 40px;*/
     /*padding-bottom: 20px;*/
     background: #fff;
+    position: relative;
 }
 
-.upload-btn a {
-    display: inline-block;
-    width: 230px;
-    height: 40px;
-    /*border: 1px solid green;*/
-    line-height: 40px;
-    background: #5dd5c8;
-    color: #f6f6f8;
+.resume-attachment .upload-resume-btn{
+    border: 1px solid;
+    height: 30px;
+    margin-top: 20px;
+
+    background-color: #5dd5c8;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+
     cursor: pointer;
 }
 
-/*历史记录*/
-.history {
-    margin: 30px 0px;
-    width: 300px;
-    height: 400px;
-    background: #fff;
+.annex-item {
+    cursor: pointer;
+}
+
+.annex-item .icon-file{
+    vertical-align: middle;
+}
+
+.annex-item .resume-name{
+    vertical-align: middle; /*不确定有没用，无法肉眼识别页面效果*/
+}
+
+.annex-item:focus + .annex-card{
+    display: block;
+}
+
+.annex-item:hover + .annex-card{
+    display: block;
+}
+
+.annex-item .icon-delete {
+    float: right;
+}
+
+.annex-card {
+    width: 350px;
+    height: 140px;
     border: 1px solid #fff;
-}
 
-.history-title-wapper {
-    width: 300px;
-    height: 30px;
-    border-bottom: 2px solid #eef0f5;
-}
-
-.history-title {
-    width: 230px;
-    margin: 10px auto;
-    color: #5dd5c8;
-}
-
-.history-list {
-    width: 230px;
-    margin: 10px auto;
-}
-
-.history-list li {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eef0f5;
-    padding-bottom: 10px;
-}
-
-/*最后一个li的样式*/
-.history-list li:last-child {
-    border-bottom: none;
-}
-
-.history-list h4 {
-    position: relative;
-    margin: 4px 0px;
-    font-weight: 300;
-}
-
-.history-list a:hover h4.title {
-    color: #5dd5c8;
-}
-
-.history-list p {
-    font-size: 12px;
-    font-weight: 200;
-}
-
-.history-list .salary {
+    background: #fff;
     position: absolute;
-    right: 0px;
-    color: #fc6c38;
-    font-size: 13px;
-    font-weight: 200;
+    left: -350px;
+    z-index: 10;
+
+    display: none;
+}
+
+.annex-card .card-body {
+    padding-left: 30px;
+    margin-top: 10px;
+
+    width: 350px;
+    height: 80px;
+    border-bottom: 1px solid darkgray;
+}
+
+.annex-card .card-footer span{
+    float: right;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    margin: 10px 10px 10px 0px;
+    cursor: pointer;
+
+    /*border: 1px solid red;*/
+}
+
+.annex-card .card-body .card-img{
+    float: left;
+    width: 40px;
+}
+
+.annex-card .card-body .resume-name {
+    margin-bottom: 10px;
+}
+
+.annex-card .card-body .upload-date{
+    font-size: 10px;
+    color: #8d92a1;
 }
 
 /*右侧广告*/
