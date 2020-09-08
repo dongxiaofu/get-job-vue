@@ -335,6 +335,7 @@ ul {
     font-size: 16px;
     color: coral;
 }
+
 /*对i使用absolute定位，这里十分混乱，不能确定定位的基准元素是哪个。*/
 .write-resume i {
     display: inline-block;
@@ -797,7 +798,53 @@ ul {
 .detail-op .btns {
     margin-top: 50px;
     margin-left: 20px;
+    position: relative;
 }
+
+/*微信扫码分享隐藏图片*/
+.detail-op .btns .mini-app {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    padding: 10px 0px;
+    margin-top: 20px;
+    display: none;  /*后面再使用JS使其显示*/
+
+    /*border: 1px solid red;*/
+    background-color: #fff;
+}
+
+.detail-op .btns .mini-app-inner {
+    position: relative;
+}
+
+.detail-op .btns .mini-app-inner .company-icon {
+    position: absolute;
+    top: 44px;
+    left: 43px;
+    z-index: 1;
+
+    width: 72px;
+    height: 72px;
+}
+
+.detail-op .btns .mini-app-inner .qcodeC {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+}
+
+.detail-op .btns .mini-app-inner .arrow-up {
+    position: absolute;
+    top: -30px;
+    left: 64px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #fff;
+}
+
 
 .detail-op .btns a {
     margin-left: 35px;
