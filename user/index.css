@@ -294,7 +294,22 @@ ul {
     border: 1px solid #22ff40;
     background-color: #fff;
 
+    position: relative;
+
     /*vertical-align:middle;*/
+}
+
+.form-item-all .select-ui .icon-arrow-down{
+    position: absolute;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-position: 2px -54px;
+    /*top: 12px;*/
+    /*left: 27px;*/
+    cursor: pointer;
+    right: 0px;
+    top: 8px;   /*有计算公式吗？我是肉眼观察调整出的数字*/
 }
 
 .select-ui input {
