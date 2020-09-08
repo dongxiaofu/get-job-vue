@@ -285,15 +285,116 @@ ul {
     outline: none;
 }
 
-.experience form-item-all input {
-    display: inline-block;
+.form-item-all .select-ui {
     width: 100%;
+    cursor: pointer;
     height: 30px;
+    /*line-height: 20px;*/
+
+    border: 1px solid #22ff40;
+    background-color: #fff;
+
+    /*vertical-align:middle;*/
+}
+
+.select-ui input {
+    /*display: inline-block;*/
+    /*width: 100%;*/
+    width: 20px;
+    /*height: 30px;*/
+    line-height: 20px;
 
     background-color: #fff;
-    border: 1px solid #e3e7ed;
+    border: none;
+    outline: none;
+    /*border: 1px solid #e3e7ed;*/
+    z-index: -1;
 
     outline: none;
+}
+
+.select-ui .select-tag {
+    display: inline-block;
+    width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 10px;
+
+    border: 1px solid grey;
+    border-radius: 10px;
+
+    position: relative;
+}
+
+
+.ui-icon-close {
+    width: 10px;
+    height: 10px;
+    line-height: 10px;
+    position: absolute;
+    right: 2px;
+    top: 5px;
+}
+
+.ui-icon-close::before {
+    content: "\00D7";
+}
+
+.select-ui .select-ipt {
+    display: inline-block;
+    width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+    line-height: 20px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    padding-left: 2px;
+}
+
+.ui-select-dropdown {
+    border: 1px solid royalblue;
+    height: 200px;
+    width: 100%;
+    overflow: auto;
+
+    display: none;
+    /*style="display: none" 直接写在html中无效，原因未知*/
+}
+
+.ui-select-dropdown ul {
+    padding: 10px 10px;
+    height: 200px;
+    width: 100%;
+
+    border: 1px solid red;
+}
+
+.ui-select-dropdown .ui-select-item {
+    display: inline-block;
+    width: 16%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    text-overflow: ellipsis; /*设置隐藏部分为省略号*/
+    margin-left: 10px;
+
+    padding-left: 10px;
+}
+
+.ui-select-dropdown .ui-select-item-selected {
+    border: 1px solid #00c2b3;
+    border-radius: 15px;
+
 }
 
 .experience .form-item-all textarea {
@@ -324,6 +425,11 @@ ul {
     position: relative;
 
     cursor: pointer;
+}
+
+/*!*改变兄弟元素而不是改变自身*!   元素的隐藏，使用JS更容易实现*/
+.form-item-all .select-ui:focus + .ui-select-dropdown {
+    display: inline-block;
 }
 
 .edit-user-info-wrapper .job-status:hover {
@@ -450,14 +556,21 @@ ul {
     position: absolute;
     top: 32px;
     left: 0px;
-    /*display: inline-block;*/
-
     width: 103%; /*为啥不能是100%?103是肉眼观察调出来的效果*/
 
     background-color: #fff;
 
-    /*border: 1px solid red;*/
+    overflow: auto;
+    border: 1px solid red;
+    height: 150px;
 }
+
+/*优化滚动条，但不是想要的效果*/
+/*::-webkit-scrollbar {*/
+/*width: 6px;*/
+/*height: 6px;*/
+/*!*background-color: rgba(240, 240, 240, 1);*!*/
+/*}*/
 
 .ui-dropdown-list li {
     /*margin-top: 20px;*/
@@ -609,7 +722,7 @@ h4 {
 
     border-radius: 10px;
 
-    border:1px solid #cfd1d7;
+    border: 1px solid #cfd1d7;
 }
 
 .experience {
@@ -668,13 +781,14 @@ h4 {
     cursor: pointer;
 }
 
-.experience{
+.experience {
     position: relative;
 }
+
 /*有一次组合选择器的使用*/
-.delete-op{
+.delete-op {
     position: absolute;
-    top: 6px;   /*与它左边的元素水平对齐。肉眼观察设置数据。很不满意这种实现方式。有自动对齐的方法吗？*/
+    top: 6px; /*与它左边的元素水平对齐。肉眼观察设置数据。很不满意这种实现方式。有自动对齐的方法吗？*/
     right: 15px;
 }
 
