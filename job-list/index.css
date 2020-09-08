@@ -252,6 +252,9 @@ ul {
     border-left: none;
     padding: 6px 15px 8px 15px;
     cursor: pointer;
+
+    /*消除focus后的边框。使用tableindex=-1使该元素能点击*/
+    outline: none;
 }
 
 
@@ -1636,4 +1639,40 @@ a.wechat-qr:hover img {
     /*display: none; 不能写在html才有效*/
 }
 
+/*搜索框公司行业*/
+.industry-box{
+    position: absolute;
+    top: 50px;
+    width: 106%;
+    height: 300px;
+    z-index: 9000;
+    background: #fff; /*若没有这个背景色，类型列表不能覆盖其他元素，文字混合在一起，模糊看不清*/
+    color: #9fa3b0;
 
+    padding: 10px 0px 10px 40px;
+
+    /*border: 1px solid #80919a;*/
+    /*不确定该项的作用*/
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    /*默认隐藏。不能写在html中，否则无法在CSS中改变该元素的属性*/
+    display: none;
+}
+
+.industry-box ul li{
+    float: left;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    /*border: 1px solid green;*/
+}
+
+.industry-box ul li:hover{
+    background-color: #f2f5f9;
+}
+
+#filter-box .company:focus +  .industry-box{
+    display: block;
+}
