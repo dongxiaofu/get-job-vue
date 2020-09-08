@@ -1327,13 +1327,13 @@ ul {
     position: absolute;
     width: 100px;
     height: 100px;
-    top:-150px;
+    top: -150px;
     right: -25px;
 
     background-color: #fff;
 }
 
-.footer-icon .wechat-qr{
+.footer-icon .wechat-qr {
     position: relative;
 }
 
@@ -1374,4 +1374,121 @@ a.wechat-qr:hover img {
     padding: 0px;
     height: 24px;
     line-height: 24px;
+}
+
+/*搜索框地址弹出*/
+#dialog-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+
+    /*border: 1px solid red;*/
+}
+
+#dialog-container-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(151, 154, 145, 0.51);
+    opacity: 1.2;
+}
+
+#dialog-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 786px;
+    height: 527px;
+    z-index: 1002;
+    margin: -243px 0 0 -393px;
+
+    /*background-color: rgba(151, 154, 145, 0.51);*/
+    /*opacity: 1.2;*/
+
+    border: 1px solid red;
+    background-color: #fff;
+}
+
+#dialog-container-close {
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+#dialog-container-close i::before {
+    content: "\00D7";
+    font-size: 21px;
+}
+
+#dialog-con {
+    margin-top: 20px;
+}
+
+#dialog-con #city {
+    padding: 10px 30px;
+}
+
+#dialog-con #city #section-province {
+    width: 100%;
+    height: 30px;
+
+
+    background-color: #f9fafb;
+
+    border: 1px solid #f9fafb;
+}
+
+#dialog-con #city #section-province li{
+    width: 131px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+
+    float: left;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    padding: unset;
+
+    position:relative;
+
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+
+    /*border: 1px solid green;*/
+}
+
+#dialog-con #city #section-province li.active{
+    background-color: #f9fafb;
+    color: #5dd5c8;
+}
+
+/*实现下划线。用border不能实现下划线与文字等长。*/
+#dialog-con #city #section-province li.active::before{
+    content: "";
+    position: absolute;
+    top: unset;
+    bottom: 0px;
+
+    width: 35%;
+    height: 2px;
+    background-color: #5dd5c8;
+}
+
+
+#dialog-con #city #section-province li:hover{
+    /*border-bottom: 1px solid #f9fafb;*/
+    color: #5dd5c8;
 }
