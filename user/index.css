@@ -743,16 +743,16 @@ h4 {
 .experience {
     height: auto;
     width: 100%;
-
     padding: 10px 0px;
+    margin-bottom: 30px;
 
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 
-.experience:hover {
-    background-color: #8d92a1;
-}
+/*.experience .item-info:hover {*/
+    /*background-color: #8d92a1;*/
+/*}*/
 
 /*work-period*/
 
