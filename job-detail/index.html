@@ -755,7 +755,7 @@
     </div>
 </div>
 <!--举报表单-->
-<div class="dialog-wrap">
+<div class="dialog-wrap" style="display: none">
     <!--弹窗主体不能放到遮罩层，会模糊不清-->
     <div class="dialog-layer">
     </div>
@@ -821,6 +821,184 @@
                     <button class="button-cancel">取消</button>
                     <button class="button-confirm">确定</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--搜索框地址弹出-->
+<div id="dialog-wrap-detail" style="display: none">
+    <!--css实现关闭弹窗-->
+    <!--<div id="dialog-container-close" tabindex="-1">-->
+    <!--<i></i>-->
+    <!--</div>-->
+    <div id="dialog-container-layer"></div>
+    <div id="dialog-container">
+        <div id="dialog-container-close">
+            <i></i>
+        </div>
+        <div id="dialog-con">
+            <div id="dialog-title"><h3>请选择城市</h3></div>
+            <div id="city">
+                <ul id="section-province">
+                    <li>ABCDE</li>
+                    <li>FGHIJ</li>
+                    <li class="active">KLMN</li>
+                    <li>PQRST</li>
+                    <li>WXYZ</li>
+                </ul>
+                <ul id="section-city">
+                    <li class="classify-city">
+                        <div class="city-title">A</div>
+                        <ul class="city-main">
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                        </ul>
+                    </li>
+                    <li class="classify-city">
+                        <div class="city-title">A</div>
+                        <ul class="city-main">
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                        </ul>
+                    </li>
+                    <li class="classify-city">
+                        <div class="city-title">A</div>
+                        <ul class="city-main">
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                        </ul>
+                    </li>
+                    <li class="classify-city">
+                        <div class="city-title">A</div>
+                        <ul class="city-main">
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                        </ul>
+                    </li>
+                    <li class="classify-city">
+                        <div class="city-title">A</div>
+                        <ul class="city-main">
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                            <li class="city">鞍山</li>
+                        </ul>
+                    </li>
+                </ul>
+                </ul>
             </div>
         </div>
     </div>
