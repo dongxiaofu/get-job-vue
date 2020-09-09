@@ -383,121 +383,80 @@ ul {
     /*text-align: center;*/
 }
 
-.side-bar .login-box {
+/*公司信息总结*/
+.side-bar .company-summary {
     position: relative;
     width: 300px;
     height: 330px;
-    background-color: #5dd5c8;
+    margin-bottom: 40px;
 }
 
+.side-bar .company-summary .company-info{
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 30px;
+}
 
-.side-bar .login-box .form-row {
-    position: relative;
-    width: 230px;
+.side-bar .company-summary .company-info .company-info-logo img{
+    width: 60px;
+    height: 60px;
+    float: left;            /*很重要，使得它右边的元素不下沉*/
+    margin-right: 30px;
+
+    border-radius: 12px;
+}
+
+.side-bar .company-summary .company-info .company-info-name{
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+}
+
+.side-bar .company-summary p{
     height: 40px;
     line-height: 40px;
-    margin: 25px auto;
-    background-color: #f6f6f8;
-    padding: 0px;
-    text-align: center;
+}
+
+.side-bar .company-summary .upload-date{
+    margin-top: 20px;
+    font-size: 12px;
+    color: #9fa4b0;
+}
+
+/*图标*/
+.side-bar .company-summary .icon-scale{
+    background-image: url("icon-scale.png");
 }
 
 
-.side-bar .login-box .form-title {
-    background: none;
-    color: #f6f6f8;
-    font-weight: 400;
-    font-size: 16px;
-
+.side-bar .company-summary .icon-stage{
+    background-image: url("icon-stage.png");
 }
 
-.side-bar .login-box .login-btn {
-    margin-bottom: 10px;
+
+.side-bar .company-summary .icon-net{
+    background-image: url("icon-net.png");
 }
 
-.login-register-btn {
+
+.side-bar .company-summary .icon-industry{
+    background-image: url("icon-industry.png");
+}
+
+.icon-company-sumary{
     display: inline-block;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #5dd5c8;
-    font-size: 15px;
-    color: #5dd5c8;
-    outline: none;
-    cursor: pointer;
-}
-
-.sms-code .ipt-sms {
-    display: inline-block;
-    width: 82%;
-    height: 100%;
-    margin: 0px;
-    /*padding: 0px;*/
-    padding-left: 40px;
-    outline: none;
-    border: none;
-    overflow: hidden;
-}
-
-.sms-code .icon-sms {
-    position: absolute;
-    background-position: 1px -141px;
     width: 18px;
     height: 18px;
-    top: 12px;
-    left: 12px;
-    z-index: 1;
-}
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-.btn-send-sms {
-    position: absolute;
-    top: 1px;
-    right: 15px;
-}
+    margin-right: 20px;
 
-.btn-send-sms .line {
-    position: absolute;
-    top: 4px;
-    right: 80px;
-    display: inline-block;
-    width: 1px;
-    height: 32px;
-    background-color: #f2f2f5;
-}
-
-.btn-send-sms button {
-    height: 40px;
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    outline: none;
-    background-color: #ffffff;
-    color: #5dd5c8;
-    font-size: 15px;
-    font-weight: 300;
-    border: none;
-    cursor: pointer;
-}
-
-.side-bar .login-box .agreement {
-    text-align: center;
-    font-size: 12px;
-    color: #f2f2f5;
-    font-weight: 300;
-    /*position: absolute;*/
-    /*left: 106px;*/
-    /*bottom: 40px;*/
-}
-
-.side-bar .login-box .agreement a {
-    color: #f2f2f5;
-
-}
-
-.side-bar .login-box {
     position: relative;
-    width: 300px;
-    border: 1px solid #5dd5c8;
+    top: 5px;
 }
+
 
 .form-row .dropdown-select {
     position: absolute;
