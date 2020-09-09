@@ -8,6 +8,8 @@ html, body {
 body {
     background-color: #f6f6f8;
     min-width: 1184px; /*很重要，使header的背景在网页缩小时不会出现不能横向覆盖整个宽度的状况*/
+    /*静止页面滑动*/
+    /*overflow: hidden;*/
 }
 
 em {
@@ -808,7 +810,7 @@ ul {
     height: 160px;
     padding: 10px 0px;
     margin-top: 20px;
-    display: none;  /*后面再使用JS使其显示*/
+    display: none; /*后面再使用JS使其显示*/
 
     /*border: 1px solid red;*/
     background-color: #fff;
@@ -1239,4 +1241,124 @@ a.wechat-qr:hover img {
     padding: 0px;
     height: 24px;
     line-height: 24px;
+}
+
+/*举报列表弹窗*/
+.dialog-wrap {
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    /*很重要。没有top=0,该div会出现在窗口底部*/
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+.dialog-layer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #9fa3af;
+    opacity: 0.8;
+
+    z-index: 1001;
+}
+
+.dialog-report-type-list-container{
+    width: 650px;
+    height: 350px;  /*完整显示每个举报项*/
+
+    position: absolute;
+    left: 30%;
+    top: 40%;
+    z-index: 1020;
+    background-color: #fff;
+    overflow: auto;
+}
+
+/*关闭按钮*/
+.dialog-report-type-list-container-close{
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.dialog-report-type-list-container-close::before{
+    content: "\00D7";
+    font-size: 21px;
+}
+
+/*这对齐，最好使用一个专门的对齐层来实现，每个元素单独设置，繁琐*/
+.dialog-report-type-list-container-con-title{
+    padding-left: 10px;
+}
+
+/*举报列表*/
+.dialog-report-type-list{
+    width: 100%;
+    height: 100%;
+
+}
+
+.dialog-report-type-list .list-item{
+
+    height: 50px;
+    width: 630px;
+    padding: 10px 10px;
+
+    position: relative;
+
+    border-bottom: 1px solid #f2f5f9;
+    /*border: 1px solid slategray;*/
+}
+
+.dialog-report-type-list .list-item:hover{
+    background-color: #f2f5f9;
+}
+
+.dialog-report-type-list .list-item .last{
+    border: none;
+}
+
+.dialog-report-type-list .list-item .first-title{
+    font-size: 14px;
+    color: rgba(65,74,96,1);
+}
+
+.dialog-report-type-list .list-item .second-title{
+    font-size: 12px;
+    margin-top: 5px;
+
+    color: rgba(141,146,161,1);     /*不懂这种颜色表示方法*/
+
+    /*鸡肋？*/
+    /*height: 20px;*/
+    /*width: 100%;*/
+}
+
+/*右箭头*/
+.dialog-report-type-list .list-item .icon-right{
+    width: 9px;
+    height: 16px;
+
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+/*又快忘记背景图的使用方法了。使用背景图，而不是直接使用img，好处是，不需要在HTML中多处写img*/
+.dialog-report-type-list .list-item .icon-right i{
+    width: 100%;
+    height: 100%;
+    display: inline-block;  /*必须设置*/
+    background-image: url("icon-to-right@2x.png");
+    background-repeat: no-repeat;
+    background-position: center;    /*图片居中*/
+    background-size: contain;   /*图片填充整个区域*/
 }
