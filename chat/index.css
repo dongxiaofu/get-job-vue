@@ -582,36 +582,50 @@ ul {
     width: 100%;
     height: 250px;
 
+    overflow: auto;
+
     border: 1px solid #800e44;
 }
 
 .emoj-box .emoj-list li {
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    margin: 5px 5px;
-    padding: 5px 5px;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*width: 50px;*/
+    /*height: 50px;*/
+    /*margin: 5px 5px;*/
+    /*padding: 5px 5px;*/
 
     cursor: pointer;
-    /*background-color: #f1f1f1;*/
 }
 
 .emoj-box .emoj-list li:hover {
-    background-color: #f1f1f1;
+    background-color: #979a91;
+    border: 1px solid #ff1819;
 }
 
 .emoj-box .emoj-list button {
     display: inline-block;
+    /*width: 25px;*/
+    /*height: 25px;*/
+
+    box-sizing: content-box;
     width: 25px;
     height: 25px;
+    vertical-align: middle;
+    background-size: 25px auto;
+
+    /*消除按钮的默认熟悉*/
     outline: none;
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: #fff;
 
     background-image: url("chat-emoji.png");
     background-repeat: no-repeat;
-    background-size: cover;
 
-    border: 1px solid yellowgreen;
+    border: 10px solid #fff;
 }
 
 /*表情列表 start*/
@@ -620,128 +634,196 @@ ul {
 }
 
 .emoj-box .emoj-list .default-emoj-02 {
-    background-position: 0px -22px;
+    background-position: 0px -25px;
 }
 
 .emoj-box .emoj-list .default-emoj-03 {
-    background-position: 0px -48px;
+    background-position: 0px -50px;
 }
 
 .emoj-box .emoj-list .default-emoj-04 {
-    background-position: 0px -70px;
+    background-position: 0px -75px;
 }
 
 .emoj-box .emoj-list .default-emoj-05 {
-    background-position: 0px -92px;
+    background-position: 0px -100px;
 }
 
 .emoj-box .emoj-list .default-emoj-06 {
-    background-position: 0px -114px;
+    background-position: 0px -125px;
 }
 
 .emoj-box .emoj-list .default-emoj-07 {
-    background-position: 0px -138px;
+    background-position: 0px -150px;
 }
 
 .emoj-box .emoj-list .default-emoj-08 {
-    background-position: 0px -167px;
+    background-position: 0px -175px;
 }
 
 .emoj-box .emoj-list .default-emoj-09 {
-    background-position: 0px -185px;
+    background-position: 0px -200px;
+}
+
+.emoj-box .emoj-list .default-emoj-9 {
+    background-position: 0px -225px;
 }
 
 .emoj-box .emoj-list .default-emoj-10 {
-    background-position: 0px -208px;
+    background-position: 0px -250px;
 }
 
 .emoj-box .emoj-list .default-emoj-11 {
-    background-position: 0px -263px;
+    background-position: 0px -275px;
 }
 
 .emoj-box .emoj-list .default-emoj-12 {
-    background-position: 0px -246px;
+    background-position: 0px -300px;
 }
 
 .emoj-box .emoj-list .default-emoj-13 {
-    background-position: 0px -268px;
+    background-position: 0px -325px;
 }
 
 .emoj-box .emoj-list .default-emoj-14 {
-    background-position: 0px -290px;
+    background-position: 0px -350px;
 }
 
 .emoj-box .emoj-list .default-emoj-15 {
-    background-position: 0px -312px;
+    background-position: 0px -375px;
 }
 
 .emoj-box .emoj-list .default-emoj-16 {
-    background-position: 0px -334px;
-}
-
-.emoj-box .emoj-list .default-emoj-17 {
-    background-position: 0px -356px;
-}
-
-.emoj-box .emoj-list .default-emoj-18 {
-    background-position: 0px -378px;
-}
-
-.emoj-box .emoj-list .default-emoj-19 {
     background-position: 0px -400px;
 }
 
+.emoj-box .emoj-list .default-emoj-17 {
+    background-position: 0px -425px;
+}
+
+.emoj-box .emoj-list .default-emoj-18 {
+    background-position: 0px -450px;
+}
+
+.emoj-box .emoj-list .default-emoj-19 {
+    background-position: 0px -475px;
+}
+
 .emoj-box .emoj-list .default-emoj-20 {
-    background-position: 0px -422px;
+    background-position: 0px -500px;
 }
 
 .emoj-box .emoj-list .default-emoj-21 {
-    background-position: 0px -444px;
+    background-position: 0px -525px;
 }
 
 .emoj-box .emoj-list .default-emoj-22 {
-    background-position: 0px -466px;
+    background-position: 0px -550px;
 }
 
 .emoj-box .emoj-list .default-emoj-23 {
-    background-position: 0px -488px;
+    background-position: 0px -575px;
 }
 
 .emoj-box .emoj-list .default-emoj-24 {
-    background-position: 0px -510px;
+    background-position: 0px -600px;
 }
 
 .emoj-box .emoj-list .default-emoj-25 {
-    background-position: 0px -532px;
+    background-position: 0px -625px;
 }
 
 .emoj-box .emoj-list .default-emoj-26 {
-    background-position: 0px -554px;
+    background-position: 0px -650px;
 }
 
 .emoj-box .emoj-list .default-emoj-27 {
-    background-position: 0px -576px;
+    background-position: 0px -675px;
 }
 
 .emoj-box .emoj-list .default-emoj-28 {
-    background-position: 0px -598px;
+    background-position: 0px -700px;
 }
 
 .emoj-box .emoj-list .default-emoj-29 {
-    background-position: 0px -620px;
+    background-position: 0px -725px;
 }
 
 .emoj-box .emoj-list .default-emoj-30 {
-    background-position: 0px -642px;
+    background-position: 0px -750px;
 }
 
 .emoj-box .emoj-list .default-emoj-31 {
-    background-position: 0px -664px;
+    background-position: 0px -775px;
 }
 
 .emoj-box .emoj-list .default-emoj-32 {
-    background-position: 0px -686px;
+    background-position: 0px -800px;
 }
+
+.emoj-box .emoj-list .default-emoj-33 {
+    background-position: 0px -825px;
+}
+
+.emoj-box .emoj-list .default-emoj-34 {
+    background-position: 0px -850px;
+}
+
+.emoj-box .emoj-list .default-emoj-35 {
+    background-position: 0px -875px;
+}
+
+.emoj-box .emoj-list .default-emoj-36 {
+    background-position: 0px -900px;
+}
+
+.emoj-box .emoj-list .default-emoj-37 {
+    background-position: 0px -925px;
+}
+
+.emoj-box .emoj-list .default-emoj-38 {
+    background-position: 0px -950px;
+}
+
+.emoj-box .emoj-list .default-emoj-39 {
+    background-position: 0px -975px;
+}
+
+.emoj-box .emoj-list .default-emoj-40 {
+    background-position: 0px -1000px;
+}
+
+.emoj-box .emoj-list .default-emoj-41 {
+    background-position: 0px -1025px;
+}
+
+/*.emoj-box .emoj-list .default-emoj-42 {*/
+/*background-position: 0px -1050px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-43 {*/
+/*background-position: 0px -1075px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-44 {*/
+/*background-position: 0px -1100px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-45 {*/
+/*background-position: 0px -1125px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-46 {*/
+/*background-position: 0px -1150px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-47 {*/
+/*background-position: 0px -1175px;*/
+/*}*/
+
+/*.emoj-box .emoj-list .default-emoj-48 {*/
+/*background-position: 0px -1200px;*/
+/*}*/
 
 /*表情列表 end*/
 .emoj-box .emoj-tab {
@@ -817,9 +899,9 @@ ul {
 
     color: #979a91;
 
+    display: none;
+
     border: 1px solid red;
-
-
 }
 
 .words-box ul li {
@@ -829,7 +911,7 @@ ul {
     line-height: 30px;
     white-space: nowrap;
     overflow: auto;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     cursor: pointer;
 
 
