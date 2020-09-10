@@ -795,7 +795,7 @@ ul {
     width: 160px;
     height: 160px;
 }
-
+/*css实现箭头*/
 .detail-op .btns .mini-app-inner .arrow-up {
     position: absolute;
     top: -30px;

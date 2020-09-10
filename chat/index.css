@@ -273,7 +273,9 @@ ul {
 /*聊天框*/
 .chat {
     height: 100%;
-    width: auto;
+    /*width: auto;*/ /*使用这个值，chat会占据左边位置，虽然左边也看得到*/
+    width: 696px; /*微调出来的数据，会因浏览器窗口尺寸收缩导致布局错乱吗？*/
+    float: right;
 
     border: 1px solid green;
 }
@@ -381,11 +383,11 @@ ul {
     float: right;
 }
 
-.message-record .myself .avatar{
+.message-record .myself .avatar {
     display: none;
 }
 
-.message-record .avatar{
+.message-record .avatar {
     width: 46px;
     height: 46px;
 
@@ -395,7 +397,7 @@ ul {
 }
 
 
-.message-record .avatar img{
+.message-record .avatar img {
     width: 100%;
     height: 100%;
     border-radius: 100%;
@@ -446,3 +448,412 @@ ul {
 
     position: absolute;
 }
+
+/*标签等工具栏*/
+.chat-message-editor {
+    width: 94%;
+    padding: 0px 20px;
+    /*上面两行实现同样间距。缺陷是，widht不是100%*/
+    height: 180px;
+
+    border: 1px solid #801643;
+}
+
+.chat-message-editor-inner {
+    width: 100%;
+    height: auto;
+    position: relative;
+
+    border: 1px solid gold;
+}
+
+.chat-message-editor .control-panel {
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid #0bdaed;
+}
+
+.chat-message-editor .control-icons {
+    padding: 8px 0px; /*居中对齐。8=(40-23)/2*/
+}
+
+.chat-message-editor .control-icons a {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background-image: url("icons-chat-input.eba44c0a.png");
+    background-repeat: no-repeat;
+    margin-right: 20px;
+    cursor: pointer;
+
+    /*border: 1px solid red;*/
+}
+
+.chat-message-editor .control-icons .icon-emoj {
+    background-position: 0px 0px;
+}
+
+.chat-message-editor .control-icons .icon-words {
+    background-position: 0px -35px;
+}
+
+.chat-message-editor .control-icons .icon-resume {
+    background-position: 0px -70px;
+    width: 20px;
+}
+
+.chat-message-editor .control-icons .icon-phone {
+    background-position: 0px -105px;
+    width: 20px;
+}
+
+.chat-message-editor .control-icons .icon-wechat {
+    background-position: 0px -140px;
+    width: 23px;
+}
+
+
+.chat-message-editor .message-box {
+    width: 100%;
+    height: 90px;
+
+    outline: none;
+
+    border: 1px solid #ff1819;
+}
+
+.chat-message-editor .btn-send-sms {
+    /*width: 95%;*/
+    /*padding-right: 30px;*/
+    /*上面两行实现子元素距离右边间距，实现方法不好。有其他方法吗？*/
+    width: 100%;
+    height: 50px;
+    line-height: 40px;
+    text-align: right;
+    color: #d1d4db;
+
+    /*border: 1px solid darkgreen;*/
+}
+
+.chat-message-editor .btn-send-sms button {
+    width: 80px;
+    height: 30px;
+    background-color: #fff;
+    color: #d1d4db;
+    border-radius: 15px;
+    outline: none;
+    vertical-align: middle;
+    margin-right: 30px;
+    margin-left: 30px;
+    cursor: pointer;
+
+    border: 1px solid #d1d4db;
+}
+
+/*表情选择框和常用语选择框 start*/
+.emoj-box {
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+
+    position: absolute;
+    top: -310px;
+    left: -22px;
+
+    z-index: 1001;
+
+    border: 1px solid red;
+}
+
+/*css实现三角形箭头*/
+.chat-message-editor-inner .css-arrow-down-emoj {
+    position: absolute;
+    top: -3px;
+    left: 6px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #979a91;
+}
+
+.emoj-box .emoj-list {
+    width: 100%;
+    height: 250px;
+
+    border: 1px solid #800e44;
+}
+
+.emoj-box .emoj-list li {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 5px 5px;
+    padding: 5px 5px;
+
+    cursor: pointer;
+    /*background-color: #f1f1f1;*/
+}
+
+.emoj-box .emoj-list li:hover {
+    background-color: #f1f1f1;
+}
+
+.emoj-box .emoj-list button {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    outline: none;
+    cursor: pointer;
+
+    background-image: url("chat-emoji.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border: 1px solid yellowgreen;
+}
+
+/*表情列表 start*/
+.emoj-box .emoj-list .default-emoj-01 {
+    background-position: 0px 0px;
+}
+
+.emoj-box .emoj-list .default-emoj-02 {
+    background-position: 0px -22px;
+}
+
+.emoj-box .emoj-list .default-emoj-03 {
+    background-position: 0px -48px;
+}
+
+.emoj-box .emoj-list .default-emoj-04 {
+    background-position: 0px -70px;
+}
+
+.emoj-box .emoj-list .default-emoj-05 {
+    background-position: 0px -92px;
+}
+
+.emoj-box .emoj-list .default-emoj-06 {
+    background-position: 0px -114px;
+}
+
+.emoj-box .emoj-list .default-emoj-07 {
+    background-position: 0px -138px;
+}
+
+.emoj-box .emoj-list .default-emoj-08 {
+    background-position: 0px -167px;
+}
+
+.emoj-box .emoj-list .default-emoj-09 {
+    background-position: 0px -185px;
+}
+
+.emoj-box .emoj-list .default-emoj-10 {
+    background-position: 0px -208px;
+}
+
+.emoj-box .emoj-list .default-emoj-11 {
+    background-position: 0px -263px;
+}
+
+.emoj-box .emoj-list .default-emoj-12 {
+    background-position: 0px -246px;
+}
+
+.emoj-box .emoj-list .default-emoj-13 {
+    background-position: 0px -268px;
+}
+
+.emoj-box .emoj-list .default-emoj-14 {
+    background-position: 0px -290px;
+}
+
+.emoj-box .emoj-list .default-emoj-15 {
+    background-position: 0px -312px;
+}
+
+.emoj-box .emoj-list .default-emoj-16 {
+    background-position: 0px -334px;
+}
+
+.emoj-box .emoj-list .default-emoj-17 {
+    background-position: 0px -356px;
+}
+
+.emoj-box .emoj-list .default-emoj-18 {
+    background-position: 0px -378px;
+}
+
+.emoj-box .emoj-list .default-emoj-19 {
+    background-position: 0px -400px;
+}
+
+.emoj-box .emoj-list .default-emoj-20 {
+    background-position: 0px -422px;
+}
+
+.emoj-box .emoj-list .default-emoj-21 {
+    background-position: 0px -444px;
+}
+
+.emoj-box .emoj-list .default-emoj-22 {
+    background-position: 0px -466px;
+}
+
+.emoj-box .emoj-list .default-emoj-23 {
+    background-position: 0px -488px;
+}
+
+.emoj-box .emoj-list .default-emoj-24 {
+    background-position: 0px -510px;
+}
+
+.emoj-box .emoj-list .default-emoj-25 {
+    background-position: 0px -532px;
+}
+
+.emoj-box .emoj-list .default-emoj-26 {
+    background-position: 0px -554px;
+}
+
+.emoj-box .emoj-list .default-emoj-27 {
+    background-position: 0px -576px;
+}
+
+.emoj-box .emoj-list .default-emoj-28 {
+    background-position: 0px -598px;
+}
+
+.emoj-box .emoj-list .default-emoj-29 {
+    background-position: 0px -620px;
+}
+
+.emoj-box .emoj-list .default-emoj-30 {
+    background-position: 0px -642px;
+}
+
+.emoj-box .emoj-list .default-emoj-31 {
+    background-position: 0px -664px;
+}
+
+.emoj-box .emoj-list .default-emoj-32 {
+    background-position: 0px -686px;
+}
+
+/*表情列表 end*/
+.emoj-box .emoj-tab {
+    width: 100%;
+    height: 50px;
+    /*line-height: 50px;*/
+    /*vertical-align: middle;*/
+
+    border: 1px solid green;
+}
+
+.emoj-box .emoj-tab span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 10px 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.emoj-box .emoj-tab span:hover {
+    background-color: #f1f1f1;
+}
+
+
+.emoj-box .emoj-tab i {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.emoj-box .emoj-tab .emoj-smile {
+    background-image: url("V2_Expression__1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.emoj-box .emoj-tab .emoj-like {
+    background-image: url("like.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.emoj-box .emoj-tab .emoj-dark {
+    background-image: url("dark.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.emoj-box .emoj-tab .emoj-bear {
+    background-image: url("bear.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/*常用语*/
+.words-box {
+    width: 400px;
+    height: 180px;
+    z-index: 1003;
+
+    overflow: auto;
+
+    background-color: #fff;
+
+    position: absolute;
+    top: -184px;
+    left: 0px;
+
+    color: #979a91;
+
+    border: 1px solid red;
+
+
+}
+
+.words-box ul li {
+    padding: 5px 8px;
+    height: 30px;
+    /*width: 400px;*/
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow:ellipsis;
+    cursor: pointer;
+
+
+    border-top: 1px solid #f2f5fa;
+}
+
+
+.words-box ul li:hover {
+    background-color: #e7fff5;
+}
+
+/*css实现三角形箭头*/
+.chat-message-editor-inner .css-arrow-down-words {
+    position: absolute;
+    top: -3px;
+    left: 53px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #979a91;
+}
+
+/*表情选择框和常用语选择框 end*/
+
+
+
