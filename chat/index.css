@@ -210,13 +210,14 @@ ul {
     line-height: 40px;
     padding-left: 30px;
     background-color: #fff;
+    color: #9fa3b0;
 
 
     border: 1px solid red;
 }
 
 .users li {
-    width: 100%;
+    /*width: 100%;        !*再加上padding，超出父元素范围了*!*/
     height: 50px;
     padding: 15px 20px 15px 30px;
     /*cursor: pointer;*/
@@ -257,14 +258,16 @@ ul {
     color: #979a91;
 }
 
-.vline{
+.vline {
     display: inline-block;
     vertical-align: middle;
     width: 1px;
     height: 12px;
-    margin: 0px 8px;
-
     background-color: #e0e0e0;
+}
+
+.user-list-v {
+    margin: 0px 8px;
 }
 
 /*聊天框*/
@@ -273,4 +276,173 @@ ul {
     width: auto;
 
     border: 1px solid green;
+}
+
+.chat .text {
+    height: 40px;
+    line-height: 40px;
+    /*padding-left: 30px;*/
+    width: 100%;
+    background-color: #fff;
+    color: #9fa3b0;
+
+
+    border: 1px solid red;
+}
+
+.chat .text span {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    margin-left: 10px;
+    white-space: nowrap; /*若无这句，width太小时，所有span折行显示*/
+    color: #9fa3b0;
+}
+
+.chat .text .icon-collect {
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    float: right;
+    background-image: url("icons-chat-input.eba44c0a.png");
+    background-position: 0px -175px;
+    /*肉眼观察设置的对齐数据。float后仍然能使用position*/
+    position: relative;
+    top: 12px;
+    right: 5px;
+
+    cursor: pointer;
+}
+
+.job-info {
+    width: 100%;
+    height: 40px;
+    line-height: 40px; /*垂直对齐，有效*/
+
+    border: 1px solid green;
+}
+
+.job-info .job {
+    margin-left: 10px;
+}
+
+.job-info .job-name {
+    color: #62d5c8;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.job-info .download-text {
+    float: right;
+    margin-right: 10px;
+}
+
+.job-info .download-text .download-icon {
+    display: inline-block;
+    width: 18px;
+    height: 19px;
+    background-image: url("phone2x.e10d1025.png");
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    background-size: contain;
+
+    cursor: pointer;
+}
+
+/*消息列表*/
+.message-record {
+    /*width: 100%;*/
+    width: auto;
+    height: 500px;
+    overflow: auto;
+
+    border: 1px solid red;
+}
+
+.message-record .im-list {
+    padding: 10px 30px;
+
+    border: 1px solid gold;
+}
+
+.message-record .message {
+    width: 60%;
+    height: auto;
+    margin-top: 40px;
+    margin-left: 46px;
+
+    position: relative;
+
+
+    border: 1px solid greenyellow;
+}
+
+.message-record .myself {
+    float: right;
+}
+
+.message-record .myself .avatar{
+    display: none;
+}
+
+.message-record .avatar{
+    width: 46px;
+    height: 46px;
+
+    position: absolute;
+    top: 0px;
+    left: -60px;
+}
+
+
+.message-record .avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+    border: 1px solid red;
+}
+
+.message-record .message .words {
+
+    text-align: left;
+    background-color: #62d5c8;
+    color: #fff;
+
+    padding: 10px 10px;
+
+    border-radius: 10px;
+}
+
+
+.message-record .message .message-status {
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    top: 0px;
+    left: 390px;
+
+    background-image: url("sendstatus.d0a92d4b.png");
+    background-repeat: no-repeat;
+    background-position: -75px 0px;
+    /*background-size: contain;*/ /*图片会消失，原因未知。*/
+    background-size: cover;
+
+    position: absolute;
+}
+
+.message-record .myself .message-status {
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    top: 0px;
+    left: -39px;
+
+    background-image: url("sendstatus.d0a92d4b.png");
+    background-repeat: no-repeat;
+    background-position: -75px 0px;
+    /*background-size: contain;*/ /*图片会消失，原因未知。*/
+    background-size: cover;
+
+    position: absolute;
 }
