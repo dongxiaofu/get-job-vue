@@ -201,8 +201,6 @@ ul {
     width: 300px;
     height: 100%;
     float: left;
-
-    border: 1px solid green;
 }
 
 .user-list .text {
@@ -211,18 +209,12 @@ ul {
     padding-left: 30px;
     background-color: #fff;
     color: #9fa3b0;
-
-
-    border: 1px solid red;
 }
 
 .users li {
     /*width: 100%;        !*再加上padding，超出父元素范围了*!*/
     height: 50px;
     padding: 15px 20px 15px 30px;
-    /*cursor: pointer;*/
-
-    border: 1px solid gold;
 }
 
 .users .avatar {
@@ -235,9 +227,6 @@ ul {
     width: 100%;
     height: 100%;
     border-radius: 50px;
-
-
-    border: 1px solid red;
 }
 
 .users .employee-info {
@@ -276,8 +265,6 @@ ul {
     /*width: auto;*/ /*使用这个值，chat会占据左边位置，虽然左边也看得到*/
     width: 696px; /*微调出来的数据，会因浏览器窗口尺寸收缩导致布局错乱吗？*/
     float: right;
-
-    border: 1px solid green;
 }
 
 .chat .text {
@@ -287,9 +274,6 @@ ul {
     width: 100%;
     background-color: #fff;
     color: #9fa3b0;
-
-
-    border: 1px solid red;
 }
 
 .chat .text span {
@@ -320,8 +304,6 @@ ul {
     width: 100%;
     height: 40px;
     line-height: 40px; /*垂直对齐，有效*/
-
-    border: 1px solid green;
 }
 
 .job-info .job {
@@ -357,14 +339,10 @@ ul {
     width: auto;
     height: 500px;
     overflow: auto;
-
-    border: 1px solid red;
 }
 
 .message-record .im-list {
     padding: 10px 30px;
-
-    border: 1px solid gold;
 }
 
 .message-record .message {
@@ -374,9 +352,6 @@ ul {
     margin-left: 46px;
 
     position: relative;
-
-
-    border: 1px solid greenyellow;
 }
 
 .message-record .myself {
@@ -401,8 +376,6 @@ ul {
     width: 100%;
     height: 100%;
     border-radius: 100%;
-
-    border: 1px solid red;
 }
 
 .message-record .message .words {
@@ -453,25 +426,19 @@ ul {
 .chat-message-editor {
     width: 94%;
     padding: 0px 20px;
-    /*上面两行实现同样间距。缺陷是，widht不是100%*/
+    /*上面两行实现同样间距。缺陷是，width不是100%*/
     height: 180px;
-
-    border: 1px solid #801643;
 }
 
 .chat-message-editor-inner {
     width: 100%;
     height: auto;
     position: relative;
-
-    border: 1px solid gold;
 }
 
 .chat-message-editor .control-panel {
     width: 100%;
     height: 40px;
-
-    border: 1px solid #0bdaed;
 }
 
 .chat-message-editor .control-icons {
@@ -486,8 +453,6 @@ ul {
     background-repeat: no-repeat;
     margin-right: 20px;
     cursor: pointer;
-
-    /*border: 1px solid red;*/
 }
 
 .chat-message-editor .control-icons .icon-emoj {
@@ -519,8 +484,6 @@ ul {
     height: 90px;
 
     outline: none;
-
-    border: 1px solid #ff1819;
 }
 
 .chat-message-editor .btn-send-sms {
@@ -532,8 +495,6 @@ ul {
     line-height: 40px;
     text-align: right;
     color: #d1d4db;
-
-    /*border: 1px solid darkgreen;*/
 }
 
 .chat-message-editor .btn-send-sms button {
@@ -562,8 +523,6 @@ ul {
     left: -22px;
 
     z-index: 1001;
-
-    border: 1px solid red;
 }
 
 /*css实现三角形箭头*/
@@ -583,25 +542,11 @@ ul {
     height: 250px;
 
     overflow: auto;
-
-    border: 1px solid #800e44;
 }
 
 .emoj-box .emoj-list li {
     display: inline-block;
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*width: 50px;*/
-    /*height: 50px;*/
-    /*margin: 5px 5px;*/
-    /*padding: 5px 5px;*/
-
     cursor: pointer;
-}
-
-.emoj-box .emoj-list li:hover {
-    background-color: #979a91;
-    border: 1px solid #ff1819;
 }
 
 .emoj-box .emoj-list button {
@@ -626,6 +571,11 @@ ul {
     background-repeat: no-repeat;
 
     border: 10px solid #fff;
+}
+
+.emoj-box .emoj-list button:hover {
+
+    border: 10px solid #979a91;
 }
 
 /*表情列表 start*/
@@ -829,10 +779,6 @@ ul {
 .emoj-box .emoj-tab {
     width: 100%;
     height: 50px;
-    /*line-height: 50px;*/
-    /*vertical-align: middle;*/
-
-    border: 1px solid green;
 }
 
 .emoj-box .emoj-tab span {
@@ -900,8 +846,6 @@ ul {
     color: #979a91;
 
     display: none;
-
-    border: 1px solid red;
 }
 
 .words-box ul li {
@@ -933,6 +877,8 @@ ul {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 10px solid #979a91;
+
+    display: none;
 }
 
 /*表情选择框和常用语选择框 end*/
