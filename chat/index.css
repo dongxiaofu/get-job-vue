@@ -339,9 +339,8 @@ ul {
 
 /*消息列表*/
 .message-record {
-    /*width: 100%;*/
     width: auto;
-    height: 500px;
+    height: 440px;
     overflow: auto;
     border-bottom: 2px solid #e0e0e0;
 }
