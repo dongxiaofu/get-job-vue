@@ -81,7 +81,7 @@ ul {
     display: none;
 }
 
-#nav, #user-nav {
+#nav {
     float: left;
     height: 49px;
     margin-left: 15px;
@@ -90,12 +90,12 @@ ul {
 
 }
 
-#nav, #user-nav a {
-
-}
-
 #user-nav {
     float: right;
+    height: 49px;
+    margin-left: 15px;
+    line-height: 49px;
+    font-size: 0;
 }
 
 #nav ul, #user-nav ul {
@@ -103,19 +103,51 @@ ul {
     vertical-align: top;
 }
 
-
-#user-nav btns {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    margin: 0px 14px;
+/*登录状态用户导航栏 start*/
+#user-nav .avatar img {
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    vertical-align: middle; /*有效*/
+    margin-left: 20px;
 }
+
+#user-nav li {
+    color: #fff;
+}
+
+#user-nav .nav-dot {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    width: 1px;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    position: relative;
+    top: -3px;
+}
+
+#user-nav .resume {
+    margin-right: 5px;
+}
+
+#user-nav .file {
+    margin-left: 6px;
+}
+
+#user-nav li:hover {
+    color: #5dd5c8;
+}
+
+/*登录状态用户导航栏 end*/
 
 #nav li, #user-nav li {
     position: relative;
     display: inline-block;
     font-size: 14px;
     margin: 0px 14px;
+    cursor: pointer;
 }
 
 .nav-school-new::after {
