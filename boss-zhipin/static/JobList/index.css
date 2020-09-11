@@ -1,0 +1,1722 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    color: #414a60;
+    font-size: 14px;
+}
+
+body {
+    background-color: #f6f6f8;
+    min-width: 1184px; /*很重要，使header的背景在网页缩小时不会出现不能横向覆盖整个宽度的状况*/
+}
+
+em {
+    font-style: normal;
+}
+
+.icon-arrow-down, .btn-search, .icon-arrow-right, .icon-arrow-left, .icon-weibo, .icon-boss, .icon-wechat {
+    display: inline-block;
+    background-image: url("icons.png");
+    background-repeat: no-repeat;
+}
+
+.icon-sms, .icon-phone {
+    display: inline-block;
+    background-image: url("icons-sign.png");
+    /*background-repeat: no-repeat;*/
+}
+
+a {
+    text-decoration: none;
+    color: #414a60;
+}
+
+div, ul, li, a, p, dl, dd, span, img, dt {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+#wrap {
+    min-width: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+#header {
+    background: #202329;
+    width: 100%;
+    height: 49px;
+    position: relative;
+}
+
+#header a {
+    color: #fff;
+}
+
+#header a:hover {
+    color: #00c2b3;
+}
+
+#header a:active {
+    color: #00c2b3;
+}
+
+.inner {
+    /*margin-left: 100px;*/
+    /*margin-right: 100px;*/
+    margin: 0px auto;
+    /*max-width: 1184px;*/
+    width: 1184px;
+    position: relative;
+}
+
+#logo {
+    float: left;
+    height: 49px;
+    line-height: 49px;
+    color: #414a60;
+}
+
+#logo a {
+    display: block;
+    width: 110px;
+    height: 36px;
+    background: url("logo-2x.png") no-repeat 5px 14px;
+    background-size: 105px 19px;
+}
+
+#logo span {
+    display: none;
+}
+
+#nav, #user-nav {
+    float: left;
+    height: 49px;
+    margin-left: 15px;
+    line-height: 49px; /*为什么会有上下居中功能呢？*/
+    font-size: 0;
+
+}
+
+#nav, #user-nav a {
+
+}
+
+#user-nav {
+    float: right;
+}
+
+#nav ul, #user-nav ul {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+#user-nav btns {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 14px;
+}
+
+#nav li, #user-nav li {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0px 14px;
+}
+
+.nav-school-new::after {
+    position: absolute;
+    content: 'New';
+    color: #fff;
+    background: #ef505e;
+    font-size: 12px;
+    height: 14px;
+    width: 30px;
+    line-height: 13px;
+    text-align: center;
+    top: 8px;
+    right: -24px;
+    border-radius: 7px;
+}
+
+.user-nav-find-job::after {
+    content: "hot";
+    background-color: #ef505e;
+    position: absolute;
+    color: #fff;
+    font-size: 12px;
+    height: 14px;
+    line-height: 13px;
+    width: 30px;
+    text-align: center;
+    top: 8px;
+    right: -24px;
+    border-radius: 7px;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 112px; /*有无此项，效果一样。那么，这个指令，存在的意义是什么？*/
+    border: 1px solid #00c2b3;
+}
+
+#user-nav .btns .btn-outline {
+    border-radius: 15px;
+    height: 23px;
+    min-width: 0px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 13px;
+    padding: 0px 9px 0px 11px;
+    margin-left: 17px;
+}
+
+.btn-outline {
+    background-color: #202329;
+}
+
+.link-sign-resume {
+    display: inline-block;
+    position: relative;
+    height: 23px;
+    min-width: 0px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.user-nav-employ {
+    display: inline-block;
+    position: relative;
+    height: 23px;
+    min-width: 0px;
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+/**/
+#filter-box {
+    background: #fff;
+    position: relative;
+    padding-top: 20px;
+}
+
+#filter-box .icon-arrow-down {
+    background-position: 0px -2044px;
+}
+
+#filter-box .city {
+    float: left;
+    position: relative;
+    width: 68px;
+    height: 28px;
+    line-height: 30px;
+    border: 1px solid #00c2b3;
+    border-right: none;
+    padding: 6px 15px 8px 15px;
+    cursor: pointer;
+}
+
+#filter-box .city .icon-arrow-down {
+    position: absolute;
+    top: 14px;
+    right: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+#filter-box .city .line {
+    width: 1px;
+    height: 28px;
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    /*left: 88px;*/
+    background-color: #f2f2f5;
+}
+
+#filter-box .company {
+    float: right;
+    position: relative;
+    width: 68px;
+    height: 28px;
+    line-height: 30px;
+    border: 1px solid #00c2b3;
+    border-right: none;
+    border-left: none;
+    padding: 6px 15px 8px 15px;
+    cursor: pointer;
+
+    /*消除focus后的边框。使用tableindex=-1使该元素能点击*/
+    outline: none;
+}
+
+
+#filter-box .company .icon-arrow-down {
+    position: absolute;
+    top: 14px;
+    right: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+#filter-box .company .line {
+    width: 1px;
+    height: 28px;
+    position: absolute;
+    top: 7px;
+    left: 0px;
+    /*left: 88px;*/
+    background-color: #f2f2f5;
+}
+
+#filter-box .position {
+    float: right;
+    position: relative;
+    width: 68px;
+    height: 28px;
+    line-height: 30px;
+    border: 1px solid #00c2b3;
+    border-right: none;
+    border-left: none;
+    padding: 6px 15px 8px 15px;
+    cursor: pointer;
+
+    outline: none;
+}
+
+#filter-box .position .icon-arrow-down {
+    position: absolute;
+    top: 14px;
+    right: 0px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+#filter-box .position .line {
+    width: 1px;
+    height: 28px;
+    position: absolute;
+    top: 7px;
+    left: 0px;
+    /*left: 88px;*/
+    background-color: #f2f2f5;
+}
+
+#filter-box .city b, #filter-box .position b, #filter-box .company b {
+    font-size: 13px;
+    font-weight: 400;
+    color: #61687c;
+}
+
+.search-form-con {
+    float: left;
+    width: 794px;
+    position: relative;
+}
+
+.btn-search {
+    min-width: 0px;
+    width: 90px;
+    height: 44px;
+    border: 1px solid #5dd5c8;
+    background-color: #5dd5c8;
+    font-size: 0px;
+    cursor: pointer;
+    outline: none;
+    background-position: 34px -138px;
+}
+
+.ipt-wrap {
+    /*width: 495px;*/
+    height: 42px;
+    border: 1px solid #5dd5c8;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+}
+
+.ipt-search {
+    width: 495px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    /*border: 1px solid black;*/
+    border: none;
+    outline: none;
+    color: #414a60;
+    /*border-right: none;*/
+    /*border-left: none;*/
+}
+
+.condition-box {
+    margin-top: 20px;
+    /*height: 72px;*/
+}
+
+.condition-box a {
+    font-size: 12px;
+}
+
+.condition-box a:hover {
+    color: red;
+}
+
+.condition-city {
+    height: 36px;
+    border-bottom: 1px solid #eef0f5;
+    padding: 0px 0px;
+}
+
+.condition-district {
+    margin-top: 5px;
+    height: 36px;
+    border-bottom: 1px solid #eef0f5;
+    padding: 0px 0px;
+}
+
+.condition-city a {
+    display: inline-block;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    /*margin-right: 20px;*/
+    padding: 0px 11px;
+    position: relative;
+    /*border: 1px solid red;*/
+    margin: 0px;
+}
+
+
+.condition-city a.disabled {
+    padding-left: 0px;
+    cursor: none;
+    color: green;
+}
+
+
+.condition-city .selected {
+    border: 1px solid grey;
+    margin-right: 11px;
+    border-bottom: none;
+    bottom: 0px;
+    /*padding: 0px 0px;*/
+    /*margin-bottom: 0px;*/
+}
+
+.icon-arrow-right {
+    width: 16px;
+    height: 16px;
+    background-position: 4px -886px;
+    padding: 0px 11px;
+    vertical-align: middle;
+}
+
+.condition-district a {
+    display: inline-block;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    /*margin-right: 20px;*/
+    padding: 0px 11px;
+    position: relative;
+    /*border: 1px solid red;*/
+    margin: 0px;
+    overflow: hidden;
+}
+
+.condition-district a.first {
+    padding-left: 0px;
+    color: red;
+}
+
+.filter-select-box {
+    margin-top: 10px;
+    font-size: 12px;
+    width: 100%;
+    height: 40px;
+}
+
+.filter-select-box .dropdown-select {
+    float: left;
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    /*border: 1px solid red;*/
+    padding: 0px 8px;
+    /*text-align: center;*/
+}
+
+.filter-select-box .first {
+    padding-left: 0px;
+}
+
+.filter-select-box .last {
+    display: inline-block;
+    float: right;
+    padding-right: 0px;
+    height: 40px;
+    /*width: 120px;*/
+    line-height: 40px;
+    /*border: 1px solid red;*/
+}
+
+.filter-select-box .dropdown-select .icon-arrow-down {
+    position: absolute;
+    right: 30px;
+    top: 13px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    /*vertical-align: middle;*/
+    background-position: 0px -2044px;
+}
+
+.filter-select-box .ipt {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%;
+}
+
+/*主体部分*/
+.job-box {
+    /*float: left;*/
+    margin-top: 30px;
+    min-height: 1300px;
+}
+
+.side-bar {
+    float: right;
+    width: 300px;
+    padding: 0px 0px;
+    position: relative;
+    /*margin: 0px auto;*/
+    /*text-align: center;*/
+}
+
+.side-bar .login-box {
+    position: relative;
+    width: 300px;
+    height: 330px;
+    background-color: #5dd5c8;
+}
+
+
+.side-bar .login-box .form-row {
+    position: relative;
+    width: 230px;
+    height: 40px;
+    line-height: 40px;
+    margin: 25px auto;
+    background-color: #f6f6f8;
+    padding: 0px;
+    text-align: center;
+}
+
+
+.side-bar .login-box .form-title {
+    background: none;
+    color: #f6f6f8;
+    font-weight: 400;
+    font-size: 16px;
+
+}
+
+.side-bar .login-box .login-btn {
+    margin-bottom: 10px;
+}
+
+.login-register-btn {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #5dd5c8;
+    font-size: 15px;
+    color: #5dd5c8;
+    outline: none;
+    cursor: pointer;
+}
+
+.sms-code .ipt-sms {
+    display: inline-block;
+    width: 82%;
+    height: 100%;
+    margin: 0px;
+    /*padding: 0px;*/
+    padding-left: 40px;
+    outline: none;
+    border: none;
+    overflow: hidden;
+}
+
+.sms-code .icon-sms {
+    position: absolute;
+    background-position: 1px -141px;
+    width: 18px;
+    height: 18px;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+}
+
+.btn-send-sms {
+    position: absolute;
+    top: 1px;
+    right: 15px;
+}
+
+.btn-send-sms .line {
+    position: absolute;
+    top: 4px;
+    right: 80px;
+    display: inline-block;
+    width: 1px;
+    height: 32px;
+    background-color: #f2f2f5;
+}
+
+.btn-send-sms button {
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    color: #5dd5c8;
+    font-size: 15px;
+    font-weight: 300;
+    border: none;
+    cursor: pointer;
+}
+
+.side-bar .login-box .agreement {
+    text-align: center;
+    font-size: 12px;
+    color: #f2f2f5;
+    font-weight: 300;
+    /*position: absolute;*/
+    /*left: 106px;*/
+    /*bottom: 40px;*/
+}
+
+.side-bar .login-box .agreement a {
+    color: #f2f2f5;
+
+}
+
+.side-bar .login-box {
+    position: relative;
+    width: 300px;
+    border: 1px solid #5dd5c8;
+}
+
+.form-row .dropdown-select {
+    position: absolute;
+    display: inline-block;
+    top: 3px;
+    left: 40px;
+    z-index: 1;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.form-row .dropdown-select .icon-arrow-down {
+    position: absolute;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-position: 2px -54px;
+    top: 12px;
+    left: 27px;
+    cursor: pointer;
+}
+
+
+/*.ipt-phone {*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*!*width: 100%;*!*/
+/*height: 100%;*/
+/*margin: 0px;*/
+/*padding: 0px;*/
+/*!*border: 1px solid red;*!*/
+/*!*outline: none;*!*/
+/*}*/
+
+.ipt-phone .ipt-phone-number {
+    /*position: relative;*/
+    display: inline-block;
+    width: 130px;
+    height: 40px;
+    margin: 0px;
+    padding-left: 100px; /*100 + 130 = 230，这样，才能让input总长度是230*/
+    /*border: 1px solid greenyellow;*/
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
+
+.ipt-phone .icon-phone {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 13px;
+    left: 7px;
+    background-position: 2px 1px;
+    z-index: 2;
+}
+
+/*框中的元素，让里面的元素上下左右居中，有更好的方法？此处，使用肉眼观察调整数值。*/
+.upload-btn {
+    width: 300px;
+    height: 80px;
+    border: 1px solid #fff;
+    margin: 20px auto;
+    /*padding: 20px 10px;*/
+    text-align: center;
+    /*vertical-align: middle;*/
+    padding-top: 40px;
+    /*padding-bottom: 20px;*/
+    background: #fff;
+}
+
+.upload-btn a {
+    display: inline-block;
+    width: 230px;
+    height: 40px;
+    /*border: 1px solid green;*/
+    line-height: 40px;
+    background: #5dd5c8;
+    color: #f6f6f8;
+    cursor: pointer;
+}
+
+/*历史记录*/
+.history {
+    width: 300px;
+    height: 400px;
+    background: #fff;
+    border: 1px solid #fff;
+}
+
+.history-title-wapper {
+    width: 300px;
+    height: 30px;
+    border-bottom: 2px solid #eef0f5;
+}
+
+.history-title {
+    width: 230px;
+    margin: 10px auto;
+    color: #5dd5c8;
+}
+
+.history-list {
+    width: 230px;
+    margin: 10px auto;
+}
+
+.history-list li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eef0f5;
+    padding-bottom: 10px;
+}
+
+/*最后一个li的样式*/
+.history-list li:last-child {
+    border-bottom: none;
+}
+
+.history-list h4 {
+    position: relative;
+    margin: 4px 0px;
+    font-weight: 300;
+}
+
+.history-list a:hover h4.title {
+    color: #5dd5c8;
+}
+
+.history-list p {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.history-list .salary {
+    position: absolute;
+    right: 0px;
+    color: #fc6c38;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+/*右侧广告*/
+.ads {
+    margin-top: 20px;
+}
+
+.ads ul li {
+    margin-bottom: 10px;
+}
+
+.ads ul li img {
+    width: 100%;
+}
+
+/*工作列表*/
+.job-list {
+    display: block;
+    margin-right: 340px;
+}
+
+.job-list ul li {
+    /*width: 100%;*/
+    /*background-color: #fff;*/
+    border: 1px solid #fff;
+    margin-bottom: 20px;
+}
+
+.job-list .primary-job-info {
+    /*width: 100%;*/
+    background-color: #fff;
+}
+
+.job-info-wrapper {
+    float: left;
+    width: 50%;
+    height: 67px;
+}
+
+.company-wrapper {
+    float: right;
+    width: 50%;
+    height: 67px;
+}
+
+.company-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 300;
+    color: #5dd5c8;
+}
+
+.primary-job-info .job-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 300;
+    color: #5dd5c8;
+}
+
+.primary-job-info .job-area {
+    font-size: 14px;
+}
+
+.primary-job-info .job-name a {
+    color: #5dd5c8;
+}
+
+.primary-job-info .job-jd {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.primary-job-info .job-jd span {
+    margin-right: 10px;
+}
+
+.primary-job-info .job-jd .salary {
+    color: #fc6c38;
+}
+
+.primary-job-info .job-jd .employer img {
+    width: 13px;
+    height: 13px;
+}
+
+.grade {
+    position: relative;
+
+}
+
+.job-jd .ages {
+    /*margin-right: 0px;*/
+    position: relative;
+}
+
+.job-jd .ages .line {
+    position: absolute;
+    top: 3px;
+    right: -8px;
+    display: inline-block;
+    width: 1px;
+    height: 15px;
+    background-color: #f2f2f5;
+}
+
+.employer span.title {
+    margin-right: 0px;
+}
+
+.employer {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #eee;
+    padding: 0px 8px;
+    text-align: center;
+    border-radius: 15px;
+    margin-left: 0px;
+}
+
+.employer .line {
+    position: absolute;
+    top: 4px;
+    right: 72px;
+    display: inline-block;
+    width: 1px;
+    height: 15px;
+    background-color: #f2f2f5;
+}
+
+.primary-job-info {
+    padding: 10px 30px;
+    overflow: hidden;
+}
+
+.company-info {
+    float: left;
+}
+
+.company-logo {
+    float: right;
+}
+
+.append-job-info {
+    height: 26px;
+    padding: 10px 20px;
+    font-size: 12px;
+}
+
+.append-job-info .tags {
+    float: left;
+    width: 50%;
+}
+
+.append-job-info .prize {
+    float: left;
+    width: 50%;
+}
+
+.append-job-info .tags span {
+    border: 1px solid #eee;
+    border-radius: 2px;
+    padding: 2px 5px;
+}
+
+.append-job-info .prize {
+    float: right;
+}
+
+.company-logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    border: 1px solid #eef0f5;
+}
+
+.company-info .company-name {
+    display: block;
+}
+
+.company-info .company-append-info {
+    display: block;
+    margin-top: 5px;
+}
+
+.company-info .company-append-info span {
+    margin-right: 10px;
+}
+
+.company-info .company-append-info span:first-child {
+    position: relative;
+}
+
+.company-info .company-append-info span:first-child .line {
+    position: absolute;
+    top: 4px;
+    right: -3px;
+    display: inline-block;
+    width: 1px;
+    height: 13px;
+    background-color: #f2f2f5;
+}
+
+.company-info .company-append-info span:nth-child(2) {
+    position: relative;
+}
+
+.company-info .company-append-info span:nth-child(2) .line {
+    position: absolute;
+    top: 4px;
+    right: -8px;
+    display: inline-block;
+    width: 1px;
+    height: 13px;
+    background-color: #f2f2f5;
+}
+
+.page {
+    margin-right: 0px;
+    /*border: 1px solid greenyellow;*/
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 250px;
+}
+
+/*.page ul {*/
+/*display: block;*/
+/*margin-right: 340px;*/
+/*border: 1px solid red;*/
+/*height: 20px;*/
+/*}*/
+
+.page ul li {
+    display: inline-block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 20px;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+.page ul .pre {
+    position: relative;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+.page ul li.cur {
+    border: 1px solid #5dd5c8;
+    background-color: #5dd5c8;
+
+}
+
+.page ul li.cur a {
+    color: #ffffff;
+}
+
+.page ul .next {
+    position: relative;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+.page ul .pre .icon-arrow-left {
+    position: absolute;
+    background-position: 9px -830px;
+    width: 16px;
+    height: 16px;
+    /*border: 1px solid red;*/
+    top: 3px;
+    right: 11px;
+    /*vertical-align: middle;*/
+    /*text-align: center;*/
+}
+
+.page ul .next .icon-arrow-right {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-position: 4px -886px;
+    left: 7px;
+    top: 7px;
+}
+
+/*feedback*/
+.feedback {
+    margin-right: 340px;
+    margin-top: 30px;
+    height: 140px;
+    border: 1px solid #eff1ec;
+    background-color: #fff;
+}
+
+.feedback-wrapper {
+    padding: 10px 30px;
+    height: 120px;
+}
+
+.feedback-emoj {
+    float: left;
+    width: 39%;
+
+}
+
+.feedback-textarea {
+    float: right;
+    width: 59%;
+
+}
+
+.feedback-emoj div {
+    float: left;
+    margin-right: 40px;
+    width: 50px;
+    height: 80px;
+    position: relative;
+}
+
+.emoj-not-statisfy {
+    background-position: 4px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: 0px;
+}
+
+.emoj-just-so-so {
+    background-position: -92px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
+.emoj-ok {
+    background-position: -188px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
+.emoj-not-statisfy, .emoj-just-so-so, .emoj-ok {
+    position: absolute;
+    display: inline-block;
+    background-image: url("smile-face.png");
+    background-repeat: no-repeat;
+}
+
+/*像素和百分比混合使用，苦恼；使用像素，网页放大或缩小时会出现问题吗？*/
+.feedback-textarea-wrapper {
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    position: relative;
+}
+
+.feedback-textarea .txt {
+    float: left;
+    width: 69%;
+    /*!*height: 60%;*!无效*/
+    height: 80px;
+    border: 1px solid #eff1ec;
+    /*background-color: #eff1ec;*/
+    outline: none;
+    resize: none;
+    color: #414a60;
+}
+
+.feedback-textarea .btn {
+    float: right;
+    width: 23%;
+    border: 1px solid #5dd5c8;
+    background-color: #5dd5c8;
+    outline: none;
+    height: 40px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute; /*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
+    top: 20px;
+    right: 0px;
+
+}
+
+.pos-bread {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #9fa4b0;
+    font-weight: 200;
+}
+
+.pos-bread a {
+    font-size: 13px;
+    color: #9fa4b0;
+    font-weight: 200;
+}
+
+.pos-bread a:hover {
+    text-decoration: underline;
+}
+
+#link-box {
+    /*width: 1184px;  设置宽度后，margin:0 auto;居中效果不起作用*/
+    height: 250px;
+    background-color: #fff;
+    margin-top: 20px;
+    color: #9fa4b0;
+    position: relative;
+
+    /*border: 1px solid red;*/
+}
+
+.link-nav-wrapper {
+    /*padding-left: 77px;*/
+    height: 90px;
+    width: 1184px;
+
+    margin: 0px auto;
+
+    /*border: 1px solid green;*/
+}
+
+.link-nav-wrapper .link-nav .cur {
+    color: #5dd5c8;
+}
+
+.link-nav-wrapper span {
+    float: left;
+    display: inline-block;
+    width: 25%;
+    cursor: pointer;
+}
+
+.link-nav-wrapper .link-nav {
+    height: 20px;
+    font-size: 17px;
+    padding-top: 17px;
+
+}
+
+.link-nav-wrapper .links {
+    margin-top: 40px;
+    height: 70px;
+
+}
+
+.link-nav-wrapper .links li {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+}
+
+.link-nav-wrapper .links li a {
+    color: #9fa4b0;
+}
+
+.link-nav-wrapper .links li a:hover {
+    color: #5dd5c8;
+}
+
+.clear {
+    clear: both;
+}
+
+.channel-introduce {
+    /*padding-left: 77px;*/
+    width: 1184px;
+    margin: 0px auto;
+}
+
+/*footer*/
+
+#footer {
+    margin-top: 30px;
+    height: 250px;
+    width: 100%;
+}
+
+.service-term {
+    width: 192px;
+    float: left;
+}
+
+.service-term dd {
+    margin-top: 20px;
+}
+
+.service-term dd a {
+    display: block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.service-term dd p {
+    display: block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    white-space: nowrap; /*一行文字过长，但是不换行显示*/
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 12px;
+    max-width: 960px;
+    /*color: #eeeff3;*/
+    /*background-color: #fff;*/
+}
+
+.copyright span {
+    margin-right: 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#footer a:hover {
+    color: #5dd5c8;
+}
+
+.police {
+    margin-top: 8px;
+}
+
+.police span {
+    margin-right: 20px;
+    font-size: 13px;
+}
+
+.footer-right-wrapper {
+    text-align: right;
+}
+
+.footer-right-wrapper .tel p {
+    line-height: 30px;
+}
+
+.footer-icon {
+    margin-top: 20px;
+    padding: 0px;
+}
+
+.icon-weibo, .icon-wechat, .icon-boss {
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    margin-left: 30px;
+
+    border: 1px solid #9fa4b0;
+}
+
+.icon-weibo {
+    background-position: 10px -190px;
+}
+
+.icon-wechat {
+    background-position: 10px -254px;
+}
+
+.footer-icon .icon-wechat-img {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -150px;
+    right: -25px;
+
+    background-color: #fff;
+}
+
+.footer-icon .wechat-qr {
+    position: relative;
+}
+
+/*CSS元素改变子元素属性*/
+a.wechat-qr:hover img {
+    display: inline-block;
+}
+
+.icon-boss {
+    background-position: 6px -313px;
+}
+
+/*.copyright span img无效*/
+.copyright span img {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    margin-bottom: -3px;
+}
+
+.footer-right-social {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    text-align: right;
+}
+
+/*.footer-right-social img {覆盖面太广了，其他的图片样式设置无效*/
+#footer-logo {
+    width: 88px;
+    height: 16px;
+    margin: 6px 0px 10px 0px;
+}
+
+.footer-right-social p {
+    font-size: 12px;
+    text-align: right;
+    padding: 0px;
+    height: 24px;
+    line-height: 24px;
+}
+
+/*搜索框地址弹出*/
+#dialog-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+
+    /*border: 1px solid red;*/
+}
+
+#dialog-container-layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+
+    /*background-color: rgba(151, 154, 145, 0.51);*/
+
+    background: rgba(37, 40, 48, .7); /*这组数值，效果更好*/
+
+    opacity: 1.2;
+}
+
+#dialog-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 786px;
+    height: 527px;
+    z-index: 1002;
+    margin: -243px 0 0 -393px;
+
+    /*background-color: rgba(151, 154, 145, 0.51);*/
+    /*opacity: 1.2;*/
+
+    /*border: 1px solid red;*/
+    background-color: #fff;
+}
+
+#dialog-container-close {
+    width: 16px;
+    height: 16px;
+
+    position: absolute;
+    right: 30px;
+    top: 14px;
+
+    cursor: pointer;
+}
+
+/*能使父元素隐藏，但失去焦点后，父元素又出现了，不好用*/
+/*#dialog-container-close:focus-within ~ div{*/
+/*display: none;*/
+/*}*/
+
+#dialog-container-close i::before {
+    content: "\00D7";
+    font-size: 21px;
+}
+
+#dialog-con {
+    margin-top: 20px;
+}
+
+#dialog-con #city {
+    padding: 10px 30px;
+}
+
+#dialog-con #dialog-title {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#dialog-con #city #section-province {
+    width: 100%;
+    height: 30px;
+
+
+    background-color: #f9fafb;
+
+    border: 1px solid #f9fafb;
+}
+
+#dialog-con #city #section-province li {
+    width: 131px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+
+    float: left;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    padding: unset;
+
+    position: relative;
+
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+
+    /*border: 1px solid green;*/
+}
+
+#dialog-con #city #section-province li.active {
+    background-color: #f9fafb;
+    color: #5dd5c8;
+}
+
+/*实现下划线。用border不能实现下划线与文字等长。*/
+#dialog-con #city #section-province li.active::before {
+    content: "";
+    position: absolute;
+    top: unset;
+    bottom: 0px;
+
+    width: 35%;
+    height: 2px;
+    background-color: #5dd5c8;
+}
+
+
+#dialog-con #city #section-province li:hover {
+    /*border-bottom: 1px solid #f9fafb;*/
+    color: #5dd5c8;
+}
+
+#section-city {
+    margin: 20px 0px; /*没这句，这个元素只会显示左边很少一部分。原因不知*/
+    height: 378px;
+    overflow: auto; /*与下面这句好像效果相同*/
+    /*overflow-x: hidden;*/
+    /*overflow-y: scroll;*/
+}
+
+#section-city .classify-city {
+    width: 100%;
+    /*height: 100%;*/
+
+    /*border: 1px solid red;*/
+}
+
+#section-city .city-title {
+    float: left;
+    width: 11.2%;
+    font-size: 15px;
+    /*font-weight: 500;*/
+    color: #5dd5c8;
+    /*width: 40px;*/
+    /*height: auto;*/
+}
+
+#section-city .city-main {
+    float: left;
+    width: 88.8%;
+    /*width: 600px;!*746px;*!*/
+    /*height: auto;*/
+}
+
+#section-city .city-main li {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+    cursor: pointer;
+
+    /*border: 1px solid red;*/
+}
+
+#section-city .city-main li:hover {
+    color: #5dd5c8;
+}
+
+/*搜索框职位类型*/
+.position-type-list {
+    border: 1px solid #80919a;
+
+    width: 500px;
+    height: 200px;
+
+    position: absolute;
+    right: -306px;
+    bottom: -200px;
+
+    z-index: 3;
+    background: #fff; /*若没有这个背景色，类型列表不能覆盖其他元素，文字混合在一起，模糊看不清*/
+    color: #9fa3b0;
+
+    display: none;
+
+}
+
+.position-type-list .position-list-tree1 {
+    width: 33.3%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    border-right: 1px solid #80919a;
+
+
+    float: left;
+    overflow: auto;
+}
+
+
+.position-type-list .position-list-tree2 {
+    width: 33.3%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    border-right: 1px solid #80919a;
+
+    float: left;
+    overflow: auto;
+
+}
+
+
+.position-type-list .position-list-tree3 {
+    width: 33%;
+    height: 200px;
+    /*padding-left: 10px;*/
+    /*border-right: 1px solid #80919a;*/
+
+    float: left;
+    overflow: auto;
+}
+
+
+.position-type-list li {
+    /*margin-top: 15px;*/
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+
+.position-type-list li.selected {
+    background-color: #f2f5f9;
+}
+
+.position-type-list li:hover {
+    background-color: #f2f5f9;
+}
+
+/*还是用JS实现隐藏和显示效果好*/
+#filter-box .position:focus + .position-type-list {
+    display: block;
+    /*display: none; 不能写在html才有效*/
+}
+
+/*搜索框公司行业*/
+.industry-box {
+    position: absolute;
+    top: 50px;
+    width: 106%;
+    height: 300px;
+    z-index: 9000;
+    background: #fff; /*若没有这个背景色，类型列表不能覆盖其他元素，文字混合在一起，模糊看不清*/
+    color: #9fa3b0;
+
+    padding: 10px 0px 10px 40px;
+
+    /*border: 1px solid #80919a;*/
+    /*不确定该项的作用*/
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    /*默认隐藏。不能写在html中，否则无法在CSS中改变该元素的属性*/
+    display: none;
+}
+
+.industry-box ul li {
+    float: left;
+    width: 20%;
+    height: 25px;
+    line-height: 25px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    /*border: 1px solid green;*/
+}
+
+.industry-box ul li:hover {
+    background-color: #f2f5f9;
+}
+
+#filter-box .company:focus + .industry-box {
+    display: block;
+}
+
+/*筛选框工作经验*/
+.filter-select-box .dropdown-select .require-list {
+    position: absolute;
+    left: 0px;
+    width: 150px;
+    height: 150px;
+    overflow: auto;
+    background-color: #fff;
+    z-index: 1;
+    /*padding: 5px 10px;*/
+    /*border: 1px solid red;*/
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+
+    display: none;
+}
+
+.filter-select-box .dropdown-select .require-list li {
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30px;
+    line-height: 30px;
+    /*margin-bottom: 10px;*/
+
+    /*border: 1px solid green;*/
+}
+
+.filter-select-box .dropdown-select .require-list li:hover {
+    background-color: #f2f5f9;
+}
+
+/*无效，因为 二者之间有其他元素*/
+/*.filter-select-box .ipt:hover + .filter-select-box .dropdown-select .require-list{*/
+/*display: block;*/
+/*}*/

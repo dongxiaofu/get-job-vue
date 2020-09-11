@@ -1,23 +1,29 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+    export default {
+        name: 'App'
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    html, body {
+        margin: 0px;
+        padding: 0px;
+        color: #414a60;
+        font-size: 14px;
+    }
+
+    body {
+        background-color: #f6f6f8;
+        min-width: 1184px; /*很重要，使header的背景在网页缩小时不会出现不能横向覆盖整个宽度的状况*/
+    }
+
+    em {
+        font-style: normal;
+    }
 </style>
