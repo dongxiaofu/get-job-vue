@@ -189,7 +189,7 @@ ul {
 
 /*聊天框容器*/
 .chat-wrap {
-    width: 1000px;
+    /*width: 1000px;*/
     height: 700px;
     margin: 30px auto;
 
@@ -198,7 +198,7 @@ ul {
 
 /*用户列表*/
 .user-list {
-    width: 300px;
+    width: 30%;
     height: 100%;
     float: left;
     border-right: 2px solid #e0e0e0;
@@ -216,6 +216,14 @@ ul {
     /*width: 100%;        !*再加上padding，超出父元素范围了*!*/
     height: 50px;
     padding: 15px 20px 15px 30px;
+}
+
+.users li:hover {
+    background-color: #f2f5fa;
+}
+
+.users li.selected {
+    background-color: #f2f5fa;
 }
 
 .users .avatar {
@@ -263,8 +271,9 @@ ul {
 /*聊天框*/
 .chat {
     height: 100%;
+    width: 69.8%;
     /*width: auto;*/ /*使用这个值，chat会占据左边位置，虽然左边也看得到*/
-    width: 696px; /*微调出来的数据，会因浏览器窗口尺寸收缩导致布局错乱吗？*/
+    /*width: 696px; !*微调出来的数据，会因浏览器窗口尺寸收缩导致布局错乱吗？*!*/
     float: right;
 }
 
@@ -524,16 +533,14 @@ ul {
     background-color: #f6f6f8;
 
     position: absolute;
-    top: -310px;
-    left: -22px;
-
-    z-index: 1001;
+    top: -305px;
+    left: -19px;
 }
 
 /*css实现三角形箭头*/
 .chat-message-editor-inner .css-arrow-down-emoj {
     position: absolute;
-    top: -3px;
+    top: -4px;
     left: 6px;
     width: 0;
     height: 0;
