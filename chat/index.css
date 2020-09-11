@@ -486,8 +486,8 @@ ul {
 .chat-message-editor .message-box {
     width: 100%;
     height: 90px;
-
     outline: none;
+    color: #000;
 }
 
 .chat-message-editor .btn-send-sms {
