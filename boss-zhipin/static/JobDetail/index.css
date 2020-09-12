@@ -296,6 +296,9 @@ ul {
     text-align: center;
     margin-right: 10px;
     color: #5dd5c8;
+
+    white-space: nowrap;
+    overflow: auto;
 }
 
 #job-banner .job-op {
@@ -1795,5 +1798,11 @@ a.wechat-qr:hover img {
 
 #section-city .city-main li:hover {
     color: #5dd5c8;
+}
+
+/*职位描述*/
+.text{
+    /*首行不缩进*/
+    white-space: pre-line;
 }
 
