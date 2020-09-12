@@ -109,7 +109,7 @@
                                     <!--</a>-->
                                     <!--</li>-->
                                     <li v-for="job in history_jobs">
-                                        <router-link to="{path:'job-detail', params:{'job_id', job.job_id}}">
+                                        <router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">
                                             <h4 class="title">
                                                 {{job.title}}
                                                 <span class="salary">{{job.salary}}·{{job.salary_num}}</span>
