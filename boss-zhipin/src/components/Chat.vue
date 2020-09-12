@@ -82,7 +82,9 @@
                         </div>
                         <div class="message-record">
                             <ul class="im-list">
+                                <!--li的class要动态设置，不能作为循环标签，所以加了层span-->
                                 <span v-for="message in messages">
+                                    <!--根据条件设置html元素的class-->
                                     <li :class="message.author == 2 ? 'message myself' : 'message' ">
                                     <div class="avatar"><img :src="message.avatar"></div>
                                         <!--背景图的值：-112px 0&#45;&#45;送达；-75px 0&#45;&#45;已读;0px 0&#45;&#45;失败-->
@@ -393,24 +395,32 @@
             return {
                 friends: [
                     {
+                        user_id:2,
+                        name:'大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
+                        user_id:2,
+                        name:'大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
+                        user_id:2,
+                        name:'大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
+                        user_id:2,
+                        name:'大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
