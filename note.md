@@ -43,6 +43,20 @@ boss-zhipin/src/components/JobList.vue
     }
 </style>
 
+4.css文件中的图片路径
+
+/Users/cg/data/www/get-job-vue/boss-zhipin/static/JobList/index.css
+
+/Users/cg/data/www/get-job-vue/boss-zhipin/static/JobList/icons-sign.png
+
+.icon-sms, .icon-phone {
+    display: inline-block;
+    background-image: url("icons-sign.png");
+    /*background-repeat: no-repeat;*/
+}
+
+不需要做任何修改。这里，以后进一步验证。
+
 ## 其他笔记
 
 eslint是一个JavaScript的校验插件，通常用来校验语法或代码的书写风格。
