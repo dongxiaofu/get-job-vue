@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="job-op">
-                            <button class="contact">立即沟通</button>
+                            <button class="contact" v-on:click="chat">立即沟通</button>
                             <a class="write-resume" href="#"><i></i>填写在线简历</a>
                             <a class="upload-resume" href="#"><i></i>上传简历附件</a>
                         </div>
@@ -1061,6 +1061,11 @@
             // 搜索框地址--关闭
             closeCityBox: function () {
                 this.$refs.cityBox.style.display = 'none'
+            },
+            // 立即沟通
+            chat:function () {
+                console.log("start to chat")
+                this.$router.push("/chat")
             }
         }
     }
