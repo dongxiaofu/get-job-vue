@@ -790,7 +790,6 @@
         },
         methods: {
             showIndustryBox: function () {
-                console.log(222222)
                 if (this.$refs.industryBox.style.display == 'none') {
                     this.$refs.industryBox.style.display = 'block'
                 } else {
@@ -813,6 +812,8 @@
             switchDialog: function () {
                 if (this.$refs.dialog.style.display == 'none') {
                     this.$refs.dialog.style.display = 'block'
+                }else{
+                    this.$refs.dialog.style.display = 'none'
                 }
             },
             closeDialog() {
