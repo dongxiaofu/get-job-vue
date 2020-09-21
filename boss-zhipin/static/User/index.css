@@ -391,21 +391,6 @@ ul {
     border: 1px solid red;
 }
 
-.ui-select-dropdown .ui-select-item {
-    display: inline-block;
-    width: 16%;
-    white-space: nowrap;
-    overflow: hidden;
-    height: 20px;
-    line-height: 20px;
-    text-align: left;
-    margin-bottom: 20px;
-    text-overflow: ellipsis; /*设置隐藏部分为省略号*/
-    margin-left: 10px;
-
-    padding-left: 10px;
-}
-
 .ui-select-dropdown .ui-select-item-selected {
     border: 1px solid #00c2b3;
     border-radius: 15px;
@@ -576,7 +561,7 @@ ul {
     background-color: #fff;
 
     overflow: auto;
-    border: 1px solid red;
+    border: 1px solid #22ff40;
     height: 150px;
 }
 
@@ -586,13 +571,30 @@ ul {
 /*height: 6px;*/
 /*!*background-color: rgba(240, 240, 240, 1);*!*/
 /*}*/
+.ui-select-dropdown .ui-select-item {
+    display: inline-block;
+    width: 16%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    text-overflow: ellipsis; /*设置隐藏部分为省略号*/
+    margin-left: 10px;
+
+    padding-left: 10px;
+
+    border: 1px solid red;
+}
 
 .ui-dropdown-list li {
     /*margin-top: 20px;*/
-
     padding: 10px 0px 10px 10px;
+    cursor: pointer;
+    /*display: inline-block;*/
 
-
+    /*border: 1px solid red;*/
 }
 
 .ui-dropdown-list li.ui-select-item-selected {

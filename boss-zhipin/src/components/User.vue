@@ -72,18 +72,18 @@
                             <div class="user-profile-inner">
                                 <div class="user-info">
                                     <div class="user-info-text">
-                                        <h3>小明<i class="gender"></i></h3>
+                                        <h3>{{user_profile.name}}<i class="gender"></i></h3>
                                         <p>
                                             <span class="before-line-first"><i
-                                                    class="icon-experience"></i>10年以上经验</span>
-                                            <span class="before-line"><i class="icon-degree"></i>本科学历</span>
-                                            <span class="before-line"><i class="icon-status"></i>在职-暂不考虑</span>
+                                                    class="icon-experience"></i>{{user_profile.experience}}</span>
+                                            <span class="before-line"><i class="icon-degree"></i>{{user_profile.degree}}</span>
+                                            <span class="before-line"><i class="icon-status"></i>{{job_search_status_value}}</span>
                                         </p>
                                         <p>
-                                            <span class="before-line-first"><i class="icon-phone"></i>13697432844</span>
-                                            <span class="before-line"><i class="icon-min-wechat"></i>gganghong</span>
+                                            <span class="before-line-first"><i class="icon-phone"></i>{{user_profile.telephone}}</span>
+                                            <span class="before-line"><i class="icon-min-wechat"></i>{{user_profile.wechat}}</span>
                                             <span class="before-line"><i
-                                                    class="icon-email"></i>chuganghong@qq.com</span>
+                                                    class="icon-email"></i>{{user_profile.email}}</span>
                                         </p>
                                     </div>
                                     <div class="user-info-avatar">
@@ -112,18 +112,24 @@
                                     </div>
                                     <div class="item-content job-status-dropdown">
                                         <span class="job-status" tabindex="0">
-                                            在职-暂不考虑
+                                            {{job_search_status_value}}
                                             <i class="icon-arrow-right"></i>
                                         </span>
                                         <div class="ui-dropdown-list">
                                             <ul>
-                                                <li class="ui-select-item" v-for="option in job_search_status_options">
-                                                    {{option.value}}
-                                                </li>
+                                                <div v-for="option in job_search_status_options">
+                                                    <li class="ui-select-item"
+                                                        v-bind:job_search_status_key=option.key
+                                                        v-on:click="selectJobSearchStatus($event)"
+                                                        tabindex="-1"
+                                                    >
+                                                        {{option.value}}
+                                                    </li>
+                                                </div>
                                                 <!--<li class="ui-select-item">离职-随时到岗</li>-->
                                                 <!--<li class="ui-select-item ui-select-item-selected">在职-暂不考虑</li>-->
                                                 <!--<li class="ui-select-item">在职-考虑机会</li>-->
-                                                <!--<li class="ui-select-item">在职-月内到岗</li>-->
+                                                <!--<li class="ui-select-item" v-on:click="selectJobSearchStatus($event)">在职-月内到岗</li>-->
                                             </ul>
                                             <input type="hidden" v-model="user_profile.job_search_status">
                                         </div>
@@ -659,14 +665,16 @@
 
                 user_profile: {
                     user_id: '',
-                    name: '',
-                    job_search_status: '',
+                    name: '姓名',
+                    job_search_status: 1,
                     gender: '',
                     birthday: '',
-                    telephone: '',
-                    wechat: '',
-                    email: '',
-                    identity: ''
+                    telephone: '-',
+                    wechat: '-',
+                    email: '-',
+                    identity: '',
+                    degree: '-',
+                    experience: '-'
                 },
 
                 user_advantage: {
@@ -680,7 +688,7 @@
                     company_name: 'AB',
                     department: 'c',
                     position_type: 'd',
-                    tags: ['后端开发','PHP','系统架构'],
+                    tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
                     working_hours: '3',
@@ -699,7 +707,7 @@
                     company_name: 'AB',
                     department: 'c',
                     position_type: 'd',
-                    tags: ['后端开发','PHP','系统架构'],
+                    tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
                     working_hours: '3',
@@ -722,7 +730,7 @@
                     company_name: 'AB2',
                     department: 'c',
                     position_type: 'd',
-                    tags: ['后端开发','PHP','系统架构'],
+                    tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
                     working_hours: '3',
@@ -745,7 +753,7 @@
                     company_name: 'AB3',
                     department: 'c',
                     position_type: 'd',
-                    tags: ['后端开发','PHP','系统架构'],
+                    tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
                     working_hours: '3',
@@ -759,7 +767,8 @@
                         '配置项，使部分接口的压测速度由23秒下降至1秒。\n' +
                         '2.使用 “shell + 软链接” 简化项目发布过程，使代码发布与回退非常平滑和快速。\n' +
                         '3. 建立微信openId和用户ID的映射表，来加快用户数据的查询速度。\n' +
-                        '4. 使用简单的SQL语句，通过在PHP中处理业务逻辑拼装数据，完成复杂的统计需求。'
+                        '4. 使用简单的SQL语句，通过在PHP中处理业务逻辑拼装数据，完成复杂的统计需求。\n' +
+                        '5. Test。'
                 },
 
                 experiences: [],
@@ -773,10 +782,18 @@
                     {key: 2, value: '在职-暂不考虑'},
                     {key: 3, value: '在职-考虑机会'},
                     {key: 4, value: '在职-月内到岗'}
-                ]
+                ],
+
+                job_search_status_value: '',
             }
         },
         mounted() {
+            var job_search_status_index = this.user_profile.job_search_status - 1
+            var job_search_status = this.job_search_status_options[job_search_status_index]
+            this.job_search_status_value = job_search_status.value
+            console.log("===========start============")
+            console.log(this.job_search_status_value)
+            console.log("===========end============")
             this.item.user_name = 'hello'
             this.user_profile.email = 'chuganghong@qq.com'
             this.user_advantage.advantage = 'I am rich'
@@ -956,6 +973,15 @@
             // 取消编辑操作
             cancelEvent: function () {
                 this.reload()
+            },
+
+            // 选择求职状态
+            selectJobSearchStatus: function (e) {
+                alert(44444)
+                var key = e.getAttribute('job_search_status_key').value
+                console.log(key)
+                this.job_search_status_value = this.job_search_status_options[key - 1]
+                // 设置隐藏input的值，非必要
             }
         }
     }
