@@ -743,10 +743,8 @@ h4 {
 .experience {
     height: auto;
     width: 100%;
-    padding: 10px 0px;
-    margin-bottom: 30px;
-
-    /*border: 1px solid red;*/
+    /*padding: 10px 0px;*/
+    margin-top: 30px;
 }
 
 
