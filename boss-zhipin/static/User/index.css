@@ -1666,3 +1666,131 @@ a.wechat-qr:hover img {
     height: 24px;
     line-height: 24px;
 }
+
+
+/*显示个人信息*/
+.user-profile {
+    width: auto;
+    height: 140px;
+    background-color: #ffffff;
+
+    border: 1px solid #22ff40;
+}
+
+.user-profile-inner {
+    padding: 0px 20px;
+
+    position: relative;
+}
+
+.user-profile-inner .user-info {
+    display: flex;
+}
+
+.user-profile-inner .user-info-text {
+    flex: 1;
+}
+
+.user-profile-inner .user-info-text span {
+    margin: 0 0px;
+}
+
+.user-profile-inner .user-info-text p {
+    line-height: 10px;
+    font-size: 0;
+}
+
+.user-profile-inner .user-info-text p span {
+    margin: 0 0px;
+}
+
+.user-profile-inner .user-info-text .before-line-first, .user-profile-inner .user-info-text .before-line {
+    display: inline-block;
+    max-width: 260px;
+}
+
+.user-profile-inner .user-info-text .before-line-first, .user-profile-inner .user-info-text .before-line {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    max-width: 230px;
+    padding: 5px 0px;
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    font-size: 14px;
+}
+
+/*.user-profile-inner .user-info-text .before-line-first{*/
+/*width: 100px;*/
+/*}*/
+
+.user-profile-inner .user-info-text .before-line::before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    display: inline-block; /*必须有，否则，不显示*/
+    vertical-align: middle;
+    margin: 0 25px;
+    background-color: #e0e0e0;
+}
+
+.user-profile-inner .user-info-avatar {
+    flex: none;
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+}
+
+.user-profile-inner .user-info-avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.user-profile-inner .opt {
+    position: absolute;
+    right: 30px;
+    bottom: 22px;
+
+    cursor: pointer;
+}
+/*图标*/
+.icon-experience,
+.icon-degree,
+.icon-status,
+.icon-phone,
+.icon-min-wechat,
+.icon-email {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("icons-resume.f44cb025.png");
+    background-repeat: no-repeat;
+    vertical-align: middle;
+
+    margin-right: 10px;
+
+    /*border: 1px solid red;*/
+}
+
+.icon-experience{
+    background-position: 0px -481px;
+
+}
+.icon-degree{
+    background-position: 0px -510px;
+}
+.icon-status{
+    background-position: -29px -481px;
+}
+.icon-phone{
+    background-position: -29px -510px;
+}
+.icon-min-wechat{
+    background-position: -31px -589px;
+}
+.icon-email{
+    background-position: 0px -539px;
+}

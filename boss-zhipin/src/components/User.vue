@@ -68,8 +68,33 @@
                         <span class="review">预览简历</span>
                     </div>
                     <div class="resume-box">
+                        <div class="user-profile" ref="user_profile">
+                            <div class="user-profile-inner">
+                                <div class="user-info">
+                                    <div class="user-info-text">
+                                        <h3>小明<i class="gender"></i></h3>
+                                        <p>
+                                            <span class="before-line-first"><i
+                                                    class="icon-experience"></i>10年以上经验</span>
+                                            <span class="before-line"><i class="icon-degree"></i>本科学历</span>
+                                            <span class="before-line"><i class="icon-status"></i>在职-暂不考虑</span>
+                                        </p>
+                                        <p>
+                                            <span class="before-line-first"><i class="icon-phone"></i>13697432844</span>
+                                            <span class="before-line"><i class="icon-min-wechat"></i>gganghong</span>
+                                            <span class="before-line"><i
+                                                    class="icon-email"></i>chuganghong@qq.com</span>
+                                        </p>
+                                    </div>
+                                    <div class="user-info-avatar">
+                                        <img src="/static/User/avatar_default.png"/>
+                                    </div>
+                                </div>
+                                <div class="opt" v-on:click="editUserProfile"><i class="icon-edit"></i>编辑</div>
+                            </div>
+                        </div>
                         <!--编辑个人信息 start-->
-                        <div class="edit-user-info">
+                        <div class="edit-user-info" ref="user_profile_form" style="display: none">
                             <div class="edit-user-info-wrapper">
                                 <h3 style="padding: 0px 30px">编辑个人信息</h3>
                                 <!--<form action="#">-->
@@ -1792,6 +1817,12 @@
             editAdvantage: function () {
                 this.$refs.advantage_text.style.display = 'none'
                 this.$refs.advantage_form.style.display = 'block'
+            },
+
+            // 编辑个人资料
+            editUserProfile:function(){
+               this.$refs.user_profile.style.display = 'none'
+                this.$refs.user_profile_form.style.display = 'block'
             },
 
             // 取消编辑操作
