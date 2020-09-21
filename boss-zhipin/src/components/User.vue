@@ -111,25 +111,20 @@
                                         当前求职状态
                                     </div>
                                     <div class="item-content job-status-dropdown">
-                                        <span class="job-status" tabindex="0">
+                                        <span class="job-status" v-on:click="showUiDropdownList">
                                             {{job_search_status_value}}
                                             <i class="icon-arrow-right"></i>
                                         </span>
-                                        <div class="ui-dropdown-list">
+                                        <div class="ui-dropdown-list" ref="ui_dropdown_list">
                                             <ul>
                                                 <div v-for="option in job_search_status_options">
-                                                    <li class="ui-select-item"
+                                                    <li v-bind:class="job_search_status_value == option.value ? 'ui-select-item ui-select-item-selected': 'ui-select-item'"
                                                         v-bind:job_search_status_key=option.key
                                                         v-on:click="selectJobSearchStatus($event)"
-                                                        tabindex="-1"
                                                     >
                                                         {{option.value}}
                                                     </li>
                                                 </div>
-                                                <!--<li class="ui-select-item">离职-随时到岗</li>-->
-                                                <!--<li class="ui-select-item ui-select-item-selected">在职-暂不考虑</li>-->
-                                                <!--<li class="ui-select-item">在职-考虑机会</li>-->
-                                                <!--<li class="ui-select-item" v-on:click="selectJobSearchStatus($event)">在职-月内到岗</li>-->
                                             </ul>
                                             <input type="hidden" v-model="user_profile.job_search_status">
                                         </div>
@@ -784,7 +779,7 @@
                     {key: 4, value: '在职-月内到岗'}
                 ],
 
-                job_search_status_value: '',
+                job_search_status_value: 'qq',
             }
         },
         mounted() {
@@ -977,11 +972,18 @@
 
             // 选择求职状态
             selectJobSearchStatus: function (e) {
-                alert(44444)
-                var key = e.getAttribute('job_search_status_key').value
-                console.log(key)
-                this.job_search_status_value = this.job_search_status_options[key - 1]
+                var key = e.currentTarget.getAttribute('job_search_status_key')
+                var job_search_status = this.job_search_status_options[key - 1]
+                this.job_search_status_value = job_search_status.value
+                this.$refs.ui_dropdown_list.style.display = 'none'
                 // 设置隐藏input的值，非必要
+                // 设置当前求职状态
+                this.user_profile.job_search_status = key
+            },
+
+            // 显示求职状态选择框
+            showUiDropdownList:function () {
+                this.$refs.ui_dropdown_list.style.display = 'block'
             }
         }
     }

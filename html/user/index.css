@@ -563,9 +563,10 @@ ul {
 }
 
 /*1.span支持focus；2.改变兄弟元素而不是改变自身*/
-.edit-user-info-wrapper .job-status:focus + .ui-dropdown-list {
-    display: inline-block;
-}
+/*使用vue实现*/
+/*.edit-user-info-wrapper .job-status:focus + .ui-dropdown-list {*/
+    /*display: inline-block;*/
+/*}*/
 
 .ui-dropdown-list {
     position: absolute;
