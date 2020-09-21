@@ -299,7 +299,7 @@ ul {
     /*vertical-align:middle;*/
 }
 
-.form-item-all .select-ui .icon-arrow-down{
+.form-item-all .select-ui .icon-arrow-down {
     position: absolute;
     display: inline-block;
     width: 16px;
@@ -309,7 +309,7 @@ ul {
     /*left: 27px;*/
     cursor: pointer;
     right: 0px;
-    top: 8px;   /*有计算公式吗？我是肉眼观察调整出的数字*/
+    top: 8px; /*有计算公式吗？我是肉眼观察调整出的数字*/
 }
 
 .select-ui input {
@@ -751,7 +751,7 @@ h4 {
 
 
 /*.experience .item-info:hover {*/
-    /*background-color: #8d92a1;*/
+/*background-color: #8d92a1;*/
 /*}*/
 
 /*work-period*/
@@ -1029,27 +1029,27 @@ h4 {
 
 /*框中的元素，让里面的元素上下左右居中，有更好的方法？此处，使用肉眼观察调整数值。*/
 /*.upload-btn {*/
-    /*width: 300px;*/
-    /*height: 80px;*/
-    /*border: 1px solid #fff;*/
-    /*margin: 20px auto;*/
-    /*!*padding: 20px 10px;*!*/
-    /*text-align: center;*/
-    /*!*vertical-align: middle;*!*/
-    /*padding-top: 40px;*/
-    /*!*padding-bottom: 20px;*!*/
-    /*background: #fff;*/
+/*width: 300px;*/
+/*height: 80px;*/
+/*border: 1px solid #fff;*/
+/*margin: 20px auto;*/
+/*!*padding: 20px 10px;*!*/
+/*text-align: center;*/
+/*!*vertical-align: middle;*!*/
+/*padding-top: 40px;*/
+/*!*padding-bottom: 20px;*!*/
+/*background: #fff;*/
 /*}*/
 
 /*.upload-btn a {*/
-    /*display: inline-block;*/
-    /*width: 230px;*/
-    /*height: 40px;*/
-    /*!*border: 1px solid green;*!*/
-    /*line-height: 40px;*/
-    /*background: #5dd5c8;*/
-    /*color: #f6f6f8;*/
-    /*cursor: pointer;*/
+/*display: inline-block;*/
+/*width: 230px;*/
+/*height: 40px;*/
+/*!*border: 1px solid green;*!*/
+/*line-height: 40px;*/
+/*background: #5dd5c8;*/
+/*color: #f6f6f8;*/
+/*cursor: pointer;*/
 /*}*/
 
 .resume-attachment {
@@ -1066,7 +1066,7 @@ h4 {
     position: relative;
 }
 
-.resume-attachment .upload-resume-btn{
+.resume-attachment .upload-resume-btn {
     border: 1px solid;
     height: 30px;
     margin-top: 20px;
@@ -1083,19 +1083,19 @@ h4 {
     cursor: pointer;
 }
 
-.annex-item .icon-file{
+.annex-item .icon-file {
     vertical-align: middle;
 }
 
-.annex-item .resume-name{
+.annex-item .resume-name {
     vertical-align: middle; /*不确定有没用，无法肉眼识别页面效果*/
 }
 
-.annex-item:focus + .annex-card{
+.annex-item:focus + .annex-card {
     display: block;
 }
 
-.annex-item:hover + .annex-card{
+.annex-item:hover + .annex-card {
     display: block;
 }
 
@@ -1125,7 +1125,7 @@ h4 {
     border-bottom: 1px solid darkgray;
 }
 
-.annex-card .card-footer span{
+.annex-card .card-footer span {
     float: right;
     width: 70px;
     height: 30px;
@@ -1137,7 +1137,7 @@ h4 {
     /*border: 1px solid red;*/
 }
 
-.annex-card .card-body .card-img{
+.annex-card .card-body .card-img {
     float: left;
     width: 40px;
 }
@@ -1146,7 +1146,7 @@ h4 {
     margin-bottom: 10px;
 }
 
-.annex-card .card-body .upload-date{
+.annex-card .card-body .upload-date {
     font-size: 10px;
     color: #8d92a1;
 }
@@ -1668,4 +1668,131 @@ a.wechat-qr:hover img {
     padding: 0px;
     height: 24px;
     line-height: 24px;
+}
+
+/*显示个人信息*/
+.user-profile {
+    width: auto;
+    height: 140px;
+    background-color: #ffffff;
+
+    border: 1px solid #22ff40;
+}
+
+.user-profile-inner {
+    padding: 0px 20px;
+
+    position: relative;
+}
+
+.user-profile-inner .user-info {
+    display: flex;
+}
+
+.user-profile-inner .user-info-text {
+    flex: 1;
+}
+
+.user-profile-inner .user-info-text span {
+    margin: 0 0px;
+}
+
+.user-profile-inner .user-info-text p {
+    line-height: 10px;
+    font-size: 0;
+}
+
+.user-profile-inner .user-info-text p span {
+    margin: 0 0px;
+}
+
+.user-profile-inner .user-info-text .before-line-first, .user-profile-inner .user-info-text .before-line {
+    display: inline-block;
+    max-width: 260px;
+}
+
+.user-profile-inner .user-info-text .before-line-first, .user-profile-inner .user-info-text .before-line {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    max-width: 230px;
+    padding: 5px 0px;
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    font-size: 14px;
+}
+
+/*.user-profile-inner .user-info-text .before-line-first{*/
+/*width: 100px;*/
+/*}*/
+
+.user-profile-inner .user-info-text .before-line::before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    display: inline-block; /*必须有，否则，不显示*/
+    vertical-align: middle;
+    margin: 0 25px;
+    background-color: #e0e0e0;
+}
+
+.user-profile-inner .user-info-avatar {
+    flex: none;
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+}
+
+.user-profile-inner .user-info-avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.user-profile-inner .opt {
+    position: absolute;
+    right: 30px;
+    bottom: 22px;
+
+    cursor: pointer;
+}
+/*图标*/
+.icon-experience,
+.icon-degree,
+.icon-status,
+.icon-phone,
+.icon-min-wechat,
+.icon-email {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("icons-resume.f44cb025.png");
+    background-repeat: no-repeat;
+    vertical-align: middle;
+
+    margin-right: 10px;
+
+    /*border: 1px solid red;*/
+}
+
+.icon-experience{
+    background-position: 0px -481px;
+
+}
+.icon-degree{
+    background-position: 0px -510px;
+}
+.icon-status{
+    background-position: -29px -481px;
+}
+.icon-phone{
+    background-position: -29px -510px;
+}
+.icon-min-wechat{
+    background-position: -31px -589px;
+}
+.icon-email{
+    background-position: 0px -539px;
 }

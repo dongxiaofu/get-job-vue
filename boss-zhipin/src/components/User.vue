@@ -71,171 +71,728 @@
                         <!--编辑个人信息 start-->
                         <div class="edit-user-info">
                             <div class="edit-user-info-wrapper">
-                                <h3>编辑个人信息</h3>
-                                <form action="#">
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            姓名
-                                        </div>
-                                        <div class="item-content">
-                                            <input name="fname" type="text">
-                                        </div>
+                                <h3 style="padding: 0px 30px">编辑个人信息</h3>
+                                <!--<form action="#">-->
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        姓名
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            当前求职状态
-                                        </div>
-                                        <div class="item-content job-status-dropdown">
+                                    <div class="item-content">
+                                        <input name="fname" type="text" v-model="user_profile.name">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        当前求职状态
+                                    </div>
+                                    <div class="item-content job-status-dropdown">
                                         <span class="job-status" tabindex="0">
                                             在职-暂不考虑
                                             <i class="icon-arrow-right"></i>
                                         </span>
-                                            <div class="ui-dropdown-list">
-                                                <ul>
-                                                    <li class="ui-select-item">离职-随时到岗</li>
-                                                    <li class="ui-select-item ui-select-item-selected">在职-暂不考虑</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                    <li class="ui-select-item">在职-考虑机会</li>
-                                                    <li class="ui-select-item">在职-月内到岗</li>
-                                                </ul>
-                                            </div>
+                                        <div class="ui-dropdown-list">
+                                            <ul>
+                                                <li class="ui-select-item" v-for="option in job_search_status_options">
+                                                    {{option.value}}
+                                                </li>
+                                                <!--<li class="ui-select-item">离职-随时到岗</li>-->
+                                                <!--<li class="ui-select-item ui-select-item-selected">在职-暂不考虑</li>-->
+                                                <!--<li class="ui-select-item">在职-考虑机会</li>-->
+                                                <!--<li class="ui-select-item">在职-月内到岗</li>-->
+                                            </ul>
+                                            <input type="hidden" v-model="user_profile.job_search_status">
                                         </div>
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            性别
-                                        </div>
-                                        <div class="item-content" id="gender">
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        性别
+                                    </div>
+                                    <div class="item-content" id="gender">
                                         <span>
                                             <label class="radio radio-checked" id="gender-man">
                                         <span>
-                                            <input type="radio" value="1" name="gender">
+                                            <input type="radio" value="1" name="gender" v-model="user_profile.gender">
                                             <i class="beauty-radio"></i>
                                         </span>
                                             男
                                         </label>
                                         <label class="radio" id="gender-woman">
                                         <span>
-                                            <input type="radio" value="2" name="gender">
+                                            <input type="radio" value="2" name="gender" v-model="user_profile.gender">
                                             <i class="beauty-radio"></i>
                                         </span>
                                             女
                                         </label>
                                         </span>
-                                        </div>
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            我的牛人身份
-                                        </div>
-                                        <div class="item-content">
-                                            <!--<input>-->
-                                            <span class="role">职场人</span>
-                                        </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        我的牛人身份
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            生日
-                                        </div>
-                                        <div class="item-content">
-                                            <input name="birthday" type="text">
-                                        </div>
+                                    <div class="item-content">
+                                        <!--<input>-->
+                                        <span class="role">职场人</span>
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            微信号（选填）
-                                        </div>
-                                        <div class="item-content">
-                                            <input name="wechat" type="text">
-                                        </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        生日
                                     </div>
+                                    <div class="item-content">
+                                        <input name="birthday" type="text" v-model="user_profile.birthday">
+                                    </div>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        微信号（选填）
+                                    </div>
+                                    <div class="item-content">
+                                        <input name="wechat" type="text" v-model="user_profile.wechat">
+                                    </div>
+                                </div>
 
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            电话
-                                        </div>
-                                        <div class="item-content">
-                                            <input name="phone" type="text">
-                                        </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        电话
                                     </div>
-                                    <div class="form-item">
-                                        <div class="item-label">
-                                            邮箱
-                                        </div>
-                                        <div class="item-content">
-                                            <input name="email" type="text">
-                                        </div>
+                                    <div class="item-content">
+                                        <input name="phone" type="text" v-model="user_profile.telephone">
                                     </div>
-                                    <div class="form-btn">
-                                        <button class="cancel-btn">取消</button>
-                                        <button class="submit-btn">完成</button>
+                                </div>
+                                <div class="form-item">
+                                    <div class="item-label">
+                                        邮箱
                                     </div>
-                                </form>
+                                    <div class="item-content">
+                                        <input name="email" type="text" v-model="user_profile.email">
+                                    </div>
+                                </div>
+                                <div class="form-btn">
+                                    <button class="cancel-btn" v-on:click="cancelEvent">取消</button>
+                                    <button class="submit-btn" v-on:click="SubUserProfile">完成</button>
+                                </div>
+                                <!--</form>-->
                             </div>
                         </div>
                         <!--编辑个人信息 end-->
                         <div id="advantage">
-                            <div class="item-primary">
+                            <div class="item-primary" ref="advantage_text">
                                 <h4 class="title">个人优势</h4>
                                 <div class="item-info">
                                     <div class="item-txt pre-line">
                                         1.6年PHP开发经验，两次从零开始开发项目至上线。
                                         2.自学能力强；能拆分开发任务、胜任全部常规开发，懂架构，有初步的技术管理能力。
                                     </div>
-                                    <div class="op">
+                                    <div class="op" v-on:click="editAdvantage">
                                         <i class="icon-edit"></i>
                                         编辑
                                     </div>
                                 </div>
                             </div>
-                            <div class="item-form">
+                            <div class="item-form" ref="advantage_form" style="display: none">
                                 <div class="item-textarea">
                                     <h4>编辑个人优势</h4>
-                                    <textarea name="advantage"></textarea>
+                                    <textarea name="advantage" v-model="user_advantage.advantage"></textarea>
                                 </div>
                                 <div class="btns">
-                                    <button class="cancel-btn">取消</button>
-                                    <button class="submit-btn">完成</button>
+                                    <button class="cancel-btn" v-on:click="cancelEvent">取消</button>
+                                    <button class="submit-btn" v-on:click="SubUserAdvantage">完成</button>
                                 </div>
                             </div>
                         </div>
                         <div id="history">
                             <div class="item-primary">
-                                <h3 class="title">工作经历</h3>
+                                <h3 class="title" ref="experience_title">工作经历333</h3>
                                 <ul>
-                                    <li class="experience">
+                                    <li class="experience" v-bind:li-type="1">
+                                        <div class="item-form" ref="experienceForm" style="display: none">
+                                            <h3 style="padding:0px 30px">编辑工作经历</h3>
+                                            <div class="ipts">
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">公司名称</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" value="XX公司"
+                                                                   v-model="experience.company_name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">所属行业</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" value="游戏"
+                                                                   v-model="experience.industry">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">所属部门（选填）</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" placeholder="技术部"
+                                                                   v-model="experience.department">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">职位名称（选填）</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" value="PHP高级开发工程师"
+                                                                   v-model="experience.position_name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">职位类型</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" value="硬件产品经理"
+                                                                   v-model="experience.position_type">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item">
+                                                    <div class="ipt">
+                                                        <div class="item-label">在职时间</div>
+                                                        <div class="item-content">
+                                                            <input type="text" name="compnay" value="2019.05-2022.10"
+                                                                   v-model="experience.working_hours">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="one-line form-item-all">
+                                                    <div class="ipt all">
+                                                        <div class="item-label">技能标签</div>
+                                                        <div class="item-content">
+                                                            <div class="select-ui" tabindex="-1">
+                                                                <div class="select-tag">
+                                                                    <span>C端产品</span>
+                                                                    <i class="ui-icon-close"></i>
+                                                                </div>
+                                                                <div class="select-tag">
+                                                                    <span>PHP开发</span>
+                                                                    <i class="ui-icon-close"></i>
+                                                                </div>
+                                                                <div class="select-tag">
+                                                                    <span>系统架构</span>
+                                                                    <i class="ui-icon-close"></i>
+                                                                </div>
+                                                                <div class="select-ipt">
+                                                                    <input type="text" name="compnay">
+                                                                </div>
+                                                                <i class="icon-arrow-down"></i>
+                                                            </div>
+                                                            <div class="ui-select-dropdown ui-select-multiple">
+                                                                <ul>
+                                                                    <li class="ui-select-item ui-select-item-selected"><span
+                                                                            class="ui-tag">Java</span></li>
+                                                                    <li class="ui-select-item ui-select-item-selected"><span
+                                                                            class="ui-tag">Javascript</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">后端开发</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Linux</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数据库</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">C/C++</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">PHP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">系统架构</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Python</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">需求分析</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">HTML5</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Android</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">HTML/CSS</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Web前端</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">前端开发</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">C#</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">.NET</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">iOS</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">解决方案</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Node.js</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">JS</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数据挖掘</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">机器学习</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">移动开发</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Hadoop</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Shell</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">游戏开发</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Flash</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Golang</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Unity3D</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">GO</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Swift</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">ERP</span></li>
+                                                                    <li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>
+                                                                    </li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">系统集成</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">全栈</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">通信</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">中间件</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">推荐算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">ASP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">企业软件</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">自然语言处理</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">python爬虫</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">图像算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数据采集</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">项目实施</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">java爬虫</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">NLP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">图像识别</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">搜索算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">搜索</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">SAP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">视频编解码</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">人脸识别</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Ruby</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数据抓取</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">网络优化</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">网络爬虫</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">计算机视觉</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">广告算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">视频算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">图像编程</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">音频编解码</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">VB</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">爬虫工程师</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">语音算法</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">音频处理</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Delphi</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">erlang</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">光通信</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">Perl</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">模式识别</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">信息检索</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">爬虫架构</span></li>
+                                                                    <li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>
+                                                                    </li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">语音处理</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">视频流转码</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">抓取</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">VOIP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">流媒体转封装</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">视频预处理</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数字信号处理</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">计算广告</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">目标检测</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">视频识别</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">WP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">纠错编码</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">数字音频水印</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">后端开发</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">PHP</span></li>
+                                                                    <li class="ui-select-item"><span
+                                                                            class="ui-tag">系统架构</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="textareas form-item-all">
+                                                <div class="big-ipt">
+                                                    <div class="item-label">工作内容</div>
+                                                    <div class="item-content">
+                                                        <textarea name="experience"
+                                                                  v-model="experience.job_content"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="textareas form-item-all">
+                                                <div class="big-ipt">
+                                                    <div class="item-label">工作业绩（选填)</div>
+                                                    <div class="item-content">
+                                                        <textarea name="achievement"
+                                                                  v-model="experience.performance"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btns">
+                                                <button class="cancel-btn" v-on:click="cancelEvent">取消</button>
+                                                <button class="submit-btn" v-on:click="SubExperience">完成</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="experience" v-bind:li-index="0" v-bind:li-type="2">
+                                        <!--<div class="item-form" ref="experienceForm" style="display: none">-->
+                                        <!--<h3>编辑工作经历</h3>-->
+                                        <!--<div class="ipts">-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">公司名称</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="XX公司"-->
+                                        <!--v-model="experience.company_name">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属行业</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="游戏"-->
+                                        <!--v-model="experience.industry">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属部门（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" placeholder="技术部"-->
+                                        <!--v-model="experience.department">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位名称（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="PHP高级开发工程师"-->
+                                        <!--v-model="experience.position_name">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位类型</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="硬件产品经理"-->
+                                        <!--v-model="experience.position_type">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">在职时间</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="2019.05-2022.10"-->
+                                        <!--v-model="experience.working_hours">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item-all">-->
+                                        <!--<div class="ipt all">-->
+                                        <!--<div class="item-label">技能标签</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<div class="select-ui" tabindex="-1">-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>C端产品</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>PHP开发</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>系统架构</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-ipt">-->
+                                        <!--<input type="text" name="compnay">-->
+                                        <!--</div>-->
+                                        <!--<i class="icon-arrow-down"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="ui-select-dropdown ui-select-multiple">-->
+                                        <!--<ul>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Java</span></li>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Javascript</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Linux</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据库</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C/C++</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Python</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">需求分析</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML5</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Android</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML/CSS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Web前端</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">前端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C#</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">.NET</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">iOS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">解决方案</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Node.js</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">JS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据挖掘</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">机器学习</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">移动开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Hadoop</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Shell</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">游戏开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Flash</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Golang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Unity3D</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">GO</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Swift</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ERP</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统集成</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">全栈</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">中间件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">推荐算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ASP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">企业软件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">自然语言处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">python爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据采集</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">项目实施</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">java爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">NLP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">SAP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">人脸识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Ruby</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络优化</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算机视觉</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">广告算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像编程</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VB</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫工程师</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Delphi</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">erlang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">光通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Perl</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">模式识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">信息检索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频流转码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VOIP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">流媒体转封装</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频预处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字信号处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算广告</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">目标检测</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">WP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">纠错编码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字音频水印</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--</ul>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作内容</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="experience"-->
+                                        <!--v-model="experience.job_content"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作业绩（选填)</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="achievement"-->
+                                        <!--v-model="experience.performance"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="btns">-->
+                                        <!--<button class="cancel-btn">取消</button>-->
+                                        <!--<button class="submit-btn" v-on:click="SubExperience">完成</button>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
                                         <div class="item-info">
                                             <div class="item-txt">
                                                 <span class="title">XXX公司</span>
@@ -263,303 +820,19 @@
                                                 <span class="keyword">系统架构</span>
                                             </div>
                                             <div class="op delete-op">
-                                        <span class="delete">
+                                        <span class="delete" v-on:click="deleteExperience($event)">
                                             <i class="icon-delete"></i>
                                             删除
                                         </span>
-                                                <span class="edit">
+                                                <span class="edit" v-on:click="EditExperience($event)">
                                             <i class="icon-edit"></i>
                                             编辑
                                         </span>
                                             </div>
                                         </div>
-                                        <div class="item-form">
-                                            <h3>编辑工作经历</h3>
-                                            <div class="ipts">
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">公司名称</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="XX公司">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属行业</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="游戏">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属部门（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" placeholder="技术部">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位名称（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="PHP高级开发工程师">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位类型</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="硬件产品经理">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">在职时间</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="2019.05-2022.10">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item-all">
-                                                    <div class="ipt all">
-                                                        <div class="item-label">技能标签</div>
-                                                        <div class="item-content">
-                                                            <div class="select-ui" tabindex="-1">
-                                                                <div class="select-tag">
-                                                                    <span>C端产品</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>PHP开发</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>系统架构</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-ipt">
-                                                                    <input type="text" name="compnay">
-                                                                </div>
-                                                                <i class="icon-arrow-down"></i>
-                                                            </div>
-                                                            <div class="ui-select-dropdown ui-select-multiple">
-                                                                <ul>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Java</span></li>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Javascript</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Linux</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据库</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C/C++</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Python</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">需求分析</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML5</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Android</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML/CSS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Web前端</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">前端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C#</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">.NET</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">iOS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">解决方案</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Node.js</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">JS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据挖掘</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">机器学习</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">移动开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Hadoop</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Shell</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">游戏开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Flash</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Golang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Unity3D</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">GO</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Swift</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ERP</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统集成</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">全栈</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">中间件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">推荐算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ASP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">企业软件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">自然语言处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">python爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据采集</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">项目实施</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">java爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">NLP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">SAP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">人脸识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Ruby</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络优化</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算机视觉</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">广告算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像编程</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VB</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫工程师</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Delphi</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">erlang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">光通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Perl</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">模式识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">信息检索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫架构</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频流转码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VOIP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">流媒体转封装</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频预处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字信号处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算广告</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">目标检测</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">WP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">纠错编码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字音频水印</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作内容</div>
-                                                    <div class="item-content">
-                                                        <textarea name="experience"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作业绩（选填)</div>
-                                                    <div class="item-content">
-                                                        <textarea name="achievement"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="btns">
-                                                <button class="cancel-btn">取消</button>
-                                                <button class="submit-btn">完成</button>
-                                            </div>
-                                        </div>
                                     </li>
-                                    <li class="experience">
-                                        <div class="item-info" style="display: none">
+                                    <li class="experience" v-bind:li-index="1" v-bind:li-type="2">
+                                        <div class="item-info">
                                             <div class="item-txt">
                                                 <span class="title">XXX公司</span>
                                                 <span class="work-period">2017.05-2019.10</span>
@@ -586,303 +859,303 @@
                                                 <span class="keyword">系统架构</span>
                                             </div>
                                             <div class="op delete-op">
-                                        <span class="delete">
+                                        <span class="delete" v-on:click="deleteExperience($event)">
                                             <i class="icon-delete"></i>
                                             删除
                                         </span>
-                                                <span class="edit">
+                                                <span class="edit" v-on:click="EditExperience($event)">
                                             <i class="icon-edit"></i>
                                             编辑
                                         </span>
                                             </div>
                                         </div>
-                                        <div class="item-form">
-                                            <h3>编辑工作经历</h3>
-                                            <div class="ipts">
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">公司名称</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="XX公司">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属行业</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="游戏">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属部门（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" placeholder="技术部">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位名称（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="PHP高级开发工程师">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位类型</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="硬件产品经理">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">在职时间</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="2019.05-2022.10">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item-all">
-                                                    <div class="ipt all">
-                                                        <div class="item-label">技能标签</div>
-                                                        <div class="item-content">
-                                                            <div class="select-ui" tabindex="-1">
-                                                                <div class="select-tag">
-                                                                    <span>C端产品</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>PHP开发</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>系统架构</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-ipt">
-                                                                    <input type="text" name="compnay">
-                                                                </div>
-                                                                <i class="icon-arrow-down"></i>
-                                                            </div>
-                                                            <div class="ui-select-dropdown ui-select-multiple">
-                                                                <ul>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Java</span></li>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Javascript</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Linux</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据库</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C/C++</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Python</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">需求分析</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML5</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Android</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML/CSS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Web前端</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">前端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C#</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">.NET</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">iOS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">解决方案</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Node.js</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">JS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据挖掘</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">机器学习</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">移动开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Hadoop</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Shell</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">游戏开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Flash</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Golang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Unity3D</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">GO</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Swift</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ERP</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统集成</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">全栈</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">中间件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">推荐算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ASP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">企业软件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">自然语言处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">python爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据采集</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">项目实施</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">java爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">NLP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">SAP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">人脸识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Ruby</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络优化</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算机视觉</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">广告算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像编程</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VB</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫工程师</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Delphi</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">erlang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">光通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Perl</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">模式识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">信息检索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫架构</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频流转码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VOIP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">流媒体转封装</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频预处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字信号处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算广告</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">目标检测</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">WP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">纠错编码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字音频水印</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作内容</div>
-                                                    <div class="item-content">
-                                                        <textarea name="experience"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作业绩（选填)</div>
-                                                    <div class="item-content">
-                                                        <textarea name="achievement"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="btns">
-                                                <button class="cancel-btn">取消</button>
-                                                <button class="submit-btn">完成</button>
-                                            </div>
-                                        </div>
+                                        <!--<div class="item-form">-->
+                                        <!--<h3>编辑工作经历</h3>-->
+                                        <!--<div class="ipts">-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">公司名称</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="XX公司">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属行业</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="游戏">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属部门（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" placeholder="技术部">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位名称（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="PHP高级开发工程师">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位类型</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="硬件产品经理">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">在职时间</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="2019.05-2022.10">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item-all">-->
+                                        <!--<div class="ipt all">-->
+                                        <!--<div class="item-label">技能标签</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<div class="select-ui" tabindex="-1">-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>C端产品</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>PHP开发</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>系统架构</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-ipt">-->
+                                        <!--<input type="text" name="compnay">-->
+                                        <!--</div>-->
+                                        <!--<i class="icon-arrow-down"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="ui-select-dropdown ui-select-multiple">-->
+                                        <!--<ul>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Java</span></li>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Javascript</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Linux</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据库</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C/C++</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Python</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">需求分析</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML5</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Android</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML/CSS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Web前端</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">前端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C#</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">.NET</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">iOS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">解决方案</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Node.js</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">JS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据挖掘</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">机器学习</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">移动开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Hadoop</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Shell</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">游戏开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Flash</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Golang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Unity3D</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">GO</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Swift</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ERP</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统集成</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">全栈</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">中间件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">推荐算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ASP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">企业软件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">自然语言处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">python爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据采集</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">项目实施</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">java爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">NLP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">SAP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">人脸识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Ruby</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络优化</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算机视觉</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">广告算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像编程</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VB</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫工程师</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Delphi</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">erlang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">光通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Perl</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">模式识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">信息检索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频流转码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VOIP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">流媒体转封装</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频预处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字信号处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算广告</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">目标检测</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">WP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">纠错编码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字音频水印</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--</ul>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作内容</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="experience"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作业绩（选填)</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="achievement"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="btns">-->
+                                        <!--<button class="cancel-btn">取消</button>-->
+                                        <!--<button class="submit-btn">完成</button>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
                                     </li>
-                                    <li class="experience">
-                                        <div class="item-info" style="display: none">
+                                    <li class="experience" v-bind:li-index="2" v-bind:li-type="2">
+                                        <div class="item-info">
                                             <div class="item-txt">
                                                 <span class="title">XXX公司</span>
                                                 <span class="work-period">2017.05-2019.10</span>
@@ -909,300 +1182,300 @@
                                                 <span class="keyword">系统架构</span>
                                             </div>
                                             <div class="op delete-op">
-                                        <span class="delete">
+                                        <span class="delete" v-on:click="deleteExperience($event)">
                                             <i class="icon-delete"></i>
                                             删除
                                         </span>
-                                                <span class="edit">
+                                                <span class="edit" v-on:click="EditExperience($event)">
                                             <i class="icon-edit"></i>
                                             编辑
                                         </span>
                                             </div>
                                         </div>
-                                        <div class="item-form">
-                                            <h3>编辑工作经历</h3>
-                                            <div class="ipts">
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">公司名称</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="XX公司">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属行业</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="游戏">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">所属部门（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" placeholder="技术部">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位名称（选填）</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="PHP高级开发工程师">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">职位类型</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="硬件产品经理">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item">
-                                                    <div class="ipt">
-                                                        <div class="item-label">在职时间</div>
-                                                        <div class="item-content">
-                                                            <input type="text" name="compnay" value="2019.05-2022.10">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="one-line form-item-all">
-                                                    <div class="ipt all">
-                                                        <div class="item-label">技能标签</div>
-                                                        <div class="item-content">
-                                                            <div class="select-ui" tabindex="-1">
-                                                                <div class="select-tag">
-                                                                    <span>C端产品</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>PHP开发</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-tag">
-                                                                    <span>系统架构</span>
-                                                                    <i class="ui-icon-close"></i>
-                                                                </div>
-                                                                <div class="select-ipt">
-                                                                    <input type="text" name="compnay">
-                                                                </div>
-                                                                <i class="icon-arrow-down"></i>
-                                                            </div>
-                                                            <div class="ui-select-dropdown ui-select-multiple">
-                                                                <ul>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Java</span></li>
-                                                                    <li class="ui-select-item ui-select-item-selected"><span
-                                                                            class="ui-tag">Javascript</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Linux</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据库</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C/C++</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Python</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">需求分析</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML5</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Android</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">HTML/CSS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Web前端</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">前端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">C#</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">.NET</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">iOS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">解决方案</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Node.js</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">JS</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据挖掘</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">机器学习</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">移动开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Hadoop</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Shell</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">游戏开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Flash</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Golang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Unity3D</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">GO</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Swift</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ERP</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统集成</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">全栈</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">中间件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">推荐算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">ASP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">企业软件</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">自然语言处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">python爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据采集</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">项目实施</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">java爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">NLP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">搜索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">SAP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">人脸识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Ruby</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数据抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络优化</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">网络爬虫</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算机视觉</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">广告算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">图像编程</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频编解码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VB</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫工程师</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音算法</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">音频处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Delphi</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">erlang</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">光通信</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">Perl</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">模式识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">信息检索</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">爬虫架构</span></li>
-                                                                    <li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>
-                                                                    </li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">语音处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频流转码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">抓取</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">VOIP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">流媒体转封装</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频预处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字信号处理</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">计算广告</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">目标检测</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">视频识别</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">WP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">纠错编码</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">数字音频水印</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">后端开发</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">PHP</span></li>
-                                                                    <li class="ui-select-item"><span
-                                                                            class="ui-tag">系统架构</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作内容</div>
-                                                    <div class="item-content">
-                                                        <textarea name="experience"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="textareas form-item-all">
-                                                <div class="big-ipt">
-                                                    <div class="item-label">工作业绩（选填)</div>
-                                                    <div class="item-content">
-                                                        <textarea name="achievement"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="btns">
-                                                <button class="cancel-btn">取消</button>
-                                                <button class="submit-btn">完成</button>
-                                            </div>
-                                        </div>
+                                        <!--<div class="item-form">-->
+                                        <!--<h3>编辑工作经历</h3>-->
+                                        <!--<div class="ipts">-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">公司名称</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="XX公司">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属行业</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="游戏">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">所属部门（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" placeholder="技术部">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位名称（选填）</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="PHP高级开发工程师">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">职位类型</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="硬件产品经理">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item">-->
+                                        <!--<div class="ipt">-->
+                                        <!--<div class="item-label">在职时间</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<input type="text" name="compnay" value="2019.05-2022.10">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="one-line form-item-all">-->
+                                        <!--<div class="ipt all">-->
+                                        <!--<div class="item-label">技能标签</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<div class="select-ui" tabindex="-1">-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>C端产品</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>PHP开发</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-tag">-->
+                                        <!--<span>系统架构</span>-->
+                                        <!--<i class="ui-icon-close"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="select-ipt">-->
+                                        <!--<input type="text" name="compnay">-->
+                                        <!--</div>-->
+                                        <!--<i class="icon-arrow-down"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="ui-select-dropdown ui-select-multiple">-->
+                                        <!--<ul>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Java</span></li>-->
+                                        <!--<li class="ui-select-item ui-select-item-selected"><span-->
+                                        <!--class="ui-tag">Javascript</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Linux</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据库</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C/C++</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Python</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">需求分析</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML5</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Android</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">HTML/CSS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Web前端</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">前端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">C#</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">.NET</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">iOS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">解决方案</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Node.js</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">JS</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据挖掘</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">机器学习</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">移动开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Hadoop</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Shell</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">游戏开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Flash</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Golang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Unity3D</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">GO</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Swift</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ERP</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">Cocos2d-X</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统集成</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">全栈</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">中间件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">推荐算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">ASP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">企业软件</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">自然语言处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">python爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据采集</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">项目实施</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">java爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">NLP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">搜索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">SAP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">人脸识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Ruby</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数据抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络优化</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">网络爬虫</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算机视觉</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">广告算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">图像编程</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频编解码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VB</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫工程师</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音算法</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">音频处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Delphi</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">erlang</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">光通信</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">Perl</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">模式识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">信息检索</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">爬虫架构</span></li>-->
+                                        <!--<li class="ui-select-item"><span class="ui-tag">分布式视频编解码系统</span>-->
+                                        <!--</li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">语音处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频流转码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">抓取</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">VOIP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">流媒体转封装</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频预处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字信号处理</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">计算广告</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">目标检测</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">视频识别</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">WP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">纠错编码</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">数字音频水印</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">后端开发</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">PHP</span></li>-->
+                                        <!--<li class="ui-select-item"><span-->
+                                        <!--class="ui-tag">系统架构</span></li>-->
+                                        <!--</ul>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作内容</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="experience"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="textareas form-item-all">-->
+                                        <!--<div class="big-ipt">-->
+                                        <!--<div class="item-label">工作业绩（选填)</div>-->
+                                        <!--<div class="item-content">-->
+                                        <!--<textarea name="achievement"></textarea>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="btns">-->
+                                        <!--<button class="cancel-btn">取消</button>-->
+                                        <!--<button class="submit-btn">完成</button>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
                                     </li>
                                 </ul>
                             </div>
@@ -1279,9 +1552,252 @@
 
 <script>
     export default {
+        inject: ['reload'],
         name: 'HelloWorld',
         data() {
-            return {}
+            return {
+
+                item: {
+                    id: '',
+                    name: 'cg',
+                    title: '',
+                    mobile: '12345555',
+                    tel: '',
+                    sex: '男',
+                    qq: '',
+                    wx_code: '',
+                    addr: '',
+                    user_name: '',
+                    password: '',
+                    memo: '',
+                    create_time: '',
+                    status: '',
+                    type: ''
+                },
+
+                user_profile: {
+                    user_id: '',
+                    name: '',
+                    job_search_status: '',
+                    gender: '',
+                    birthday: '',
+                    telephone: '',
+                    wechat: '',
+                    email: '',
+                    identity: ''
+                },
+
+                user_advantage: {
+                    user_id: '',
+                    advantage: ''
+                },
+
+                experience: {
+                    id: 1,
+                    user_id: 23,
+                    company_name: 'AB',
+                    department: 'c',
+                    position_type: 'd',
+                    tags: '',
+                    industry: 'w',
+                    position_name: 'w',
+                    working_hours: '3',
+                    job_content: 'dfasfds',
+                    performance: 'wwwww'
+                },
+
+                experience1: {
+                    id: 1,
+                    user_id: 23,
+                    company_name: 'AB',
+                    department: 'c',
+                    position_type: 'd',
+                    tags: '',
+                    industry: 'w',
+                    position_name: 'w',
+                    working_hours: '3',
+                    job_content: 'dfasfds',
+                    performance: 'wwwww'
+                },
+
+                experience2: {
+                    id: 1,
+                    user_id: 23,
+                    company_name: 'AB2',
+                    department: 'c',
+                    position_type: 'd',
+                    tags: '',
+                    industry: 'w',
+                    position_name: 'w',
+                    working_hours: '3',
+                    job_content: 'dfasfds',
+                    performance: 'wwwww'
+                },
+
+                experience3: {
+                    id: 1,
+                    user_id: 23,
+                    company_name: 'AB3',
+                    department: 'c',
+                    position_type: 'd',
+                    tags: '',
+                    industry: 'w',
+                    position_name: 'w',
+                    working_hours: '3',
+                    job_content: 'dfasfds',
+                    performance: 'wwwww'
+                },
+
+                experiences: [],
+
+                experienceApi: '/api/insert',
+                userProfileApi: '/api/insert',
+                userAdvantageApi: '/api/insert',
+
+                job_search_status_options: [
+                    {key: 1, value: '离职-随时到岗'},
+                    {key: 2, value: '在职-暂不考虑'},
+                    {key: 3, value: '在职-考虑机会'},
+                    {key: 4, value: '在职-月内到岗'}
+                ]
+            }
+        },
+        mounted() {
+            this.item.user_name = 'hello'
+            this.user_profile.email = 'chuganghong@qq.com'
+            this.user_advantage.advantage = 'I am rich'
+            this.experience.performance = 'well done!'
+            // 从API获取工作经验数据
+            this.experiences = [this.experience1, this.experience2, this.experience3]
+        },
+        methods: {
+            // 用户信息
+            SubUserProfile: function () {
+                console.log(this.user_profile);
+                var data = this.user_profile
+                this.$http.post((this.userProfileApi), data, {emulateJSON: false}).then(response => {
+                    this.grouplist = response.body;
+                    alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    alert("出问题啦")
+                });
+            },
+
+            // 个人优势
+            SubUserAdvantage: function () {
+                console.log(this.user_advantage);
+                var data = this.user_advantage
+                this.$http.post((this.userAdvantageApi), data, {emulateJSON: false}).then(response => {
+                    this.grouplist = response.body;
+                    alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    alert("出问题啦")
+                }).finally(response => {
+                    this.reload()
+                })
+            },
+
+            // 工作经验
+            SubExperience: function () {
+                console.log(this.experience);
+                var data = this.experience
+                this.$http.post((this.experienceApi), data, {emulateJSON: false}).then(response => {
+                    this.grouplist = response.body;
+                    alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    alert("出问题啦")
+                }).finally(
+                    response => {
+                        alert('over')
+                        this.reload()
+                    }
+                )
+            },
+
+            // 编辑工作经验
+            EditExperience: function (e) {
+                // 隐藏内容展示区
+                // e.currentTarget.parentElement.parentElement.style.display = 'none'
+                // 显示编辑框
+                var target = e.currentTarget.parentElement.parentElement.parentElement
+                this.$refs.experienceForm.style.display = 'block'
+                // 获取工作经验ID
+                var experienceId = target.getAttribute('li-index')
+                // 获取被编辑的工作经验数据
+                this.experience = (this.experiences)[experienceId]
+                // console.log(this.experience)
+                // console.log(e.currentTarget.parentElement.parentElement.parentElement.getAttribute('li-type'))
+                // location.reload()    // 整个页面重新加载，闪屏
+                // this.reload()
+
+                var curLiIndex = target.getAttribute('li-index')
+
+                // 隐藏所有经验，只显示编辑
+                var lis = document.querySelectorAll('.experience')
+                for (var i = 0; i < lis.length; i++) {
+                    var li = lis[i]
+                    var liType = li.getAttribute('li-type')
+                    if (liType == 1) {
+                        continue
+                    }
+                    li.style.display = 'none'
+                }
+
+                console.log(this.$refs.experience_title.style.display)
+                this.$refs.experience_title.style.display = 'none'
+                console.log(this.$refs.experience_title.style.display)
+
+                // 隐藏当前经验，显示所有其他经验
+                // var lis = document.querySelectorAll('.experience')
+                // for (var i = 0; i < lis.length; i++) {
+                //     var li = lis[i]
+                //     var liType = li.getAttribute('li-type')
+                //     if (liType == 1) {
+                //         continue
+                //     }
+                //     var liIndex = li.getAttribute('li-index')
+                //     if (liIndex == curLiIndex) {
+                //         li.style.display = 'none'
+                //     } else {
+                //         li.style.display = 'block'
+                //     }
+                // }
+            },
+
+            // 删除工作经验
+            deleteExperience: function (e) {
+                var target = e.currentTarget.parentElement.parentElement
+                var data = target.getAttribute('li-index')
+                this.$http.delete((this.experienceApi), data, {emulateJSON: false}).then(response => {
+                    this.grouplist = response.body;
+                    alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    alert("出问题啦")
+                }).finally(
+                    response => {
+                        alert('over')
+                        // this.reload()
+                    }
+                )
+
+
+                target.style.display = 'none'
+            },
+
+            // 编辑个人优势
+            editAdvantage: function () {
+                this.$refs.advantage_text.style.display = 'none'
+                this.$refs.advantage_form.style.display = 'block'
+            },
+
+            // 取消编辑操作
+            cancelEvent: function () {
+                this.reload()
+            }
         }
     }
 </script>
