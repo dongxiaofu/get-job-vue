@@ -1,6 +1,7 @@
 <template>
     <div>
         <div id="wrap">
+            <Test></Test>
             <div id="header">
                 <div class="inner home-inner">
                     <div id="logo">
@@ -903,8 +904,10 @@
 </template>
 
 <script>
+    import Test from '../plugin/test'
     export default {
         name: 'JobDetail',
+        components: {Test},
         inject: ['reload'],
         data() {
             return {
