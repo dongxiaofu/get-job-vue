@@ -33,17 +33,18 @@
                     <div class="resume-attachment">
                         <h3>附件管理</h3>
                         <ul>
-                            <li>
+                            <li v-for="attachment in resume_attachments">
                                 <div class="annex-item" tabindex="-1">
                                     <i class="icon-delete"></i>
                                     <img src="/static/User/icon-file.png" class="icon-file">
-                                    <span class="resume-name">黑衣人-PHP.pdf</span>
+                                    <span class="resume-name">{{attachment.name}}</span>
                                 </div>
                                 <div class="annex-card">
                                     <div class="card-body">
                                         <div class="card-img"><img src="/static/User/icon-pdf.d2b22d86.png"></div>
-                                        <div class="resume-name">黑衣人-PHP.pdf</div>
-                                        <div class="upload-date">236.3KB 2019.11.05 17:41 上传</div>
+                                        <div class="resume-name">{{attachment.name}}</div>
+                                        <div class="upload-date">{{attachment.size}} {{attachment.upload_time}} 上传
+                                        </div>
                                     </div>
                                     <div class="card-footer">
                                         <span>下载</span>
@@ -139,17 +140,18 @@
                                             <!--<label v-on:click="selectGender($event)" v-bind:class="user_profile.gender == 1 ? 'radio radio-checked' : 'radio'" id="gender-man">-->
                                            <label v-on:click="selectGender($event)"
                                                   :class="[{ 'radio-checked':user_profile.gender == 1}, 'radio']"
-                                                  v-bind:gender-value = "1"
+                                                  v-bind:gender-value="1"
                                                   id="gender-man">
                                                 <span>
-                                                    <input type="radio" value="1" name="gender" v-model="user_profile.gender">
+                                                    <input type="radio" value="1" name="gender"
+                                                           v-model="user_profile.gender">
                                                     <i class="beauty-radio"></i>
                                                 </span>
                                                 男
                                             </label>
-                                            <label  v-on:click="selectGender($event)"
-                                                    v-bind:class="user_profile.gender == 2 ? 'radio radio-checked' : 'radio'"
-                                                    v-bind:gender-value = "2"
+                                            <label v-on:click="selectGender($event)"
+                                                   v-bind:class="user_profile.gender == 2 ? 'radio radio-checked' : 'radio'"
+                                                   v-bind:gender-value="2"
                                                    id="gender-woman">
                                                 <span>
                                                     <input type="radio" value="2" name="gender"
@@ -788,6 +790,13 @@
                 ],
 
                 job_search_status_value: 'qq',
+
+                // 简历附件管理
+                attachment1: {name: '小明的简历1.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
+                attachment2: {name: '小明的简历2.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
+                attachment3: {name: '小明的简历3.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
+                attachment4: {name: '小明的简历4.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
+                resume_attachments: [],
             }
         },
         mounted() {
@@ -803,6 +812,8 @@
             this.experience.performance = 'well done!'
             // 从API获取工作经验数据
             this.experiences = [this.experience1, this.experience2, this.experience3]
+            // 从API获取简历附件
+            this.resume_attachments = [this.attachment1, this.attachment2, this.attachment3]
         },
         methods: {
             // 用户信息

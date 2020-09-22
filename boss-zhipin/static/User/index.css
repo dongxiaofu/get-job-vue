@@ -1054,12 +1054,16 @@ h4 {
 
 .resume-attachment {
     width: 300px;
-    height: 150px;
+    height: auto;
     border: 1px solid #fff;
     margin: 20px auto;
     padding: 5px 10px;
     background: #fff;
     position: relative;
+}
+
+.resume-attachment li{
+    margin-bottom: 10px;
 }
 
 .resume-attachment .upload-resume-btn{
