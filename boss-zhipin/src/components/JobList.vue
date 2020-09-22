@@ -1,33 +1,9 @@
 <template>
     <div>
         <div id="wrap">
-            <div id="header">
-                <div class="inner home-inner">
-                    <div id="logo">
-                        <a href="#">
-                            <span>BOSS直聘</span></a>
-                    </div>
-                    <div id="nav">
-                        <ul>
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">职位</a></li>
-                            <li><a class="nav-school-new" href="#">校园</a></li>
-                            <li><a href="#">公司</a></li>
-                            <li><a href="#">APP</a></li>
-                            <li><a href="#">资讯</a></li>
-                        </ul>
-                    </div>
-                    <div id="user-nav">
-                        <div class="btns">
-                            <a class="link-sign-resume" href="#">上传简历</a>
-                            <a class="link-sign-resume user-nav-find-job" href="#">我要找工作</a>
-                            <a class="user-nav-employ" href="#">我要招聘</a>
-                            <a class="btn btn-outline" href="#">注册</a>
-                            <a class="btn btn-outline" href="#">登录</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--头部菜单-->
+            <!--<router-view></router-view>-->
+            <Header></Header>
             <div id="filter-box">
                 <div class="inner home-inner">
                     <div class="search-box">
@@ -528,11 +504,13 @@
 </template>
 
 <script>
+    import Header from '../plugin/header'
     import CityPopWindow from '../plugin/city-pop-window'
 
     export default {
         name: 'JobList',
         components: {
+            Header: Header,
             CityPopWindow: CityPopWindow
         },
         data() {
