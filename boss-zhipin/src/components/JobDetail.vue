@@ -102,19 +102,13 @@
                             </div>
                             <div class="history-list">
                                 <ul>
-                                    <!--<li>-->
-                                    <!--<a href="#">-->
-                                    <!--<h4 class="title">iOS高级工程师<span class="salary">13-25K·14薪</span></h4>-->
-                                    <!--<p>今日头条</p>-->
-                                    <!--</a>-->
-                                    <!--</li>-->
                                     <li v-for="job in history_jobs">
                                         <router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">
                                             <h4 class="title">
                                                 {{job.title}}
                                                 <span class="salary">{{job.salary}}·{{job.salary_num}}</span>
                                             </h4>
-                                            <p>{{job.company}}</p>
+                                            <p>{{job.company.name}}</p>
                                         </router-link>
                                     </li>
                                 </ul>
@@ -148,11 +142,16 @@
                             </div>
                             <div class="avatar">
                                 <img src="/static/JobDetail/avatar.png">
-                                <h3 class="name">
-                                    {{job.employee.name}}
-                                    <i class="icon-vip"></i>
-                                </h3>
-                                <p class="title">{{job.employee.title}} · {{job.employee.status}}</p>
+                                <div class="employer-name-title">
+                                    <h3 class="name">
+                                        {{job.employee.name}}
+                                        <i class="icon-vip"></i>
+                                    </h3>
+                                    <p class="title">
+                                        <span class="employee-title">{{job.employee.title}} &nbsp;</span>
+                                        <span class="employee-status"> · {{job.employee.status}}</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="detail-content">
@@ -207,12 +206,12 @@
                                             <!--</a>-->
                                             <router-link :to="{path:'job-detail', query:{'job_id':job.job_id}}">
                                                 <div class="company-logo">
-                                                    <img :src="job.logo">
+                                                    <img :src="job.company.logo">
                                                 </div>
                                                 <div class="job-info">
                                                     <p><b>{{job.title}}</b></p>
                                                     <p class="red">{{job.salary}}</p>
-                                                    <p class="gray">{{job.company}} . {{job.city}}</p>
+                                                    <p class="gray">{{job.company.name}} . {{job.city}}</p>
                                                 </div>
                                             </router-link>
                                         </li>
@@ -242,7 +241,7 @@
                                                                 {{job.salary}}·{{job.salary_num}}
                                                             </span>
                                                         </div>
-                                                        <p>{{job.company}}</p>
+                                                        <p>{{job.company.name}}</p>
                                                 </router-link>
                                             </span>
                                         </li>
@@ -906,11 +905,117 @@
 <script>
     export default {
         name: 'JobDetail',
+        inject: ['reload'],
         data() {
             return {
                 job: {
                     job_status: '招聘中',
                     title: 'C++工程师 初中级',
+                    salary: '7-10K',
+                    salary_num: '13薪',
+                    city: '武汉',
+                    experience: '1-3年',
+                    degree: '本科',
+                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                    employee: {name: '孙悟空2', title: '创意总监-CTO', status: '刚刚在线', avatar: '头像'},
+                    job_description: "岗位职责：\n" +
+                        "\n" +
+                        "1、负责和客户沟通设计方案、促成签单。\n" +
+                        "\n" +
+                        "2、量房、效果图及整套施工图的绘制工作。\n" +
+                        "\n" +
+                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+                        "\n" +
+                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+                        "\n" +
+                        "任职资格：\n" +
+                        "\n" +
+                        "1、室内设计、环境艺术设计等相关专业。\n" +
+                        "\n" +
+                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+                        "\n" +
+                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+                        "\n" +
+                        "岗位福利：\n" +
+                        "\n" +
+                        "1.每个月到店客流保证300户以上.\n" +
+                        "\n" +
+                        "2.上班时间9:00-18:00午休2个小时。\n" +
+                        "\n" +
+                        "3.公司所有岗位提供住宿。\n" +
+                        "\n" +
+                        "4.每月举办员工生日会、部门团建、销冠奖励",
+                    company: {
+                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+                        business: '太子家居有限公司',
+                        address: '中国上海',
+                        logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+                        name: '北燕',
+                        stage: '已上市',
+                        scale: '10000人以上',
+                        industry: '互联网',
+                        net: 'http://chugang.net'
+
+                    },
+                    update_time: '2020-09-09'
+                },
+
+                job1: {
+                    job_id: 1,
+                    job_status: '招聘中',
+                    title: 'C++工程师 初中级1',
+                    salary: '7-10K',
+                    salary_num: '13薪',
+                    city: '武汉',
+                    experience: '1-3年',
+                    degree: '本科',
+                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                    employee: {name: '猪八戒', title: 'CEO', status: '刚刚在线', avatar: '头像'},
+                    job_description: "岗位职责：\n" +
+                        "\n" +
+                        "1、负责和客户沟通设计方案、促成签单。\n" +
+                        "\n" +
+                        "2、量房、效果图及整套施工图的绘制工作。\n" +
+                        "\n" +
+                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+                        "\n" +
+                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+                        "\n" +
+                        "任职资格：\n" +
+                        "\n" +
+                        "1、室内设计、环境艺术设计等相关专业。\n" +
+                        "\n" +
+                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+                        "\n" +
+                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+                        "\n" +
+                        "岗位福利：\n" +
+                        "\n" +
+                        "1.每个月到店客流保证300户以上.\n" +
+                        "\n" +
+                        "2.上班时间9:00-18:00午休2个小时。\n" +
+                        "\n" +
+                        "3.公司所有岗位提供住宿。\n" +
+                        "\n" +
+                        "4.每月举办员工生日会、部门团建、销冠奖励",
+                    company: {
+                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+                        business: '太子家居有限公司',
+                        address: '中国上海',
+                        logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+                        name: '北燕',
+                        stage: '已上市',
+                        scale: '10000人以上',
+                        industry: '互联网',
+                        net: 'http://chugang.net'
+
+                    },
+                    update_time: '2020-09-09'
+                },
+                job2: {
+                    job_id: 2,
+                    job_status: '招聘中',
+                    title: 'C++工程师 初中级2',
                     salary: '7-10K',
                     salary_num: '13薪',
                     city: '武汉',
@@ -959,53 +1064,209 @@
                     },
                     update_time: '2020-09-09'
                 },
+                job3: {
+                    job_id: 3,
+                    job_status: '招聘中',
+                    title: 'C++工程师 初中级3',
+                    salary: '7-10K',
+                    salary_num: '13薪',
+                    city: '武汉',
+                    experience: '1-3年',
+                    degree: '本科',
+                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                    employee: {name: '孙悟空', title: '创意总监---CTO', status: '刚刚在线', avatar: '头像'},
+                    job_description: "岗位职责：\n" +
+                        "\n" +
+                        "1、负责和客户沟通设计方案、促成签单。\n" +
+                        "\n" +
+                        "2、量房、效果图及整套施工图的绘制工作。\n" +
+                        "\n" +
+                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+                        "\n" +
+                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+                        "\n" +
+                        "任职资格：\n" +
+                        "\n" +
+                        "1、室内设计、环境艺术设计等相关专业。\n" +
+                        "\n" +
+                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+                        "\n" +
+                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+                        "\n" +
+                        "岗位福利：\n" +
+                        "\n" +
+                        "1.每个月到店客流保证300户以上.\n" +
+                        "\n" +
+                        "2.上班时间9:00-18:00午休2个小时。\n" +
+                        "\n" +
+                        "3.公司所有岗位提供住宿。\n" +
+                        "\n" +
+                        "4.每月举办员工生日会、部门团建、销冠奖励",
+                    company: {
+                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+                        business: '太子家居有限公司',
+                        address: '中国上海',
+                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                        name: '北燕',
+                        stage: '已上市',
+                        scale: '10000人以上',
+                        industry: '互联网',
+                        net: 'http://chugang.net'
+
+                    },
+                    update_time: '2020-09-09'
+                },
+                job4: {
+                    job_id: 4,
+                    job_status: '招聘中',
+                    title: 'C++工程师 初中级4',
+                    salary: '7-10K',
+                    salary_num: '13薪',
+                    city: '武汉',
+                    experience: '1-3年',
+                    degree: '本科',
+                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                    employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
+                    job_description: "岗位职责：\n" +
+                        "\n" +
+                        "1、负责和客户沟通设计方案、促成签单。\n" +
+                        "\n" +
+                        "2、量房、效果图及整套施工图的绘制工作。\n" +
+                        "\n" +
+                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+                        "\n" +
+                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+                        "\n" +
+                        "任职资格：\n" +
+                        "\n" +
+                        "1、室内设计、环境艺术设计等相关专业。\n" +
+                        "\n" +
+                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+                        "\n" +
+                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+                        "\n" +
+                        "岗位福利：\n" +
+                        "\n" +
+                        "1.每个月到店客流保证300户以上.\n" +
+                        "\n" +
+                        "2.上班时间9:00-18:00午休2个小时。\n" +
+                        "\n" +
+                        "3.公司所有岗位提供住宿。\n" +
+                        "\n" +
+                        "4.每月举办员工生日会、部门团建、销冠奖励",
+                    company: {
+                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+                        business: '太子家居有限公司',
+                        address: '中国上海',
+                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                        name: '北燕',
+                        stage: '已上市',
+                        scale: '10000人以上',
+                        industry: '互联网',
+                        net: 'http://chugang.net'
+
+                    },
+                    update_time: '2020-09-09'
+                },
+                job5: {
+                    job_id: 5,
+                    job_status: '招聘中',
+                    title: 'C++工程师 初中级5',
+                    salary: '7-10K',
+                    salary_num: '13薪',
+                    city: '武汉',
+                    experience: '1-3年',
+                    degree: '本科',
+                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                    employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
+                    job_description: "岗位职责：\n" +
+                        "\n" +
+                        "1、负责和客户沟通设计方案、促成签单。\n" +
+                        "\n" +
+                        "2、量房、效果图及整套施工图的绘制工作。\n" +
+                        "\n" +
+                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+                        "\n" +
+                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+                        "\n" +
+                        "任职资格：\n" +
+                        "\n" +
+                        "1、室内设计、环境艺术设计等相关专业。\n" +
+                        "\n" +
+                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+                        "\n" +
+                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+                        "\n" +
+                        "岗位福利：\n" +
+                        "\n" +
+                        "1.每个月到店客流保证300户以上.\n" +
+                        "\n" +
+                        "2.上班时间9:00-18:00午休2个小时。\n" +
+                        "\n" +
+                        "3.公司所有岗位提供住宿。\n" +
+                        "\n" +
+                        "4.每月举办员工生日会、部门团建、销冠奖励",
+                    company: {
+                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+                        business: '太子家居有限公司',
+                        address: '中国上海',
+                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                        name: '北燕',
+                        stage: '已上市',
+                        scale: '10000人以上',
+                        industry: '互联网',
+                        net: 'http://chugang.net'
+
+                    },
+                    update_time: '2020-09-09'
+                },
 
                 jobs: [
-                    {
-                        job_id: 1,
-                        title: 'IOS高级开发工程师',
-                        salary: '13-25K',
-                        salary_num: '14薪',
-                        company: '今日头条',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        city: '武汉'
-                    },
-                    {
-                        job_id: 2,
-                        title: 'IOS高级开发工程师',
-                        salary: '13-25K',
-                        salary_num: '14薪',
-                        company: '今日头条',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        city: '武汉'
-                    },
-                    {
-                        job_id: 3,
-                        title: 'IOS高级开发工程师',
-                        salary: '13-25K',
-                        salary_num: '14薪',
-                        company: '今日头条',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        city: '广州'
-                    },
-                    {
-                        job_id: 4,
-                        title: 'IOS高级开发工程师',
-                        salary: '13-25K',
-                        salary_num: '14薪',
-                        company: '今日头条',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        city: '武汉'
-                    },
-                    {
-                        job_id: 5,
-                        title: 'IOS高级开发工程师',
-                        salary: '13-25K',
-                        salary_num: '14薪',
-                        company: '今日头条',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        city: '武汉'
-                    }
+                    // {
+                    //     job_id: 1,
+                    //     title: 'IOS高级开发工程师1',
+                    //     salary: '13-25K',
+                    //     salary_num: '14薪',
+                    //     company: '今日头条',
+                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                    //     city: '武汉'
+                    // },
+                    // {
+                    //     job_id: 2,
+                    //     title: 'IOS高级开发工程师2',
+                    //     salary: '13-25K',
+                    //     salary_num: '14薪',
+                    //     company: '今日头条',
+                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                    //     city: '武汉'
+                    // },
+                    // {
+                    //     job_id: 3,
+                    //     title: 'IOS高级开发工程师3',
+                    //     salary: '13-25K',
+                    //     salary_num: '14薪',
+                    //     company: '今日头条',
+                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                    //     city: '广州'
+                    // },
+                    // {
+                    //     job_id: 4,
+                    //     title: 'IOS高级开发工程师4',
+                    //     salary: '13-25K',
+                    //     salary_num: '14薪',
+                    //     company: '今日头条',
+                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                    //     city: '武汉'
+                    // },
+                    // {
+                    //     job_id: 5,
+                    //     title: 'IOS高级开发工程师5',
+                    //     salary: '13-25K',
+                    //     salary_num: '14薪',
+                    //     company: '今日头条',
+                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+                    //     city: '武汉'
+                    // }
                 ],
                 related_jobs: null,
                 recommend_jobs: null,
@@ -1017,6 +1278,22 @@
             this.recommend_jobs = this.jobs
             this.history_jobs = this.jobs
         },
+        // vue 路由参数变化，页面不刷新（数据不更新）解决方法 start
+        watch: {
+            '$route'(to, from) { //监听路由是否变化
+                if (to.query.job_id != from.query.job_id) {
+                    this.job = to.query.job_id;
+                    this.getJobDetail();//重新加载数据
+                }
+            }
+        },
+        created() {
+            if (this.$route.query) {
+                this.job_id = this.$route.query.job_id;
+                this.getJobDetail();
+            }
+        },
+        // vue 路由参数变化，页面不刷新（数据不更新）解决方法 end
         methods: {
             // 微信二维码
             switchMiniAppBox: function () {
@@ -1050,7 +1327,6 @@
             },
             // 搜索框地址
             switchCityBox: function () {
-                console.log(4444444444)
                 if (this.$refs.cityBox.style.display == 'none') {
                     this.$refs.cityBox.style.display = 'block'
                 } else {
@@ -1063,9 +1339,17 @@
                 this.$refs.cityBox.style.display = 'none'
             },
             // 立即沟通
-            chat:function () {
-                console.log("start to chat")
+            chat: function () {
                 this.$router.push("/chat")
+            },
+            // 获取工作详情
+            getJobDetail: function () {
+                let job_id = this.$route.query.job_id
+                // 需与<router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">中的query一致
+                // 等待进一步验证
+                // let job_id = this.$route.params.job_id  // 不能用
+                this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
+                this.job = this.jobs[job_id - 1]
             }
         }
     }

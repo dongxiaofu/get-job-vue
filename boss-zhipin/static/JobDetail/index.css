@@ -395,59 +395,59 @@ ul {
     margin-bottom: 40px;
 }
 
-.side-bar .company-summary .company-info{
+.side-bar .company-summary .company-info {
     height: 60px;
     line-height: 60px;
     margin-bottom: 30px;
 }
 
-.side-bar .company-summary .company-info .company-info-logo img{
+.side-bar .company-summary .company-info .company-info-logo img {
     width: 60px;
     height: 60px;
-    float: left;            /*很重要，使得它右边的元素不下沉*/
+    float: left; /*很重要，使得它右边的元素不下沉*/
     margin-right: 30px;
 
     border-radius: 12px;
 }
 
-.side-bar .company-summary .company-info .company-info-name{
+.side-bar .company-summary .company-info .company-info-name {
     display: inline-block;
     height: 60px;
     line-height: 60px;
 }
 
-.side-bar .company-summary p{
+.side-bar .company-summary p {
     height: 40px;
     line-height: 40px;
 }
 
-.side-bar .company-summary .upload-date{
+.side-bar .company-summary .upload-date {
     margin-top: 20px;
     font-size: 12px;
     color: #9fa4b0;
 }
 
 /*图标*/
-.side-bar .company-summary .icon-scale{
+.side-bar .company-summary .icon-scale {
     background-image: url("icon-scale.png");
 }
 
 
-.side-bar .company-summary .icon-stage{
+.side-bar .company-summary .icon-stage {
     background-image: url("icon-stage.png");
 }
 
 
-.side-bar .company-summary .icon-net{
+.side-bar .company-summary .icon-net {
     background-image: url("icon-net.png");
 }
 
 
-.side-bar .company-summary .icon-industry{
+.side-bar .company-summary .icon-industry {
     background-image: url("icon-industry.png");
 }
 
-.icon-company-sumary{
+.icon-company-sumary {
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -736,12 +736,13 @@ ul {
     vertical-align: top;
     margin-right: 20px;
     margin-top: 20px;
+    float: left;
 }
 
 .avatar .name {
     position: absolute;
-    top: 12px;
-    right: -50px;
+    top: -10px;
+    left: 0px;
 }
 
 .icon-vip {
@@ -756,8 +757,8 @@ ul {
 
 .avatar .title {
     position: absolute;
-    top: 54px;
-    right: -130px;
+    top: 40px;
+    left: 0px;
 }
 
 .detail-op .btns {
@@ -798,6 +799,7 @@ ul {
     width: 160px;
     height: 160px;
 }
+
 /*css实现箭头*/
 .detail-op .btns .mini-app-inner .arrow-up {
     position: absolute;
@@ -1801,8 +1803,25 @@ a.wechat-qr:hover img {
 }
 
 /*职位描述*/
-.text{
+.text {
     /*首行不缩进*/
     white-space: pre-line;
 }
 
+/*创意总监· 刚刚在线 效果 start*/
+.employee-title {
+    float: left;
+}
+
+.employer-name-title {
+    position: relative;
+    top: 20px;
+    /*!*left: 90px;*!     overflow: auto; 共存时，会导致左侧边距太大，原因不明*/
+    width: 140px;
+    height: 60px;
+    white-space: nowrap;
+    overflow: auto;
+
+    /*border: 1px solid red;*/
+}
+/*创意总监· 刚刚在线 效果 end*/

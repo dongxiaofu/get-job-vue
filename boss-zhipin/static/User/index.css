@@ -1108,7 +1108,7 @@ h4 {
 .annex-card {
     width: 350px;
     height: 140px;
-    border: 1px solid #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.15);  /*这个值是什么意思*/
 
     background: #fff;
     position: absolute;

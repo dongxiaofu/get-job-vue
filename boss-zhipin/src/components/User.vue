@@ -42,6 +42,8 @@
                                         <i class="icon-delete"></i>
                                         <img src="/static/User/icon-file.png" class="icon-file">
                                         <span class="resume-name"
+                                              v-on:click="download($event)"
+                                              v-bind:attachment_id = index
                                         >
                                             {{attachment.name}}
                                         </span>
@@ -1095,6 +1097,15 @@
                 console.log(annexCard)
                 annexCard.style.display = 'none'
             },
+            // 下载附件
+            download:function (e) {
+                var target = e.currentTarget
+                var attachmentId = target.getAttribute('attachment_id')
+                console.log(attachmentId)
+                // href是文件地址
+                var href = 'http://chugang.net'
+                window.open(href, '_blank');
+            }
         }
     }
 </script>
