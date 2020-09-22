@@ -1116,7 +1116,7 @@ h4 {
     left: -350px;
     z-index: 10;
 
-    display: none;
+    /*display: block;*/
 }
 
 .annex-card .card-body {

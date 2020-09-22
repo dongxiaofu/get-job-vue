@@ -35,27 +35,36 @@
                             <h3>附件管理</h3>
                             <ul>
                                 <li v-for="(attachment,index) in resume_attachments">
-                                    <div class="annex-item" tabindex="-1" v-bind:current_index=index>
+                                    <div class="annex-item" tabindex="0" v-bind:current_index=index
+                                         @mouseover="showAnnexCard($event)"
+                                         @blur="hideCurrentAnnexCardLeaveAnnexItem($event)"
+                                    >
                                         <i class="icon-delete"></i>
                                         <img src="/static/User/icon-file.png" class="icon-file">
-                                        <span class="resume-name" @mouseover="showAnnexCard($event)"
+                                        <span class="resume-name"
                                         >
                                             {{attachment.name}}
                                         </span>
-                                    </div>
-                                    <div class="annex-card" style="display: none" v-bind:annex-card-index=index>
-                                        <div class="card-body">
-                                            <div class="card-img"><img src="/static/User/icon-pdf.d2b22d86.png"></div>
-                                            <div class="resume-name">{{attachment.name}}</div>
-                                            <div class="upload-date">{{attachment.size}} {{attachment.upload_time}} 上传
+                                        <div class="annex-card"
+                                             style="display: none"
+                                             v-bind:annex-card-index=index
+                                             @mouseover="showCurrentAnnexCard($event)"
+                                             @mouseleave="hideCurrentAnnexCard($event)"
+                                        >
+                                            <div class="card-body">
+                                                <div class="card-img"><img src="/static/User/icon-pdf.d2b22d86.png"></div>
+                                                <div class="resume-name">{{attachment.name}}</div>
+                                                <div class="upload-date">{{attachment.size}} {{attachment.upload_time}} 上传
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <span>下载</span>
+                                                <span>重命名</span>
+                                                <span>附件解析</span>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
-                                            <span>下载</span>
-                                            <span>重命名</span>
-                                            <span>附件解析</span>
-                                        </div>
                                     </div>
+
                                 </li>
                             </ul>
                             <div class="upload-resume-btn" v-on:click="showUploadBox">上传简历</div>
@@ -1049,8 +1058,10 @@
             },
             // 简历附件显示
             showAnnexCard: function (e) {
-                var target = e.currentTarget.parentElement
-                console.log(target)
+                var target = e.currentTarget
+                // console.log(target)
+                // var temp = e.currentTarget.firstElementChild
+                // var target = temp.nextElementSibling.nextElementSibling.nextElementSibling
                 // var annexCard = target.nextElementSibling
                 // console.log(annexCard)
                 var current_index = target.getAttribute('current_index')
@@ -1068,7 +1079,22 @@
                         annexCard.style.display = 'none'
                     }
                 }
-            }
+            },
+            // 简历附件显示
+            showCurrentAnnexCard: function (e) {
+                var target = e.currentTarget.parentElement
+                target.style.display = 'block'
+            },
+            hideCurrentAnnexCard: function (e) {
+                var target = e.currentTarget
+                target.style.display = 'none'
+            },
+            hideCurrentAnnexCardLeaveAnnexItem: function (e) {
+                var target = e.currentTarget.firstElementChild
+                var annexCard = target.nextElementSibling.nextElementSibling.nextElementSibling
+                console.log(annexCard)
+                annexCard.style.display = 'none'
+            },
         }
     }
 </script>
