@@ -136,20 +136,28 @@
                                     </div>
                                     <div class="item-content" id="gender">
                                         <span>
-                                            <label class="radio radio-checked" id="gender-man">
-                                        <span>
-                                            <input type="radio" value="1" name="gender" v-model="user_profile.gender">
-                                            <i class="beauty-radio"></i>
-                                        </span>
-                                            男
-                                        </label>
-                                        <label class="radio" id="gender-woman">
-                                        <span>
-                                            <input type="radio" value="2" name="gender" v-model="user_profile.gender">
-                                            <i class="beauty-radio"></i>
-                                        </span>
-                                            女
-                                        </label>
+                                            <!--<label v-on:click="selectGender($event)" v-bind:class="user_profile.gender == 1 ? 'radio radio-checked' : 'radio'" id="gender-man">-->
+                                           <label v-on:click="selectGender($event)"
+                                                  :class="[{ 'radio-checked':user_profile.gender == 1}, 'radio']"
+                                                  v-bind:gender-value = "1"
+                                                  id="gender-man">
+                                                <span>
+                                                    <input type="radio" value="1" name="gender" v-model="user_profile.gender">
+                                                    <i class="beauty-radio"></i>
+                                                </span>
+                                                男
+                                            </label>
+                                            <label  v-on:click="selectGender($event)"
+                                                    v-bind:class="user_profile.gender == 2 ? 'radio radio-checked' : 'radio'"
+                                                    v-bind:gender-value = "2"
+                                                   id="gender-woman">
+                                                <span>
+                                                    <input type="radio" value="2" name="gender"
+                                                           v-model="user_profile.gender">
+                                                    <i class="beauty-radio"></i>
+                                                </span>
+                                                女
+                                            </label>
                                         </span>
                                     </div>
                                 </div>
@@ -662,7 +670,7 @@
                     user_id: '',
                     name: '姓名',
                     job_search_status: 1,
-                    gender: '',
+                    gender: 2,
                     birthday: '',
                     telephone: '-',
                     wechat: '-',
@@ -982,9 +990,20 @@
             },
 
             // 显示求职状态选择框
-            showUiDropdownList:function () {
+            showUiDropdownList: function () {
                 this.$refs.ui_dropdown_list.style.display = 'block'
-            }
+            },
+
+            // 性别选中
+            selectGender: function (e) {
+                var target = e.currentTarget
+                console.log(target)
+                target.style.className = 'radio radio-checked2'
+                var genderValue = target.getAttribute('gender-value')
+                console.log(genderValue)
+                this.user_profile.gender = genderValue
+                console.log(this.user_profile)
+            },
         }
     }
 </script>
