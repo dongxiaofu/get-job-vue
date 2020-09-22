@@ -1096,9 +1096,10 @@ h4 {
     display: block;
 }
 
-.annex-item:hover + .annex-card{
-    display: block;
-}
+/*用vue实现*/
+/*.annex-item:hover + .annex-card{*/
+    /*display: block;*/
+/*}*/
 
 .annex-item .icon-delete {
     float: right;
@@ -1111,6 +1112,7 @@ h4 {
 
     background: #fff;
     position: absolute;
+    top: 60px;
     left: -350px;
     z-index: 10;
 
@@ -1121,7 +1123,7 @@ h4 {
     padding-left: 30px;
     margin-top: 10px;
 
-    width: 350px;
+    width: 320px;
     height: 80px;
     border-bottom: 1px solid darkgray;
 }
@@ -1798,3 +1800,109 @@ a.wechat-qr:hover img {
 .icon-email{
     background-position: 0px -539px;
 }
+
+
+/*上传附件简历弹窗*/
+#dialog-wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    /*下面的值必须有，才能看到效果*/
+    top: 0;
+    left: 0;
+}
+
+#layer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #8d92a1;
+    opacity: 0.8;
+    z-index: 1001;
+}
+
+#dialog-container {
+    width: 350px;
+    height: 420px;
+    padding: 25px;
+    margin: 0 auto;
+    position: absolute;
+    left: 600px;
+    top: 70px;
+    z-index: 1008;
+    background-color: #ffff;
+    color: #979a91;
+    text-align: center;
+}
+
+#tip-first {
+    padding: 100px 10px;
+}
+
+#tip-second {
+    padding: 70px 80px;
+    text-align: left;
+}
+
+#container-inner {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+#upload {
+    height: 350px;
+
+    border: 1px dashed #979a91;
+}
+
+#upload-btn {
+    display: block;
+    height: 40px;
+    background-color: #5dd5c8;
+    margin-top: 40px;
+
+    position: relative;
+}
+
+#upload-btn input {
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    opacity: 0%;
+    cursor: pointer;
+}
+
+#upload-btn span {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    display: inline-block;
+
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+
+    position: absolute;
+    top: 0px;
+}
+
+/*关闭按钮 start*/
+#close {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    position: absolute;
+    right: -22px;
+    top: -23px;
+    cursor: pointer;
+}
+
+#close::before {
+    content: "\00D7";
+    font-size: 21px;
+}
+
+/*关闭按钮 end*/
