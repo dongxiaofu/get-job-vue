@@ -1,7 +1,6 @@
 <template>
     <div>
         <div id="wrap">
-            <Test></Test>
             <div id="header">
                 <div class="inner home-inner">
                     <div id="logo">
