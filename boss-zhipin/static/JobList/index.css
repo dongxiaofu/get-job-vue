@@ -1570,9 +1570,20 @@ a.wechat-qr:hover img {
 }
 
 /*搜索框职位类型*/
-.position-type-list {
-    border: 1px solid #80919a;
+/*搜索框职位类型关键词显示*/
+.key-word-position-type {
+    /*white-space: nowrap;*/
+    /*overflow: auto;*/
+}
 
+.key-word-position-type b {
+    display: inline-block;      /*非常需要*/
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;       /*使用auto也可以达到效果，不知道二者的差别*/
+}
+
+.position-type-list {
     width: 500px;
     height: 200px;
 
@@ -1583,16 +1594,14 @@ a.wechat-qr:hover img {
     z-index: 3;
     background: #fff; /*若没有这个背景色，类型列表不能覆盖其他元素，文字混合在一起，模糊看不清*/
     color: #9fa3b0;
-
-    display: none;
-
 }
 
 .position-type-list .position-list-tree1 {
     width: 33.3%;
     height: 200px;
     /*padding-left: 10px;*/
-    border-right: 1px solid #80919a;
+    border: 1px solid #80919a;
+    border-right: none;
 
 
     float: left;
@@ -1604,7 +1613,7 @@ a.wechat-qr:hover img {
     width: 33.3%;
     height: 200px;
     /*padding-left: 10px;*/
-    border-right: 1px solid #80919a;
+    border: 1px solid #80919a;
 
     float: left;
     overflow: auto;
@@ -1613,11 +1622,10 @@ a.wechat-qr:hover img {
 
 
 .position-type-list .position-list-tree3 {
-    width: 33%;
+    width: 32%;
     height: 200px;
-    /*padding-left: 10px;*/
-    /*border-right: 1px solid #80919a;*/
-
+    border: 1px solid #80919a;
+    border-left: none;
     float: left;
     overflow: auto;
 }

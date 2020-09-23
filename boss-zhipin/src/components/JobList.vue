@@ -18,7 +18,7 @@
                             <div class="company" tabindex="-1" v-on:click="showIndustryBox" @blur="hideIndustryBox">
                                 <i class="line"></i>
                                 <span class="label-text">
-                            <b>公司行业</b>
+                            <b>{{industry.text}}</b>
                             <i class="icon-arrow-down"></i>
                         </span>
                             </div>
@@ -56,54 +56,47 @@
                                     <li data-val="101304" ka="sel-industry-29"><a href="javascript:;">其他行业</a></li>
                                 </ul>
                             </div>
-                            <div class="position" tabindex="-1" v-on:click="switchPositionTypeBox"
-                                 @blur="hidePositionBox">
+                            <div class="position" tabindex="-1" v-on:click="switchPositionTypeBox">
                                 <i class="line"></i>
-                                <span class="label-text">
-                            <b>职位类型</b>
+                                <span class="label-text key-word-position-type">
+                            <b>{{positionType.text}}</b>
                             <i class="icon-arrow-down"></i>
                         </span>
                             </div>
-                            <div class="position-type-list" ref="positionType">
-                                <ul class="position-list-tree1">
+                            <div class="position-type-list" ref="positionType" style="display: none">
+                                <ul class="position-list-tree1" ref="position_list_tree1" style="display: none">
                                     <li data-id="0" class="">不限</li>
-                                    <li data-id="310000" class="">高级管理</li>
-                                    <li data-id="100000" class="">技术</li>
-                                    <li data-id="110000" class="selected">产品</li>
-                                    <li data-id="120000" class="">设计</li>
-                                    <li data-id="130000" class="">运营</li>
-                                    <li data-id="140000">市场</li>
-                                    <li data-id="150000">人事/财务/行政</li>
-                                    <li data-id="160000">销售</li>
-                                    <li data-id="170000">传媒</li>
-                                    <li data-id="180000">金融</li>
-                                    <li data-id="190000">教育培训</li>
-                                    <li data-id="210000">医疗健康</li>
-                                    <li data-id="250000">采购/贸易</li>
-                                    <li data-id="240000">供应链/物流</li>
-                                    <li data-id="220000">房地产/建筑</li>
-                                    <li data-id="260000">咨询/翻译/法律</li>
-                                    <li data-id="280000">旅游</li>
-                                    <li data-id="290000">服务业</li>
-                                    <li data-id="300000">生产制造</li>
-                                    <li data-id="200000">其他</li>
+                                    <li
+                                            v-for="(category,index) in firstPositionTypes"
+                                            v-bind:code=category.code
+                                            v-bind:index=index
+                                            :class="firstPositionTypeIsActive == index ? 'selected':''"
+                                            @mouseover="selectFirstPositionType($event)"
+                                    >
+                                        {{category.name}}
+                                    </li>
                                 </ul>
-                                <ul class="position-list-tree2">
-                                    <li data-id="110100">产品经理</li>
-                                    <li data-id="110300">高端产品职位</li>
-                                    <li data-id="110400">其他产品职位</li>
+                                <ul class="position-list-tree2" ref="position_list_tree2" style="display: none">
+                                    <li
+                                            v-for="(category,index) in secondPositionTypes"
+                                            v-bind:code=category.code
+                                            v-bind:index=index
+                                            :class="secondPositionTypeIsActive == index ? 'selected':''"
+                                            @mouseover="selectSecondPositionType($event)"
+                                    >
+                                        {{category.name}}
+                                    </li>
                                 </ul>
-                                <ul class="position-list-tree3">
-                                    <li data-val="100211">UE4</li>
-                                    <li data-val="100299">移动开发</li>
-                                    <li data-val="100201">HTML5</li>
-                                    <li data-val="100202">Android</li>
-                                    <li data-val="100203">iOS</li>
-                                    <li data-val="100205">移动web前端</li>
-                                    <li data-val="100206">Flash开发</li>
-                                    <li data-val="100208">JavaScript</li>
-                                    <li data-val="100209">U3D</li>
-                                    <li data-val="100210">COCOS2DX</li>
+                                <ul class="position-list-tree3" ref="position_list_tree3" style="display: none">
+                                    <li
+                                            v-for="(category,index) in thirdPositionTypes"
+                                            v-bind:code=category.code
+                                            v-bind:index=index
+                                            :class="thirdPositionTypeIsActive == index ? 'selected':''"
+                                            v-on:click="setSearchConditionPositionType($event)"
+                                    >
+                                        {{category.name}}
+                                    </li>
                                 </ul>
                             </div>
                             <p class="ipt-wrap">
@@ -593,7 +586,22 @@
                     },
                 ],
                 // 搜索框，城市，{city_code:1000,city_name:'北京'}
-                searchKeyWordCity: {city_code: '0000', city_name: '城市'}
+                searchKeyWordCity: {},       // 不能写成null，否则网页不能显示
+                // 与mounted中的this.searchKeyWordCity任选其一
+                // searchKeyWordCity: {city_code: '0000', city_name: '城市'}
+                // 搜索框关键词
+                keyWord: '',     // 搜索职位、公司
+                positionType: {code: 0, text: '职位类型移动web前端'},
+                industry: {code: 0, text: '公司行业'},
+
+                // 职位类型
+                firstPositionTypes: [],      // 职位类型一级分类
+                secondPositionTypes: [],    // 职位类型二级分类
+                thirdPositionTypes: [],      // 职位类型三级分类
+
+                firstPositionTypeIsActive: false,
+                secondPositionTypeIsActive: false,
+                thirdPositionTypeIsActive: false,
             }
         },
         mounted() {
@@ -602,6 +610,42 @@
             // this.$refs.industryBox.style.display = 'block'
             console.log("===========end===========")
             this.searchKeyWordCity = {city_code: '1000', city_name: '北京'}
+
+            this.firstPositionTypes = [{code310000: 310000, name: '高级管理'},
+                {code: 100000, name: '技术'},
+                {code: 110000, name: '产品'},
+                {code: 120000, name: '设计'},
+                {code: 130000, name: '运营'},
+                {code: 140000, name: '市场'},
+                {code: 150000, name: '人事/财务/行政'},
+                {code: 160000, name: '销售'},
+                {code: 170000, name: '传媒'},
+                {code: 180000, name: '金融'},
+                {code: 190000, name: '教育培训'},
+                {code: 210000, name: '医疗健康'},
+                {code: 250000, name: '采购/贸易'},
+                {code: 240000, name: '供应链/物流'},
+                {code: 220000, name: '房地产/建筑'},
+                {code: 260000, name: '咨询/翻译/法律'},
+                {code: 280000, name: '旅游'},
+                {code: 290000, name: '服务业'},
+                {code: 300000, name: '生产制造'},
+                {code: 200000, name: '其他'},]
+
+            this.secondPositionTypes = [{code: 110100, name: '产品经理2'},
+                {code: 110300, name: '高端产品职位'},
+                {code: 110400, name: '其他产品职位'},]
+
+            this.thirdPositionTypes = [{code: 100211, name: 'UE4'},
+                {code: 100299, name: '移动开发'},
+                {code: 100201, name: 'HTML5'},
+                {code: 100202, name: 'Android'},
+                {code: 100203, name: 'iOS'},
+                {code: 100205, name: '移动web前端'},
+                {code: 100206, name: 'Flash开发'},
+                {code: 100208, name: 'JavaScript'},
+                {code: 100209, name: 'U3D'},
+                {code: 100210, name: 'COCOS2DX'},]
         },
         methods: {
             showIndustryBox: function () {
@@ -617,6 +661,8 @@
             switchPositionTypeBox: function () {
                 if (this.$refs.positionType.style.display == 'none') {
                     this.$refs.positionType.style.display = 'block'
+                    this.$refs.position_list_tree1.style.display = 'block'
+                    this.$refs.position_list_tree2.style.display = 'block'
                 } else {
                     this.$refs.positionType.style.display = 'none'
                 }
@@ -666,6 +712,43 @@
                 var cityCode = e.city_code
                 var cityName = e.city_name
                 this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
+            },
+            // 第一级职位类型分类
+            selectFirstPositionType(e) {
+                console.log(e)
+                var target = e.currentTarget
+                var index = target.getAttribute('index')
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.firstPositionTypeIsActive = index
+                // 获取parentId是code的二级分类
+
+            },
+            // 第二级职位类型分类
+            selectSecondPositionType(e) {
+                console.log(e)
+                var target = e.currentTarget
+                var index = target.getAttribute('index')
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.secondPositionTypeIsActive = index
+                // 获取parentId是code的三级分类
+                // 显示三级分类列表
+                this.$refs.position_list_tree3.style.display = 'block'
+            },
+            // 设置职位类型
+            setSearchConditionPositionType(e) {
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                // 设置搜索条件--职位类型--vue的双向绑定，确实方便
+                this.positionType.code = code
+                this.positionType.text = name
+                // 第三级分类选中状态
+                var index = target.getAttribute('index')
+                this.thirdPositionTypeIsActive = index
+                // 隐藏职位类型列表。仿照boss直聘，再次显示该列表时，保留上次的选中状态。子元素是否隐藏不影响效果。
+                this.$refs.positionType.style.display = 'none'
             }
         }
     }
