@@ -1577,10 +1577,10 @@ a.wechat-qr:hover img {
 }
 
 .key-word-position-type b {
-    display: inline-block;      /*非常需要*/
+    display: inline-block; /*非常需要*/
     width: 80%;
     white-space: nowrap;
-    overflow: hidden;       /*使用auto也可以达到效果，不知道二者的差别*/
+    overflow: hidden; /*使用auto也可以达到效果，不知道二者的差别*/
 }
 
 .position-type-list {
@@ -1673,15 +1673,32 @@ a.wechat-qr:hover img {
     display: none;
 }
 
-.industry-box ul li {
+.industry-box-li {
     float: left;
     width: 20%;
     height: 25px;
     line-height: 25px;
     margin-right: 20px;
     margin-top: 10px;
+    color: #8d92a1;
 
     /*border: 1px solid green;*/
+}
+
+/*当<li class="visited"></li>时无效*/
+/*.industry-box ul li.visted {*/
+/*color: #5dd5c8;*/
+/*}*/
+
+.industry-li-visited {
+    color: #5dd5c8;
+}
+
+.key-word-industry {
+    display: inline-block;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .industry-box ul li:hover {

@@ -15,45 +15,26 @@
                             <i class="icon-arrow-down"></i>
                         </span>
                             </div>
-                            <div class="company" tabindex="-1" v-on:click="showIndustryBox" @blur="hideIndustryBox">
+                            <div class="company" tabindex="-1" v-on:click="showIndustryBox">
                                 <i class="line"></i>
                                 <span class="label-text">
-                            <b>{{industry.text}}</b>
+                            <b class="key-word-industry">{{industry.text}}</b>
                             <i class="icon-arrow-down"></i>
                         </span>
                             </div>
                             <div class="industry-box" ref="industryBox" style="display: none">
                                 <ul>
-                                    <li data-val=""><a href="javascript:;">不限</a></li>
-                                    <li data-val="100001" ka="sel-industry-1"><a href="javascript:;">电子商务</a></li>
-                                    <li data-val="100002" ka="sel-industry-2"><a href="javascript:;">游戏</a></li>
-                                    <li data-val="100003" ka="sel-industry-3"><a href="javascript:;">媒体</a></li>
-                                    <li data-val="100004" ka="sel-industry-4"><a href="javascript:;">广告营销</a></li>
-                                    <li data-val="100005" ka="sel-industry-5"><a href="javascript:;">数据服务</a></li>
-                                    <li data-val="100006" ka="sel-industry-6"><a href="javascript:;">医疗健康</a></li>
-                                    <li data-val="100007" ka="sel-industry-7"><a href="javascript:;">生活服务</a></li>
-                                    <li data-val="100008" ka="sel-industry-8"><a href="javascript:;">O2O</a></li>
-                                    <li data-val="100009" ka="sel-industry-9"><a href="javascript:;">旅游</a></li>
-                                    <li data-val="100010" ka="sel-industry-10"><a href="javascript:;">分类信息</a></li>
-                                    <li data-val="100011" ka="sel-industry-11"><a href="javascript:;">音乐/视频/阅读</a></li>
-                                    <li data-val="100012" ka="sel-industry-12"><a href="javascript:;">在线教育</a></li>
-                                    <li data-val="100013" ka="sel-industry-13"><a href="javascript:;">社交网络</a></li>
-                                    <li data-val="100014" ka="sel-industry-14"><a href="javascript:;">人力资源服务</a></li>
-                                    <li data-val="100015" ka="sel-industry-15"><a href="javascript:;">企业服务</a></li>
-                                    <li data-val="100016" ka="sel-industry-16"><a href="javascript:;">信息安全</a></li>
-                                    <li data-val="100018" ka="sel-industry-17"><a href="javascript:;">智能硬件</a></li>
-                                    <li data-val="100019" ka="sel-industry-18"><a href="javascript:;">移动互联网</a></li>
-                                    <li data-val="100020" ka="sel-industry-19"><a href="javascript:;">互联网</a></li>
-                                    <li data-val="100021" ka="sel-industry-20"><a href="javascript:;">计算机软件</a></li>
-                                    <li data-val="100024" ka="sel-industry-21"><a href="javascript:;">通信/网络设备</a></li>
-                                    <li data-val="100101" ka="sel-industry-22"><a href="javascript:;">广告/公关/会展</a></li>
-                                    <li data-val="100206" ka="sel-industry-23"><a href="javascript:;">互联网金融</a></li>
-                                    <li data-val="100502" ka="sel-industry-24"><a href="javascript:;">物流/仓储</a></li>
-                                    <li data-val="100504" ka="sel-industry-25"><a href="javascript:;">贸易/进出口</a></li>
-                                    <li data-val="100601" ka="sel-industry-26"><a href="javascript:;">咨询</a></li>
-                                    <li data-val="100702" ka="sel-industry-27"><a href="javascript:;">工程施工</a></li>
-                                    <li data-val="100801" ka="sel-industry-28"><a href="javascript:;">汽车生产</a></li>
-                                    <li data-val="101304" ka="sel-industry-29"><a href="javascript:;">其他行业</a></li>
+                                    <li data-val="" class="industry-box-li">不限</li>
+                                    <li data-val="100001" ka="sel-industry-1" class="industry-box-li">电子商务2</li>
+                                    <li
+                                            v-for="(industry, index) in industryCollection"
+                                            v-bind:index=index
+                                            v-bind:code=industry.code
+                                            v-on:click="setSearchKeyWordIndustry($event)"
+                                            v-bind:class="[{'industry-li-visited':industryIsActive == index},'industry-box-li']"
+                                    >
+                                        {{industry.name}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="position" tabindex="-1" v-on:click="switchPositionTypeBox">
@@ -602,6 +583,10 @@
                 firstPositionTypeIsActive: false,
                 secondPositionTypeIsActive: false,
                 thirdPositionTypeIsActive: false,
+
+                // 行业
+                industryCollection: [],
+                industryIsActive: false
             }
         },
         mounted() {
@@ -646,6 +631,36 @@
                 {code: 100208, name: 'JavaScript'},
                 {code: 100209, name: 'U3D'},
                 {code: 100210, name: 'COCOS2DX'},]
+
+            this.industryCollection = [{code: 100001, name: '电子商务'},
+                {code: 100002, name: '游戏'},
+                {code: 100003, name: '媒体'},
+                {code: 100004, name: '广告营销'},
+                {code: 100005, name: '数据服务'},
+                {code: 100006, name: '医疗健康'},
+                {code: 100007, name: '生活服务'},
+                {code: 100008, name: 'O2O'},
+                {code: 100009, name: '旅游'},
+                {code: 100010, name: '分类信息'},
+                {code: 100011, name: '音乐/视频/阅读'},
+                {code: 100012, name: '在线教育'},
+                {code: 100013, name: '社交网络'},
+                {code: 100014, name: '人力资源服务'},
+                {code: 100015, name: '企业服务'},
+                {code: 100016, name: '信息安全'},
+                {code: 100018, name: '智能硬件'},
+                {code: 100019, name: '移动互联网'},
+                {code: 100020, name: '互联网'},
+                {code: 100021, name: '计算机软件'},
+                {code: 100024, name: '通信/网络设备'},
+                {code: 100101, name: '广告/公关/会展'},
+                {code: 100206, name: '互联网金融'},
+                {code: 100502, name: '物流/仓储'},
+                {code: 100504, name: '贸易/进出口'},
+                {code: 100601, name: '咨询'},
+                {code: 100702, name: '工程施工'},
+                {code: 100801, name: '汽车生产'},
+                {code: 101304, name: '其他行业'},]
         },
         methods: {
             showIndustryBox: function () {
@@ -749,6 +764,19 @@
                 this.thirdPositionTypeIsActive = index
                 // 隐藏职位类型列表。仿照boss直聘，再次显示该列表时，保留上次的选中状态。子元素是否隐藏不影响效果。
                 this.$refs.positionType.style.display = 'none'
+            },
+            // 设置行业
+            setSearchKeyWordIndustry(e) {
+                var target = e.currentTarget
+                var index = target.getAttribute('index')
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                // 设置选中的行业
+                this.industry = {code: code, text: name}
+                // 设置选中状态
+                this.industryIsActive = index
+                // 隐藏行业列表
+                this.hideIndustryBox()
             }
         }
     }
