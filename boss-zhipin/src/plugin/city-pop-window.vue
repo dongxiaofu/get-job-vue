@@ -33,6 +33,7 @@
                                 <li class="city"
                                     v-for="cityItem in city.city_items"
                                     v-bind:city-code=cityItem.city_code
+                                    v-on:click="selectCity($event)"
                                 >
                                     {{cityItem.city_name}}
                                 </li>
@@ -158,10 +159,22 @@
                 // 展示该分类下的数据
                 // 替换成从接口中请求数据
                 this.selectedCities = this.cities
+            },
+
+            // 选择城市
+            selectCity: function (e) {
+                var target = e.currentTarget;
+                // 获取C的html文本
+                var cityName = target.innerText
+                console.log('cityName = ' + cityName)
 
                 // 将父组件中的地址设置为当前选中地址
-            }
-
+                var cityCode = target.getAttribute('city-code')     // vue 自定义属性能用中划线
+                var cityName = cityName
+                var selectedCity = {city_code: cityCode, city_name: cityName}
+                this.$emit("selectCity", selectedCity)
+                console.log('emit')
+            },
         }
     }
 </script>

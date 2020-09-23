@@ -11,7 +11,7 @@
                             <div class="city" v-on:click="switchCityBox">
                                 <i class="line"></i>
                                 <span class="label-text">
-                            <b>武汉</b>
+                            <b>{{searchKeyWordCity.city_name}}</b>
                             <i class="icon-arrow-down"></i>
                         </span>
                             </div>
@@ -499,7 +499,7 @@
             <!--<div id="side-bar">Side Bar</div>难度比较大，不实现-->
         </div>
         <!--搜索框地址弹出-->
-        <CityPopWindow ref="cityPopWindow"></CityPopWindow>
+        <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
     </div>
 </template>
 
@@ -590,8 +590,10 @@
                             },
                         company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
                         employee: {name: '孙悟空', title: '创意总监'}
-                    }
+                    },
                 ],
+                // 搜索框，城市，{city_code:1000,city_name:'北京'}
+                searchKeyWordCity: {city_code: '0000', city_name: '城市'}
             }
         },
         mounted() {
@@ -599,6 +601,7 @@
             console.log(this.$refs.industryBox.style.display)
             // this.$refs.industryBox.style.display = 'block'
             console.log("===========end===========")
+            this.searchKeyWordCity = {city_code: '1000', city_name: '北京'}
         },
         methods: {
             showIndustryBox: function () {
@@ -657,6 +660,13 @@
             hideCompanyScaleBox() {
                 this.$refs.companyScaleBox.style.display = 'none';
             },
+            // 设置搜索关键词，城市
+            setSearchKeyWordCity(e) {
+                console.log(e)
+                var cityCode = e.city_code
+                var cityName = e.city_name
+                this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
+            }
         }
     }
 </script>

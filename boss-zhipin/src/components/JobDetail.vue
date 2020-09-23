@@ -198,7 +198,7 @@
                                     <p><input type="text" class="search-ipt" placeholder="搜索职位、公司"/></p>
                                     <span class="city-box" v-on:click="switchCityBox">
                                 <i clas s="icon-arrow-down"></i>
-                                武汉
+                                {{searchKeyWordCity.city_name}}
                             </span>
                                 </div>
                                 <button class="search-btn">搜索</button>
@@ -697,7 +697,7 @@
                 </div>
             </div>
         </div>
-        <CityPopWindow ref="cityPopWindow"></CityPopWindow>
+        <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
     </div>
 </template>
 
@@ -1073,7 +1073,9 @@
                 ],
                 related_jobs: null,
                 recommend_jobs: null,
-                history_jobs: null
+                history_jobs: null,
+                // 搜索框，城市，{city_code:1000,city_name:'北京'}
+                searchKeyWordCity: {city_code: '0000', city_name: '城市'}
             }
         },
         mounted() {
@@ -1144,6 +1146,14 @@
                 // let job_id = this.$route.params.job_id  // 不能用
                 this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
                 this.job = this.jobs[job_id - 1]
+            },
+
+            // 设置搜索关键词，城市
+            setSearchKeyWordCity(e) {
+                console.log(e)
+                var cityCode = e.city_code
+                var cityName = e.city_name
+                this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
             }
         }
     }
