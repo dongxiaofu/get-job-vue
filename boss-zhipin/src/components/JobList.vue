@@ -147,82 +147,77 @@
                     </div>
                 </span>
                         <span class="dropdown-select" @mouseenter="showDegree" @mouseleave="hideDegree">
-                    <input type="text" placeholder="学历要求" class="ipt" readonly>
+                            <span :class="[{'selected':degreeQueryIsActive == true},'ipt']">
+                                {{degreeQuery.name}}
+                            </span>
                     <i class="icon-arrow-down"></i>
                     <div class="require-list" style="display: none" ref="degreeBox">
                         <ul>
-                                        <li><a href="/c101280600/" ka="sel-degree-0" rel="nofollow">不限</a></li>
-                                        <li><a href="/c101280600/d_209/" ka="sel-degree-209"
-                                               rel="nofollow">初中及以下</a></li>
-                                        <li><a href="/c101280600/d_208/" ka="sel-degree-208"
-                                               rel="nofollow">中专/中技</a></li>
-                                        <li><a href="/c101280600/d_206/" ka="sel-degree-206" rel="nofollow">高中</a></li>
-                                        <li><a href="/c101280600/d_202/" ka="sel-degree-202" rel="nofollow">大专</a></li>
-                                        <li><a href="/c101280600/d_203/" ka="sel-degree-203" rel="nofollow">本科</a></li>
-                                        <li><a href="/c101280600/d_204/" ka="sel-degree-204" rel="nofollow">硕士</a></li>
-                                        <li><a href="/c101280600/d_205/" ka="sel-degree-205" rel="nofollow">博士</a></li>
-                            </ul>
+                            <li
+                                    v-for="degree in degreeCollection"
+                                    v-bind:code=degree.code
+                                    v-on:click="setSearchKeyWordDegree($event)"
+                            >
+                            {{degree.name}}
+                            </li>
+                        </ul>
                     </div>
                 </span>
                         <span class="dropdown-select" @mouseenter="showSalaryBox" @mouseleave="hideSalaryBox">
-                    <input type="text" placeholder="薪资要求" class="ipt" readonly>
+                            <span :class="[{'selected':salaryQueryIsActive == true},'ipt']">
+                                {{salaryQuery.name}}
+                            </span>
                     <i class="icon-arrow-down"></i>
                     <div class="require-list" style="display: none" ref="salaryBox">
                         <ul>
-                                        <li><a href="/c101280600/" ka="sel-salary-0" rel="nofollow">不限</a></li>
-                                        <li><a href="/c101280600/y_1/" ka="sel-salary-1" rel="nofollow">3K以下</a></li>
-                                        <li><a href="/c101280600/y_2/" ka="sel-salary-2" rel="nofollow">3-5K</a></li>
-                                        <li><a href="/c101280600/y_3/" ka="sel-salary-3" rel="nofollow">5-10K</a></li>
-                                        <li><a href="/c101280600/y_4/" ka="sel-salary-4" rel="nofollow">10-15K</a></li>
-                                        <li><a href="/c101280600/y_5/" ka="sel-salary-5" rel="nofollow">15-20K</a></li>
-                                        <li><a href="/c101280600/y_6/" ka="sel-salary-6" rel="nofollow">20-30K</a></li>
-                                        <li><a href="/c101280600/y_7/" ka="sel-salary-7" rel="nofollow">30-50K</a></li>
-                                        <li><a href="/c101280600/y_8/" ka="sel-salary-8" rel="nofollow">50K以上</a></li>
-                            </ul>
+                            <li
+                                    v-for="salary in salaryCollection"
+                                    v-bind:code=salary.code
+                                    v-on:click="setSearchKeyWordSalary($event)"
+                            >
+                            {{salary.name}}
+                            </li>
+                        </ul>
                     </div>
                 </span>
                         <span class="dropdown-select" @mouseenter="showFinancingStageBox"
                               @mouseleave="hideFinancingStageBox">
-                    <input type="text" placeholder="融资阶段" class="ipt" readonly>
+                            <span :class="[{'selected':stageQueryIsActive == true},'ipt']">
+                                {{stageQuery.name}}
+                            </span>
                     <i class="icon-arrow-down"></i>
                     <div class="require-list" style="display: none" ref="financingStage">
                         <ul>
-                            <li><a href="/c101280600/" ka="sel-stage-0" rel="nofollow">不限</a></li>
-                            <li><a href="/c101280600/t_801/" ka="sel-stage-801" rel="nofollow">未融资</a></li>
-                            <li><a href="/c101280600/t_802/" ka="sel-stage-802" rel="nofollow">天使轮</a></li>
-                            <li><a href="/c101280600/t_803/" ka="sel-stage-803" rel="nofollow">A轮</a></li>
-                            <li><a href="/c101280600/t_804/" ka="sel-stage-804" rel="nofollow">B轮</a></li>
-                            <li><a href="/c101280600/t_805/" ka="sel-stage-805" rel="nofollow">C轮</a></li>
-                            <li><a href="/c101280600/t_806/" ka="sel-stage-806"
-                                   rel="nofollow">D轮及以上</a></li>
-                            <li><a href="/c101280600/t_807/" ka="sel-stage-807" rel="nofollow">已上市</a></li>
-                            <li><a href="/c101280600/t_808/" ka="sel-stage-808"
-                                   rel="nofollow">不需要融资</a></li>
+                            <li
+                                    v-for="stage in stageCollection"
+                                    v-bind:code=stage.code
+                                    v-on:click="setSearchKeyWordStage($event)"
+                            >
+                            {{stage.name}}
+                            </li>
                         </ul>
                     </div>
                 </span>
                         <span class="dropdown-select" @mouseenter="showCompanyScaleBox"
                               @mouseleave="hideCompanyScaleBox">
-                    <input type="text" placeholder="公司规模" class="ipt" readonly>
+                        <span :class="[{'selected':scaleQueryIsActive == true},'ipt']">
+                                {{scaleQuery.name}}
+                        </span>
                     <i class="icon-arrow-down"></i>
                     <div class="require-list" style="display: none" ref="companyScaleBox">
                         <ul>
-                           <li><a href="/c101280600/" ka="sel-scale-0" rel="nofollow">不限</a></li>
-                           <li><a href="/c101280600/s_301/" ka="sel-scale-301" rel="nofollow">0-20人</a></li>
-                           <li><a href="/c101280600/s_302/" ka="sel-scale-302"
-                                  rel="nofollow">20-99人</a></li>
-                           <li><a href="/c101280600/s_303/" ka="sel-scale-303"
-                                  rel="nofollow">100-499人</a></li>
-                           <li><a href="/c101280600/s_304/" ka="sel-scale-304"
-                                  rel="nofollow">500-999人</a></li>
-                           <li><a href="/c101280600/s_305/" ka="sel-scale-305" rel="nofollow">1000-9999人</a></li>
-                           <li><a href="/c101280600/s_306/" ka="sel-scale-306"
-                                  rel="nofollow">10000人以上</a></li>
+                            <li
+                                    v-for="scale in scaleCollection"
+                                    v-bind:code=scale.code
+                                    v-on:click="setSearchKeyWordScale($event)"
+                            >
+                            {{scale.name}}
+                            </li>
                         </ul>
                     </div>
                 </span>
-                        <!--<a class="last" href="#">清空筛选条件</a>-->
-                        <router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>
+                        <a class="last" href="javascript:;" @click="resetSearchCondition">清空筛选条件</a>
+                        <!--<router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>-->
                     </div>
                 </div>
             </div>
@@ -585,10 +580,10 @@
 
                 // 筛选条件:工作经验、学历要求、薪资要求、融资阶段、公司规模
                 experienceQuery: {code: '0', name: '工作经验'},
-                degreeQuery: {},
-                salaryQuery: {},
-                stageQuery: {},
-                scaleQuery: {},
+                degreeQuery: {code: '0', name: '学历要求'},
+                salaryQuery: {code: '0', name: '薪资要求'},
+                stageQuery: {code: '0', name: '融资阶段'},
+                scaleQuery: {code: '0', name: '公司规模'},
 
                 experienceCollection: [],
                 degreeCollection: [],
@@ -685,10 +680,39 @@
                 {code: 0, name: '3-5年'},
                 {code: 0, name: '5-10年'},
                 {code: 0, name: '10年以上'},]
-            this.degreeCollection = []
-            this.salaryCollection = []
-            this.stageCollection = []
-            this.scaleCollection = []
+            this.degreeCollection = [{code: 0, name: '不限'},
+                {code: 0, name: '初中及以下'},
+                {code: 0, name: '中专/中技'},
+                {code: 0, name: '高中'},
+                {code: 0, name: '大专'},
+                {code: 0, name: '本科'},
+                {code: 0, name: '硕士'},
+                {code: 0, name: '博士'},]
+            this.salaryCollection = [{code: 0, name: '不限'},
+                {code: 0, name: '3K以下'},
+                {code: 0, name: '3-5K'},
+                {code: 0, name: '5-10K'},
+                {code: 0, name: '10-15K'},
+                {code: 0, name: '15-20K'},
+                {code: 0, name: '20-30K'},
+                {code: 0, name: '30-50K'},
+                {code: 0, name: '50K以上'},]
+            this.stageCollection = [{code: 0, name: '不限'},
+                {code: 0, name: '未融资'},
+                {code: 0, name: '天使轮'},
+                {code: 0, name: 'A轮'},
+                {code: 0, name: 'B轮'},
+                {code: 0, name: 'C轮'},
+                {code: 0, name: 'D轮及以上'},
+                {code: 0, name: '已上市'},
+                {code: 0, name: '不需要融资'},]
+            this.scaleCollection = [{code: 0, name: '不限'},
+                {code: 0, name: '0-20人'},
+                {code: 0, name: '20-99人'},
+                {code: 0, name: '100-499人'},
+                {code: 0, name: '500-999人'},
+                {code: 0, name: '1000-9999人'},
+                {code: 0, name: '10000人以上'},]
 
             this.experienceQuery = {code: '0', name: '工作经验'}
             this.degreeQuery = {code: '0', name: '学历要求'}
@@ -823,6 +847,64 @@
                 this.experienceQueryIsActive = true
                 // 隐藏列表
                 this.hideExperience()
+            },
+            // 设置筛选条件--学历
+            setSearchKeyWordDegree(e) {
+                // 设置当前学历
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.degreeQuery = {code: code, name: name}
+                // 当前经验为红色
+                this.degreeQueryIsActive = true
+                // 隐藏列表
+                this.hideDegree()
+            },
+            // 设置筛选条件--薪资
+            setSearchKeyWordSalary(e) {
+                // 设置当前学历
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.salaryQuery = {code: code, name: name}
+                // 当前经验为红色
+                this.salaryQueryIsActive = true
+                // 隐藏列表
+                this.hideSalaryBox()
+            },
+            // 设置筛选条件--融资阶段
+            setSearchKeyWordStage(e) {
+                // 设置当前学历
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.stageQuery = {code: code, name: name}
+                // 当前经验为红色
+                this.stageQueryIsActive = true
+                // 隐藏列表
+                this.hideFinancingStageBox()
+            },
+            // 设置筛选条件--公司规模
+            setSearchKeyWordScale(e) {
+                // 设置当前学历
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.scaleQuery = {code: code, name: name}
+                // 当前经验为红色
+                this.scaleQueryIsActive = true
+                // 隐藏列表
+                this.hideCompanyScaleBox()
+            },
+            // 清空筛选条件
+            resetSearchCondition() {
+                // 保留搜索框关键词
+                var keyWord = this.$route.query.key_word
+                console.log('keyWord = ' + keyWord)
+                // 带搜索关键词后打开这个页面
+                // this.$router.go(0)
+                // window.open("http://chugang.net")    // 不管怎样，都会打开在新窗口打开页面
+                location.href = 'http://chugang.net'
             }
         }
     }
