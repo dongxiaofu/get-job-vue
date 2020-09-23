@@ -494,6 +494,10 @@ ul {
     width: 100%;
 }
 
+.filter-select-box .selected{
+    color: red;
+}
+
 /*主体部分*/
 .job-box {
     /*float: left;*/

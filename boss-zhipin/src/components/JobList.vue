@@ -129,25 +129,20 @@
                     </div>
                     <div class="filter-select-box">
                 <span class="dropdown-select first" @mouseenter="showExperience" @mouseleave="hideExperience">
-                    <input type="text" placeholder="工作经验" class="ipt" readonly>
+                    <!--<input type="text" placeholder="{{experienceQuery}}" class="ipt" readonly>-->
+                    <span :class="[{'selected':experienceQueryIsActive == true},'ipt']">
+                        {{experienceQuery.name}}
+                    </span>
                     <i class="icon-arrow-down"></i>
                     <div class="require-list" ref="experienceBox" style="display: none">
                         <ul>
-                        <li><a href="/c101280600/" ka="sel-exp-0" rel="nofollow">不限</a></li>
-                        <li><a href="/c101280600/e_108/" ka="sel-exp-108"
-                               rel="nofollow">在校生</a></li>
-                        <li><a href="/c101280600/e_102/" ka="sel-exp-102"
-                               rel="nofollow">应届生</a></li>
-                        <li><a href="/c101280600/e_103/" ka="sel-exp-103"
-                               rel="nofollow">1年以内</a></li>
-                        <li><a href="/c101280600/e_104/" ka="sel-exp-104"
-                               rel="nofollow">1-3年</a></li>
-                        <li><a href="/c101280600/e_105/" ka="sel-exp-105"
-                               rel="nofollow">3-5年</a></li>
-                        <li><a href="/c101280600/e_106/" ka="sel-exp-106"
-                               rel="nofollow">5-10年</a></li>
-                        <li><a href="/c101280600/e_107/" ka="sel-exp-107"
-                               rel="nofollow">10年以上</a></li>
+                            <li
+                                    v-for="experience in experienceCollection"
+                                    v-bind:code=experience.code
+                                    v-on:click="setSearchKeyWordExperience($event)"
+                            >
+                                {{experience.name}}
+                            </li>
                         </ul>
                     </div>
                 </span>
@@ -586,7 +581,27 @@
 
                 // 行业
                 industryCollection: [],
-                industryIsActive: false
+                industryIsActive: false,
+
+                // 筛选条件:工作经验、学历要求、薪资要求、融资阶段、公司规模
+                experienceQuery: {code: '0', name: '工作经验'},
+                degreeQuery: {},
+                salaryQuery: {},
+                stageQuery: {},
+                scaleQuery: {},
+
+                experienceCollection: [],
+                degreeCollection: [],
+                salaryCollection: [],
+                stageCollection: [],
+                scaleCollection: [],
+
+                experienceQueryIsActive: false,
+                degreeQueryIsActive: false,
+                salaryQueryIsActive: false,
+                stageQueryIsActive: false,
+                scaleQueryIsActive: false,
+
             }
         },
         mounted() {
@@ -661,6 +676,25 @@
                 {code: 100702, name: '工程施工'},
                 {code: 100801, name: '汽车生产'},
                 {code: 101304, name: '其他行业'},]
+
+            this.experienceCollection = [{code: 0, name: '不限'},
+                {code: 0, name: '在校生'},
+                {code: 0, name: '应届生'},
+                {code: 0, name: '1年以内'},
+                {code: 0, name: '1-3年'},
+                {code: 0, name: '3-5年'},
+                {code: 0, name: '5-10年'},
+                {code: 0, name: '10年以上'},]
+            this.degreeCollection = []
+            this.salaryCollection = []
+            this.stageCollection = []
+            this.scaleCollection = []
+
+            this.experienceQuery = {code: '0', name: '工作经验'}
+            this.degreeQuery = {code: '0', name: '学历要求'}
+            this.salaryQuery = {code: '0', name: '薪资要求'}
+            this.stageQuery = {code: '0', name: '融资阶段'}
+            this.scaleQuery = {code: '0', name: '公司规模'}
         },
         methods: {
             showIndustryBox: function () {
@@ -777,6 +811,18 @@
                 this.industryIsActive = index
                 // 隐藏行业列表
                 this.hideIndustryBox()
+            },
+            // 设置筛选条件--经验
+            setSearchKeyWordExperience(e) {
+                // 设置当前经验
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                var name = target.innerText
+                this.experienceQuery = {code: code, name: name}
+                // 当前经验为红色
+                this.experienceQueryIsActive = true
+                // 隐藏列表
+                this.hideExperience()
             }
         }
     }
