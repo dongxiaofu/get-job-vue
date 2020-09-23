@@ -14,161 +14,28 @@
                 <div id="dialog-title"><h3>请选择城市</h3></div>
                 <div id="city">
                     <ul id="section-province">
-                        <li>ABCDE</li>
-                        <li>FGHIJ</li>
-                        <li class="active">KLMN</li>
-                        <li>PQRST</li>
-                        <li>WXYZ</li>
+                        <div v-on:click="selectCityCategory($event, index)"
+                             v-for="(cityCategory,index) in cityCategories">
+                            <li
+                                    v-bind:index="index"
+                                    :class="index == isActive ? 'city-active city-category' : 'city-category'"
+                            >
+                                {{cityCategory}}
+                            </li>
+                        </div>
                     </ul>
                     <ul id="section-city">
-                        <li class="classify-city">
-                            <div class="city-title">A</div>
+                        <li class="classify-city"
+                            v-for="city in selectedCities"
+                        >
+                            <div class="city-title">{{city.category}}</div>
                             <ul class="city-main">
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                            </ul>
-                        </li>
-                        <li class="classify-city">
-                            <div class="city-title">A</div>
-                            <ul class="city-main">
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                            </ul>
-                        </li>
-                        <li class="classify-city">
-                            <div class="city-title">A</div>
-                            <ul class="city-main">
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                            </ul>
-                        </li>
-                        <li class="classify-city">
-                            <div class="city-title">A</div>
-                            <ul class="city-main">
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                            </ul>
-                        </li>
-                        <li class="classify-city">
-                            <div class="city-title">A</div>
-                            <ul class="city-main">
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
-                                <li class="city">鞍山</li>
+                                <li class="city"
+                                    v-for="cityItem in city.city_items"
+                                    v-bind:city-code=cityItem.city_code
+                                >
+                                    {{cityItem.city_name}}
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -181,6 +48,66 @@
 <script>
     export default {
         name: "city-pop-window",
+        data() {
+            return {
+                cityCategories: ['ABCDE',
+                    'FGHIJ',
+                    'KLMN',
+                    'PQRST',
+                    'WXYZ',],
+
+                isActive: false,
+                city1: [
+                    {city_code: '1000', city_name: '北京'},
+                    {city_code: '1001', city_name: '天津'},
+                    {city_code: '1002', city_name: '武汉'},
+                    {city_code: '1003', city_name: '长沙'},
+                    {city_code: '1004', city_name: '上海'},
+                ],
+                city2: [
+                    {city_code: '1000', city_name: '北京'},
+                    {city_code: '1001', city_name: '天津'},
+                    {city_code: '1002', city_name: '武汉'},
+                    {city_code: '1003', city_name: '长沙'},
+                    {city_code: '1004', city_name: '上海'},
+                ],
+                city3: [
+                    {city_code: '1000', city_name: '北京'},
+                    {city_code: '1001', city_name: '天津'},
+                    {city_code: '1002', city_name: '武汉'},
+                    {city_code: '1003', city_name: '长沙'},
+                    {city_code: '1004', city_name: '上海'},
+                ],
+                city4: [
+                    {city_code: '1000', city_name: '北京'},
+                    {city_code: '1001', city_name: '天津'},
+                    {city_code: '1002', city_name: '武汉'},
+                    {city_code: '1003', city_name: '长沙'},
+                    {city_code: '1004', city_name: '上海'},
+                ],
+
+                cities: [
+                    // 在这里设置了，在下面的JS中使用，仍然是无数据
+                    // {category: 'A', city_items: city1},
+                    // {category: 'B', city_items: city2},
+                    // {category: 'C', city_items: city3},
+                    // {category: 'D', city_items: city4},
+                ],
+                // 当前分类下的城市
+                selectedCities: [],
+            }
+        },
+
+        mounted() {
+            this.cities = [
+                {category: 'A', city_items: this.city1},
+                {category: 'B', city_items: this.city2},
+                {category: 'C', city_items: this.city3},
+                {category: 'D', city_items: this.city4},
+            ]
+
+            this.selectedCities = this.cities
+        },
 
         methods: {
             // 搜索框地址--关闭
@@ -196,6 +123,44 @@
                     this.closeCityBox();
                 }
             },
+            // 选择城市分类
+            selectCityCategory: function (e, index) {
+                // 将当前点击的分类名C设置为选中效果
+                var targetParent = e.currentTarget;
+                var target = targetParent.firstElementChild
+                var currentIndex = target.getAttribute('index')
+                // 获取C的html文本
+                var category = target.innerText
+                console.log('category = ' + category)
+                // 设置C的class
+                this.isActive = index
+                // debug start
+                console.log('index = ' + index + ', isActive = ' + this.isActive)
+                if (this.isActive == false) {
+                    console.log('0 is false')
+                }
+                // debug end
+                var className = 'city-category'
+                // 无效语法 start
+                target.style.className = className + ' city-active';
+                target.className = className + ' city-active';
+                // 无效语法 end
+                console.log(target)
+                // 将C之外的分类元素的class清除
+                // var cityCategories = document.getElementsByClassName(className)
+                // for (var i = 0; i < cityCategories.length; i++) {
+                //     if (i == currentIndex) {
+                //         continue;
+                //     }
+                //     cityCategories[i].style.className = className
+                // }
+
+                // 展示该分类下的数据
+                // 替换成从接口中请求数据
+                this.selectedCities = this.cities
+
+                // 将父组件中的地址设置为当前选中地址
+            }
 
         }
     }
@@ -326,13 +291,13 @@
         /*border: 1px solid green;*/
     }
 
-    #dialog-con #city #section-province li.active {
+    .city-active {
         background-color: #f9fafb;
         color: #5dd5c8;
     }
 
     /*实现下划线。用border不能实现下划线与文字等长。*/
-    #dialog-con #city #section-province li.active::before {
+    .city-active::before {
         content: "";
         position: absolute;
         top: unset;
