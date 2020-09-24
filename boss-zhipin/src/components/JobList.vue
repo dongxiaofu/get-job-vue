@@ -334,14 +334,23 @@
                         <div class="feedback-wrapper">
                             <div class="feedback-emoj">
                                 <h4>对搜索结果是否满意？</h4>
-                                <div><i class="emoj-not-statisfy"></i>不满意</div>
-                                <div><i class="emoj-just-so-so"></i>一般</div>
-                                <div><i class="emoj-ok"></i>满意</div>
+                                <div @click="setFeedBackAttitude($event)" v-bind:code="1"><i
+                                        :class="['emoj-not-statisfy',{'emoj-not-statisfy-selected':emojNotStatisfyIsActive == true}]"></i>不满意
+                                </div>
+                                <div @click="setFeedBackAttitude($event)" v-bind:code="2"><i
+                                        :class="['emoj-just-so-so', {'emoj-just-so-so-selected':emojJustSoSoIsActive == true}]"></i>一般
+                                </div>
+                                <div @click="setFeedBackAttitude($event)" v-bind:code="3">
+                                    <i :class="['emoj-ok', {'emoj-ok-selected':emojOkIsActive == true}]"></i>满意
+                                </div>
                             </div>
                             <div class="feedback-textarea">
                                 <div class="feedback-textarea-wrapper">
-                                    <textarea class="txt" placeholder="请填写更多反馈建议"></textarea>
-                                    <button class="btn">提交</button>
+                                    <textarea @input="writeFeedBackContent" class="txt" placeholder="请填写更多反馈建议"
+                                              ref="feedBackContent"></textarea>
+                                    <button :class="['btn', {'btn-disabled':feedBackDisabled == true}]"
+                                            @click="submitFeedBack">提交
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -593,8 +602,19 @@
                 areaCollection: [],
                 searchConditionCity: {city_code: '0', city_name: '不限'},    // 不能有逗号
                 searchConditionCityArea: {area_name: '不限'},
-                searchConditionCityAreaIsActive: false
+                searchConditionCityAreaIsActive: false,
 
+                // 反馈
+                isLogin: true,
+                feedBackAttitude: '0',   // 对搜索结果是否满意？
+                feedBackDisabled: true,  // 反馈按钮是否可用
+                feedBackContent: '',      // 反馈内容
+                attitudeCode: 0,         //
+                // 反馈态度图标是否变为绿色
+                emojNotStatisfyIsActive: false,
+                emojJustSoSoIsActive: false,
+                emojOkIsActive: false,
+                emojIsActiveCollection:[false,false,false], // 只有一个图标是绿色。暂未使用。
             }
         },
         mounted() {
@@ -960,6 +980,78 @@
                 // this.$router.go(0)
                 // window.open("http://chugang.net")    // 不管怎样，都会打开在新窗口打开页面
                 location.href = 'http://chugang.net'
+            },
+            // 反馈态度
+            setFeedBackAttitude(e) {
+                // 设置反馈态度
+                var target = e.currentTarget
+                // 两个都行
+                // var child = target.firstChild
+                var child = target.firstElementChild
+                console.log(child)
+                var className = child.className
+                console.log(className)
+                // 本想使用循环的。
+                switch (className) {
+                    case 'emoj-not-statisfy':
+                        this.emojNotStatisfyIsActive = true
+                        this.emojJustSoSoIsActive = false
+                        this.emojOkIsActive = false
+                        break;
+                    case 'emoj-just-so-so':
+                        this.emojNotStatisfyIsActive = false
+                        this.emojJustSoSoIsActive = true
+                        this.emojOkIsActive = false
+                        break;
+                    case 'emoj-ok':
+                        this.emojNotStatisfyIsActive = false
+                        this.emojJustSoSoIsActive = false
+                        this.emojOkIsActive = true
+                        break;
+                }
+
+                var code = target.getAttribute('code')
+                this.attitudeCode = code
+                // 设置反馈按钮
+                var content = this.$refs.feedBackContent.value
+                console.log('content =' + content)
+                if (this.checkSubmitFeedBackDisabled()) {
+                    this.feedBackDisabled = false
+                }
+            },
+            // 提交反馈
+            submitFeedBack() {
+                if (this.isLogin == false) {
+                    alert('没有登录，不能提交')
+                    return
+                }
+                // 获取反馈内容
+                // var content = this.$refs.feedBackContent.innerText   // 不适用于input、textarea等
+                var content = this.$refs.feedBackContent.value
+                // 提交反馈
+                if (this.feedBackDisabled == true) {
+                    console.log('按钮禁用')
+                } else {
+                    console.log('反馈内容：' + content)
+                }
+            },
+            // 检测是否能提交反馈
+            checkSubmitFeedBackDisabled() {
+                var attitudeCode = this.attitudeCode
+                var content = this.$refs.feedBackContent.value
+                if (attitudeCode != 0 && content != '') {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            // 输入反馈内容
+            writeFeedBackContent() {
+                var content = this.$refs.feedBackContent.value
+                console.log(content)
+                if (this.checkSubmitFeedBackDisabled()) {
+                    this.feedBackDisabled = false
+                }
             }
         }
     }

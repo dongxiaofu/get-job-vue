@@ -1107,6 +1107,10 @@ ul {
     top: 26px;
     left: 0px;
 }
+/*选中状态*/
+.emoj-not-statisfy-selected {
+    background-position: -47px 0;
+}
 
 .emoj-just-so-so {
     background-position: -92px 0;
@@ -1116,8 +1120,24 @@ ul {
     left: -8px;
 }
 
+.emoj-just-so-so-selected {
+    background-position: -139px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
 .emoj-ok {
     background-position: -188px 0;
+    width: 40px;
+    height: 40px;
+    top: 26px;
+    left: -8px;
+}
+
+.emoj-ok-selected {
+    background-position: -235px 0;
     width: 40px;
     height: 40px;
     top: 26px;
@@ -1167,7 +1187,11 @@ ul {
     position: absolute; /*使用它之后，元素可以设置widht和height；不使用，button也可以设置*/
     top: 20px;
     right: 0px;
-
+}
+/*禁用按钮效果*/
+.feedback-textarea .btn-disabled{
+    background-color: #9fa4b0;
+    border: 1px solid #9fa4b0;
 }
 
 .pos-bread {
