@@ -395,6 +395,9 @@ ul {
     position: relative;
     /*border: 1px solid red;*/
     margin: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 可使过长文字居中显示，无此项，右边无间距*/
 }
 
 
@@ -410,8 +413,8 @@ ul {
     margin-right: 11px;
     border-bottom: none;
     bottom: 0px;
-    /*padding: 0px 0px;*/
-    /*margin-bottom: 0px;*/
+    white-space: nowrap;
+    overflow: auto;
 }
 
 .icon-arrow-right {
@@ -494,7 +497,7 @@ ul {
     width: 100%;
 }
 
-.filter-select-box .selected{
+.filter-select-box .selected {
     color: red;
 }
 

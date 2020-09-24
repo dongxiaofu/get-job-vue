@@ -89,41 +89,31 @@
                     <div class="condition-box">
                         <dl class="condition-city">
                             <dd class="city-wrapper">
-                                <a class="disabled" href="javascript:;">武汉</a>
+                                <a class="disabled" href="javascript:;">{{searchConditionCity.city_name}}</a>
                                 <em class="icon-arrow-right"></em>
-                                <a class="link-city selected" href="javascript:;">不限</a>
+                                <a class="link-city selected" href="javascript:;">{{searchConditionCityArea.area_name}}</a>
                                 <em class="icon-arrow-right"></em>
                                 <span class="hot-text">热门城市：</span>
-                                <a href="/c100010000/" ka="sel-city-100010000">全国</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">北京</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">上海</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">广州</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">深圳</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">杭州</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">天津</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">全国</a>
-                                <a href="/c100010000/" ka="sel-city-100010000">全国</a>
+                                <a
+                                        v-for="city in cityCollection"
+                                        v-bind:city-code=city.city_code
+                                        v-on:click="setSearchConditionCity($event)"
+                                >
+                                    {{city.city_name}}
+                                </a>
                             </dd>
                         </dl>
                         <dl class="condition-district">
                             <dd class="district-wrapper">
                                 <a class="selected first" href="/c101200100/" ka="sel-business-0">不限</a>
-                                <a href="/c101200100/b_%E6%B4%AA%E5%B1%B1%E5%8C%BA/" ka="sel-business-0">洪山区</a>
-                                <a href="/c101200100/b_%E6%AD%A6%E6%98%8C%E5%8C%BA/" ka="sel-business-1">武昌区</a>
-                                <a href="/c101200100/b_%E6%B1%9F%E5%A4%8F%E5%8C%BA/" ka="sel-business-2">江夏区</a>
-                                <a href="/c101200100/b_%E6%B1%9F%E6%B1%89%E5%8C%BA/" ka="sel-business-3">江汉区</a>
-                                <a href="/c101200100/b_%E6%B1%9F%E5%B2%B8%E5%8C%BA/" ka="sel-business-4">江岸区</a>
-                                <a href="/c101200100/b_%E6%B1%89%E9%98%B3%E5%8C%BA/" ka="sel-business-5">汉阳区</a>
-                                <a href="/c101200100/b_%E7%A1%9A%E5%8F%A3%E5%8C%BA/" ka="sel-business-6">硚口区</a>
-                                <a href="/c101200100/b_%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA/"
-                                   ka="sel-business-7">东西湖区</a>
-                                <a href="/c101200100/b_%E8%94%A1%E7%94%B8%E5%8C%BA/" ka="sel-business-8">蔡甸区</a>
-                                <a href="/c101200100/b_%E9%9D%92%E5%B1%B1%E5%8C%BA/" ka="sel-business-9">青山区</a>
-                                <a href="/c101200100/b_%E9%BB%84%E9%99%82%E5%8C%BA/" ka="sel-business-10">黄陂区</a>
-                                <a href="/c101200100/b_%E4%B8%9C%E8%A5%BF%E6%B9%96%E5%8C%BA/"
-                                   ka="sel-business-7">湖北武汉东西湖区</a>
-                                <a href="/c101200100/b_%E6%96%B0%E6%B4%B2%E5%8C%BA/" ka="sel-business-11">新洲区</a>
-                                <a href="/c101200100/b_%E6%B1%89%E5%8D%97%E5%8C%BA/" ka="sel-business-12">汉南区</a>
+                                <a
+                                        v-for="(area,index) in areaCollection"
+                                        v-on:click="setSearchConditionCityArea($event)"
+                                        v-bind:index = index
+                                        :class="[{'selected':searchConditionCityAreaIsActive == index}, '']"
+                                >
+                                    {{area.area_name}}
+                                </a>
                             </dd>
                         </dl>
                     </div>
@@ -597,6 +587,13 @@
                 stageQueryIsActive: false,
                 scaleQueryIsActive: false,
 
+                // 地区:城市、城区（不用代号查询，直接在工作中存储城区名）
+                cityCollection: [],
+                areaCollection: [],
+                searchConditionCity: {city_code: '0', city_name: '不限'},    // 不能有逗号
+                searchConditionCityArea: {area_name: '不限'},
+                searchConditionCityAreaIsActive:false
+
             }
         },
         mounted() {
@@ -719,6 +716,39 @@
             this.salaryQuery = {code: '0', name: '薪资要求'}
             this.stageQuery = {code: '0', name: '融资阶段'}
             this.scaleQuery = {code: '0', name: '公司规模'}
+
+            this.cityCollection = [{city_code: '100010000', city_name: '全国'},
+                {city_code: '101010100', city_name: '北京'},
+                {city_code: '101020100', city_name: '上海'},
+                {city_code: '101280100', city_name: '广州'},
+                {city_code: '101280600', city_name: '深圳'},
+                {city_code: '101210100', city_name: '杭州'},
+                {city_code: '101030100', city_name: '天津'},
+                {city_code: '101110100', city_name: '西安'},
+                {city_code: '101190400', city_name: '苏州'},
+                {city_code: '101200100', city_name: '武汉'},
+                {city_code: '101230200', city_name: '厦门'},
+                {city_code: '101250100', city_name: '长沙'},
+                {city_code: '101270100', city_name: '成都'},
+                {city_code: '101180100', city_name: '郑州'},
+                {city_code: '101040100', city_name: '重庆'},]
+            this.areaCollection = [{area_name: '闵行区'},
+                {area_name: '徐汇区'},
+                {area_name: '浦东新区 浦东新区浦东新区浦东新区浦东新区浦东新区'},
+                {area_name: '长宁区'},
+                {area_name: '杨浦区'},
+                {area_name: '黄浦区'},
+                {area_name: '静安区'},
+                {area_name: '嘉定区'},
+                {area_name: '青浦区'},
+                {area_name: '虹口区'},
+                {area_name: '松江区'},
+                {area_name: '普陀区'},
+                {area_name: '宝山区'},]
+
+            this.searchConditionCity = {city_code: '0', city_name: '不限'}    // 不能有逗号
+            this.searchConditionCityArea = {area_name: '不限'}
+
         },
         methods: {
             showIndustryBox: function () {
@@ -895,6 +925,29 @@
                 this.scaleQueryIsActive = true
                 // 隐藏列表
                 this.hideCompanyScaleBox()
+            },
+            // 地区--城市
+            setSearchConditionCity(e) {
+                var target = e.currentTarget
+                var cityName = target.innerText
+                var cityCode = target.getAttribute('city_code')
+                // 设置当前城市
+                this.searchConditionCity.city_name = cityName
+                this.searchConditionCity.city_code = cityCode
+                // 重新获取当前城区
+                this.cityCollection = this.cityCollection
+                // 用新的查询条件重新打开页面，或者说，请求工作列表数据--请求接口
+            },
+            // 地区--城区
+            setSearchConditionCityArea(e) {
+                // 设置当前城区
+                var target = e.currentTarget
+                var index = target.getAttribute('index')
+                this.searchConditionCityAreaIsActive = index
+                var areaName = target.innerText
+                this.searchConditionCityArea.area_name = areaName
+                // 用新的查询条件重新打开页面，或者说，请求工作列表数据--请求接口
+                // 新的查询条件：已有查询条件 + 当前城区
             },
             // 清空筛选条件
             resetSearchCondition() {
