@@ -23,11 +23,6 @@
                             </p>
                             <div class="tag-container">
                                 <span class="tag" v-for="benefit in job.benefits">{{benefit}}</span>
-                                <!--<span class="tag">五险一金</span>-->
-                                <!--<span class="tag">年终奖</span>-->
-                                <!--<span class="tag">带薪年假</span>-->
-                                <!--<span class="tag">通讯补贴</span>-->
-                                <!--<span class="tag">节日福利</span>-->
                             </div>
                         </div>
                         <div class="job-op">
@@ -477,6 +472,7 @@
                                 <!--</div>-->
                             </div>
                         </div>
+                        <UploadFile></UploadFile>
                     </div>
                 </div>
             </div>
@@ -553,10 +549,11 @@
     import Header from '../plugin/header'
     import CityPopWindow from '../plugin/city-pop-window'
     import ReportPopWindow from '../plugin/report-pop-window'
+    import UploadFile from '../plugin/upload-file'
 
     export default {
         name: 'JobDetail',
-        components: {Header, CityPopWindow, ReportPopWindow},
+        components: {Header, CityPopWindow, ReportPopWindow, UploadFile},
         inject: ['reload'],
         data() {
             return {

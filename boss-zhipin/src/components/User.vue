@@ -43,7 +43,7 @@
                                         <img src="/static/User/icon-file.png" class="icon-file">
                                         <span class="resume-name"
                                               v-on:click="download($event)"
-                                              v-bind:attachment_id = index
+                                              v-bind:attachment_id=index
                                         >
                                             {{attachment.name}}
                                         </span>
@@ -54,9 +54,11 @@
                                              @mouseleave="hideCurrentAnnexCard($event)"
                                         >
                                             <div class="card-body">
-                                                <div class="card-img"><img src="/static/User/icon-pdf.d2b22d86.png"></div>
+                                                <div class="card-img"><img src="/static/User/icon-pdf.d2b22d86.png">
+                                                </div>
                                                 <div class="resume-name">{{attachment.name}}</div>
-                                                <div class="upload-date">{{attachment.size}} {{attachment.upload_time}} 上传
+                                                <div class="upload-date">{{attachment.size}} {{attachment.upload_time}}
+                                                    上传
                                                 </div>
                                             </div>
                                             <div class="card-footer">
@@ -814,7 +816,7 @@
                 experiences: [],
 
                 experienceApi: '/api/insert',
-                userProfileApi: '/api/insert',
+                userProfileApi: '/api/insert222',
                 userAdvantageApi: '/api/insert',
 
                 job_search_status_options: [
@@ -855,7 +857,12 @@
             SubUserProfile: function () {
                 console.log(this.user_profile);
                 var data = this.user_profile
-                this.$http.post((this.userProfileApi), data, {emulateJSON: false}).then(response => {
+                this.$http.post((this.userProfileApi), data, {
+                    headers: {
+                        Authorization: "Bearer ",
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(response => {
                     this.grouplist = response.body;
                     alert("提交成功")
                 }, response => {
@@ -1098,7 +1105,7 @@
                 annexCard.style.display = 'none'
             },
             // 下载附件
-            download:function (e) {
+            download: function (e) {
                 var target = e.currentTarget
                 var attachmentId = target.getAttribute('attachment_id')
                 console.log(attachmentId)

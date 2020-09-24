@@ -95,18 +95,24 @@
                     <span class="item-label">
                         证据截图：
                     </span>
+
                             <span class="item-content">
-                        <span id="pretty-upload-btn">
-                            <input class="upload-btn-none" type="file">
+                                <span v-if="isUpload" id="picture-previewer">
+                                    <span id="close-picture-previewer" @click="closePicturePreviewer"></span>
+                                <img :src="imgURL"/>
+                            </span>
+                        <span id="pretty-upload-btn" v-else>
+                            <input class="upload-btn-none" type="file" @change="tirggerFile($event)">
                             <i class="icon-plus"></i>
                             <span class="upload-txt">上传图片</span>
                         </span>
-                    </span>
+
+                            </span>
                         </div>
                     </div>
                     <div class="report-form-footer">
                         <div class="report-form-footer-inner">
-                            <button class="button-cancel">取消</button>
+                            <button class="button-cancel" @click="hideReportForm">取消</button>
                             <button class="button-confirm" @click="submitReportContent">确定</button>
                         </div>
                     </div>
@@ -150,9 +156,13 @@
                 // 剩余输入字数
                 remainWordNum: 500,
                 totalWordNum: 500,
+                // 是否已经上传图片了
+                isUpload: false,
+                uploadFileApi: 'http://dev.cg.com/tool/upload.php',
             }
         },
         mounted() {
+            // this.isUpload = true
         },
         methods: {
             showReportComponent: function () {
@@ -235,7 +245,7 @@
             // 提交反馈内容
             submitReportContent() {
                 // 检查是否能符合提交条件：三个必填项是否为空
-                if(this.checkCanSubmit() == false){
+                if (this.checkCanSubmit() == false) {
                     alert('请填写所有加红星号的内容')
                     return
                 }
@@ -259,6 +269,38 @@
                     return true
                 }
                 return false
+            },
+            // 上传图片
+            tirggerFile(event) {
+                alert(3333)
+                let self = this;
+                let file = event.target.files[0]
+                let param = new FormData() // 创建form对象
+                param.append('file', file, file.name) // 通过append向form对象添加数据
+                param.append('type', '1') // 添加form表单中其他数据
+                console.log(param.get('file')) // FormData私有类对象，访问不到，可以通过get判断值是否传进去
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+
+                    }
+                }
+                let api = this.uploadFileApi
+                this.$http.post(api, param, config).then(response => {
+                    var body = response.body;
+                    console.log('body start')
+                    console.log(body)
+                    console.log('body end')
+                    this.imgURL = body.imgURL
+                    this.isUpload = true
+                }, response => {
+                    console.log(response)
+                    alert("出问题啦")
+                });
+            },
+            // 关闭图片预览
+            closePicturePreviewer() {
+                this.isUpload = false
             }
         }
     }
@@ -683,4 +725,39 @@
     .report-form-footer-inner button.button-confirm:hover {
         border: 2px solid #5dd5c8;
     }
+
+    /*图片预览 start*/
+    #picture-previewer {
+        /*float: right;*/
+        display: inline-block;
+        width: 95%;
+        height: 100px;
+        position: relative;
+
+        /*border: 1px solid red;*/
+    }
+
+    #picture-previewer img {
+        width: 100%;
+        height: 100px;
+    }
+
+    /*图片预览关闭按钮*/
+    #close-picture-previewer {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        cursor: pointer;
+    }
+
+    #close-picture-previewer::before {
+        content: "\D7";
+        font-size: 21px;
+    }
+
+    /*图片预览 end*/
 </style>
