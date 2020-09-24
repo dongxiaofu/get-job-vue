@@ -1017,6 +1017,8 @@
                 console.log('content =' + content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
+                }else{
+                    this.feedBackDisabled = true
                 }
             },
             // 提交反馈
@@ -1051,6 +1053,8 @@
                 console.log(content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
+                }else {
+                    this.feedBackDisabled = true
                 }
             }
         }

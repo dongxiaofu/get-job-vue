@@ -1679,7 +1679,7 @@ a.wechat-qr:hover img {
 .industry-box ul li:hover {
     background-color: #f2f5f9;
 }
-
+/*聚焦于元素A时显示，实现了这种效果：点击A，显示；点击非A，消失*/
 #filter-box .company:focus + .industry-box {
     display: block;
 }
