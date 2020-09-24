@@ -1435,7 +1435,7 @@ a.wechat-qr:hover img {
 .report-form-inner .form-row .item-label .icon-require {
     color: red;
     position: relative;
-    width: 4px; /*让星河和文字靠近*/
+    width: 4px; /*让星号和文字靠近*/
     /*left: 5px;*/
 }
 

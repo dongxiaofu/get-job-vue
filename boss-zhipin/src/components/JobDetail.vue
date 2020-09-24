@@ -103,7 +103,7 @@
                                    ref="qrBtn"><i
                                         class="icon-wechat-qr"></i>微信扫码分享</a>
                                 <a href="#"><i class="icon-like"></i>感兴趣</a>
-                                <a href="javascript:;" v-on:click="showReportListBox"><i
+                                <a href="javascript:;" v-on:click="showReportComponent"><i
                                         class="icon-report"></i>举报</a>
                                 <div class="mini-app" ref="miniApp" style="display: none">
                                     <div class="mini-app-inner">
@@ -543,160 +543,8 @@
                 </div>
             </div>
         </div>
-        <!--举报列表弹窗-->
-        <div class="dialog-wrap" style="display: none" ref="reportTypeListBox">
-            <!--弹窗主体不能放到遮罩层，会模糊不清-->
-            <div class="dialog-layer">
-            </div>
-            <!--@blur="hideReportListBox" 无效。什么原因？是因为它就没有获得焦点。-->
-            <div class="dialog-report-type-list-container" tabindex="-1" @blur="hideReportListBox">
-                <div class="dialog-report-type-list-container-close" v-on:click="hideReportListBox"></div>
-                <div class="dialog-report-type-list-container-con">
-                    <div class="dialog-report-type-list-container-con-title">
-                        <h3>选择举报类型</h3>
-                    </div>
-                    <div class="dialog-report-type-list">
-                        <div class="list-item" v-on:click="goToReportFormBox">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item last">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--举报表单-->
-        <div class="dialog-wrap" style="display: none" ref="reportForm">
-            <!--弹窗主体不能放到遮罩层，会模糊不清-->
-            <div class="dialog-layer">
-            </div>
-            <div class="report-form-container">
-                <div class="report-form-inner">
-                    <div class="report-form-close" v-on:click="hideReportForm"></div>
-                    <div class="report-form-con">
-                        <div class="report-form-con-title">
-                            <div class="icon-left" v-on:click="returnReportList"><i></i></div>
-                            <h3>补充举报证据</h3>
-                        </div>
-                        <div class="form-row">
-                            <span class="item-label">举报原因：</span>
-                            <span class="item-content">人身攻击</span>
-                        </div>
-                        <div class="form-row">
-                    <span class="item-label">
-                        <span class="icon-require">*</span>
-                        具体情况说明：
-                    </span>
-                            <span class="item-content">
-                        <span class="reason">人身攻击</span>
-                        <span class="reason">人身攻击</span>
-                        <span class="reason mult-selected">人身攻击人身攻击</span>
-                        <span class="reason">人身攻击</span>
-                    </span>
-                        </div>
-                        <div class="form-row txt">
-                    <span class="item-label">
-                        <span class="icon-require">*</span>
-                        补充说明：
-                    </span>
-                            <span class="item-content" id="ipt-textarea">
-                        <textarea class="item-txt" placeholder="补充更详细的说明，可帮助工作人员更快定位问题，快速处理"></textarea>
-                        <span class="word-num">0/500</span>
-                    </span>
-                        </div>
-                        <div class="form-row">
-                    <span class="item-label">
-                        <span class="icon-require">*</span>
-                        验证码：
-                    </span>
-                            <span class="item-content">
-                        <input type="text" class="item-ipt" placeholder="请输入验证码">
-                        <img src="/static/JobDetail/verify-code.png" id="verify-code">
-                    </span>
-                        </div>
-                        <div class="form-row upload">
-                    <span class="item-label">
-                        证据截图：
-                    </span>
-                            <span class="item-content">
-                        <span id="pretty-upload-btn">
-                            <input class="upload-btn-none" type="file">
-                            <i class="icon-plus"></i>
-                            <span class="upload-txt">上传图片</span>
-                        </span>
-                    </span>
-                        </div>
-                    </div>
-                    <div class="report-form-footer">
-                        <div class="report-form-footer-inner">
-                            <button class="button-cancel">取消</button>
-                            <button class="button-confirm">确定</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--举报-->
+        <ReportPopWindow ref="reportPopWindow"></ReportPopWindow>
         <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
     </div>
 </template>
@@ -704,10 +552,11 @@
 <script>
     import Header from '../plugin/header'
     import CityPopWindow from '../plugin/city-pop-window'
+    import ReportPopWindow from '../plugin/report-pop-window'
 
     export default {
         name: 'JobDetail',
-        components: {Header, CityPopWindow},
+        components: {Header, CityPopWindow, ReportPopWindow},
         inject: ['reload'],
         data() {
             return {
@@ -1110,8 +959,9 @@
                     this.$refs.qrBtn.style.cursor = 'pointer';
                 }
             },
-            showReportListBox: function () {
-                this.$refs.reportTypeListBox.style.display = 'block';
+            // 显示举报组件，调用组件的方法，而不是直接设置组件的CSS样式
+            showReportComponent: function () {
+                this.$refs.reportPopWindow.showReportComponent()
             },
             hideReportListBox: function () {
                 this.$refs.reportTypeListBox.style.display = 'none';

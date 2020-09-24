@@ -795,7 +795,7 @@
             hidePositionBox: function () {
                 this.$refs.positionType.style.display = 'none'
             },
-            // 搜索框地址
+            // 搜索框地址，调用组件的方法，而不是直接设置组件的CSS样式
             switchCityBox: function () {
                 this.$refs.cityPopWindow.switchCityBox()
             },
