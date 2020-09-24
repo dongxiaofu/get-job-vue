@@ -396,7 +396,6 @@ ul {
     /*border: 1px solid red;*/
     margin: 0px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis; /* 可使过长文字居中显示，无此项，右边无间距*/
 }
 
@@ -414,7 +413,10 @@ ul {
     border-bottom: none;
     bottom: 0px;
     white-space: nowrap;
-    overflow: auto;
+    overflow: hidden;
+    /*height: auto;*/
+    vertical-align: top; /*解决overflow导致的相邻元素塌陷*/
+    text-overflow: ellipsis; /* 可使过长文字居中显示，无此项，右边无间距*/
 }
 
 .icon-arrow-right {
@@ -440,10 +442,14 @@ ul {
     overflow: hidden;
 }
 
-.condition-district a.first {
+.condition-district .first {
     padding-left: 0px;
+}
+
+.condition-district-select {
     color: red;
 }
+
 
 .filter-select-box {
     margin-top: 10px;

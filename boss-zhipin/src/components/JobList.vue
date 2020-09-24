@@ -91,7 +91,8 @@
                             <dd class="city-wrapper">
                                 <a class="disabled" href="javascript:;">{{searchConditionCity.city_name}}</a>
                                 <em class="icon-arrow-right"></em>
-                                <a class="link-city selected" href="javascript:;">{{searchConditionCityArea.area_name}}</a>
+                                <a class="link-city selected"
+                                   href="javascript:;">{{searchConditionCityArea.area_name}}</a>
                                 <em class="icon-arrow-right"></em>
                                 <span class="hot-text">热门城市：</span>
                                 <a
@@ -105,12 +106,12 @@
                         </dl>
                         <dl class="condition-district">
                             <dd class="district-wrapper">
-                                <a class="selected first" href="/c101200100/" ka="sel-business-0">不限</a>
+                                <!--<a class="first" href="/c101200100/" ka="sel-business-0">不限</a>-->
                                 <a
                                         v-for="(area,index) in areaCollection"
                                         v-on:click="setSearchConditionCityArea($event)"
-                                        v-bind:index = index
-                                        :class="[{'selected':searchConditionCityAreaIsActive == index}, '']"
+                                        v-bind:index=index
+                                        :class="[{'first':index == 0},{'condition-district-select':searchConditionCityAreaIsActive == index}, '']"
                                 >
                                     {{area.area_name}}
                                 </a>
@@ -592,7 +593,7 @@
                 areaCollection: [],
                 searchConditionCity: {city_code: '0', city_name: '不限'},    // 不能有逗号
                 searchConditionCityArea: {area_name: '不限'},
-                searchConditionCityAreaIsActive:false
+                searchConditionCityAreaIsActive: false
 
             }
         },
@@ -732,7 +733,8 @@
                 {city_code: '101270100', city_name: '成都'},
                 {city_code: '101180100', city_name: '郑州'},
                 {city_code: '101040100', city_name: '重庆'},]
-            this.areaCollection = [{area_name: '闵行区'},
+            this.areaCollection = [{area_name: '不限'},
+                {area_name: '闵行区'},
                 {area_name: '徐汇区'},
                 {area_name: '浦东新区 浦东新区浦东新区浦东新区浦东新区浦东新区'},
                 {area_name: '长宁区'},
