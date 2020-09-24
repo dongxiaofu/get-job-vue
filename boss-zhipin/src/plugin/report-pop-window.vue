@@ -13,67 +13,17 @@
                         <h3>选择举报类型</h3>
                     </div>
                     <div class="dialog-report-type-list">
-                        <div class="list-item" v-on:click="goToReportFormBox">
+                        <div class="list-item" v-on:click="goToReportFormBox($event)"
+                             v-for="reportType in reportTypeCollection"
+                             v-bind:code=reportType.code
+                             v-bind:title=reportType.title
+                             v-bind:sub_title=reportType.sub_title
+                        >
                             <div class="first-title">
-                                色情骚扰
+                                {{reportType.title}}
                             </div>
                             <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
-                            </div>
-                            <div class="icon-right">
-                                <i></i>
-                            </div>
-                        </div>
-                        <div class="list-item last">
-                            <div class="first-title">
-                                色情骚扰
-                            </div>
-                            <div class="second-title">
-                                招聘者发布的信息包含色情低俗内容或存在性骚扰行为
+                                {{reportType.sub_title}}
                             </div>
                             <div class="icon-right">
                                 <i></i>
@@ -98,7 +48,7 @@
                         </div>
                         <div class="form-row">
                             <span class="item-label">举报原因：</span>
-                            <span class="item-content">人身攻击</span>
+                            <span class="item-content">{{selectedReportType.title}}</span>
                         </div>
                         <div class="form-row">
                     <span class="item-label">
@@ -106,10 +56,14 @@
                         具体情况说明：
                     </span>
                             <span class="item-content">
-                        <span class="reason">人身攻击</span>
-                        <span class="reason">人身攻击</span>
-                        <span class="reason mult-selected">人身攻击人身攻击</span>
-                        <span class="reason">人身攻击</span>
+                        <span
+                                :class="reportReason.className"
+                                v-for="(reportReason,index) in reportReasonCollection"
+                                v-bind:index=index
+                                v-on:click="selectReportReason($event)"
+                        >
+                            {{reportReason.title}}
+                        </span>
                     </span>
                         </div>
                         <div class="form-row txt">
@@ -118,8 +72,13 @@
                         补充说明：
                     </span>
                             <span class="item-content" id="ipt-textarea">
-                        <textarea class="item-txt" placeholder="补充更详细的说明，可帮助工作人员更快定位问题，快速处理"></textarea>
-                        <span class="word-num">0/500</span>
+                        <textarea
+                                class="item-txt" placeholder="补充更详细的说明，可帮助工作人员更快定位问题，快速处理"
+                                v-model="userObject" maxlength="500"
+                                @input="countWordNum"
+                        >
+                        </textarea>
+                        <span class="word-num">{{remainWordNum}}/{{totalWordNum}}</span>
                     </span>
                         </div>
                         <div class="form-row">
@@ -128,7 +87,7 @@
                         验证码：
                     </span>
                             <span class="item-content">
-                        <input type="text" class="item-ipt" placeholder="请输入验证码">
+                        <input type="text" class="item-ipt" placeholder="请输入验证码" v-model="verifyCode">
                         <img src="/static/JobDetail/verify-code.png" id="verify-code">
                     </span>
                         </div>
@@ -148,7 +107,7 @@
                     <div class="report-form-footer">
                         <div class="report-form-footer-inner">
                             <button class="button-cancel">取消</button>
-                            <button class="button-confirm">确定</button>
+                            <button class="button-confirm" @click="submitReportContent">确定</button>
                         </div>
                     </div>
                 </div>
@@ -161,8 +120,36 @@
     export default {
         name: "report-pop-window",
         data() {
-            return{
-
+            return {
+                // 举报分类
+                reportTypeCollection: [
+                    {code: '1', title: '色情骚扰', sub_title: '招聘者发布的信息包含色情低俗内容或存在性骚扰行为'},
+                    {code: '2', title: '色情骚扰2', sub_title: '招聘者发布的信息包含色情低俗内容或存在性骚扰行为'},
+                    {code: '3', title: '色情骚扰3', sub_title: '招聘者发布的信息包含色情低俗内容或存在性骚扰行为'},
+                    {code: '4', title: '色情骚扰4', sub_title: '招聘者发布的信息包含色情低俗内容或存在性骚扰行为'},
+                ],
+                // 举报具体原因
+                reportReasonCollection: [
+                    {title: '人身攻击2', className: 'reason'},
+                    {title: '言语恐吓', className: 'reason'},
+                    {title: '虚假信息', className: 'reason'},
+                    {title: '皮包公司', className: 'reason'}
+                ],
+                // 验证码
+                verifyCode: 'ABC',
+                // 图片
+                evidence: '',
+                // 举报内容
+                content: '',
+                // 选择的举报分类
+                selectedReportType: {code: '0', title: '', sub_title: ''},
+                // 选中的某分类下的具体原因
+                selectedReportReasonCollection: [],
+                // 输入框
+                userObject: '',
+                // 剩余输入字数
+                remainWordNum: 500,
+                totalWordNum: 500,
             }
         },
         mounted() {
@@ -174,10 +161,20 @@
             hideReportListBox: function () {
                 this.$refs.reportTypeListBox.style.display = 'none';
             },
-            goToReportFormBox: function () {
+            goToReportFormBox: function (e) {
                 this.$refs.reportTypeListBox.style.display = 'none';
                 // 打开举报表单
                 this.$refs.reportForm.style.display = 'block';
+
+                // 设置选中的举报分类
+                var target = e.currentTarget
+                var code = target.getAttribute('code')
+                console.log('code=' + code)
+                var title = target.getAttribute('title')
+                console.log('title=' + title)
+                this.selectedReportType = {code: code, title: title, sub_title: ''}
+                // 根据举报分类获取该分类下的具体原因，还要重设className
+                this.reportReasonCollection = this.reportReasonCollection
             },
             // 关闭举报表单
             hideReportForm: function () {
@@ -188,6 +185,81 @@
                 this.$refs.reportForm.style.display = 'none';
                 this.$refs.reportTypeListBox.style.display = 'block';
             },
+            // 选择举报原因
+            selectReportReason(e) {
+                var target = e.currentTarget
+                var index = target.getAttribute('index')
+                var className = this.reportReasonCollection[index].className
+                var unselectedClassName = 'reason'
+                var selectedClassName = ' mult-select'
+                var complexClassName = className + selectedClassName
+                var selectedReason = target.innerText
+                // 未选中状态，点击后选中；选中状态，点击后未选中
+                // 动态维护选中的举报原因
+                if (className == unselectedClassName) {
+                    this.reportReasonCollection[index].className = complexClassName
+                    this.selectedReportReasonCollection.push(selectedReason)
+                } else {
+                    this.reportReasonCollection[index].className = unselectedClassName
+                    var selectedReportReasonCollection = this.selectedReportReasonCollection
+                    // vue 删除数组中的一个元素
+                    this.selectedReportReasonCollection.splice(selectedReportReasonCollection.indexOf(selectedReason, 1))
+                }
+                console.info('selectedReasonCollection length = ' + this.selectedReportReasonCollection.length)
+                for (var i = 0; i < this.selectedReportReasonCollection.length; i++) {
+                    var selectedReason = this.selectedReportReasonCollection[i]
+                    console.log(selectedReason)
+                }
+                console.log("reset selectedReportReasonCollection2 " + this.selectedReportReasonCollection.length)
+                // 设置选中的举报原因
+                // 上文设置元素element的class是A后，下文马上查询class是A的元素，查询结果不包括element，
+                // 所以下面的代码无效
+                // console.log("reset selectedReportReasonCollection")
+                // this.selectedReportReasonCollection = []
+                // console.log("reset selectedReportReasonCollection " + this.selectedReportReasonCollection.length)
+                // var selectedReasonCollection = document.getElementsByClassName(complexClassName)
+                // console.info('selectedReasonCollection length = ' + selectedReasonCollection.length)
+                // for (var i = 0; i < selectedReasonCollection.length; i++) {
+                //     var selectedReason = selectedReasonCollection[i]
+                //     console.log(selectedReason.innerText)
+                //     this.selectedReportReasonCollection.push(selectedReason.innerText)
+                // }
+                // console.log("reset selectedReportReasonCollection2 " + this.selectedReportReasonCollection.length)
+            },
+            // 统计输入字数
+            // 在vue中，差点忘记使用v-mode，在工作详情页，获取反馈内容，使用了value而不是v-mode
+            countWordNum() {
+                let txtVal = this.userObject.length
+                this.remainWordNum = this.totalWordNum - txtVal
+            },
+            // 提交反馈内容
+            submitReportContent() {
+                // 检查是否能符合提交条件：三个必填项是否为空
+                if(this.checkCanSubmit() == false){
+                    alert('请填写所有加红星号的内容')
+                    return
+                }
+
+                let reportContent = {
+                    reportReasonType: this.selectedReportType,
+                    selectedReportReasonCollection: this.selectedReportReasonCollection,
+                    content: this.userObject,
+                    verifyCode: this.verifyCode,
+                    evidence: this.evidence
+                }
+
+                // 请求接口，提交数据
+                console.info('提交数据 start')
+                console.log(reportContent)
+                console.info('提交数据 end')
+            },
+            // 检查是否能符合提交条件：三个必填项是否为空
+            checkCanSubmit() {
+                if (this.selectedReportReasonCollection.length != 0 && this.userObject != '' && this.verifyCode != '') {
+                    return true
+                }
+                return false
+            }
         }
     }
 </script>
@@ -456,6 +528,12 @@
         border: #aad5cb;
     }
 
+    /*选中多个*/
+    .report-form-inner .form-row .item-content .mult-select {
+        background-color: #aad5cb;
+        border: #aad5cb;
+    }
+
     .report-form-inner .form-row .item-content .item-txt {
         width: 95%;
         height: 78%;
@@ -477,9 +555,9 @@
         position: absolute;
         bottom: 0px;
         right: 0px;
-        width: 40px;
+        width: 48px;
         height: 15px;
-        line-height: 20px;
+        line-height: 15px;
         text-align: center;
         padding: 0;
 
