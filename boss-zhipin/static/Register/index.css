@@ -1,0 +1,409 @@
+body {
+    width: 100%;
+    height: 100%;
+    min-width: 1184px;
+    margin: 0px;
+    /*background-color: #5dd5c8;*/
+    font-size: 14px;
+    color: #414a60;
+    background: #5dd5c8 url("newbg.png") no-repeat;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+span {
+    padding: 0px;
+    margin: 0px;
+}
+
+div {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrap {
+    margin: 0px auto;
+    /*width: 808px;*/
+    /*padding-top: 100px;*/
+}
+
+#head {
+    width: 100%;
+    right: 0px;
+    height: 49px;
+    top: 0px;
+    position: absolute;
+    background: 0 0;
+    /*background-color: #0a001f;*/
+    /*background-position-x: 0;*/
+    /*background-position-y: 0;*/
+    color: #e7fff5;
+    opacity: .7;
+}
+
+#head #tel {
+    float: right;
+    height: 20px;
+    padding-right: 60px;
+    padding-top: 60px;
+}
+
+#side-bar {
+    background-color: #f8fcff;
+    color: #8d92a1;
+    width: 240px;
+    height: 100%;
+    float: left;
+    border-radius: 10px 0 0 10px;
+}
+
+#logo {
+    /*width: 50px;*/
+    display: block;
+    width: auto;
+    height: 40px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+#logo img {
+    width: 42px;
+    height: 42px;
+    border: none;
+}
+
+#logo div {
+    float: right;
+    position: relative;
+    right: 65px;
+    bottom: 9px;
+}
+
+#logo p {
+    color: #00c2b3;
+    line-height: 10px;
+}
+
+#main-bar {
+    margin-left: 240px;
+    height: 100%;
+}
+
+#content {
+    background-color: #ffff;
+    width: 740px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -280px;
+    margin-left: -370px;
+    border-radius: 10px;
+}
+
+#side-bar ul {
+    margin: 50px 0 0 0px;
+}
+
+#side-bar li {
+    margin-bottom: 50px;
+}
+
+#side-bar li i {
+    background: url("sign-slide.png") no-repeat;
+    width: 25px;
+    height: 42px;
+    float: left;
+    background-size: 100% auto;
+    background-position-x: 0px;
+    background-position-y: 8px;
+}
+
+#side-bar li:nth-of-type(4n+2) i {
+    /*background: url("sign-slide.png") no-repeat;*/
+    /*width: 25px;*/
+    /*height: 42px;*/
+    /*float: left;*/
+    /*background-size: 100% auto;*/
+    background-position-x: 0px;
+    background-position-y: -45px;
+}
+
+/*#content .icon2{*/
+/*background: url("sign-slide.png") no-repeat;*/
+/*width: 25px;*/
+/*height: 42px;*/
+/*float: left;*/
+/*background-size: 100% auto;*/
+/*background-position-x: 0px;*/
+/*background-position-y: -45px;*/
+/*}*/
+
+#side-bar ul span {
+    display: block;
+    margin-left: 50px;
+    color: #8d92a1;
+}
+
+#side-bar ul span:first-of-type {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+#main-bar {
+    position: relative;
+    margin-left: 240px;
+    height: 100%;
+}
+
+#main-bar .btn-switch {
+    background: url("btn-ewm.png") no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 42px;
+    height: 42px;
+    background-size: 42px 84px;
+}
+
+.switch-tip {
+    position: absolute;
+    width: 120px;
+    top: 0px;
+    left: 40px;
+    line-height: 30px;
+    font-size: 13px;
+    text-align: center;
+    color: #9fa3af;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 2);
+}
+
+.switch-tip i {
+    background: url("arrow-left.png") no-repeat center;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    bottom: 0px;
+    background-size: 20px 20px;
+    width: 10px;
+    margin: auto 0px;
+}
+
+.inner-box {
+    position: relative;
+    width: 324px;
+    padding-top: 74px;
+    margin: 0px auto;
+}
+
+.purpos-row {
+    margin: 0px;
+    font-size: 0;
+}
+
+.purpos-row span {
+    display: inline-block;
+    border: 1px solid #e3e7ed;
+    width: 153px;
+    line-height: 34px;
+    font-size: 14px;
+    margin-right: 7px;
+    text-align: center;
+}
+
+.purpos-row span.cur {
+    border: 1px solid #00c2b3;
+    color: #00c2b3;
+}
+
+.form-row {
+    margin: 0 0 30px;
+    position: relative;
+}
+
+.inner-box .row-select {
+    margin-top: 30px;
+    z-index: 10;
+}
+
+.dropdown-select {
+    position: absolute;
+    display: inline-block;
+    top: 1px;
+    left: 1px;
+    height: 40px;
+    z-index: 1;
+    background: 0 0;
+}
+
+.icon-select-arrow {
+    position: absolute;
+    left: 72px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background-image: url("icons.png");
+    background-position: 2px -54px;
+}
+
+.text-select {
+    border: 0;
+    display: inline-block;
+    text-align: right;
+    width: 70px;
+    font-style: normal;
+    padding: 7px 25px 7px 0px;
+}
+
+.ipt-wrap {
+    position: relative;
+    display: block;
+}
+
+.ipt {
+    min-height: 22px;
+    line-height: 22px;
+    padding: 6px 12px 5px 7px;
+    border: 1px solid #e3e7ed;
+    font-size: 13px;
+    /*min-width: 300px;*/
+    vertical-align: middle;
+}
+
+.ipt-phone {
+    width: 209px;
+    padding-left: 96px;
+}
+
+input[type=text]:focus {
+    outline: 1px solid #00c2b3;
+}
+
+.icon-sign-phone {
+    position: absolute;
+    background-image: url("icons-sign.png");
+    width: 20px;
+    height: 20px;
+    left: 9px;
+    top: 8px;
+    background-position: 2px 1px;
+}
+
+.dropdown-menu {
+    position: relative;
+    left: 0;
+    margin-right: 0px;
+    z-index: 10;
+}
+
+.dropdown-menu ul {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 176px;
+    max-height: 292px;
+    border: 1px #e3e7ed solid;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    overflow: auto;
+    display: none;
+}
+
+.dropdown-menu li {
+    line-height: 42px;
+    padding: 0px 15px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #e7fff5;
+}
+
+.dropdown-menu .num {
+    float: right;
+}
+
+.ipt-sms {
+    width: 270px;
+    border: 1px solid #e3e7ed;
+    padding-left: 40px;
+    color: #9fa3b0;
+}
+
+.btn-sms {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #5dd5c8;
+    border: 0px;
+    min-width: 104px;
+    background-image: url("icons-sign.png");
+    background-position: 0 -363px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}
+
+/*.btn-sms button:focus {*/
+/*outline: none;*/
+/*}*/
+
+button {
+    outline: none;
+}
+
+.icon-sign-sms {
+    position: absolute;
+    top: 4px;
+    left: 12px;
+    /*background-repeat: no-repeat;*/
+    background-image: url("icons-sign.png");
+    width: 40px;
+    height: 40px;
+    background-position: 2px -138px;
+    background-repeat: no-repeat;
+}
+
+.btn-register {
+    background-color: #5dd5c8;
+    border: none;
+    width: 100%;
+    height: 42px;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    /*position: relative;*/
+}
+
+.form-btn {
+    margin-top: 35px;
+}
+
+.text-tip {
+    padding: 28px 0 0 0;
+    color: #9fa3b0;
+}
+
+.user-agreement {
+    color: #9fa3b0;
+}
+
+.link-sign-in {
+    color: #5dd5c8;
+}
