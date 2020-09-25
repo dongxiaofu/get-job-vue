@@ -5,6 +5,7 @@ import JobList from '@/components/JobList'
 import JobDetail from '@/components/JobDetail'
 import User from '@/components/User'
 import Chat from '@/components/Chat'
+import Test from '@/components/test'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
             path: '/chat',
             name: 'Chat',
             component: Chat
+        },
+        {
+            path: '/test',
+            name: 'Test',
+            component: Test
         }
     ]
 })

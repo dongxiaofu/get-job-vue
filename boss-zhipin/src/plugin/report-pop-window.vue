@@ -213,7 +213,7 @@
                     this.reportReasonCollection[index].className = unselectedClassName
                     var selectedReportReasonCollection = this.selectedReportReasonCollection
                     // vue 删除数组中的一个元素
-                    this.selectedReportReasonCollection.splice(selectedReportReasonCollection.indexOf(selectedReason, 1))
+                    this.selectedReportReasonCollection.splice(selectedReportReasonCollection.indexOf(selectedReason, 1),1)
                 }
                 console.info('selectedReasonCollection length = ' + this.selectedReportReasonCollection.length)
                 for (var i = 0; i < this.selectedReportReasonCollection.length; i++) {
@@ -272,8 +272,6 @@
             },
             // 上传图片
             tirggerFile(event) {
-                alert(3333)
-                let self = this;
                 let file = event.target.files[0]
                 let param = new FormData() // 创建form对象
                 param.append('file', file, file.name) // 通过append向form对象添加数据

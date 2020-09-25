@@ -660,30 +660,19 @@
             <!--<div id="side-bar">Side Bar</div>难度比较大，不实现-->
         </div>
         <!--上传附件简历弹窗-->
-        <div id="dialog-wrap" style="display: none" ref="dialogWrap">
-            <!--遮罩层-->
-            <div id="layer"></div>
-            <div id="dialog-container">
-                <div id="container-inner">
-                    <div id="close" v-on:click="closeUploadBox"></div>
-                    <div id="upload">
-                        <p id="tip-first">拖拽文件到这里</p>
-                        <p id="tip-second">支持DOC、DOCX、PDF、JPG、PNG格式附件</p>
-                    </div>
-                    <div id="upload-btn">
-                        <span>上传简历附件</span>
-                        <input type="file">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <DragUploadFile ref="dialogWrap"></DragUploadFile>
     </div>
 </template>
 
 <script>
+    import DragUploadFile from '../plugin/drag-upload-file'
+
     export default {
         inject: ['reload'],
         name: 'HelloWorld',
+        components: {
+            DragUploadFile: DragUploadFile
+        },
         data() {
             return {
 
@@ -1059,11 +1048,8 @@
             },
             // 上传简历附件弹窗
             showUploadBox: function () {
-                this.$refs.dialogWrap.style.display = 'block'
+                this.$refs.dialogWrap.showUploadBox()
                 console.log(7777)
-            },
-            closeUploadBox: function () {
-                this.$refs.dialogWrap.style.display = 'none'
             },
             // 简历附件显示
             showAnnexCard: function (e) {
