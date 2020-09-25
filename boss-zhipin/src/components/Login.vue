@@ -39,28 +39,27 @@
                         <input type="text" class="ipt ipt-phone" placeholder="邮箱地址"/>
                     </span>
                     </div>
-                    <div class="form-row">
-                    <span class="ipt-wrap">
-                        <i class="icon-sign-sms"></i>
-                        <input class="ipt ipt-sms" type="text" placeholder="邮箱验证码"/>
-                        <button class="btn-sms">发送验证码</button>
+                    <div class="form-row row-select">
+                        <span class="ipt-wrap">
+                        <i class="icon-password"></i>
+                        <input type="password" class="ipt ipt-phone" placeholder="登录密码"/>
                     </span>
                     </div>
                     <div class="form-btn">
-                        <button class="btn-register">注册</button>
+                        <button class="btn-register">登录</button>
                     </div>
                     <div class="text-tip">
-                        <input type="checkbox">我已同意
-                        <a href="" class="user-agreement">用户协议及隐私政策</a>
-                        <!--<a href="#" class="link-sign-in">直接登录</a>-->
-                        <router-link :to="{path:'login'}" class="link-sign-in">直接登录</router-link>
+                        <!--<input type="checkbox">我已同意-->
+                        <a href="javascript:;" class="user-agreement">还没有账号？</a>
+                        <!--<a href="#" class="link-sign-in">注册一个</a>-->
+                        <router-link :to="{path:'register'}" class="link-sign-in">注册一个</router-link>
                     </div>
                 </div>
                 <!--<div class="btn-switch">-->
-                <!--<div class="switch-tip">-->
-                <!--微信极速注册-->
-                <!--<i class="icon-triangle"></i>-->
-                <!--</div>-->
+                    <!--<div class="switch-tip">-->
+                        <!--微信极速注册-->
+                        <!--<i class="icon-triangle"></i>-->
+                    <!--</div>-->
                 <!--</div>-->
             </div>
         </div>
@@ -90,7 +89,6 @@
                 document.body.style.backgroundRepeat = 'no-repeat'
             },
             // 清除进入该页面时设置的body属性
-            // 一定要清除.否则，会影响其他页面的body。
             clearBodyBackGround() {
                 document.body.style.width = ''
                 document.body.style.height = ''

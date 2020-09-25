@@ -6,6 +6,7 @@ import JobDetail from '@/components/JobDetail'
 import User from '@/components/User'
 import Chat from '@/components/Chat'
 import Register from '@/components/Register'
+import Login from '@/components/Login'
 import Test from '@/components/test'
 
 Vue.use(Router)
@@ -41,6 +42,11 @@ export default new Router({
             path: '/register',
             name: 'Register',
             component: Register
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
         },
         {
             path: '/test',

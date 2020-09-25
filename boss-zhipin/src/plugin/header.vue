@@ -20,8 +20,10 @@
                     <a class="link-sign-resume" href="#">上传简历</a>
                     <a class="link-sign-resume user-nav-find-job" href="#">我要找工作</a>
                     <a class="user-nav-employ" href="#">我要招聘</a>
-                    <a class="btn btn-outline" href="#">注册</a>
-                    <a class="btn btn-outline" href="#">登录</a>
+                    <router-link :to="{path: 'register'}" class="btn btn-outline">注册</router-link>
+                    <!--<a class="btn btn-outline" href="#">注册</a>-->
+                    <!--<a class="btn btn-outline" href="#">登录</a>-->
+                    <router-link :to="{path: 'login'}" class="btn btn-outline">登录</router-link>
                 </div>
             </div>
         </div>
