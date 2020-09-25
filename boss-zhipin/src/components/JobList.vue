@@ -398,69 +398,9 @@
                     <p>BOSS直聘武汉招聘频道，展示最新最热武汉招聘信息，百万Boss在线直聘，直接开聊，在线面试，武汉找工作就上BOSS直聘网站或APP！</p>
                 </div>
             </div>
-            <div id="footer">
-                <div class="inner">
-                    <div class="service-terms">
-                        <dl class="service-term">
-                            <dt>企业服务</dt>
-                            <dd>
-                                <a href="#">职位搜索</a>
-                                <a href="#">新闻资讯</a>
-                                <a href="#">BOSS直聘APP</a>
-                            </dd>
-                        </dl>
-                        <dl class="service-term">
-                            <dt>使用与帮助</dt>
-                            <dd>
-                                <a href="#">用户协议与隐私政策</a>
-                                <a href="#">防骗指南</a>
-                                <a href="#">职位发布规则</a>
-                                <a href="#">使用与帮助</a>
-                            </dd>
-                        </dl>
-                        <dl class="service-term">
-                            <dt>联系BOSS直聘</dt>
-                            <dd>
-                                <p>北京华品博睿网络技术有限公司</p>
-                                <p>公司地址 北京市朝阳区太阳宫中路8号冠捷大厦302</p>
-                                <p>联系电话 010-84150633</p>
-                                <p>违法和不良信息举报邮箱 jubao@kanzhun.com</p>
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="footer-right-social">
-                        <img id="footer-logo" src="/static/JobList/footer-logo.png">
-                        <p>企业服务热线和举报投诉 400 065 5799</p>
-                        <p>工作日 8:00 - 22:00</p>
-                        <p>休息日 9:30 - 18:30</p>
-                        <p class="footer-icon">
-                            <a href="#"><i class="icon-weibo"></i></a>
-                            <a href="#" class="wechat-qr">
-                                <i class="icon-wechat"></i>
-                                <img class="icon-wechat-img" src="/static/JobList/we_chat_qr.jpg">
-                            </a>
-                            <a href="#"><i class="icon-boss"></i></a>
-                        </p>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="copyright">
-                        <span>Copyright © 2020 BOSS直聘 </span>
-                        <span>BOSS直聘京ICP备14013441号-5</span>
-                        <span>京ICP证150923号</span>
-                        <span>京网文[2020]0399-066 号</span>
-                        <span>
-                    <a href="#"><img src="/static/JobList/icon-badge-1.png">电子营业执照</a>
-                </span>
-                        <span>
-                    <a href="#"><img src="/static/JobList/icon-beian.png">京公网安备11010502032801</a>
-                </span>
-                        <span><a href="#">首都网警</a></span>
-                        <span><a href="#">人力资源服务许可证 </a></span>
-                        <span><a href="#">网上有害信息举报专区</a></span>
-                    </div>
-                </div>
-            </div>
             <!--<div id="side-bar">Side Bar</div>难度比较大，不实现-->
+            <!--footer-->
+            <PageFooter></PageFooter>
         </div>
         <!--搜索框地址弹出-->
         <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
@@ -470,12 +410,14 @@
 <script>
     import Header from '../plugin/header'
     import CityPopWindow from '../plugin/city-pop-window'
+    import PageFooter from '../plugin/page-footer'
 
     export default {
         name: 'JobList',
         components: {
             Header: Header,
-            CityPopWindow: CityPopWindow
+            CityPopWindow: CityPopWindow,
+            PageFooter: PageFooter
         },
         data() {
             return {
@@ -614,7 +556,7 @@
                 emojNotStatisfyIsActive: false,
                 emojJustSoSoIsActive: false,
                 emojOkIsActive: false,
-                emojIsActiveCollection:[false,false,false], // 只有一个图标是绿色。暂未使用。
+                emojIsActiveCollection: [false, false, false], // 只有一个图标是绿色。暂未使用。
             }
         },
         mounted() {
@@ -1017,7 +959,7 @@
                 console.log('content =' + content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
-                }else{
+                } else {
                     this.feedBackDisabled = true
                 }
             },
@@ -1053,7 +995,7 @@
                 console.log(content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
-                }else {
+                } else {
                     this.feedBackDisabled = true
                 }
             }
