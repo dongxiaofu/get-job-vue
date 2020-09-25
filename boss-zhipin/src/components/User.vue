@@ -1,33 +1,8 @@
 <template>
     <div>
         <div id="wrap">
-            <div id="header">
-                <div class="inner home-inner">
-                    <div id="logo">
-                        <a href="#">
-                            <span>BOSS直聘</span></a>
-                    </div>
-                    <div id="nav">
-                        <ul>
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">职位</a></li>
-                            <li><a class="nav-school-new" href="#">校园</a></li>
-                            <li><a href="#">公司</a></li>
-                            <li><a href="#">APP</a></li>
-                            <li><a href="#">资讯</a></li>
-                        </ul>
-                    </div>
-                    <div id="user-nav">
-                        <div class="btns">
-                            <a class="link-sign-resume" href="#">上传简历</a>
-                            <a class="link-sign-resume user-nav-find-job" href="#">我要找工作</a>
-                            <a class="user-nav-employ" href="#">我要招聘</a>
-                            <a class="btn btn-outline" href="#">注册</a>
-                            <a class="btn btn-outline" href="#">登录</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--登录状态头部-->
+            <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)"></LoginHeader>
             <div id="main-content" class="inner home-inner">
                 <div class="job-box">
                     <div class="side-bar">
@@ -36,8 +11,8 @@
                             <ul>
                                 <li v-for="(attachment,index) in resume_attachments">
                                     <!--<div class="annex-item" tabindex="0" v-bind:current_index=index-->
-                                         <!--@mouseover="showAnnexCard($event)"-->
-                                         <!--@blur="hideCurrentAnnexCardLeaveAnnexItem($event)"-->
+                                    <!--@mouseover="showAnnexCard($event)"-->
+                                    <!--@blur="hideCurrentAnnexCardLeaveAnnexItem($event)"-->
                                     <!--&gt;-->
                                     <div class="annex-item" tabindex="0" v-bind:current_index=index
                                     >
@@ -717,12 +692,14 @@
 
 <script>
     import DragUploadFile from '../plugin/drag-upload-file'
+    import LoginHeader from '../plugin/login-header'
 
     export default {
         inject: ['reload'],
         name: 'HelloWorld',
         components: {
-            DragUploadFile: DragUploadFile
+            DragUploadFile: DragUploadFile,
+            LoginHeader: LoginHeader,
         },
         data() {
             return {
@@ -917,6 +894,11 @@
             }
         },
         methods: {
+            // 头部组件触发事件--》本父组件--》上传简历附件组件
+            showUploadBox: function (e) {
+                alert(888888888)
+                this.$refs.dialogWrap.showUploadBox()
+            },
             // 用户信息
             SubUserProfile: function () {
                 if (this.user_profile.birthday_year * this.user_profile.birthday_month == 0) {
