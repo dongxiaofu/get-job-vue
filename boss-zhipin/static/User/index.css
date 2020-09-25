@@ -1923,3 +1923,19 @@ a.wechat-qr:hover img {
 }
 
 /*编辑个人资料 end*/
+
+.date-picker{
+    display: inline-block;
+    width: 149px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #FFFF;
+}
+
+.select-option-small {
+    display: inline-block;
+    width: 72px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #FFF;
+}

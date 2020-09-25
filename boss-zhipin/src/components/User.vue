@@ -272,7 +272,7 @@
                                     <h3 class="title" ref="experience_title">工作经历</h3>
                                     <ul>
                                         <li class="experience" v-bind:li-type="1">
-                                            <div class="item-form" ref="experienceForm" style="display: none">
+                                            <div class="item-form" ref="experienceForm" style="display: block">
                                                 <h3 style="padding:0px 30px">编辑工作经历</h3>
                                                 <div class="ipts">
                                                     <div class="one-line form-item">
@@ -324,9 +324,45 @@
                                                         <div class="ipt">
                                                             <div class="item-label">在职时间</div>
                                                             <div class="item-content">
-                                                                <input type="text" name="compnay"
-                                                                       value="2019.05-2022.10"
-                                                                       v-model="experience.working_hours">
+                                                                <!--<input type="text" name="compnay"-->
+                                                                <!--v-model="experience.working_hours">-->
+                                                                <div class="date-picker">
+                                                                    <select id="working-year-start"
+                                                                            class="select-option-small"
+                                                                            v-model="experience.working_year_start"
+                                                                            @change="getWorkingHours">
+                                                                        <option v-for="option in birthday_year_options"
+                                                                                :value="option.key">{{option.value}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <select id="working-month-start"
+                                                                            class="select-option-small"
+                                                                            v-model="experience.working_month_start"
+                                                                            @change="getWorkingHours">
+                                                                        <option v-for="option in birthday_month_options"
+                                                                                :value="option.key">{{option.value}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <span>--</span>
+                                                                <div class="date-picker">
+                                                                    <select id="working-year-end"
+                                                                            class="select-option-small"
+                                                                            v-model="experience.working_year_end"
+                                                                            @change="getWorkingHours">
+                                                                        <option v-for="option in birthday_year_options"
+                                                                                :value="option.key">{{option.value}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <select id="working-month-end"
+                                                                            class="select-option-small"
+                                                                            v-model="experience.working_month_end"
+                                                                            @change="getWorkingHours">
+                                                                        <option v-for="option in birthday_month_options"
+                                                                                :value="option.key">{{option.value}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -736,7 +772,10 @@
                     tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
-                    working_hours: '3',
+                    working_year_start: '0',
+                    working_month_start: '0',
+                    working_year_end: '0',
+                    working_month_end: '0',
                     job_content: '1.游戏接口编写和接口性能优化\n' +
                         '2.数据统计功能开发\n' +
                         '3.微信登录、微信支付、微信打款开发\n' +
@@ -862,22 +901,22 @@
             this.experiences = [this.experience1, this.experience2, this.experience3]
             // 从API获取简历附件
             this.resume_attachments = [this.attachment1, this.attachment2, this.attachment3]
-            this.birthday_year_options.push({key:0,value:'请选择年份'})
+            this.birthday_year_options.push({key: 0, value: '请选择年份'})
             for (var i = 1970; i <= 2000; i++) {
-                this.birthday_year_options.push({key:i,value:i})
+                this.birthday_year_options.push({key: i, value: i})
             }
-            this.birthday_month_options.push({key:0,value:'请选择月份'})
+            this.birthday_month_options.push({key: 0, value: '请选择月份'})
             for (var i = 1; i <= 12; i++) {
                 if (i < 10) {
                     i = '0' + i
                 }
-                this.birthday_month_options.push({key:i,value:i})
+                this.birthday_month_options.push({key: i, value: i})
             }
         },
         methods: {
             // 用户信息
             SubUserProfile: function () {
-                if(this.user_profile.birthday_year * this.user_profile.birthday_month == 0){
+                if (this.user_profile.birthday_year * this.user_profile.birthday_month == 0) {
                     console.log('请选择年份和月份')
                 }
                 var birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month
@@ -915,6 +954,10 @@
 
             // 工作经验
             SubExperience: function () {
+                if (this.checkWorkingHoursIsValid() == false) {
+                    alert('开始时间必须小于结束时间')
+                    return
+                }
                 console.log(this.experience);
                 var data = this.experience
                 this.$http.post((this.experienceApi), data, {emulateJSON: false}).then(response => {
@@ -926,7 +969,7 @@
                 }).finally(
                     response => {
                         alert('over')
-                        this.reload()
+                        // this.reload()
                     }
                 )
             },
@@ -1136,6 +1179,31 @@
                 // href是文件地址
                 var href = 'http://chugang.net'
                 window.open(href, '_blank');
+            },
+            // 获取工作时间
+            getWorkingHours() {
+                // do nothing
+                console.log(this.experience)
+            },
+            // 检测工作时间是否合法
+            checkWorkingHoursIsValid() {
+                var working_year_start = this.experience.working_year_start
+                var working_month_start = this.experience.working_month_start
+
+                var working_year_end = this.experience.working_year_end
+                var working_month_end = this.experience.working_month_end
+
+                if (parseInt(working_year_start) > parseInt(working_year_end)) {
+                    // alert('开始时间必须小于结束时间')
+                    return false
+                }
+                if (parseInt(working_year_start) == parseInt(working_year_end)) {
+                    if (parseInt(working_month_start) > parseInt(working_month_end)) {
+                        // alert('开始时间必须小于结束时间')
+                        return false
+                    }
+                }
+                return true
             }
         }
     }
