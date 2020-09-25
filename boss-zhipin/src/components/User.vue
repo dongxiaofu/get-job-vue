@@ -35,9 +35,11 @@
                             <h3>附件管理</h3>
                             <ul>
                                 <li v-for="(attachment,index) in resume_attachments">
+                                    <!--<div class="annex-item" tabindex="0" v-bind:current_index=index-->
+                                         <!--@mouseover="showAnnexCard($event)"-->
+                                         <!--@blur="hideCurrentAnnexCardLeaveAnnexItem($event)"-->
+                                    <!--&gt;-->
                                     <div class="annex-item" tabindex="0" v-bind:current_index=index
-                                         @mouseover="showAnnexCard($event)"
-                                         @blur="hideCurrentAnnexCardLeaveAnnexItem($event)"
                                     >
                                         <i class="icon-delete"></i>
                                         <img src="/static/User/icon-file.png" class="icon-file">
@@ -366,7 +368,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="one-line form-item-all">
+                                                    <!--暂时隐藏-->
+                                                    <div class="one-line form-item-all" style="display: none">
                                                         <div class="ipt all">
                                                             <div class="item-label">技能标签</div>
                                                             <div class="item-content">

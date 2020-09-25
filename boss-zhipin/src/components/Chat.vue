@@ -1,43 +1,7 @@
 <template>
     <div>
         <div id="wrap">
-            <div id="header">
-                <div class="inner home-inner">
-                    <div id="logo">
-                        <a href="#">
-                            <span>BOSS直聘</span></a>
-                    </div>
-                    <div id="nav">
-                        <ul>
-                            <li><a href="#">首页</a></li>
-                            <!--<li><a href="#">职位</a></li>-->
-                            <li>
-                                <router-link :to="{path:'job-list'}">职位</router-link>
-                            </li>
-                            <li><a class="nav-school-new" href="#">校园</a></li>
-                            <li><a href="#">公司</a></li>
-                            <li><a href="#">APP</a></li>
-                            <li><a href="#">资讯</a></li>
-                        </ul>
-                    </div>
-                    <div id="user-nav">
-                        <ul>
-                            <li>
-                                <a href="#">消息</a>
-                            </li>
-                            <li class="resume">
-                                <a>简历</a>
-                            </li>
-                            <li class="nav-dot">.</li>
-                            <li class="file" v-on:click="showUploadBox"><a href="javascript:;">上传</a></li>
-                            <li class="user-info">
-                                <span class="label-text">小明</span>
-                                <a href="#" class="avatar"><img src="/static/Chat/avatar_5.png"></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)"></LoginHeader>
             <div id="main-content" class="inner home-inner">
                 <div class="chat-wrap">
                     <div class="user-list">
@@ -368,59 +332,50 @@
             </div>
         </div>
         <!--上传附件简历弹窗-->
-        <div id="dialog-wrap" style="display: none" ref="dialogWrap">
-            <!--遮罩层-->
-            <div id="layer"></div>
-            <div id="dialog-container">
-                <div id="container-inner">
-                    <div id="close" v-on:click="closeUploadBox"></div>
-                    <div id="upload">
-                        <p id="tip-first">拖拽文件到这里</p>
-                        <p id="tip-second">支持DOC、DOCX、PDF、JPG、PNG格式附件</p>
-                    </div>
-                    <div id="upload-btn">
-                        <span>上传简历附件</span>
-                        <input type="file">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <DragUploadFile ref="dialogWrap"></DragUploadFile>
     </div>
 </template>
 
 <script>
+    import DragUploadFile from '../plugin/drag-upload-file'
+    import LoginHeader from '../plugin/login-header'
+
     export default {
         name: 'HelloWorld',
+        components: {
+            LoginHeader: LoginHeader,
+            DragUploadFile: DragUploadFile,
+        },
         data() {
             return {
                 friends: [
                     {
-                        user_id:2,
-                        name:'大霞',
+                        user_id: 2,
+                        name: '大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
-                        user_id:2,
-                        name:'大霞',
+                        user_id: 2,
+                        name: '大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
-                        user_id:2,
-                        name:'大霞',
+                        user_id: 2,
+                        name: '大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
                         last_chat_time: '昨天'
                     },
                     {
-                        user_id:2,
-                        name:'大霞',
+                        user_id: 2,
+                        name: '大霞',
                         avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
                         company: '小米公司',
                         title: '软件工程师',
@@ -496,11 +451,10 @@
             }
         },
         methods: {
-            showUploadBox: function () {
-                this.$refs.dialogWrap.style.display = 'block'
-            },
-            closeUploadBox: function () {
-                this.$refs.dialogWrap.style.display = 'none'
+            // 头部组件触发事件--》本父组件--》上传简历附件组件
+            showUploadBox: function (e) {
+                alert(888888888)
+                this.$refs.dialogWrap.showUploadBox()
             },
             showEmojBox: function () {
                 this.$refs.emojBox.style.display = 'block'
