@@ -299,7 +299,7 @@ ul {
     /*vertical-align:middle;*/
 }
 
-.form-item-all .select-ui .icon-arrow-down{
+.form-item-all .select-ui .icon-arrow-down {
     position: absolute;
     display: inline-block;
     width: 16px;
@@ -309,7 +309,7 @@ ul {
     /*left: 27px;*/
     cursor: pointer;
     right: 0px;
-    top: 8px;   /*有计算公式吗？我是肉眼观察调整出的数字*/
+    top: 8px; /*有计算公式吗？我是肉眼观察调整出的数字*/
 }
 
 .select-ui input {
@@ -751,7 +751,7 @@ h4 {
 
 
 /*.experience .item-info:hover {*/
-    /*background-color: #8d92a1;*/
+/*background-color: #8d92a1;*/
 /*}*/
 
 /*work-period*/
@@ -1029,27 +1029,27 @@ h4 {
 
 /*框中的元素，让里面的元素上下左右居中，有更好的方法？此处，使用肉眼观察调整数值。*/
 /*.upload-btn {*/
-    /*width: 300px;*/
-    /*height: 80px;*/
-    /*border: 1px solid #fff;*/
-    /*margin: 20px auto;*/
-    /*!*padding: 20px 10px;*!*/
-    /*text-align: center;*/
-    /*!*vertical-align: middle;*!*/
-    /*padding-top: 40px;*/
-    /*!*padding-bottom: 20px;*!*/
-    /*background: #fff;*/
+/*width: 300px;*/
+/*height: 80px;*/
+/*border: 1px solid #fff;*/
+/*margin: 20px auto;*/
+/*!*padding: 20px 10px;*!*/
+/*text-align: center;*/
+/*!*vertical-align: middle;*!*/
+/*padding-top: 40px;*/
+/*!*padding-bottom: 20px;*!*/
+/*background: #fff;*/
 /*}*/
 
 /*.upload-btn a {*/
-    /*display: inline-block;*/
-    /*width: 230px;*/
-    /*height: 40px;*/
-    /*!*border: 1px solid green;*!*/
-    /*line-height: 40px;*/
-    /*background: #5dd5c8;*/
-    /*color: #f6f6f8;*/
-    /*cursor: pointer;*/
+/*display: inline-block;*/
+/*width: 230px;*/
+/*height: 40px;*/
+/*!*border: 1px solid green;*!*/
+/*line-height: 40px;*/
+/*background: #5dd5c8;*/
+/*color: #f6f6f8;*/
+/*cursor: pointer;*/
 /*}*/
 
 .resume-attachment {
@@ -1062,11 +1062,11 @@ h4 {
     position: relative;
 }
 
-.resume-attachment li{
+.resume-attachment li {
     margin-bottom: 10px;
 }
 
-.resume-attachment .upload-resume-btn{
+.resume-attachment .upload-resume-btn {
     border: 1px solid;
     height: 30px;
     margin-top: 20px;
@@ -1084,21 +1084,21 @@ h4 {
     outline: none;
 }
 
-.annex-item .icon-file{
+.annex-item .icon-file {
     vertical-align: middle;
 }
 
-.annex-item .resume-name{
+.annex-item .resume-name {
     vertical-align: middle; /*不确定有没用，无法肉眼识别页面效果*/
 }
 
-.annex-item:focus + .annex-card{
+.annex-item:focus + .annex-card {
     display: block;
 }
 
 /*用vue实现*/
 /*.annex-item:hover + .annex-card{*/
-    /*display: block;*/
+/*display: block;*/
 /*}*/
 
 .annex-item .icon-delete {
@@ -1108,7 +1108,7 @@ h4 {
 .annex-card {
     width: 350px;
     height: 140px;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.15);  /*这个值是什么意思*/
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15); /*这个值是什么意思*/
 
     background: #fff;
     position: absolute;
@@ -1128,7 +1128,7 @@ h4 {
     border-bottom: 1px solid darkgray;
 }
 
-.annex-card .card-footer span{
+.annex-card .card-footer span {
     float: right;
     width: 70px;
     height: 30px;
@@ -1140,7 +1140,7 @@ h4 {
     /*border: 1px solid red;*/
 }
 
-.annex-card .card-body .card-img{
+.annex-card .card-body .card-img {
     float: left;
     width: 40px;
 }
@@ -1149,7 +1149,7 @@ h4 {
     margin-bottom: 10px;
 }
 
-.annex-card .card-body .upload-date{
+.annex-card .card-body .upload-date {
     font-size: 10px;
     color: #8d92a1;
 }
@@ -1762,6 +1762,7 @@ a.wechat-qr:hover img {
 
     cursor: pointer;
 }
+
 /*图标*/
 .icon-experience,
 .icon-degree,
@@ -1781,23 +1782,28 @@ a.wechat-qr:hover img {
     /*border: 1px solid red;*/
 }
 
-.icon-experience{
+.icon-experience {
     background-position: 0px -481px;
 
 }
-.icon-degree{
+
+.icon-degree {
     background-position: 0px -510px;
 }
-.icon-status{
+
+.icon-status {
     background-position: -29px -481px;
 }
-.icon-phone{
+
+.icon-phone {
     background-position: -29px -510px;
 }
-.icon-min-wechat{
+
+.icon-min-wechat {
     background-position: -31px -589px;
 }
-.icon-email{
+
+.icon-email {
     background-position: 0px -539px;
 }
 
@@ -1906,3 +1912,14 @@ a.wechat-qr:hover img {
 }
 
 /*关闭按钮 end*/
+
+/*编辑个人资料 start*/
+.select-option {
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #fff;
+}
+
+/*编辑个人资料 end*/

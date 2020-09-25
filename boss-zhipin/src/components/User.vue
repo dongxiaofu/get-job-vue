@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <!--编辑个人信息 start-->
-                            <div class="edit-user-info" ref="user_profile_form" style="display: none">
+                            <div class="edit-user-info" ref="user_profile_form" style="display: block">
                                 <div class="edit-user-info-wrapper">
                                     <h3 style="padding: 0px 30px">编辑个人信息</h3>
                                     <!--<form action="#">-->
@@ -194,7 +194,19 @@
                                             生日
                                         </div>
                                         <div class="item-content">
-                                            <input name="birthday" type="text" v-model="user_profile.birthday">
+                                            <!--<input name="birthday" type="text" v-model="user_profile.birthday">-->
+                                            <select id="input-s" class="select-option"
+                                                    v-model="user_profile.birthday_year">
+                                                <option v-for="option in birthday_year_options"
+                                                        :value="option.key">{{option.value}}
+                                                </option>
+                                            </select>
+                                            <select id="input-sm" class="select-option"
+                                                    v-model="user_profile.birthday_month">
+                                                <option v-for="option in birthday_month_options"
+                                                        :value="option.key">{{option.value}}
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-item">
@@ -696,10 +708,12 @@
 
                 user_profile: {
                     user_id: '',
-                    name: '姓名',
+                    name: '姓名2',
                     job_search_status: 1,
                     gender: 2,
                     birthday: '',
+                    birthday_year: '0',
+                    birthday_month: '0',
                     telephone: '-',
                     wechat: '-',
                     email: '-',
@@ -823,6 +837,14 @@
                 attachment3: {name: '小明的简历3.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
                 attachment4: {name: '小明的简历4.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
                 resume_attachments: [],
+
+                // 个人资料--生日
+                birthday_year_options_boundary_value: [1970, 2000],
+                birthday_month_options_boundary_value: [1, 12],
+                birthday_year_options: [],
+                birthday_month_options: [],
+                // birthday_year: '',
+                // birthday_month: '',
             }
         },
         mounted() {
@@ -840,10 +862,26 @@
             this.experiences = [this.experience1, this.experience2, this.experience3]
             // 从API获取简历附件
             this.resume_attachments = [this.attachment1, this.attachment2, this.attachment3]
+            this.birthday_year_options.push({key:0,value:'请选择年份'})
+            for (var i = 1970; i <= 2000; i++) {
+                this.birthday_year_options.push({key:i,value:i})
+            }
+            this.birthday_month_options.push({key:0,value:'请选择月份'})
+            for (var i = 1; i <= 12; i++) {
+                if (i < 10) {
+                    i = '0' + i
+                }
+                this.birthday_month_options.push({key:i,value:i})
+            }
         },
         methods: {
             // 用户信息
             SubUserProfile: function () {
+                if(this.user_profile.birthday_year * this.user_profile.birthday_month == 0){
+                    console.log('请选择年份和月份')
+                }
+                var birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month
+                this.user_profile.birthday = birthday
                 console.log(this.user_profile);
                 var data = this.user_profile
                 this.$http.post((this.userProfileApi), data, {
