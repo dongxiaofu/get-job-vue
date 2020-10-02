@@ -18,9 +18,10 @@
                              v-for="(cityCategory,index) in cityCategories">
                             <li
                                     v-bind:index="index"
+                                    v-bind:cityCategoryStr="cityCategory.join()"
                                     :class="index == isActive ? 'city-active city-category' : 'city-category'"
                             >
-                                {{cityCategory}}
+                                <span v-for="item in cityCategory">{{item}}</span>
                             </li>
                         </div>
                     </ul>
@@ -51,11 +52,13 @@
         name: "city-pop-window",
         data() {
             return {
-                cityCategories: ['ABCDE',
-                    'FGHIJ',
-                    'KLMN',
-                    'PQRST',
-                    'WXYZ',],
+                cityCategories: [
+                    ['A', 'B', 'C', 'D', 'E'],
+                    ['F', 'G', 'H', 'I', 'J'],
+                    ['K', 'L', 'M', 'N', 'O'],
+                    ['P', 'Q', 'R', 'S', 'T'],
+                    ['U', 'W', 'X', 'Y', 'Z'],
+                ],
 
                 isActive: false,
                 city1: [
@@ -100,13 +103,20 @@
         },
 
         mounted() {
-            this.cities = [
-                {category: 'A', city_items: this.city1},
-                {category: 'B', city_items: this.city2},
-                {category: 'C', city_items: this.city3},
-                {category: 'D', city_items: this.city4},
-            ]
-
+            // this.cities = [
+            //     {category: 'A', city_items: this.city1},
+            //     {category: 'B', city_items: this.city2},
+            //     {category: 'C', city_items: this.city3},
+            //     {category: 'D', city_items: this.city4},
+            // ]
+            // // this.cities = []
+            // // this.getCityList('A,B,C,D,E')
+            // //
+            // this.selectedCities = this.cities
+        },
+        created(){
+            this.cities = []
+            this.getCityList('A,B,C,D,E')
             this.selectedCities = this.cities
         },
 
@@ -158,6 +168,9 @@
 
                 // 展示该分类下的数据
                 // 替换成从接口中请求数据
+                var cityCategoryStr = target.getAttribute('cityCategoryStr')
+                console.log('cityCategoryStr=' + cityCategoryStr)
+                this.getCityList(cityCategoryStr)
                 this.selectedCities = this.cities
             },
 
@@ -173,7 +186,29 @@
                 var cityName = cityName
                 var selectedCity = {city_code: cityCode, city_name: cityName}
                 this.$emit("selectCity", selectedCity)
+
                 console.log('emit')
+            },
+
+            // 获取城市列表
+            getCityList: function (cityCategoryStr) {
+                let recommend_jobs_list_api = 'http://boss.api-cg.com/api/city/list/first-letter'
+                this.$http.get((recommend_jobs_list_api), {params: {first_letter: cityCategoryStr}}).then(response => {
+                    this.cities = response.body.data;
+                    this.selectedCities = this.cities
+                    console.log('==========this.recommend_jobs 222 start')
+                    console.log(this.cities)
+                    console.log('==========this.recommend_jobs end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
             },
         }
     }

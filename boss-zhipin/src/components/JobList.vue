@@ -25,7 +25,7 @@
                             <div class="industry-box" ref="industryBox" style="display: none">
                                 <ul>
                                     <li data-val="" class="industry-box-li">不限</li>
-                                    <li data-val="100001" ka="sel-industry-1" class="industry-box-li">电子商务2</li>
+                                    <!--<li data-val="100001" ka="sel-industry-1" class="industry-box-li">电子商务</li>-->
                                     <li
                                             v-for="(industry, index) in industryCollection"
                                             v-bind:index=index
@@ -104,7 +104,7 @@
                                 </a>
                             </dd>
                         </dl>
-                        <dl class="condition-district">
+                        <dl class="condition-district" v-show="areaCollection.length">
                             <dd class="district-wrapper">
                                 <!--<a class="first" href="/c101200100/" ka="sel-business-0">不限</a>-->
                                 <a
@@ -113,7 +113,7 @@
                                         v-bind:index=index
                                         :class="[{'first':index == 0},{'condition-district-select':searchConditionCityAreaIsActive == index}, '']"
                                 >
-                                    {{area.area_name}}
+                                    {{area.city_name}}
                                 </a>
                             </dd>
                         </dl>
@@ -222,7 +222,7 @@
                             </div>
                             <div class="history-list">
                                 <ul>
-                                    <li v-for="job in jobs">
+                                    <li v-for="job in history_jobs">
                                         <!--<a href="#">-->
                                         <!--<h4 class="job.title">-->
                                         <!--{{job.title}}-->
@@ -235,7 +235,7 @@
                                                 {{job.title}}
                                                 <span class="salary">{{job.salary}}·{{job.salary_num}}</span>
                                             </h4>
-                                            <p>{{job.company}}</p>
+                                            <p>{{job.company.name}}</p>
                                         </router-link>
                                     </li>
                                 </ul>
@@ -414,6 +414,7 @@
 
     export default {
         name: 'JobList',
+        inject: ['reload'],
         components: {
             Header: Header,
             CityPopWindow: CityPopWindow,
@@ -428,6 +429,8 @@
                     {job_id: 4, title: 'IOS高级开发工程师', salary: '13-25K', salary_num: '14薪', company: '今日头条'},
                     {job_id: 5, title: 'IOS高级开发工程师', salary: '13-25K', salary_num: '14薪', company: '今日头条'}
                 ],
+                // 看过的职位
+                history_jobs:[],
                 jobDetailList: [
                     {
                         jobId: 3,
@@ -557,6 +560,10 @@
                 emojJustSoSoIsActive: false,
                 emojOkIsActive: false,
                 emojIsActiveCollection: [false, false, false], // 只有一个图标是绿色。暂未使用。
+
+                // 接口地址
+                industryListApi: 'http://boss.api-cg.com/api/job/industry-list',
+                searchFilterConfigApi: 'http://boss.api-cg.com/api/job/search-filter-config',
             }
         },
         mounted() {
@@ -680,41 +687,88 @@
             this.stageQuery = {code: '0', name: '融资阶段'}
             this.scaleQuery = {code: '0', name: '公司规模'}
 
-            this.cityCollection = [{city_code: '100010000', city_name: '全国'},
-                {city_code: '101010100', city_name: '北京'},
-                {city_code: '101020100', city_name: '上海'},
-                {city_code: '101280100', city_name: '广州'},
-                {city_code: '101280600', city_name: '深圳'},
-                {city_code: '101210100', city_name: '杭州'},
-                {city_code: '101030100', city_name: '天津'},
-                {city_code: '101110100', city_name: '西安'},
-                {city_code: '101190400', city_name: '苏州'},
-                {city_code: '101200100', city_name: '武汉'},
-                {city_code: '101230200', city_name: '厦门'},
-                {city_code: '101250100', city_name: '长沙'},
-                {city_code: '101270100', city_name: '成都'},
-                {city_code: '101180100', city_name: '郑州'},
-                {city_code: '101040100', city_name: '重庆'},]
-            this.areaCollection = [{area_name: '不限'},
-                {area_name: '闵行区'},
-                {area_name: '徐汇区'},
-                {area_name: '浦东新区 浦东新区浦东新区浦东新区浦东新区浦东新区'},
-                {area_name: '长宁区'},
-                {area_name: '杨浦区'},
-                {area_name: '黄浦区'},
-                {area_name: '静安区'},
-                {area_name: '嘉定区'},
-                {area_name: '青浦区'},
-                {area_name: '虹口区'},
-                {area_name: '松江区'},
-                {area_name: '普陀区'},
-                {area_name: '宝山区'},]
+            // this.cityCollection = [{city_code: '100010000', city_name: '全国'},
+            //     {city_code: '101010100', city_name: '北京'},
+            //     {city_code: '101020100', city_name: '上海'},
+            //     {city_code: '101280100', city_name: '广州'},
+            //     {city_code: '101280600', city_name: '深圳'},
+            //     {city_code: '101210100', city_name: '杭州'},
+            //     {city_code: '101030100', city_name: '天津'},
+            //     {city_code: '101110100', city_name: '西安'},
+            //     {city_code: '101190400', city_name: '苏州'},
+            //     {city_code: '101200100', city_name: '武汉'},
+            //     {city_code: '101230200', city_name: '厦门'},
+            //     {city_code: '101250100', city_name: '长沙'},
+            //     {city_code: '101270100', city_name: '成都'},
+            //     {city_code: '101180100', city_name: '郑州'},
+            //     {city_code: '101040100', city_name: '重庆'},]
+            // this.areaCollection = [{area_name: '不限'},
+            //     {area_name: '闵行区'},
+            //     {area_name: '徐汇区'},
+            //     {area_name: '浦东新区 浦东新区浦东新区浦东新区浦东新区浦东新区'},
+            //     {area_name: '长宁区'},
+            //     {area_name: '杨浦区'},
+            //     {area_name: '黄浦区'},
+            //     {area_name: '静安区'},
+            //     {area_name: '嘉定区'},
+            //     {area_name: '青浦区'},
+            //     {area_name: '虹口区'},
+            //     {area_name: '松江区'},
+            //     {area_name: '普陀区'},
+            //     {area_name: '宝山区'},]
+            this.areaCollection = []
 
             this.searchConditionCity = {city_code: '0', city_name: '不限'}    // 不能有逗号
             this.searchConditionCityArea = {area_name: '不限'}
 
+            // 调试tool start
+            this.getDatabaseComment(this.salaryCollection)
+            this.getDatabaseComment(this.experienceCollection)
+            this.getDatabaseComment(this.stageCollection)
+            this.getDatabaseComment(this.scaleCollection)
+            this.getDatabaseComment(this.degreeCollection)
+            // 调试tool end
+
+            this.getHotCity()
+
+            console.log('tool start')
+            var res = '['
+            for (var i = 0; i < this.industryCollection.length; i++) {
+                var industry = this.industryCollection[i]
+                var item = "['code' => " + (i + 1) + ",'name' => '" + industry.name + "'],"
+                res += item
+            }
+            res += ']'
+            console.log(res)
+            console.log('tool end')
+
+
+            this.getIndustryList()
+            // 获取工作列表搜索筛选配置
+            this.getSearchFilterConfig()
+            // 获取看过的职位
+            var history_jobs = JSON.parse(localStorage.getItem('history_jobs'));
+            this.history_jobs = history_jobs.slice(0, 5)
+            console.log('==========history_jobs start============')
+            console.log(this.history_jobs)
+            console.log('==========history_jobs start============')
         },
         methods: {
+            // 调试tool start
+            getDatabaseComment(collection) {
+                console.log('debug start')
+                var comment = '[';
+                for (var i = 0; i < collection.length; i++) {
+                    var salary = collection[i]
+                    // comment += i + '.' + salary.name + ';'
+                    comment += "['code' => " + i + ","
+                    comment += "'name' => '" + salary.name + "'],"
+                }
+                comment += ']'
+                console.log(comment)
+                console.log('debug start')
+            },
+            // 调试tool end
             showIndustryBox: function () {
                 if (this.$refs.industryBox.style.display == 'none') {
                     this.$refs.industryBox.style.display = 'block'
@@ -778,7 +832,12 @@
                 console.log(e)
                 var cityCode = e.city_code
                 var cityName = e.city_name
+                // 设置当前城市--搜索框
                 this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
+                // 设置当前城市--筛选
+                this.searchConditionCity.city_name = cityName
+                this.searchConditionCity.city_code = cityCode
+                this.getCityArea(cityCode)
             },
             // 第一级职位类型分类
             selectFirstPositionType(e) {
@@ -894,13 +953,18 @@
             setSearchConditionCity(e) {
                 var target = e.currentTarget
                 var cityName = target.innerText
-                var cityCode = target.getAttribute('city_code')
-                // 设置当前城市
+                var cityCode = target.getAttribute('city-code')
+                // 设置当前城市--筛选
                 this.searchConditionCity.city_name = cityName
                 this.searchConditionCity.city_code = cityCode
+                // 设置当前城市--搜索框
+                this.searchKeyWordCity.city_code = cityCode
+                this.searchKeyWordCity.city_name = cityName
                 // 重新获取当前城区
-                this.cityCollection = this.cityCollection
+                console.log('cityCode=' + cityCode)
+                this.getCityArea(this.searchConditionCity.city_code)
                 // 用新的查询条件重新打开页面，或者说，请求工作列表数据--请求接口
+
             },
             // 地区--城区
             setSearchConditionCityArea(e) {
@@ -921,7 +985,8 @@
                 // 带搜索关键词后打开这个页面
                 // this.$router.go(0)
                 // window.open("http://chugang.net")    // 不管怎样，都会打开在新窗口打开页面
-                location.href = 'http://chugang.net'
+                // location.href = 'http://chugang.net'
+                this.reload()
             },
             // 反馈态度
             setFeedBackAttitude(e) {
@@ -998,7 +1063,89 @@
                 } else {
                     this.feedBackDisabled = true
                 }
-            }
+            },
+            // 获取热门城市
+            getHotCity: function () {
+                let recommend_jobs_list_api = 'http://boss.api-cg.com/api/city/list/hot'
+                this.$http.get((recommend_jobs_list_api), {params: {first_letter: 'A,B,h,t'}}).then(response => {
+                    this.cityCollection = response.body.data;
+                    console.log('==========this.recommend_jobs start')
+                    console.log(this.cityCollection)
+                    console.log('==========this.recommend_jobs end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 根据城市ID查询城区列表
+            getCityArea: function (parentId) {
+                let recommend_jobs_list_api = 'http://boss.api-cg.com/api/city/list/children'
+                this.$http.get((recommend_jobs_list_api), {params: {parent_id: parentId}}).then(response => {
+                    this.areaCollection = response.body.data;
+                    console.log('==========this.recommend_jobs area start')
+                    console.log(this.areaCollection)
+                    console.log('==========this.recommend_jobs end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 获取行业列表
+            getIndustryList: function () {
+                let recommend_jobs_list_api = this.industryListApi
+                this.$http.get((recommend_jobs_list_api), {}).then(response => {
+                    this.industryCollection = response.body.data;
+                    console.log('==========this.industryCollection area start')
+                    console.log(this.areaCollection)
+                    console.log('==========this.industryCollection end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 获取工作列表搜索筛选配置
+            getSearchFilterConfig: function () {
+                let recommend_jobs_list_api = this.searchFilterConfigApi
+                this.$http.get((recommend_jobs_list_api), {}).then(response => {
+                    var config = response.body.data;
+                    console.log('==========config start')
+                    console.log(config)
+                    this.experienceCollection = config.experience
+                    console.log(this.experienceCollection)
+                    this.degreeCollection = config.degree
+                    this.salaryCollection = config.salary
+                    this.stageCollection = config.financing_stage
+                    this.scaleCollection = config.company_scale
+                    console.log('==========config end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
         }
     }
 </script>

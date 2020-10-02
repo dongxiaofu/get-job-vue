@@ -374,6 +374,8 @@ ul {
     height: 36px;
     border-bottom: 1px solid #eef0f5;
     padding: 0px 0px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .condition-district {

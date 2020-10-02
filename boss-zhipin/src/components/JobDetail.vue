@@ -11,7 +11,7 @@
                             <div class="job-name">
                                 {{job.title}}
                                 <span class="salary">
-                                    {{job.salary}}·{{job.salary_num}}
+                                    {{job.salary}}·{{job.salary_num}}薪
                                 </span>
                             </div>
                             <p>
@@ -208,7 +208,7 @@
                                                         <div class="job-name">
                                                             {{job.title}}
                                                             <span class="salary">
-                                                                {{job.salary}}·{{job.salary_num}}
+                                                                {{job.salary}}·{{job.salary_num}}薪
                                                             </span>
                                                         </div>
                                                         <p>{{job.company.name}}</p>
@@ -492,7 +492,7 @@
 
     export default {
         name: 'JobDetail',
-        components: {Header, CityPopWindow, ReportPopWindow,PageFooter},
+        components: {Header, CityPopWindow, ReportPopWindow, PageFooter},
         inject: ['reload'],
         data() {
             return {
@@ -860,13 +860,20 @@
                 recommend_jobs: null,
                 history_jobs: null,
                 // 搜索框，城市，{city_code:1000,city_name:'北京'}
-                searchKeyWordCity: {city_code: '0000', city_name: '城市'}
+                searchKeyWordCity: {city_code: '0000', city_name: '城市'},
+
+                // 接口地址
+                // industryListApi: 'http://boss.api-cg.com/api/job/industry-list',
+                searchFilterConfigApi: 'http://boss.api-cg.com/api/job/search-filter-config',
             }
         },
         mounted() {
+            // 保存"看过的职位"
+            this.saveHistoryJobs()
             this.related_jobs = this.jobs
-            this.recommend_jobs = this.jobs
-            this.history_jobs = this.jobs
+            // this.recommend_jobs = this.jobs
+            // 获取"看过的职位"
+            this.getHistoryJobs()
         },
         // vue 路由参数变化，页面不刷新（数据不更新）解决方法 start
         watch: {
@@ -882,9 +889,42 @@
                 this.job_id = this.$route.query.job_id;
                 this.getJobDetail();
             }
+
+            this.getRecommend()
+            // 获取相关工作列表
+            this.getRelatedJobs()
         },
         // vue 路由参数变化，页面不刷新（数据不更新）解决方法 end
         methods: {
+            // 获取"看过的职位"
+            getHistoryJobs() {
+                this.history_jobs = JSON.parse(localStorage.getItem('history_jobs'))
+            },
+            // 保存"看过的职位"
+            saveHistoryJobs() {
+                var history_jobs = JSON.parse(localStorage.getItem('history_jobs'))
+                if (history_jobs == null) {
+                    history_jobs = new Array()
+                    // history_jobs.push(this.job)
+                }
+                var isExist = false
+                // 保存重复的浏览记录
+                history_jobs.forEach(item => {
+                    if (item.job_id == this.job_id) {
+                        isExist = true
+                    }
+                })
+
+                if (isExist == false) {
+                    history_jobs.push(this.job)
+                }
+
+                var jobsJson = JSON.stringify(history_jobs)
+                localStorage.setItem('history_jobs', jobsJson)
+
+                // 获取"看过的职位"
+                this.getHistoryJobs()
+            },
             // 微信二维码
             switchMiniAppBox: function () {
                 if (this.$refs.miniApp.style.display == 'none') {
@@ -930,8 +970,65 @@
                 // 需与<router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">中的query一致
                 // 等待进一步验证
                 // let job_id = this.$route.params.job_id  // 不能用
-                this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
-                this.job = this.jobs[job_id - 1]
+                // this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
+                // this.job = this.jobs[job_id - 1]
+
+
+                let getJobDetailApi = 'http://boss.api-cg.com/api/job/detail/' + job_id
+                this.$http.get((getJobDetailApi), {}).then(response => {
+                    this.job = response.body.data;
+                    console.log('==========this.job start')
+                    console.log(this.job)
+                    console.log('==========this.job end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 获取推荐工作列表
+            getRecommend: function () {
+                let recommend_jobs_list_api = 'http://boss.api-cg.com/api/job/list/recommend'
+                this.$http.get((recommend_jobs_list_api), {params: {id: 5}}).then(response => {
+                    this.recommend_jobs = response.body.data;
+                    console.log('==========this.recommend_jobs start')
+                    console.log(this.recommend_jobs)
+                    console.log('==========this.recommend_jobs end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+
+            // 获取相关工作列表
+            getRelatedJobs: function () {
+                let getRelatedJobsApi = 'http://boss.api-cg.com/api/job/list/relate'
+                this.$http.get((getRelatedJobsApi), {params: {}}).then(response => {
+                    this.related_jobs = response.body.data;
+                    console.log('==========this.related_jobs start')
+                    console.log(this.related_jobs)
+                    console.log('==========this.related_jobs end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
             },
 
             // 设置搜索关键词，城市
@@ -940,7 +1037,33 @@
                 var cityCode = e.city_code
                 var cityName = e.city_name
                 this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
-            }
+            },
+
+            // 获取工作列表搜索筛选配置
+            getSearchFilterConfig: function () {
+                let recommend_jobs_list_api = this.searchFilterConfigApi
+                this.$http.get((recommend_jobs_list_api), {}).then(response => {
+                    var config = response.body.data;
+                    console.log('==========config start')
+                    console.log(config)
+                    this.experienceCollection = config.experience
+                    console.log(this.experienceCollection)
+                    this.degreeCollection = config.degree
+                    this.salaryCollection = config.salary
+                    this.stageCollection = config.financing_stage
+                    this.scaleCollection = config.company_scale
+                    console.log('==========config end')
+                    // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
         }
     }
 </script>

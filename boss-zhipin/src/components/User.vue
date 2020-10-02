@@ -835,8 +835,25 @@
                 }
                 this.birthday_month_options.push({key: i, value: i})
             }
+
+            // 调试tool start
+            this.getDatabaseComment(this.job_search_status_options, true)
+            // 调试end end
         },
         methods: {
+            // 调试tool start
+            getDatabaseComment(collection, flag) {
+                console.log('debug start')
+                var comment = '';
+                for (var i = 0; i < collection.length; i++) {
+                    var salary = collection[i]
+                    var key = flag ? salary.key : i;
+                    comment += key + '.' + salary.value + '；'
+                }
+                console.log(comment)
+                console.log('debug start')
+            },
+            // 调试end end
             // 头部组件触发事件--》本父组件--》上传简历附件组件
             showUploadBox: function (e) {
                 alert(888888888)
