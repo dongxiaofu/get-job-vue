@@ -76,7 +76,7 @@
                                             </p>
                                             <p>
                                                 <span class="before-line-first"><i class="icon-phone"></i>{{user_profile.telephone}}</span>
-                                                <span class="before-line"><i class="icon-min-wechat"></i>{{user_profile.wechat}}</span>
+                                                <span class="before-line"><i class="icon-min-wechat"></i>{{user_profile.weixin}}</span>
                                                 <span class="before-line"><i
                                                         class="icon-email"></i>{{user_profile.email}}</span>
                                             </p>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <!--编辑个人信息 start-->
-                            <div class="edit-user-info" ref="user_profile_form" style="display: block">
+                            <div class="edit-user-info" ref="user_profile_form" style="display: none">
                                 <div class="edit-user-info-wrapper">
                                     <h3 style="padding: 0px 30px">编辑个人信息</h3>
                                     <!--<form action="#">-->
@@ -121,7 +121,7 @@
                                                         </li>
                                                     </div>
                                                 </ul>
-                                                <input type="hidden" v-model="user_profile.job_search_status">
+                                                <input type="hidden" v-model="user_profile.job_search_status.code">
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                                             微信号（选填）
                                         </div>
                                         <div class="item-content">
-                                            <input name="wechat" type="text" v-model="user_profile.wechat">
+                                            <input name="wechat" type="text" v-model="user_profile.weixin">
                                         </div>
                                     </div>
 
@@ -224,8 +224,7 @@
                                     <h4 class="title">个人优势</h4>
                                     <div class="item-info">
                                         <div class="item-txt pre-line">
-                                            1.6年PHP开发经验，两次从零开始开发项目至上线。
-                                            2.自学能力强；能拆分开发任务、胜任全部常规开发，懂架构，有初步的技术管理能力。
+                                            {{user_advantage.advantage}}
                                         </div>
                                         <div class="op" v-on:click="editAdvantage">
                                             <i class="icon-edit"></i>
@@ -249,7 +248,7 @@
                                     <h3 class="title" ref="experience_title">工作经历</h3>
                                     <ul>
                                         <li class="experience" v-bind:li-type="1">
-                                            <div class="item-form" ref="experienceForm" style="display: block">
+                                            <div class="item-form" ref="experienceForm" style="display: none">
                                                 <h3 style="padding:0px 30px">编辑工作经历</h3>
                                                 <div class="ipts">
                                                     <div class="one-line form-item">
@@ -585,7 +584,7 @@
                                                 <div class="item-info">
                                                     <div class="item-txt">
                                                         <span class="title">{{experience.company_name}}</span>
-                                                        <span class="work-period">2017.05-2019.10</span>
+                                                        <span class="work-period">{{experience.start_time}}-{{experience.end_time}}</span>
                                                     </div>
                                                     <div class="position-name">{{experience.position_name}}</div>
                                                     <div class="item-txt pre-line">
@@ -668,31 +667,32 @@
                 user_profile: {
                     user_id: '',
                     name: '姓名2',
-                    job_search_status: 1,
+                    job_search_status: {},//{code:'',text:''},
                     gender: 2,
                     birthday: '',
                     birthday_year: '0',
                     birthday_month: '0',
                     telephone: '-',
-                    wechat: '-',
+                    weixin: '-',
                     email: '-',
                     identity: '',
                     degree: '-',
-                    experience: '-'
+                    experience: '-',
+                    advantage: '',
                 },
 
                 user_advantage: {
-                    user_id: '',
+                    user_id: 0,
                     advantage: ''
                 },
 
                 experience: {
-                    id: 1,
-                    user_id: 23,
-                    company_name: 'AB',
+                    id: 0,
+                    user_id: 0,
+                    company_name: '',
                     department: 'c',
                     position_type: 'd',
-                    tags: ['后端开发', 'PHP', '系统架构'],
+                    // tags: ['后端开发', 'PHP', '系统架构'],
                     industry: 'w',
                     position_name: 'w',
                     working_year_start: '0',
@@ -779,45 +779,82 @@
                 },
 
                 experiences: [],
+                // 获取工作经验列表
+                experienceListApi: 'http://boss.api-cg.com/api/user/experience-list',
+                // 工作经验更新、新增、删除
+                experienceApi: 'http://boss.api-cg.com/api/user/experience',
+                // 用户信息：查询、更新
+                userProfileApi: 'http://boss.api-cg.com/api/user',
+                // 个人优势
+                userAdvantageApi: 'http://boss.api-cg.com/api/user/advantage',
 
-                experienceApi: '/api/insert',
-                userProfileApi: '/api/insert222',
-                userAdvantageApi: '/api/insert',
+                job_search_status_options:
+                    [
+                        {key: 1, value: '离职-随时到岗'},
+                        {key: 2, value: '在职-暂不考虑'},
+                        {key: 3, value: '在职-考虑机会'},
+                        {key: 4, value: '在职-月内到岗'}
+                    ],
 
-                job_search_status_options: [
-                    {key: 1, value: '离职-随时到岗'},
-                    {key: 2, value: '在职-暂不考虑'},
-                    {key: 3, value: '在职-考虑机会'},
-                    {key: 4, value: '在职-月内到岗'}
-                ],
-
-                job_search_status_value: 'qq',
+                job_search_status_value:
+                    'qq',
 
                 // 简历附件管理
-                attachment1: {name: '小明的简历1.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
-                attachment2: {name: '小明的简历2.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
-                attachment3: {name: '小明的简历3.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
-                attachment4: {name: '小明的简历4.pdf', size: '32KB', update_time: '2020-08-23 17:54'},
+                attachment1:
+                    {
+                        name: '小明的简历1.pdf', size:
+                            '32KB', update_time:
+                            '2020-08-23 17:54'
+                    }
+                ,
+                attachment2: {
+                    name: '小明的简历2.pdf', size:
+                        '32KB', update_time:
+                        '2020-08-23 17:54'
+                }
+                ,
+                attachment3: {
+                    name: '小明的简历3.pdf', size:
+                        '32KB', update_time:
+                        '2020-08-23 17:54'
+                }
+                ,
+                attachment4: {
+                    name: '小明的简历4.pdf', size:
+                        '32KB', update_time:
+                        '2020-08-23 17:54'
+                }
+                ,
                 resume_attachments: [],
 
                 // 个人资料--生日
-                birthday_year_options_boundary_value: [1970, 2000],
-                birthday_month_options_boundary_value: [1, 12],
-                birthday_year_options: [],
-                birthday_month_options: [],
+                birthday_year_options_boundary_value:
+                    [1970, 2000],
+                birthday_month_options_boundary_value:
+                    [1, 12],
+                birthday_year_options:
+                    [],
+                birthday_month_options:
+                    [],
                 // birthday_year: '',
                 // birthday_month: '',
             }
         },
         mounted() {
-            var job_search_status_index = this.user_profile.job_search_status - 1
-            var job_search_status = this.job_search_status_options[job_search_status_index]
-            this.job_search_status_value = job_search_status.value
-            console.log("===========start============")
-            console.log(this.job_search_status_value)
-            console.log("===========end============")
-            this.item.user_name = 'hello'
-            this.user_profile.email = 'chuganghong@qq.com'
+            let user_id = 1
+            // 获取用户信息
+            // 用户ID不能简单地从路由中获得，避免A用户恶意修改B用户资料
+            this.getUserProfile(user_id)
+            // 获取工作经验
+            this.getExperienceList(user_id)
+            // var job_search_status_index = this.user_profile.job_search_status - 1
+            // var job_search_status = this.job_search_status_options[job_search_status_index]
+            // this.job_search_status_value = job_search_status.value
+            // console.log("===========start============")
+            // console.log(this.job_search_status_value)
+            // console.log("===========end============")
+            // this.item.user_name = 'hello'
+            // this.user_profile.email = 'chuganghong@qq.com'
             this.user_advantage.advantage = 'I am rich'
             this.experience.performance = 'well done!'
             // 从API获取工作经验数据
@@ -839,8 +876,58 @@
             // 调试tool start
             this.getDatabaseComment(this.job_search_status_options, true)
             // 调试end end
+
         },
         methods: {
+            // 获取工作经验
+            getExperienceList: function (userId) {
+                let params = {'user_id': userId}
+                this.$http.get((this.experienceListApi), {params: params}, {emulateJSON: true}).then(response => {
+                    this.experiences = response.body.data
+                    console.log('==========this.getExperienceList start')
+                    console.log(this.experiences)
+                    console.log('==========this.getExperienceList end')
+                }, response => {
+                    // console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 获取用户信息
+            getUserProfile: function (userId) {
+                let params = {'user_id': userId}
+                this.$http.get((this.userProfileApi), {params: params}, {emulateJSON: true}).then(response => {
+                    this.user_profile = response.body.data;
+                    console.log('==========this.user_profile start')
+                    console.log(this.user_profile)
+                    console.log('==========this.user_profile end')
+                    this.job_search_status_value = this.user_profile.job_search_status.text
+                    this.user_advantage.advantage = this.user_profile.advantage
+                    this.user_advantage.user_id = this.user_profile.user_id
+
+                    // var job_search_status_index = this.user_profile.job_search_status - 1
+                    // var job_search_status = this.job_search_status_options[job_search_status_index]
+                    // this.job_search_status_value = job_search_status.value
+                    console.log("===========start============")
+                    console.log(this.job_search_status_value)
+                    console.log("===========end============")
+                    this.item.user_name = 'hello'
+                    this.user_profile.email = 'chuganghong@qq.com'
+
+                }, response => {
+                    // console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
             // 调试tool start
             getDatabaseComment(collection, flag) {
                 console.log('debug start')
@@ -868,14 +955,23 @@
                 this.user_profile.birthday = birthday
                 console.log(this.user_profile);
                 var data = this.user_profile
-                this.$http.post((this.userProfileApi), data, {
+                console.log('data ========= start')
+                data.job_search_status = data.job_search_status.code
+                console.log(data)
+
+                console.log('data ========= end')
+                this.$http.post((this.userProfileApi), data, {emulateJSON: true}, {
                     headers: {
                         Authorization: "Bearer ",
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(response => {
-                    this.grouplist = response.body;
-                    alert("提交成功")
+                    let result = response.body;
+                    console.log('用户信息 提交成功 start');
+                    console.log(result)
+                    console.log('用户信息 提交成功 end');
+                    // 隐藏本编辑框
+                    this.$refs.user_profile_form.style.display = 'none'
                 }, response => {
                     console.log(response)
                     alert("出问题啦")
@@ -885,10 +981,20 @@
             // 个人优势
             SubUserAdvantage: function () {
                 console.log(this.user_advantage);
+                // let data = {
+                //     advantage: '',
+                //     user_id: 0
+                // }
+                // data.advantage = this.user_advantage.advantage
+                // data.user_id = 1
+                this.user_advantage.user_id = 1     // 测试
                 var data = this.user_advantage
-                this.$http.post((this.userAdvantageApi), data, {emulateJSON: false}).then(response => {
-                    this.grouplist = response.body;
-                    alert("提交成功")
+
+                this.$http.put((this.userAdvantageApi), data, {emulateJSON: true}).then(response => {
+                    let result = response.body;
+                    console.log('---------SubUserAdvantage start------')
+                    console.log(result)
+                    console.log('---------SubUserAdvantage end------')
                 }, response => {
                     console.log(response)
                     alert("出问题啦")
@@ -904,10 +1010,19 @@
                     return
                 }
                 console.log(this.experience);
+                // this.experience.id =
+                this.experience.user_id = this.user_profile.user_id
                 var data = this.experience
-                this.$http.post((this.experienceApi), data, {emulateJSON: false}).then(response => {
+
+                console.log('sub EditExperience start')
+                console.log(this.experience)
+                console.log('sub EditExperience end')
+                this.$http.post((this.experienceApi), data, {emulateJSON: true}).then(response => {
                     this.grouplist = response.body;
                     alert("提交成功")
+                    // 隐藏编辑框
+                    this.$refs.experienceForm.style.display = 'none'
+                    this.reload()
                 }, response => {
                     console.log(response)
                     alert("出问题啦")
@@ -960,6 +1075,20 @@
                 this.$refs.user_profile_text.style.display = 'block'
                 this.$refs.user_profile_form.style.display = 'none'
 
+                // 设置当前编辑的用户经验
+                // 不能使用this.experiences的元素索引Index，它与经验ID并非总是一一对应的关系
+                for (var index = 0; index < this.experiences.length; index++) {
+                    let experience = this.experiences[index]
+                    if (experience.id == curLiIndex) {
+                        this.experience = this.experiences[index]
+                        break
+                    }
+                }
+
+                console.log('EditExperience start')
+                console.log(this.experience)
+                console.log('EditExperience end')
+
                 // 隐藏当前经验，显示所有其他经验
                 // var lis = document.querySelectorAll('.experience')
                 // for (var i = 0; i < lis.length; i++) {
@@ -979,11 +1108,19 @@
 
             // 删除工作经验
             deleteExperience: function (e) {
-                var target = e.currentTarget.parentElement.parentElement
-                var data = target.getAttribute('li-index')
-                this.$http.delete((this.experienceApi), data, {emulateJSON: false}).then(response => {
-                    this.grouplist = response.body;
-                    alert("提交成功")
+                var target = e.currentTarget.parentElement.parentElement.parentElement
+                var experienceId = target.getAttribute('li-index')
+                let data = {'id': experienceId}
+                console.log('删除工作经验 data')
+                console.log(target)
+                console.log(data)
+                console.log('删除工作经验 data')
+                this.$http.delete((this.experienceApi), {params: data}, {emulateJSON: true}).then(response => {
+                    let result = response.body;
+                    alert("删除成功")
+                    console.log('删除工作经验 start')
+                    console.log(result)
+                    console.log('删除工作经验 end')
                 }, response => {
                     console.log(response)
                     alert("出问题啦")
@@ -1054,7 +1191,7 @@
                 this.$refs.ui_dropdown_list.style.display = 'none'
                 // 设置隐藏input的值，非必要
                 // 设置当前求职状态
-                this.user_profile.job_search_status = key
+                this.user_profile.job_search_status.code = key
             },
 
             // 显示求职状态选择框
