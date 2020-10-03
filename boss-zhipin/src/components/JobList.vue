@@ -81,10 +81,10 @@
                                 </ul>
                             </div>
                             <p class="ipt-wrap">
-                                <input class="ipt-search" type="text" placeholder="搜索职位、公司">
+                                <input class="ipt-search" type="text" placeholder="搜索职位、公司" v-model="keyWord">
                             </p>
                         </div>
-                        <button class="btn btn-search">搜索</button>
+                        <button class="btn btn-search" v-on:click="search">搜索</button>
                     </div>
                     <div class="condition-box">
                         <dl class="condition-city">
@@ -207,8 +207,8 @@
                         </ul>
                     </div>
                 </span>
-                        <a class="last" href="javascript:;" @click="resetSearchCondition">清空筛选条件</a>
-                        <!--<router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>-->
+                        <!--<a class="last" href="javascript:;" @click="resetSearchCondition">清空筛选条件</a>-->
+                        <router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>
                     </div>
                 </div>
             </div>
@@ -259,20 +259,20 @@
                                         <!--室内设计师-->
                                         <!--<span class="job-area">武汉·硚口区·古田</span>-->
                                         <!--</a>-->
-                                        <router-link :to="{path:'job-detail',query:{job_id: jobDetail.jobId}}">
-                                            {{jobDetail.job.name}}
+                                        <router-link :to="{path:'job-detail',query:{job_id: jobDetail.job_id}}">
+                                            {{jobDetail.title}}
                                             <span class="job-area">
-                                                {{jobDetail.job.city}}·
-                                                {{jobDetail.job.area}}·
-                                                {{jobDetail.job.address}}
+                                                {{jobDetail.city}}·
+                                                {{jobDetail.area}}·
+                                                {{jobDetail.company.address}}
                                             </span>
                                         </router-link>
                                     </span>
                                             <span class="job-jd">
-                                        <span class="salary">{{jobDetail.job.salary}}</span>
-                                        <span class="ages">{{jobDetail.job.experience}}<i class="line"></i></span>
+                                        <span class="salary">{{jobDetail.salary}}</span>
+                                        <span class="ages">{{jobDetail.experience}}<i class="line"></i></span>
                                         <span class="grade">
-                                            {{jobDetail.job.degree}}
+                                            {{jobDetail.degree}}
                                         </span>
                                         <span class="employer">
                                             <img src="/static/JobList/icon-chat-v2.png">
@@ -292,7 +292,7 @@
                                                 {{jobDetail.company.industry}}
                                                 <i class="line"></i>
                                             </span>
-                                            <span>{{jobDetail.company.financingStage}}<i class="line"></i></span>
+                                            <span>{{jobDetail.company.stage}}<i class="line"></i></span>
                                             <span>{{jobDetail.company.scale}}</span>
                                         </a>
                                     </span>
@@ -408,6 +408,7 @@
 </template>
 
 <script>
+    import merge from 'webpack-merge'
     import Header from '../plugin/header'
     import CityPopWindow from '../plugin/city-pop-window'
     import PageFooter from '../plugin/page-footer'
@@ -430,77 +431,66 @@
                     {job_id: 5, title: 'IOS高级开发工程师', salary: '13-25K', salary_num: '14薪', company: '今日头条'}
                 ],
                 // 看过的职位
-                history_jobs:[],
-                jobDetailList: [
-                    {
-                        jobId: 3,
-                        tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
-                        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                        job:
-                            {
-                                name: 'PHP研发工程师',
-                                city: '杭州',
-                                area: '萧山区',
-                                address: '五角大楼',
-                                salary: '5-10K',
-                                experience: '3-5年',
-                                degree: '大专'
-                            },
-                        company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
-                        employee: {name: '孙悟空', title: '创意总监'}
-                    },
-                    {
-                        jobId: 3,
-                        tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
-                        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                        job:
-                            {
-                                name: 'PHP研发工程师',
-                                city: '杭州',
-                                area: '萧山区',
-                                address: '五角大楼',
-                                salary: '5-10K',
-                                experience: '3-5年',
-                                degree: '大专'
-                            },
-                        company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
-                        employee: {name: '孙悟空', title: '创意总监'}
-                    },
-                    {
-                        jobId: 3,
-                        tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
-                        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                        job:
-                            {
-                                name: 'PHP研发工程师',
-                                city: '杭州',
-                                area: '萧山区',
-                                address: '五角大楼',
-                                salary: '5-10K',
-                                experience: '3-5年',
-                                degree: '大专'
-                            },
-                        company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
-                        employee: {name: '孙悟空', title: '创意总监'}
-                    },
-                    {
-                        jobId: 3,
-                        tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
-                        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                        job:
-                            {
-                                name: 'PHP研发工程师',
-                                city: '杭州',
-                                area: '萧山区',
-                                address: '五角大楼',
-                                salary: '5-10K',
-                                experience: '3-5年',
-                                degree: '大专'
-                            },
-                        company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
-                        employee: {name: '孙悟空', title: '创意总监'}
-                    },
-                ],
+                history_jobs: [],
+                jobDetailList:[],
+                // jobDetailList: [
+                //     {
+                //         jobId: 3,
+                //         tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
+                //         benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                //         title: 'PHP研发工程师',
+                //         city: '杭州',
+                //         area: '萧山区',
+                //         address: '五角大楼',
+                //         salary: '5-10K',
+                //         experience: '3-5年',
+                //         degree: '大专',
+                //         company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
+                //         employee: {name: '孙悟空', title: '创意总监'}
+                //     },
+                //     {
+                //         jobId: 3,
+                //         tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
+                //         benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                //         name: 'PHP研发工程师',
+                //         city: '杭州',
+                //         area: '萧山区',
+                //         address: '五角大楼',
+                //         salary: '5-10K',
+                //         experience: '3-5年',
+                //         degree: '大专',
+                //         company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
+                //         employee: {name: '孙悟空', title: '创意总监'}
+                //     },
+                //     {
+                //         jobId: 3,
+                //         tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
+                //         benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                //         name: 'PHP研发工程师',
+                //         city: '杭州',
+                //         area: '萧山区',
+                //         address: '五角大楼',
+                //         salary: '5-10K',
+                //         experience: '3-5年',
+                //         degree: '大专',
+                //         company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
+                //         employee: {name: '孙悟空', title: '创意总监'}
+                //     },
+                //     {
+                //         jobId: 3,
+                //         tags: ['全屋定制设计', '装饰装修', '设计师', '整套施工图'],
+                //         benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+                //         name: 'PHP研发工程师',
+                //         city: '杭州',
+                //         area: '萧山区',
+                //         address: '五角大楼',
+                //         salary: '5-10K',
+                //         experience: '3-5年',
+                //         degree: '大专',
+                //         company: {name: '小码教育', industry: '在线教育', financingStage: 'C轮', scale: '100-99人'},
+                //         employee: {name: '孙悟空', title: '创意总监'}
+                //     },
+                // ],
                 // 搜索框，城市，{city_code:1000,city_name:'北京'}
                 searchKeyWordCity: {},       // 不能写成null，否则网页不能显示
                 // 与mounted中的this.searchKeyWordCity任选其一
@@ -751,9 +741,41 @@
             this.history_jobs = history_jobs.slice(0, 5)
             console.log('==========history_jobs start============')
             console.log(this.history_jobs)
+            let id = this.$route.query.maxPrice
+            console.log('id = ' + id)
             console.log('==========history_jobs start============')
+
+        },
+        created() {
+            this.getJobList()
         },
         methods: {
+            // 操作路由的方法
+            routerToolDemo() {
+                console.log(this.$route.path)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'addParams': '我是新增的一个参数，哈哈哈哈'})
+                // })
+                // 这些方法，会直接将页面跳转到新路由去
+                var url = this.$router.push({path: this.$route.path, query: {page: 3}})
+                this.$router.push({
+                    query: merge(this.$route.query, {'page': '630'})
+                })
+
+                this.$router.push({
+                    query: merge(this.$route.query, {'addParams': '我是新增的一个参数，哈哈哈哈'})
+                })
+
+                this.$router.push({
+                    query: merge({}, {'maxPrice': '630'})
+                })
+            },
+            search() {
+                this.$router.push({
+                    query: merge(this.$route.query, {'key_word': this.key_word})
+                })
+                this.getJobList()
+            },
             // 调试tool start
             getDatabaseComment(collection) {
                 console.log('debug start')
@@ -838,6 +860,11 @@
                 this.searchConditionCity.city_name = cityName
                 this.searchConditionCity.city_code = cityCode
                 this.getCityArea(cityCode)
+
+                // 改变路由--增加城市参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'city_code': cityCode})
+                })
             },
             // 第一级职位类型分类
             selectFirstPositionType(e) {
@@ -888,6 +915,12 @@
                 this.industryIsActive = index
                 // 隐藏行业列表
                 this.hideIndustryBox()
+
+                // 改变路由--增加行业参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'industry_code': code})
+                })
+                // this.reload()
             },
             // 设置筛选条件--经验
             setSearchKeyWordExperience(e) {
@@ -900,6 +933,10 @@
                 this.experienceQueryIsActive = true
                 // 隐藏列表
                 this.hideExperience()
+                // 改变路由--增加经验参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'experience_code': code})
+                })
             },
             // 设置筛选条件--学历
             setSearchKeyWordDegree(e) {
@@ -912,6 +949,10 @@
                 this.degreeQueryIsActive = true
                 // 隐藏列表
                 this.hideDegree()
+                // 改变路由--增加学历参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'degree_code': code})
+                })
             },
             // 设置筛选条件--薪资
             setSearchKeyWordSalary(e) {
@@ -924,10 +965,14 @@
                 this.salaryQueryIsActive = true
                 // 隐藏列表
                 this.hideSalaryBox()
+                // 改变路由--增加薪资参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'salary_code': code})
+                })
             },
             // 设置筛选条件--融资阶段
             setSearchKeyWordStage(e) {
-                // 设置当前学历
+                // 设置当前融资阶段
                 var target = e.currentTarget
                 var code = target.getAttribute('code')
                 var name = target.innerText
@@ -936,10 +981,14 @@
                 this.stageQueryIsActive = true
                 // 隐藏列表
                 this.hideFinancingStageBox()
+                // 改变路由--增加融资阶段参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'stage_code': code})
+                })
             },
             // 设置筛选条件--公司规模
             setSearchKeyWordScale(e) {
-                // 设置当前学历
+                // 设置当前公司规模
                 var target = e.currentTarget
                 var code = target.getAttribute('code')
                 var name = target.innerText
@@ -948,6 +997,10 @@
                 this.scaleQueryIsActive = true
                 // 隐藏列表
                 this.hideCompanyScaleBox()
+                // 改变路由--增加公司规模参数
+                this.$router.push({
+                    query: merge(this.$route.query, {'scale_code': code})
+                })
             },
             // 地区--城市
             setSearchConditionCity(e) {
@@ -1136,6 +1189,48 @@
                     this.scaleCollection = config.company_scale
                     console.log('==========config end')
                     // alert("提交成功")
+                }, response => {
+                    console.log(response)
+                    // alert("出问题啦")
+                }).finally(
+                    response => {
+                        // alert('over')
+                        // this.reload()
+                    }
+                )
+            },
+            // 获取工作列表
+            getJobList: function () {
+
+                // 构造查询参数
+                let page = this.$route.query.page
+                let keyWord = this.$route.key_word
+                let positionTypeCode = this.$route.position_type_code
+                let industryCode = this.$route.industry_code
+                let experienceCode = this.$route.experience_code
+                let degreeCode = this.$route.degree_code
+                let salaryCode = this.$route.salary_code
+                let stageCode = this.$route.stage_code
+                let scaleCode = this.$route.scale_code
+
+                var params = new Object();
+                if (page != null) params.page = page
+                if (keyWord != null) params.key_word = keyWord
+                if (positionTypeCode != null) params.position_type_code = positionTypeCode
+                if (industryCode != null) params.industry_code = industryCode
+                if (experienceCode != null) params.experience_code = experienceCode
+                if (degreeCode != null) params.degree_code = degreeCode
+                if (salaryCode != null) params.salary_code = salaryCode
+                if (stageCode != null) params.stage_code = stageCode
+                if (scaleCode != null) params.scale_code = scaleCode
+
+                let getJobListApi = 'http://boss.api-cg.com/api/job/list'
+                this.$http.get((getJobListApi), {params: params}).then(response => {
+                    var jobs = response.body.data;
+                    console.log('==========getJobListApi start')
+                    console.log(jobs)
+                    console.log('==========getJobListApi end')
+                    this.jobDetailList = jobs
                 }, response => {
                     console.log(response)
                     // alert("出问题啦")

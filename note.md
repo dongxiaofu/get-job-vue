@@ -69,3 +69,12 @@ eslint是一个JavaScript的校验插件，通常用来校验语法或代码的�
 
 
 - Component template should contain exactly one root element. If you are using v-if on multiple elements, use v-else-if to chain them instead.
+
+安装 webpack-merge 
+
+cnpm install webpack-merge --save-dev
+
+这是一个操作路由的工具
+
+vue：先执行created，再执行mounted。
+
