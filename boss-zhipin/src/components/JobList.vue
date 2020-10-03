@@ -110,6 +110,7 @@
                                 <a
                                         v-for="(area,index) in areaCollection"
                                         v-on:click="setSearchConditionCityArea($event)"
+                                        v-bind:area-code=area.city_code
                                         v-bind:index=index
                                         :class="[{'first':index == 0},{'condition-district-select':searchConditionCityAreaIsActive == index}, '']"
                                 >
@@ -423,6 +424,8 @@
         },
         data() {
             return {
+                // 查询工作列表的查询参数
+                searchJobsParams: new Object(),
                 jobs: [
                     {job_id: 1, title: 'IOS高级开发工程师', salary: '13-25K', salary_num: '14薪', company: '今日头条'},
                     {job_id: 2, title: 'IOS高级开发工程师', salary: '13-25K', salary_num: '14薪', company: '今日头条'},
@@ -432,7 +435,7 @@
                 ],
                 // 看过的职位
                 history_jobs: [],
-                jobDetailList:[],
+                jobDetailList: [],
                 // jobDetailList: [
                 //     {
                 //         jobId: 3,
@@ -557,10 +560,10 @@
             }
         },
         mounted() {
-            console.log("===========start===========")
-            console.log(this.$refs.industryBox.style.display)
+            // console.log("===========start===========")
+            // console.log(this.$refs.industryBox.style.display)
             // this.$refs.industryBox.style.display = 'block'
-            console.log("===========end===========")
+            // console.log("===========end===========")
             this.searchKeyWordCity = {city_code: '1000', city_name: '北京'}
 
             this.firstPositionTypes = [{code310000: 310000, name: '高级管理'},
@@ -721,7 +724,7 @@
 
             this.getHotCity()
 
-            console.log('tool start')
+            // console.log('tool start')
             var res = '['
             for (var i = 0; i < this.industryCollection.length; i++) {
                 var industry = this.industryCollection[i]
@@ -729,8 +732,8 @@
                 res += item
             }
             res += ']'
-            console.log(res)
-            console.log('tool end')
+            // console.log(res)
+            // console.log('tool end')
 
 
             this.getIndustryList()
@@ -739,11 +742,11 @@
             // 获取看过的职位
             var history_jobs = JSON.parse(localStorage.getItem('history_jobs'));
             this.history_jobs = history_jobs.slice(0, 5)
-            console.log('==========history_jobs start============')
-            console.log(this.history_jobs)
+            // console.log('==========history_jobs start============')
+            // console.log(this.history_jobs)
             let id = this.$route.query.maxPrice
-            console.log('id = ' + id)
-            console.log('==========history_jobs start============')
+            // console.log('id = ' + id)
+            // console.log('==========history_jobs start============')
 
         },
         created() {
@@ -752,7 +755,7 @@
         methods: {
             // 操作路由的方法
             routerToolDemo() {
-                console.log(this.$route.path)
+                // console.log(this.$route.path)
                 // this.$router.push({
                 //     query: merge(this.$route.query, {'addParams': '我是新增的一个参数，哈哈哈哈'})
                 // })
@@ -771,14 +774,14 @@
                 })
             },
             search() {
-                this.$router.push({
-                    query: merge(this.$route.query, {'key_word': this.key_word})
-                })
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'key_word': this.keyWord})
+                // })
                 this.getJobList()
             },
             // 调试tool start
             getDatabaseComment(collection) {
-                console.log('debug start')
+                // console.log('debug start')
                 var comment = '[';
                 for (var i = 0; i < collection.length; i++) {
                     var salary = collection[i]
@@ -787,8 +790,8 @@
                     comment += "'name' => '" + salary.name + "'],"
                 }
                 comment += ']'
-                console.log(comment)
-                console.log('debug start')
+                // console.log(comment)
+                // console.log('debug start')
             },
             // 调试tool end
             showIndustryBox: function () {
@@ -818,11 +821,11 @@
                 this.$refs.cityPopWindow.switchCityBox()
             },
             showExperience() {
-                console.log("hello")
+                // console.log("hello")
                 this.$refs.experienceBox.style.display = 'block'
             },
             hideExperience() {
-                console.log("hello")
+                // console.log("hello")
                 this.$refs.experienceBox.style.display = 'none'
             },
             showDegree() {
@@ -851,7 +854,7 @@
             },
             // 设置搜索关键词，城市
             setSearchKeyWordCity(e) {
-                console.log(e)
+                // console.log(e)
                 var cityCode = e.city_code
                 var cityName = e.city_name
                 // 设置当前城市--搜索框
@@ -862,13 +865,21 @@
                 this.getCityArea(cityCode)
 
                 // 改变路由--增加城市参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'city_code': cityCode})
-                })
+                this.addParam('city_code', cityCode)
+                // this.searchJobsParams.city_code = 'test';//this.$route.params.city_code
+                console.log('======this.searchJobsParams.city_code s')
+                console.log(this.searchJobsParams.city_code)
+                console.log('======this.searchJobsParams.city_code e')
+                // if (this.checkSerachJobsParamExist('city_code') == false) {
+                //     this.$router.push({
+                //         query: merge(this.$route.query, {'city_code': cityCode})
+                //     })
+                //
+                // }
             },
             // 第一级职位类型分类
             selectFirstPositionType(e) {
-                console.log(e)
+                // console.log(e)
                 var target = e.currentTarget
                 var index = target.getAttribute('index')
                 var code = target.getAttribute('code')
@@ -879,7 +890,7 @@
             },
             // 第二级职位类型分类
             selectSecondPositionType(e) {
-                console.log(e)
+                // console.log(e)
                 var target = e.currentTarget
                 var index = target.getAttribute('index')
                 var code = target.getAttribute('code')
@@ -917,9 +928,11 @@
                 this.hideIndustryBox()
 
                 // 改变路由--增加行业参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'industry_code': code})
-                })
+                this.addParam('industry_code', code)
+                //
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'industry_code': code})
+                // })
                 // this.reload()
             },
             // 设置筛选条件--经验
@@ -934,9 +947,10 @@
                 // 隐藏列表
                 this.hideExperience()
                 // 改变路由--增加经验参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'experience_code': code})
-                })
+                this.addParam('experience_code', code)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'experience_code': code})
+                // })
             },
             // 设置筛选条件--学历
             setSearchKeyWordDegree(e) {
@@ -950,9 +964,10 @@
                 // 隐藏列表
                 this.hideDegree()
                 // 改变路由--增加学历参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'degree_code': code})
-                })
+                this.addParam('degree_code', code)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'degree_code': code})
+                // })
             },
             // 设置筛选条件--薪资
             setSearchKeyWordSalary(e) {
@@ -966,9 +981,10 @@
                 // 隐藏列表
                 this.hideSalaryBox()
                 // 改变路由--增加薪资参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'salary_code': code})
-                })
+                this.addParam('salary_code', code)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'salary_code': code})
+                // })
             },
             // 设置筛选条件--融资阶段
             setSearchKeyWordStage(e) {
@@ -982,9 +998,10 @@
                 // 隐藏列表
                 this.hideFinancingStageBox()
                 // 改变路由--增加融资阶段参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'stage_code': code})
-                })
+                this.addParam('stage_code', code)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'stage_code': code})
+                // })
             },
             // 设置筛选条件--公司规模
             setSearchKeyWordScale(e) {
@@ -998,9 +1015,10 @@
                 // 隐藏列表
                 this.hideCompanyScaleBox()
                 // 改变路由--增加公司规模参数
-                this.$router.push({
-                    query: merge(this.$route.query, {'scale_code': code})
-                })
+                this.addParam('scale_code', code)
+                // this.$router.push({
+                //     query: merge(this.$route.query, {'scale_code': code})
+                // })
             },
             // 地区--城市
             setSearchConditionCity(e) {
@@ -1014,8 +1032,9 @@
                 this.searchKeyWordCity.city_code = cityCode
                 this.searchKeyWordCity.city_name = cityName
                 // 重新获取当前城区
-                console.log('cityCode=' + cityCode)
+                // console.log('cityCode=' + cityCode)
                 this.getCityArea(this.searchConditionCity.city_code)
+                this.addParam('city_code', cityCode)
                 // 用新的查询条件重新打开页面，或者说，请求工作列表数据--请求接口
 
             },
@@ -1029,12 +1048,14 @@
                 this.searchConditionCityArea.area_name = areaName
                 // 用新的查询条件重新打开页面，或者说，请求工作列表数据--请求接口
                 // 新的查询条件：已有查询条件 + 当前城区
+                var code = target.getAttribute('area-code');
+                this.addParam('area_code', code)
             },
             // 清空筛选条件
             resetSearchCondition() {
                 // 保留搜索框关键词
                 var keyWord = this.$route.query.key_word
-                console.log('keyWord = ' + keyWord)
+                // console.log('keyWord = ' + keyWord)
                 // 带搜索关键词后打开这个页面
                 // this.$router.go(0)
                 // window.open("http://chugang.net")    // 不管怎样，都会打开在新窗口打开页面
@@ -1048,9 +1069,9 @@
                 // 两个都行
                 // var child = target.firstChild
                 var child = target.firstElementChild
-                console.log(child)
+                // console.log(child)
                 var className = child.className
-                console.log(className)
+                // console.log(className)
                 // 本想使用循环的。
                 switch (className) {
                     case 'emoj-not-statisfy':
@@ -1074,7 +1095,7 @@
                 this.attitudeCode = code
                 // 设置反馈按钮
                 var content = this.$refs.feedBackContent.value
-                console.log('content =' + content)
+                // console.log('content =' + content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
                 } else {
@@ -1092,9 +1113,9 @@
                 var content = this.$refs.feedBackContent.value
                 // 提交反馈
                 if (this.feedBackDisabled == true) {
-                    console.log('按钮禁用')
+                    // console.log('按钮禁用')
                 } else {
-                    console.log('反馈内容：' + content)
+                    // console.log('反馈内容：' + content)
                 }
             },
             // 检测是否能提交反馈
@@ -1110,7 +1131,7 @@
             // 输入反馈内容
             writeFeedBackContent() {
                 var content = this.$refs.feedBackContent.value
-                console.log(content)
+                // console.log(content)
                 if (this.checkSubmitFeedBackDisabled()) {
                     this.feedBackDisabled = false
                 } else {
@@ -1122,12 +1143,12 @@
                 let recommend_jobs_list_api = 'http://boss.api-cg.com/api/city/list/hot'
                 this.$http.get((recommend_jobs_list_api), {params: {first_letter: 'A,B,h,t'}}).then(response => {
                     this.cityCollection = response.body.data;
-                    console.log('==========this.recommend_jobs start')
-                    console.log(this.cityCollection)
-                    console.log('==========this.recommend_jobs end')
+                    // console.log('==========this.recommend_jobs start')
+                    // console.log(this.cityCollection)
+                    // console.log('==========this.recommend_jobs end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1141,12 +1162,12 @@
                 let recommend_jobs_list_api = 'http://boss.api-cg.com/api/city/list/children'
                 this.$http.get((recommend_jobs_list_api), {params: {parent_id: parentId}}).then(response => {
                     this.areaCollection = response.body.data;
-                    console.log('==========this.recommend_jobs area start')
-                    console.log(this.areaCollection)
-                    console.log('==========this.recommend_jobs end')
+                    // console.log('==========this.recommend_jobs area start')
+                    // console.log(this.areaCollection)
+                    // console.log('==========this.recommend_jobs end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1160,12 +1181,12 @@
                 let recommend_jobs_list_api = this.industryListApi
                 this.$http.get((recommend_jobs_list_api), {}).then(response => {
                     this.industryCollection = response.body.data;
-                    console.log('==========this.industryCollection area start')
-                    console.log(this.areaCollection)
-                    console.log('==========this.industryCollection end')
+                    // console.log('==========this.industryCollection area start')
+                    // console.log(this.areaCollection)
+                    // console.log('==========this.industryCollection end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1179,18 +1200,18 @@
                 let recommend_jobs_list_api = this.searchFilterConfigApi
                 this.$http.get((recommend_jobs_list_api), {}).then(response => {
                     var config = response.body.data;
-                    console.log('==========config start')
-                    console.log(config)
+                    // console.log('==========config start')
+                    // console.log(config)
                     this.experienceCollection = config.experience
-                    console.log(this.experienceCollection)
+                    // console.log(this.experienceCollection)
                     this.degreeCollection = config.degree
                     this.salaryCollection = config.salary
                     this.stageCollection = config.financing_stage
                     this.scaleCollection = config.company_scale
-                    console.log('==========config end')
+                    // console.log('==========config end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1204,14 +1225,20 @@
 
                 // 构造查询参数
                 let page = this.$route.query.page
-                let keyWord = this.$route.key_word
+                let keyWord = this.$route.query.key_word
                 let positionTypeCode = this.$route.position_type_code
-                let industryCode = this.$route.industry_code
-                let experienceCode = this.$route.experience_code
-                let degreeCode = this.$route.degree_code
-                let salaryCode = this.$route.salary_code
-                let stageCode = this.$route.stage_code
-                let scaleCode = this.$route.scale_code
+                let industryCode = this.$route.query.industry_code
+                let experienceCode = this.$route.query.experience_code
+                let degreeCode = this.$route.query.degree_code
+                let salaryCode = this.$route.query.salary_code
+                let stageCode = this.$route.query.stage_code
+                let scaleCode = this.$route.query.scale_code
+                let areaCode = this.$route.query.area_code
+                let cityCode = this.$route.query.city_code
+
+                // console.log('page = ' + page)
+                // console.log('keyWord = ' + keyWord)
+                // console.log('industryCode = ' + industryCode)
 
                 var params = new Object();
                 if (page != null) params.page = page
@@ -1223,16 +1250,22 @@
                 if (salaryCode != null) params.salary_code = salaryCode
                 if (stageCode != null) params.stage_code = stageCode
                 if (scaleCode != null) params.scale_code = scaleCode
+                if (areaCode != null) params.area_code = areaCode
+                if (cityCode != null) params.city_code = cityCode
 
                 let getJobListApi = 'http://boss.api-cg.com/api/job/list'
-                this.$http.get((getJobListApi), {params: params}).then(response => {
+                console.log('====================== this.searchJobsParams start')
+                this.searchJobsParams = params
+                console.log(this.searchJobsParams)
+                console.log('====================== this.searchJobsParams end')
+                this.$http.get((getJobListApi), {params: this.searchJobsParams}).then(response => {
                     var jobs = response.body.data;
                     console.log('==========getJobListApi start')
                     console.log(jobs)
                     console.log('==========getJobListApi end')
                     this.jobDetailList = jobs
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1240,6 +1273,35 @@
                         // this.reload()
                     }
                 )
+            },
+            // 检测是否存在某个参数
+            checkSerachJobsParamExist: function (param, value) {
+                if(this.searchJobsParams.hasOwnProperty(param) == false) return false
+                if(value == this.searchJobsParams[param]) return true
+                return false
+            },
+            // 增加路由参数
+            addParam(paramName, value) {
+                // 没有 paramName 这个参数
+                // if (!this.$route.params.hasOwnProperty(paramName)) {
+                //     return
+                // }
+                console.log('============this.searchJobsParams[paramName] start')
+                console.log(value)
+                console.log('============this.searchJobsParams[paramName] end')
+                // paramName没有加入工作列表查询参数
+                if (this.checkSerachJobsParamExist(paramName, value)) {
+                    return
+                }
+                let paramObj = new Object()
+                paramObj[paramName] = value
+                this.$router.push({
+                    query: merge(this.$route.query, paramObj)
+                })
+                this.searchJobsParams[paramName] = value
+                console.log('============this.searchJobsParams[paramName =] start')
+                console.log(this.searchJobsParams[paramName])
+                console.log('============this.searchJobsParams[paramName = ] end')
             },
         }
     }

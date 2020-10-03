@@ -1075,12 +1075,12 @@
                     // 在这里保存浏览记录，能保证先获取job数据，再保存。二者是线性执行顺序。
                     // 在created、mounted里，都不能保证先从API获取job数据后再保存数据。
                     this.saveHistoryJobs()
-                    console.log('==========this.job start')
-                    console.log(this.job)
-                    console.log('==========this.job end')
+                    // console.log('==========this.job start')
+                    // console.log(this.job)
+                    // console.log('==========this.job end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1094,12 +1094,12 @@
                 let recommend_jobs_list_api = 'http://boss.api-cg.com/api/job/list/recommend'
                 this.$http.get((recommend_jobs_list_api), {params: {id: 5}}).then(response => {
                     this.recommend_jobs = response.body.data;
-                    console.log('==========this.recommend_jobs start')
-                    console.log(this.recommend_jobs)
-                    console.log('==========this.recommend_jobs end')
+                    // console.log('==========this.recommend_jobs start')
+                    // console.log(this.recommend_jobs)
+                    // console.log('==========this.recommend_jobs end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1114,12 +1114,12 @@
                 let getRelatedJobsApi = 'http://boss.api-cg.com/api/job/list/relate'
                 this.$http.get((getRelatedJobsApi), {params: {}}).then(response => {
                     this.related_jobs = response.body.data;
-                    console.log('==========this.related_jobs start')
-                    console.log(this.related_jobs)
-                    console.log('==========this.related_jobs end')
+                    // console.log('==========this.related_jobs start')
+                    // console.log(this.related_jobs)
+                    // console.log('==========this.related_jobs end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
@@ -1131,7 +1131,7 @@
 
             // 设置搜索关键词，城市
             setSearchKeyWordCity(e) {
-                console.log(e)
+                // console.log(e)
                 var cityCode = e.city_code
                 var cityName = e.city_name
                 this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
@@ -1142,18 +1142,18 @@
                 let recommend_jobs_list_api = this.searchFilterConfigApi
                 this.$http.get((recommend_jobs_list_api), {}).then(response => {
                     var config = response.body.data;
-                    console.log('==========config start')
-                    console.log(config)
+                    // console.log('==========config start')
+                    // console.log(config)
                     this.experienceCollection = config.experience
-                    console.log(this.experienceCollection)
+                    // console.log(this.experienceCollection)
                     this.degreeCollection = config.degree
                     this.salaryCollection = config.salary
                     this.stageCollection = config.financing_stage
                     this.scaleCollection = config.company_scale
-                    console.log('==========config end')
+                    // console.log('==========config end')
                     // alert("提交成功")
                 }, response => {
-                    console.log(response)
+                    // console.log(response)
                     // alert("出问题啦")
                 }).finally(
                     response => {
