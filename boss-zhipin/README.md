@@ -28,3 +28,24 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+# 各页面访问地址
+
+在这个文件可以看到所有的路由：
+
+/Users/cg/data/www/get-job-vue/boss-zhipin/src/router/index.js
+
+工作列表
+
+http://127.0.0.1:8080/#/job-list
+
+工作详情
+
+http://127.0.0.1:8080/#/job-detail
+
+聊天页面
+
+http://127.0.0.1:8080/#/chat
+
+
+
