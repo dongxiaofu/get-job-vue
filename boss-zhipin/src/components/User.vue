@@ -300,13 +300,6 @@
                 <div class="item-primary">
                   <h4 class="title" ref="experience_title">工作经历</h4>
                   <ul>
-                    <div
-                      v-show="experiences.length == 0"
-                      style="width: 100%;" ref="add_experience_btn"
-                      @click="hideAddExperienceButton"
-                    >
-                      <div id="add-experience-btn">新增工作经历</div>
-                    </div>
                     <li class="experience" v-bind:li-type="1">
                       <div class="item-form" ref="experienceForm" style="display: none">
                         <h3 style="padding:0px 30px">编辑工作经历</h3>
@@ -639,40 +632,48 @@
                         </div>
                       </div>
                     </li>
-                    <div v-for="experience in experiences">
-                      <li class="experience" v-bind:li-index="experience.id" v-bind:li-type="2">
-                        <div class="item-info">
-                          <div class="item-txt">
-                            <span class="title">{{ experience.company_name }}</span>
-                            <span class="work-period">{{ experience.start_time }}-{{ experience.end_time }}</span>
-                          </div>
-                          <div class="position-name">{{ experience.position_name }}</div>
-                          <div class="item-txt pre-line">
-                            <span class="txt-type">内容</span>
-                            {{ experience.job_content }}
-                          </div>
-                          <div class="item-txt pre-line">
-                            <span class="txt-type">业绩</span>
-                            {{ experience.performance }}
-                          </div>
-<!--                          todo 技能标签隐藏，暂不实现-->
-                          <div class="keywords" style="display: none">
-                            <span class="keyword">后端开发</span>
-                            <span class="keyword">PHP</span>
-                            <span class="keyword">系统架构</span>
-                          </div>
-                          <div class="op delete-op">
+                    <div ref="experience_box">
+                      <div v-for="experience in experiences">
+                        <li class="experience" v-bind:li-index="experience.id" v-bind:li-type="2">
+                          <div class="item-info">
+                            <div class="item-txt">
+                              <span class="title">{{ experience.company_name }}</span>
+                              <span class="work-period">{{ experience.start_time }}-{{ experience.end_time }}</span>
+                            </div>
+                            <div class="position-name">{{ experience.position_name }}</div>
+                            <div class="item-txt pre-line">
+                              <span class="txt-type">内容</span>
+                              {{ experience.job_content }}
+                            </div>
+                            <div class="item-txt pre-line">
+                              <span class="txt-type">业绩</span>
+                              {{ experience.performance }}
+                            </div>
+                            <!--                          todo 技能标签隐藏，暂不实现-->
+                            <div class="keywords" style="display: none">
+                              <span class="keyword">后端开发</span>
+                              <span class="keyword">PHP</span>
+                              <span class="keyword">系统架构</span>
+                            </div>
+                            <div class="op delete-op">
                                         <span class="delete" v-on:click="deleteExperience($event)">
                                             <i class="icon-delete"></i>
                                             删除
                                         </span>
-                            <span class="edit" v-on:click="EditExperience($event)">
+                              <span class="edit" v-on:click="EditExperience($event)">
                                             <i class="icon-edit"></i>
                                             编辑
                                         </span>
+                            </div>
                           </div>
-                        </div>
-                      </li>
+                        </li>
+                      </div>
+                    </div>
+                    <div
+                      style="width: 100%;margin-top: 40px" ref="add_experience_btn"
+                      @click="hideExperienceBox"
+                    >
+                      <div id="add-experience-btn">新增工作经历</div>
                     </div>
                   </ul>
                 </div>
@@ -751,22 +752,17 @@ export default {
         id: 0,
         user_id: 0,
         company_name: '',
-        department: 'c',
-        position_type: 'd',
+        department: '',
+        position_type: '',
         // tags: ['后端开发', 'PHP', '系统架构'],
-        industry: 'w',
-        position_name: 'w',
+        industry: '',
+        position_name: '',
         working_year_start: '0',
         working_month_start: '0',
         working_year_end: '0',
         working_month_end: '0',
-        job_content: '1.游戏接口编写和接口性能优化\n' +
-          '2.数据统计功能开发\n' +
-          '3.微信登录、微信支付、微信打款开发\n' +
-          '4.代码版本控制与发布\n' +
-          '5.参与服务器日常维护\n' +
-          '6.指导初级工程师开发',
-        performance: 'wwwww',
+        job_content: '',
+        performance: '',
       },
 
       experience1: {
@@ -949,8 +945,8 @@ export default {
     // console.log("===========end============")
     // this.item.user_name = 'hello'
     // this.user_profile.email = 'chuganghong@qq.com'
-    this.user_advantage.advantage = 'I am rich';
-    this.experience.performance = 'well done!';
+    // this.user_advantage.advantage = 'I am rich';
+    // this.experience.performance = 'well done!';
     // 从API获取工作经验数据
     this.experiences = [this.experience1, this.experience2, this.experience3];
     // 从API获取简历附件
@@ -979,6 +975,15 @@ export default {
       this.$http.get((this.experienceListApi), {params: params}, {emulateJSON: true}).then(response => {
         this.experiences = response.body.data;
         console.log('==========this.getExperienceList start');
+        this.experiences.map(function (experience, index) {
+          let startTime = experience.start_time.split('-');
+          experience.working_year_start = startTime[0];
+          experience.working_month_start = startTime[1];
+
+          let endTime = experience.end_time.split('-');
+          experience.working_year_end = endTime[0];
+          experience.working_month_end = endTime[1];
+        });
         console.log(this.experiences);
         console.log('==========this.getExperienceList end');
       }, response => {
@@ -1074,7 +1079,10 @@ export default {
         this.$refs.user_profile_text.style.display = 'block';
       }, response => {
         console.log(response);
-        alert('出问题啦');
+        this.$message({
+          message: '出问题啦',
+          type: 'error',
+        });
       });
     },
 
@@ -1119,16 +1127,22 @@ export default {
       console.log('sub EditExperience end');
       this.$http.post((this.experienceApi), data, {emulateJSON: true}).then(response => {
         this.grouplist = response.body;
-        alert('提交成功');
+        this.$message({
+          message: '提交成功',
+          type: 'success',
+        });
         // 隐藏编辑框
         this.$refs.experienceForm.style.display = 'none';
         this.reload();
       }, response => {
         console.log(response);
-        alert('出问题啦');
+        this.$message({
+          message: '出问题啦',
+          type: 'error',
+        });
       }).finally(
         response => {
-          alert('over');
+          // alert('over');
           // this.reload()
         },
       );
@@ -1153,8 +1167,8 @@ export default {
       var curLiIndex = target.getAttribute('li-index');
 
       // 隐藏所有经验，只显示编辑
-      var lis = document.querySelectorAll('.experience');
-      for (var i = 0; i < lis.length; i++) {
+      let lis = document.querySelectorAll('.experience');
+      for (let i = 0; i < lis.length; i++) {
         var li = lis[i];
         var liType = li.getAttribute('li-type');
         if (liType == 1) {
@@ -1174,10 +1188,12 @@ export default {
       // 隐藏其他编辑框
       this.$refs.user_profile_text.style.display = 'block';
       this.$refs.user_profile_form.style.display = 'none';
+      // 隐藏新增按钮
+      this.$refs.add_experience_btn.style.display = 'none';
 
       // 设置当前编辑的用户经验
       // 不能使用this.experiences的元素索引Index，它与经验ID并非总是一一对应的关系
-      for (var index = 0; index < this.experiences.length; index++) {
+      for (let index = 0; index < this.experiences.length; index++) {
         let experience = this.experiences[index];
         if (experience.id == curLiIndex) {
           this.experience = this.experiences[index];
@@ -1217,16 +1233,23 @@ export default {
       console.log('删除工作经验 data');
       this.$http.delete((this.experienceApi), {params: data}, {emulateJSON: true}).then(response => {
         let result = response.body;
-        alert('删除成功');
+        this.$message({
+          message: '删除成功',
+          type: 'success',
+        });
         console.log('删除工作经验 start');
         console.log(result);
         console.log('删除工作经验 end');
       }, response => {
         console.log(response);
-        alert('出问题啦');
+        // alert('出问题啦');
+        this.$message({
+          message: '出问题啦',
+          type: 'error',
+        });
       }).finally(
         response => {
-          alert('over');
+          // alert('over');
           // this.reload()
         },
       );
@@ -1428,9 +1451,10 @@ export default {
       return true;
     },
     // 隐藏新增工作经历按钮
-    hideAddExperienceButton() {
+    hideExperienceBox() {
       this.$refs.add_experience_btn.style.display = 'none';
       this.$refs.experienceForm.style.display = 'block';
+      this.$refs.experience_box.style.display = 'none';
     },
   },
 };

@@ -29,7 +29,7 @@
                     <li class="nav-dot">.</li>
                     <li class="file" v-on:click="showUploadBox"><a href="javascript:;">上传</a></li>
                     <li class="user-info">
-                        <span class="label-text">小明</span>
+                        <span class="label-text">{{userObject.name}}</span>
                         <a href="#" class="avatar"><img src="/static/Chat/avatar_5.png"></a>
                     </li>
                 </ul>
@@ -42,10 +42,20 @@
     export default {
         name: "login-header",
         data() {
-            return {}
+            return {
+              userObject:{},
+            }
         },
 
-        methods: {
+      mounted() {
+        let userObject = this.$cookies.get('user');
+        console.log('==============userObject start');
+        console.log(userObject);
+        console.log('==============userObject end');
+        this.userObject = userObject;
+      },
+
+      methods: {
             showUploadBox: function () {
                 this.$emit('showUploadBoxEvent', 'hello')
             },
