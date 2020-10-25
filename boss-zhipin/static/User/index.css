@@ -668,7 +668,7 @@ ul {
 
 h4 {
   padding: 0;
-  margin: 10px;
+  margin: 20px 0px 20px 10px;
 }
 
 /*.item-info .item-txt {*/
@@ -698,12 +698,14 @@ h4 {
   font-weight: 700;
 
   margin-top: 20px;
+  margin-bottom: 10px;
   margin-left: 15px;
 }
 
 .item-txt span.txt-type {
   margin-right: 0px;
-
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 14px;
   font-weight: 600;
 }
@@ -1939,4 +1941,19 @@ a.wechat-qr:hover img {
   height: 30px;
   outline: none;
   border: 1px solid #FFF;
+}
+
+/*新增工作经历*/
+#add-experience-btn {
+  background-color: #5dd5c8;
+  color: #ffffff;
+  border: 1px solid #5dd5c8;
+  outline: none;
+  height: 60px;
+  width: 300px;
+  font-size: 20px;
+  line-height: 60px;
+  text-align: center;
+  margin: 0 auto; /*对button无效*/
+  cursor: pointer;
 }

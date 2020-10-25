@@ -298,8 +298,15 @@
               </div>
               <div id="history">
                 <div class="item-primary">
-                  <h3 class="title" ref="experience_title">工作经历</h3>
+                  <h4 class="title" ref="experience_title">工作经历</h4>
                   <ul>
+                    <div
+                      v-show="experiences.length == 0"
+                      style="width: 100%;" ref="add_experience_btn"
+                      @click="hideAddExperienceButton"
+                    >
+                      <div id="add-experience-btn">新增工作经历</div>
+                    </div>
                     <li class="experience" v-bind:li-type="1">
                       <div class="item-form" ref="experienceForm" style="display: none">
                         <h3 style="padding:0px 30px">编辑工作经历</h3>
@@ -395,7 +402,7 @@
                               </div>
                             </div>
                           </div>
-                          <!--暂时隐藏-->
+                          <!--todo 暂时隐藏技能标签-->
                           <div class="one-line form-item-all" style="display: none">
                             <div class="ipt all">
                               <div class="item-label">技能标签</div>
@@ -648,7 +655,8 @@
                             <span class="txt-type">业绩</span>
                             {{ experience.performance }}
                           </div>
-                          <div class="keywords">
+<!--                          todo 技能标签隐藏，暂不实现-->
+                          <div class="keywords" style="display: none">
                             <span class="keyword">后端开发</span>
                             <span class="keyword">PHP</span>
                             <span class="keyword">系统架构</span>
@@ -1103,7 +1111,7 @@ export default {
       }
       console.log(this.experience);
       // this.experience.id =
-      this.experience.user_id = this.user_profile.id;
+      this.experience.user_id = this.user_profile.user_id;
       var data = this.experience;
 
       console.log('sub EditExperience start');
@@ -1279,10 +1287,10 @@ export default {
     selectJobSearchStatus: function (e) {
       let key = e.currentTarget.getAttribute('job_search_status_key');
       let job_search_status = this.job_search_status_options[key - 1];
-      console.log('=========== selectJobSearchStatus start')
-      console.log(key)
-      console.log(job_search_status)
-      console.log('=========== selectJobSearchStatus end')
+      console.log('=========== selectJobSearchStatus start');
+      console.log(key);
+      console.log(job_search_status);
+      console.log('=========== selectJobSearchStatus end');
       this.job_search_status_value = job_search_status.value;
       this.$refs.ui_dropdown_list.style.display = 'none';
       // 设置隐藏input的值，非必要
@@ -1304,10 +1312,10 @@ export default {
     // 选择学历
     selectDegree: function (e) {
       let key = e.currentTarget.getAttribute('degree_key');
-      console.log('key start==============')
-      console.log(key)
-      console.log(this.degree_options)
-      console.log('key end==============')
+      console.log('key start==============');
+      console.log(key);
+      console.log(this.degree_options);
+      console.log('key end==============');
       let degree = this.degree_options[key];
       this.degree_value = degree.value;
       this.$refs.ui_dropdown_list_degree.style.display = 'none';
@@ -1418,6 +1426,11 @@ export default {
         }
       }
       return true;
+    },
+    // 隐藏新增工作经历按钮
+    hideAddExperienceButton() {
+      this.$refs.add_experience_btn.style.display = 'none';
+      this.$refs.experienceForm.style.display = 'block';
     },
   },
 };
