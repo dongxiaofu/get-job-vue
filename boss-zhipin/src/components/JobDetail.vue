@@ -1091,7 +1091,7 @@ export default {
       // this.job = this.jobs[job_id - 1]
 
 
-      let getJobDetailApi = this.apiHost + this.getJobDetailApi + '/job_id';
+      let getJobDetailApi = this.apiHost + this.getJobDetailApi + '/' + job_id;
       this.$http.get((getJobDetailApi), {}).then(response => {
         this.job = response.body.data;
         console.log('============ getJobDetail start')
