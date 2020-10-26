@@ -47,5 +47,13 @@ http://127.0.0.1:8080/#/job-detail
 
 http://127.0.0.1:8080/#/chat
 
+线上部署：
+
+cnpm install
+
+cnpm run build
+
+必须使用cnpm，使用npm报错。
+
 
 

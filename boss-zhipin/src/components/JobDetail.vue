@@ -871,13 +871,17 @@ export default {
       apiHost: '',
       searchFilterConfigApi: '/api/job/search-filter-config',
       recommend_jobs_list_api: '/api/job/list/recommend',
-      getRelatedJobsApi : '/api/job/list/relate',
-      getJobDetailApi : '/api/job/detail',
+      getRelatedJobsApi: '/api/job/list/relate',
+      getJobDetailApi: '/api/job/detail',
     };
   },
   mounted() {
     let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
     this.apiHost = apiHost;
+    if (this.$route.query) {
+      this.job_id = this.$route.query.job_id;
+      this.getJobDetail();
+    }
     // 保存"看过的职位"
     // this.saveHistoryJobs()
     // 获取"看过的职位"
@@ -999,16 +1003,22 @@ export default {
       }
       var isExist = false;
       var current_job_id = this.job.job_id;        // 直接使用this.job_id可能会导致错误，有空再确定并分析原因
+      let new_history_jobs = [];
       // // 保存重复的浏览记录
       history_jobs.forEach(item => {
         // 这里导致过耗时许久的错误。历史记录中不知为何混入了null，于是报错：无法读取null的job_id属性。
         // 浏览器调试工具告知了错误行，我一直认为是this.job_id导致的问题。重复测试多次，期间还出现过
         // 原因不明错，调试方向几乎被带偏。
         // 其实，很简单。试了this.job_id，也应该试试item。如此，很容易就发现了错误啊。
-        if (item == null) {
-          history_jobs.remove(item);
-          return;
-        }
+        console.log('==========saveHistoryJobs start');
+        console.log(item);
+        console.log('==========saveHistoryJobs end');
+        // if (item.length == 0 || item == null || item.job_id == undefined) {
+        //   console.log('remove');
+        //   // todo 无用的函数
+        //   history_jobs.remove(item);
+        //   return;
+        // }
         if (current_job_id == 0) {
           return;
         }
@@ -1016,8 +1026,13 @@ export default {
           isExist = true;
         }
       });
-
-      if (this.job.job_id != 0 && isExist == false) {
+      console.log('==========saveHistoryJobs job start');
+      console.log(this.job);
+      console.log(this.job.job_id);
+      console.log(isExist);
+      console.log('==========saveHistoryJobs job end');
+      if (this.job.job_id != undefined && this.job.job_id != 0 && isExist == false) {
+        console.log('push');
         history_jobs.push(this.job);
       }
 
@@ -1079,6 +1094,9 @@ export default {
       let getJobDetailApi = this.apiHost + this.getJobDetailApi + '/job_id';
       this.$http.get((getJobDetailApi), {}).then(response => {
         this.job = response.body.data;
+        console.log('============ getJobDetail start')
+        console.log(this.job)
+        console.log('============ getJobDetail end')
         // 保存"看过的职位"
         // 如果在其他地方执行保存浏览记录的方法，存储的是初始化的job数据。
         // 在这里保存浏览记录，能保证先获取job数据，再保存。二者是线性执行顺序。
