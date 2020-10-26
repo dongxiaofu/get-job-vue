@@ -67,7 +67,7 @@
                 <div class="user-profile-inner">
                   <div class="user-info">
                     <div class="user-info-text">
-                      <h3>{{ user_profile.name }}<i class="gender"></i></h3>
+                      <h3 style="height: 25px">{{ user_profile.name }}<i class="gender"></i></h3>
                       <p>
                                             <span class="before-line-first"><i
                                               class="icon-experience"></i>{{ experience_value }}</span>
@@ -1060,6 +1060,8 @@ export default {
       if (this.user_profile.birthday_year * this.user_profile.birthday_month == 0) {
         console.log('请选择年份和月份');
       }
+      let user_id = this.userObject.id;
+      this.getUserProfile(user_id)
       var birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month;
       this.user_profile.birthday = birthday;
       console.log(this.user_profile);
@@ -1122,12 +1124,25 @@ export default {
     // 工作经验
     SubExperience: function () {
       if (this.checkWorkingHoursIsValid() == false) {
-        alert('开始时间必须小于结束时间');
+        // alert('开始时间必须小于结束时间');
+        this.$message({
+          message: '开始时间必须小于结束时间',
+          type: 'error',
+        });
         return;
       }
       console.log(this.experience);
       // this.experience.id =
       this.experience.user_id = this.user_profile.user_id;
+      if(this.experience.company_name == '' || this.experience.department == '' || this.experience.industry == ''
+        || this.experience.job_content == '' || this.experience.position_type == ''
+      ){
+        this.$message({
+          message: '请将工作经历填写完整',
+          type: 'error',
+        });
+        return;
+      }
       var data = this.experience;
 
       console.log('sub EditExperience start');
