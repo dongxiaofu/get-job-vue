@@ -836,14 +836,17 @@ export default {
       },
 
       experiences: [],
+      apiHostDev: 'http://boss.api-cg.com',
+      apiHostProd: 'http://boss-api.chugang.net',
+      apiHost: '',
       // 获取工作经验列表
-      experienceListApi: 'http://boss.api-cg.com/api/user/experience-list',
+      experienceListApi: '/api/user/experience-list',
       // 工作经验更新、新增、删除
-      experienceApi: 'http://boss.api-cg.com/api/user/experience',
+      experienceApi: '/api/user/experience',
       // 用户信息：查询、更新
-      userProfileApi: 'http://boss.api-cg.com/api/user',
+      userProfileApi: '/api/user',
       // 个人优势
-      userAdvantageApi: 'http://boss.api-cg.com/api/user/advantage',
+      userAdvantageApi: '/api/user/advantage',
 
       job_search_status_options:
         [
@@ -915,6 +918,8 @@ export default {
     };
   },
   mounted() {
+    let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
+    this.apiHost = apiHost;
     let userObject = this.$cookies.get('user');
     console.log('==============userObject start');
     console.log(userObject);
@@ -972,7 +977,8 @@ export default {
     // 获取工作经验
     getExperienceList: function (userId) {
       let params = {'user_id': userId};
-      this.$http.get((this.experienceListApi), {params: params}, {emulateJSON: true}).then(response => {
+      let experienceListApi = this.apiHost + this.experienceListApi
+      this.$http.get((experienceListApi), {params: params}, {emulateJSON: true}).then(response => {
         this.experiences = response.body.data;
         console.log('==========this.getExperienceList start');
         this.experiences.map(function (experience, index) {
@@ -999,7 +1005,8 @@ export default {
     // 获取用户信息
     getUserProfile: function (userId) {
       let params = {'user_id': userId};
-      this.$http.get((this.userProfileApi), {params: params}, {emulateJSON: true}).then(response => {
+      let userProfileApi = this.apiHost + this.userProfileApi;
+      this.$http.get((userProfileApi), {params: params}, {emulateJSON: true}).then(response => {
         this.user_profile = response.body.data;
         console.log('==========this.user_profile start');
         console.log(this.user_profile);
@@ -1064,7 +1071,8 @@ export default {
       data.experience = data.experience.code;
 
       console.log('data ========= end');
-      this.$http.post((this.userProfileApi), data, {emulateJSON: true}, {
+      let userProfileApi = this.apiHost + this.userProfileApi;
+      this.$http.post((userProfileApi), data, {emulateJSON: true}, {
         headers: {
           Authorization: 'Bearer ',
           'Content-Type': 'multipart/form-data',
@@ -1097,8 +1105,8 @@ export default {
       // data.user_id = 1
       this.user_advantage.user_id = this.userObject.id;     // 测试
       let data = this.user_advantage;
-
-      this.$http.put((this.userAdvantageApi), data, {emulateJSON: true}).then(response => {
+      let userAdvantageApi = this.apiHost + this.userAdvantageApi;
+      this.$http.put((userAdvantageApi), data, {emulateJSON: true}).then(response => {
         let result = response.body;
         console.log('---------SubUserAdvantage start------');
         console.log(result);
@@ -1125,7 +1133,8 @@ export default {
       console.log('sub EditExperience start');
       console.log(this.experience);
       console.log('sub EditExperience end');
-      this.$http.post((this.experienceApi), data, {emulateJSON: true}).then(response => {
+      let experienceApi = this.apiHost + this.experienceApi;
+      this.$http.post((experienceApi), data, {emulateJSON: true}).then(response => {
         this.grouplist = response.body;
         this.$message({
           message: '提交成功',
@@ -1231,7 +1240,8 @@ export default {
       console.log(target);
       console.log(data);
       console.log('删除工作经验 data');
-      this.$http.delete((this.experienceApi), {params: data}, {emulateJSON: true}).then(response => {
+      let experienceApi = this.apiHost + this.experienceApi;
+      this.$http.delete((experienceApi), {params: data}, {emulateJSON: true}).then(response => {
         let result = response.body;
         this.$message({
           message: '删除成功',

@@ -75,6 +75,7 @@ export default {
       email: '',
       password: '',
       loginApi: 'http://boss.api-cg.com/api/auth/login',
+      loginApiProd: 'http://boss-api.chugang.net/api/auth/login',
     };
   },
   methods: {
@@ -146,14 +147,16 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$http.post((this.loginApi), data, {emulateJSON: true}, {},
+      let loginApi = process.env.NODE_ENV == 'development' ? this.loginApi : this.loginApiProd;
+      console.log(loginApi)
+      this.$http.post((loginApi), data, {emulateJSON: true}, {},
       ).then(response => {
         let result = response.body;
         console.log('登录成功 start');
         console.log(result);
         console.log('登录成功 end');
         this.$cookies.set('user', result.data.user);
-        this.$router.push({path:'job-list'})
+        this.$router.push({path: 'job-list'});
       }, response => {
         console.log(response);
         this.$message({
@@ -164,6 +167,9 @@ export default {
     },
   },
   mounted() {
+    console.log(process.env.NODE_ENV);
+    let loginApi = process.env.NODE_ENV == 'development' ? this.loginApi : this.loginApiProd;
+    console.log(loginApi)
     // 进来的时候调用添加
     this.setBodyBackGround();
   },

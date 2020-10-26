@@ -83,6 +83,7 @@ export default {
       email: '',
       password: '',
       registerApi: 'http://boss.api-cg.com/api/auth/register',
+      registerApiProd: 'http://boss-api.chugang.net/api/auth/register',
     };
   },
   methods: {
@@ -155,7 +156,9 @@ export default {
         email: this.email,
         password: this.password,
       };
-      this.$http.post((this.registerApi), data, {emulateJSON: true}, {},
+      let registerApi = process.env.NODE_ENV == 'development' ? this.registerApi : this.registerApiProd;
+      console.log(registerApi);
+      this.$http.post((registerApi), data, {emulateJSON: true}, {},
       ).then(response => {
         let result = response.body;
         console.log('注册成功 start');

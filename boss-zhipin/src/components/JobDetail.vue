@@ -1,1172 +1,1182 @@
 <template>
-    <div>
-        <div id="wrap">
-            <!--头部菜单-->
-            <Header></Header>
-            <div id="job-banner">
-                <div class="inner">
-                    <div class="banner-job-detail">
-                        <div class="job-info">
-                            <div class="job-status">{{job.job_status}}</div>
-                            <div class="job-name">
-                                {{job.title}}
-                                <span class="salary">
-                                    {{job.salary}}·{{job.salary_num}}薪
+  <div>
+    <div id="wrap">
+      <!--头部菜单-->
+      <Header></Header>
+      <div id="job-banner">
+        <div class="inner">
+          <div class="banner-job-detail">
+            <div class="job-info">
+              <div class="job-status">{{ job.job_status }}</div>
+              <div class="job-name">
+                {{ job.title }}
+                <span class="salary">
+                                    {{ job.salary }}·{{ job.salary_num }}薪
                                 </span>
-                            </div>
-                            <p>
-                                <a href="#">{{job.city}}</a>
-                                <em class="dot"></em>
-                                {{job.experience}}
-                                <em class="dot"></em>
-                                {{job.degree}}
-                            </p>
-                            <div class="tag-container">
-                                <span class="tag" v-for="benefit in job.benefits">{{benefit}}</span>
-                            </div>
-                        </div>
-                        <div class="job-op">
-                            <button class="contact" v-on:click="chat">立即沟通</button>
-                            <a class="write-resume" href="#"><i></i>填写在线简历</a>
-                            <a class="upload-resume" href="#"><i></i>上传简历附件</a>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <p>
+                <a href="#">{{ job.city }}</a>
+                <em class="dot"></em>
+                {{ job.experience }}
+                <em class="dot"></em>
+                {{ job.degree }}
+              </p>
+              <div class="tag-container">
+                <span class="tag" v-for="benefit in job.benefits">{{ benefit }}</span>
+              </div>
             </div>
-            <div id="job-box">
-                <div class="inner">
-                    <div class="side-bar">
-                        <div class="company-summary">
-                            <h3>公司基本信息</h3>
-                            <div class="company-info">
-                                <a class="company-info-logo" href="#">
-                                    <!--网络图片-->
-                                    <img :src="job.company.logo">
-                                </a>
-                                <a class="company-info-name" href="#">
-                                    {{job.company.name}}
-                                </a>
-                            </div>
-                            <p>
-                                <i class="icon-stage icon-company-sumary"></i>
-                                {{job.company.stage}}
-                            </p>
-                            <p>
-                                <i class="icon-scale icon-company-sumary"></i>
-                                {{job.company.scale}}
-                            </p>
-                            <p>
-                                <i class="icon-industry icon-company-sumary"></i>
-                                {{job.company.industry}}
-                            </p>
-                            <p>
-                                <i class="icon-net icon-company-sumary"></i>
-                                {{job.company.net}}
-                            </p>
-                            <p class="upload-date">更新于：{{job.update_time}}</p>
-                        </div>
-                        <div class="history">
-                            <div class="history-title-wapper">
-                                <div class="history-title">看过的职位</div>
-                                <!--<h3>看过的职位</h3>-->
-                            </div>
-                            <div class="history-list">
-                                <ul>
-                                    <li v-for="job in history_jobs">
-                                        <router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">
-                                            <h4 class="title">
-                                                {{job.title}}
-                                                <span class="salary">{{job.salary}}·{{job.salary_num}}</span>
-                                            </h4>
-                                            <p>{{job.company.name}}</p>
-                                        </router-link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ads">
-                            <ul>
-                                <li><a href="#"> <img src="/static/JobDetail/pro-1.png"></a></li>
-                                <li><a href="#"> <img src="/static/JobDetail/pro-2.png"></a></li>
-                            </ul>
-                        </div>
+            <div class="job-op">
+              <button class="contact" v-on:click="chat">立即沟通</button>
+              <a class="write-resume" href="#"><i></i>填写在线简历</a>
+              <a class="upload-resume" href="#"><i></i>上传简历附件</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="job-box">
+        <div class="inner">
+          <div class="side-bar">
+            <div class="company-summary">
+              <h3>公司基本信息</h3>
+              <div class="company-info">
+                <a class="company-info-logo" href="#">
+                  <!--网络图片-->
+                  <img :src="job.company.logo">
+                </a>
+                <a class="company-info-name" href="#">
+                  {{ job.company.name }}
+                </a>
+              </div>
+              <p>
+                <i class="icon-stage icon-company-sumary"></i>
+                {{ job.company.stage }}
+              </p>
+              <p>
+                <i class="icon-scale icon-company-sumary"></i>
+                {{ job.company.scale }}
+              </p>
+              <p>
+                <i class="icon-industry icon-company-sumary"></i>
+                {{ job.company.industry }}
+              </p>
+              <p>
+                <i class="icon-net icon-company-sumary"></i>
+                {{ job.company.net }}
+              </p>
+              <p class="upload-date">更新于：{{ job.update_time }}</p>
+            </div>
+            <div class="history">
+              <div class="history-title-wapper">
+                <div class="history-title">看过的职位</div>
+                <!--<h3>看过的职位</h3>-->
+              </div>
+              <div class="history-list">
+                <ul>
+                  <li v-for="job in history_jobs">
+                    <router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">
+                      <h4 class="title">
+                        {{ job.title }}
+                        <span class="salary">{{ job.salary }}·{{ job.salary_num }}</span>
+                      </h4>
+                      <p>{{ job.company.name }}</p>
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="ads">
+              <ul>
+                <li><a href="#"> <img src="/static/JobDetail/pro-1.png"></a></li>
+                <li><a href="#"> <img src="/static/JobDetail/pro-2.png"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="job-detail">
+            <div class="detail-op">
+              <div class="btns">
+                <a href="javascript:;" v-on:click="switchMiniAppBox" style="cursor: pointer"
+                   ref="qrBtn"><i
+                  class="icon-wechat-qr"></i>微信扫码分享</a>
+                <a href="#"><i class="icon-like"></i>感兴趣</a>
+                <a href="javascript:;" v-on:click="showReportComponent"><i
+                  class="icon-report"></i>举报</a>
+                <div class="mini-app" ref="miniApp" style="display: none">
+                  <div class="mini-app-inner">
+                    <div class="arrow-up"></div>
+                    <div class="imgs">
+                      <img src="/static/JobDetail/tencent.jpg" class="company-icon">
+                      <img src="/static/JobDetail/qcodeC.png" class="qcodeC">
                     </div>
-                    <div class="job-detail">
-                        <div class="detail-op">
-                            <div class="btns">
-                                <a href="javascript:;" v-on:click="switchMiniAppBox" style="cursor: pointer"
-                                   ref="qrBtn"><i
-                                        class="icon-wechat-qr"></i>微信扫码分享</a>
-                                <a href="#"><i class="icon-like"></i>感兴趣</a>
-                                <a href="javascript:;" v-on:click="showReportComponent"><i
-                                        class="icon-report"></i>举报</a>
-                                <div class="mini-app" ref="miniApp" style="display: none">
-                                    <div class="mini-app-inner">
-                                        <div class="arrow-up"></div>
-                                        <div class="imgs">
-                                            <img src="/static/JobDetail/tencent.jpg" class="company-icon">
-                                            <img src="/static/JobDetail/qcodeC.png" class="qcodeC">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="avatar">
-                                <img src="/static/JobDetail/avatar.png">
-                                <div class="employer-name-title">
-                                    <h3 class="name">
-                                        {{job.employee.name}}
-                                        <i class="icon-vip"></i>
-                                    </h3>
-                                    <p class="title">
-                                        <span class="employee-title">{{job.employee.title}} &nbsp;</span>
-                                        <span class="employee-status"> · {{job.employee.status}}</span>
-                                    </p>
-                                </div>
-                            </div>
+                  </div>
+                </div>
+              </div>
+              <div class="avatar">
+                <img src="/static/JobDetail/avatar.png">
+                <div class="employer-name-title">
+                  <h3 class="name">
+                    {{ job.employee.name }}
+                    <i class="icon-vip"></i>
+                  </h3>
+                  <p class="title">
+                    <span class="employee-title">{{ job.employee.title }} &nbsp;</span>
+                    <span class="employee-status"> · {{ job.employee.status }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="detail-content">
+              <div class="job-desc">
+                <h3>职位描述</h3>
+                <div class="text">
+                  {{ job.job_description }}
+                </div>
+              </div>
+              <div class="company-desc">
+                <h3>公司介绍</h3>
+                <div class="text">
+                  {{ job.company.introduce }}
+                </div>
+              </div>
+              <div class="competition-desc">
+                <h3>竞争力分析</h3>
+                <div class="text">
+                  综合竞争力评估
+                </div>
+              </div>
+              <div class="business-desc">
+                <h3>工商信息</h3>
+                <div>
+                  <p>{{ job.company.business }}</p>
+                </div>
+              </div>
+              <div class="work-address">
+                <h3>工作地址</h3>
+                <div>{{ job.company.address }}</div>
+              </div>
+              <div class="related-job">
+                <div class="title">
+                  <span>看过该职位的人还看了</span>
+                  <a href="#">更多职位<i class="icon-arrow-right"></i></a>
+                  <router-link :to="{path:'job-list'}">
+                    更多职位<i class="icon-arrow-right"></i>
+                  </router-link>
+                </div>
+                <div class="more-job">
+                  <ul>
+                    <li v-for="job in related_jobs">
+                      <!--<a href="#">-->
+                      <!--<div class="company-logo">-->
+                      <!--<img :src="job.logo">-->
+                      <!--</div>-->
+                      <!--<div class="job-info">-->
+                      <!--<p><b>{{job.title}}</b></p>-->
+                      <!--<p class="red">{{job.salary}}</p>-->
+                      <!--<p class="gray">{{job.company}} . {{job.city}}</p>-->
+                      <!--</div>-->
+                      <!--</a>-->
+                      <router-link :to="{path:'job-detail', query:{'job_id':job.job_id}}">
+                        <div class="company-logo">
+                          <img :src="job.company.logo">
                         </div>
-                        <div class="detail-content">
-                            <div class="job-desc">
-                                <h3>职位描述</h3>
-                                <div class="text">
-                                    {{job.job_description}}
-                                </div>
-                            </div>
-                            <div class="company-desc">
-                                <h3>公司介绍</h3>
-                                <div class="text">
-                                    {{job.company.introduce}}
-                                </div>
-                            </div>
-                            <div class="competition-desc">
-                                <h3>竞争力分析</h3>
-                                <div class="text">
-                                    综合竞争力评估
-                                </div>
-                            </div>
-                            <div class="business-desc">
-                                <h3>工商信息</h3>
-                                <div>
-                                    <p>{{job.company.business}}</p>
-                                </div>
-                            </div>
-                            <div class="work-address">
-                                <h3>工作地址</h3>
-                                <div>{{job.company.address}}</div>
-                            </div>
-                            <div class="related-job">
-                                <div class="title">
-                                    <span>看过该职位的人还看了</span>
-                                    <a href="#">更多职位<i class="icon-arrow-right"></i></a>
-                                    <router-link :to="{path:'job-list'}">
-                                        更多职位<i class="icon-arrow-right"></i>
-                                    </router-link>
-                                </div>
-                                <div class="more-job">
-                                    <ul>
-                                        <li v-for="job in related_jobs">
-                                            <!--<a href="#">-->
-                                            <!--<div class="company-logo">-->
-                                            <!--<img :src="job.logo">-->
-                                            <!--</div>-->
-                                            <!--<div class="job-info">-->
-                                            <!--<p><b>{{job.title}}</b></p>-->
-                                            <!--<p class="red">{{job.salary}}</p>-->
-                                            <!--<p class="gray">{{job.company}} . {{job.city}}</p>-->
-                                            <!--</div>-->
-                                            <!--</a>-->
-                                            <router-link :to="{path:'job-detail', query:{'job_id':job.job_id}}">
-                                                <div class="company-logo">
-                                                    <img :src="job.company.logo">
-                                                </div>
-                                                <div class="job-info">
-                                                    <p><b>{{job.title}}</b></p>
-                                                    <p class="red">{{job.salary}}</p>
-                                                    <p class="gray">{{job.company.name}} . {{job.city}}</p>
-                                                </div>
-                                            </router-link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="search-form">
-                                <div class="search-form-con">
-                                    <p><input type="text" class="search-ipt" placeholder="搜索职位、公司"/></p>
-                                    <span class="city-box" v-on:click="switchCityBox">
+                        <div class="job-info">
+                          <p><b>{{ job.title }}</b></p>
+                          <p class="red">{{ job.salary }}</p>
+                          <p class="gray">{{ job.company.name }} . {{ job.city }}</p>
+                        </div>
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="search-form">
+                <div class="search-form-con">
+                  <p><input type="text" class="search-ipt" placeholder="搜索职位、公司"/></p>
+                  <span class="city-box" v-on:click="switchCityBox">
                                 <i clas s="icon-arrow-down"></i>
-                                {{searchKeyWordCity.city_name}}
+                                {{ searchKeyWordCity.city_name }}
                             </span>
-                                </div>
-                                <button class="search-btn">搜索</button>
-                            </div>
-                            <div class="recommend-job">
-                                <h3>推荐职位</h3>
-                                <div class="recommend-job-box">
-                                    <ul>
-                                        <li class="cur">
+                </div>
+                <button class="search-btn">搜索</button>
+              </div>
+              <div class="recommend-job">
+                <h3>推荐职位</h3>
+                <div class="recommend-job-box">
+                  <ul>
+                    <li class="cur">
                                             <span v-for="job in recommend_jobs">
                                                 <router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">
                                                         <div class="job-name">
-                                                            {{job.title}}
+                                                            {{ job.title }}
                                                             <span class="salary">
-                                                                {{job.salary}}·{{job.salary_num}}薪
+                                                                {{ job.salary }}·{{ job.salary_num }}薪
                                                             </span>
                                                         </div>
-                                                        <p>{{job.company.name}}</p>
+                                                        <p>{{ job.company.name }}</p>
                                                 </router-link>
                                             </span>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                            <a href="#">
-                                                <div class="job-name">
-                                                    C++开发工程师（平台研发）
-                                                    <span class="salary">6-11K·13薪</span>
-                                                </div>
-                                                <p>苍穹数码</p>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <!--暂时不实现-->
-                                    <!--<div class="page">-->
-                                    <!--<a href="#"><i class="icon-arrow-left"></i></a>-->
-                                    <!--<a href="#"><i class="icon-arrow-right"></i></a>-->
-                                    <!--<span class="switch">-->
-                                    <!--<i class="first"></i>-->
-                                    <!--<i class="second cur"></i>-->
-                                    <!--<i class="third"></i>-->
-                                    <!--</span>-->
-                                    <!--</div>-->
-                                </div>
-                            </div>
-                            <div class="pos-bread">
-                                <a href="#">武汉BOSS直聘招聘</a>>
-                                <a href="#">武汉招聘</a>>
-                                <a href="#">武汉硚口区招聘</a>>
-                            </div>
-                            <div id="link-box">
-                                <div class="link-nav-wrapper">
-                                    <div class="link-nav">
-                                        <span>热门职位</span>
-                                        <span>热门城市</span>
-                                        <span>热门企业</span>
-                                        <span class="cur">附近城市</span>
-                                    </div>
-                                    <div class="links">
-                                        <ul>
-                                            <li><a href="#">武汉招聘信息</a></li>
-                                            <li><a href="#">襄阳招聘信息</a></li>
-                                            <li><a href="#">鄂州招聘信息</a></li>
-                                            <li><a href="#">孝感招聘信息</a></li>
-                                            <li><a href="#">黄冈招聘信息</a></li>
-                                            <li><a href="#">黄石招聘信息</a></li>
-                                            <li><a href="#">咸宁招聘信息</a></li>
-                                            <li><a href="#">荆州招聘信息</a></li>
-                                            <li><a href="#">宜昌招聘信息</a></li>
-                                            <!--<li><a href="#">十堰招聘信息</a></li>-->
-                                            <!--<li><a href="#">随州招聘信息</a></li>-->
-                                            <!--<li><a href="#">荆门招聘信息</a></li>-->
-                                            <!--<li><a href="#">恩施招聘信息</a></li>-->
-                                            <!--<li><a href="#">仙桃招聘信息</a></li>-->
-                                            <!--<li><a href="#">潜江招聘信息</a></li>-->
-                                            <!--<li><a href="#">天门招聘信息</a></li>-->
-                                            <!--<li><a href="#">神农架招聘信息</a></li>-->
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                                <!--<div class="channel-introduce">-->
-                                <!--<h4>武汉招聘频道介绍</h4>-->
-                                <!--<p>BOSS直聘武汉招聘频道，展示最新最热武汉招聘信息，百万Boss在线直聘，直接开聊，在线面试，武汉找工作就上BOSS直聘网站或APP！</p>-->
-                                <!--</div>-->
-                            </div>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
                         </div>
-                    </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                      <a href="#">
+                        <div class="job-name">
+                          C++开发工程师（平台研发）
+                          <span class="salary">6-11K·13薪</span>
+                        </div>
+                        <p>苍穹数码</p>
+                      </a>
+                    </li>
+                  </ul>
+                  <!--暂时不实现-->
+                  <!--<div class="page">-->
+                  <!--<a href="#"><i class="icon-arrow-left"></i></a>-->
+                  <!--<a href="#"><i class="icon-arrow-right"></i></a>-->
+                  <!--<span class="switch">-->
+                  <!--<i class="first"></i>-->
+                  <!--<i class="second cur"></i>-->
+                  <!--<i class="third"></i>-->
+                  <!--</span>-->
+                  <!--</div>-->
                 </div>
+              </div>
+              <div class="pos-bread">
+                <a href="#">武汉BOSS直聘招聘</a>>
+                <a href="#">武汉招聘</a>>
+                <a href="#">武汉硚口区招聘</a>>
+              </div>
+              <div id="link-box">
+                <div class="link-nav-wrapper">
+                  <div class="link-nav">
+                    <span>热门职位</span>
+                    <span>热门城市</span>
+                    <span>热门企业</span>
+                    <span class="cur">附近城市</span>
+                  </div>
+                  <div class="links">
+                    <ul>
+                      <li><a href="#">武汉招聘信息</a></li>
+                      <li><a href="#">襄阳招聘信息</a></li>
+                      <li><a href="#">鄂州招聘信息</a></li>
+                      <li><a href="#">孝感招聘信息</a></li>
+                      <li><a href="#">黄冈招聘信息</a></li>
+                      <li><a href="#">黄石招聘信息</a></li>
+                      <li><a href="#">咸宁招聘信息</a></li>
+                      <li><a href="#">荆州招聘信息</a></li>
+                      <li><a href="#">宜昌招聘信息</a></li>
+                      <!--<li><a href="#">十堰招聘信息</a></li>-->
+                      <!--<li><a href="#">随州招聘信息</a></li>-->
+                      <!--<li><a href="#">荆门招聘信息</a></li>-->
+                      <!--<li><a href="#">恩施招聘信息</a></li>-->
+                      <!--<li><a href="#">仙桃招聘信息</a></li>-->
+                      <!--<li><a href="#">潜江招聘信息</a></li>-->
+                      <!--<li><a href="#">天门招聘信息</a></li>-->
+                      <!--<li><a href="#">神农架招聘信息</a></li>-->
+                    </ul>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <!--<div class="channel-introduce">-->
+                <!--<h4>武汉招聘频道介绍</h4>-->
+                <!--<p>BOSS直聘武汉招聘频道，展示最新最热武汉招聘信息，百万Boss在线直聘，直接开聊，在线面试，武汉找工作就上BOSS直聘网站或APP！</p>-->
+                <!--</div>-->
+              </div>
             </div>
-            <!--footer-->
-            <PageFooter></PageFooter>
+          </div>
         </div>
-        <!--举报-->
-        <ReportPopWindow ref="reportPopWindow"></ReportPopWindow>
-        <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
+      </div>
+      <!--footer-->
+      <PageFooter></PageFooter>
     </div>
+    <!--举报-->
+    <ReportPopWindow ref="reportPopWindow"></ReportPopWindow>
+    <CityPopWindow ref="cityPopWindow" @selectCity="setSearchKeyWordCity($event)"></CityPopWindow>
+  </div>
 </template>
 
 <script>
-    import Header from '../plugin/header'
-    import CityPopWindow from '../plugin/city-pop-window'
-    import ReportPopWindow from '../plugin/report-pop-window'
-    import PageFooter from '../plugin/page-footer'
+import Header from '../plugin/header';
+import CityPopWindow from '../plugin/city-pop-window';
+import ReportPopWindow from '../plugin/report-pop-window';
+import PageFooter from '../plugin/page-footer';
 
-    export default {
-        name: 'JobDetail',
-        components: {Header, CityPopWindow, ReportPopWindow, PageFooter},
-        inject: ['reload'],
-        data() {
-            return {
-                job_id: 0,
-                // job: {},//必须定义初始化job数据，否则，在上面用到job的地方会导致报错，虽然不影响执行
-                job: {
-                    job_id: 0,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '孙悟空2', title: '创意总监-CTO', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-
-                job1: {
-                    job_id: 1,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级1',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '猪八戒', title: 'CEO', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-                job2: {
-                    job_id: 2,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级2',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-                job3: {
-                    job_id: 3,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级3',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '孙悟空', title: '创意总监---CTO', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-                job4: {
-                    job_id: 4,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级4',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-                job5: {
-                    job_id: 5,
-                    job_status: '招聘中',
-                    title: 'C++工程师 初中级5',
-                    salary: '7-10K',
-                    salary_num: '13薪',
-                    city: '武汉',
-                    experience: '1-3年',
-                    degree: '本科',
-                    benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-                    employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
-                    job_description: "岗位职责：\n" +
-                        "\n" +
-                        "1、负责和客户沟通设计方案、促成签单。\n" +
-                        "\n" +
-                        "2、量房、效果图及整套施工图的绘制工作。\n" +
-                        "\n" +
-                        "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-                        "\n" +
-                        "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-                        "\n" +
-                        "任职资格：\n" +
-                        "\n" +
-                        "1、室内设计、环境艺术设计等相关专业。\n" +
-                        "\n" +
-                        "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-                        "\n" +
-                        "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-                        "\n" +
-                        "岗位福利：\n" +
-                        "\n" +
-                        "1.每个月到店客流保证300户以上.\n" +
-                        "\n" +
-                        "2.上班时间9:00-18:00午休2个小时。\n" +
-                        "\n" +
-                        "3.公司所有岗位提供住宿。\n" +
-                        "\n" +
-                        "4.每月举办员工生日会、部门团建、销冠奖励",
-                    company: {
-                        introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-                        business: '太子家居有限公司',
-                        address: '中国上海',
-                        logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                        name: '北燕',
-                        stage: '已上市',
-                        scale: '10000人以上',
-                        industry: '互联网',
-                        net: 'http://chugang.net'
-
-                    },
-                    update_time: '2020-09-09'
-                },
-
-                jobs: [
-                    // {
-                    //     job_id: 1,
-                    //     title: 'IOS高级开发工程师1',
-                    //     salary: '13-25K',
-                    //     salary_num: '14薪',
-                    //     company: '今日头条',
-                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                    //     city: '武汉'
-                    // },
-                    // {
-                    //     job_id: 2,
-                    //     title: 'IOS高级开发工程师2',
-                    //     salary: '13-25K',
-                    //     salary_num: '14薪',
-                    //     company: '今日头条',
-                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                    //     city: '武汉'
-                    // },
-                    // {
-                    //     job_id: 3,
-                    //     title: 'IOS高级开发工程师3',
-                    //     salary: '13-25K',
-                    //     salary_num: '14薪',
-                    //     company: '今日头条',
-                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                    //     city: '广州'
-                    // },
-                    // {
-                    //     job_id: 4,
-                    //     title: 'IOS高级开发工程师4',
-                    //     salary: '13-25K',
-                    //     salary_num: '14薪',
-                    //     company: '今日头条',
-                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                    //     city: '武汉'
-                    // },
-                    // {
-                    //     job_id: 5,
-                    //     title: 'IOS高级开发工程师5',
-                    //     salary: '13-25K',
-                    //     salary_num: '14薪',
-                    //     company: '今日头条',
-                    //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
-                    //     city: '武汉'
-                    // }
-                ],
-                related_jobs: [],
-                recommend_jobs: [],
-                history_jobs: [],
-                // 搜索框，城市，{city_code:1000,city_name:'北京'}
-                searchKeyWordCity: {city_code: '0000', city_name: '城市'},
-
-                // 接口地址
-                // industryListApi: 'http://boss.api-cg.com/api/job/industry-list',
-                searchFilterConfigApi: 'http://boss.api-cg.com/api/job/search-filter-config',
-            }
-        },
-        mounted() {
-            // 保存"看过的职位"
-            // this.saveHistoryJobs()
-            // 获取"看过的职位"
-            this.getHistoryJobs()
-            // 获取"推荐职位"
-            this.getRecommend()
-            // 获取相关工作列表
-            this.getRelatedJobs()
-            // 保存"看过的职位"
-            // this.saveHistoryJobs()
-            // this.related_jobs = this.jobs
-            // this.recommend_jobs = this.jobs
-            // 获取"看过的职位"
-            // this.getHistoryJobs()
-            // 在data中赋值初始值，仍会导致页面初始化时报错未定义logo等。
-            // 放在这里初始化数据后，问题解决。
-            // 究竟需要在哪里初始化，有空再验证。
-            // this.job = {
-            //     job_id: 0,
-            //     job_status: '招聘中',
-            //     title: 'C++工程师 初中级',
-            //     salary: '7-10K',
-            //     salary_num: '13薪',
-            //     city: '武汉',
-            //     experience: '1-3年',
-            //     degree: '本科',
-            //     benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
-            //     employee: {name: '孙悟空2', title: '创意总监-CTO', status: '刚刚在线', avatar: '头像'},
-            //     job_description: "岗位职责：\n" +
-            //         "\n" +
-            //         "1、负责和客户沟通设计方案、促成签单。\n" +
-            //         "\n" +
-            //         "2、量房、效果图及整套施工图的绘制工作。\n" +
-            //         "\n" +
-            //         "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
-            //         "\n" +
-            //         "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
-            //         "\n" +
-            //         "任职资格：\n" +
-            //         "\n" +
-            //         "1、室内设计、环境艺术设计等相关专业。\n" +
-            //         "\n" +
-            //         "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
-            //         "\n" +
-            //         "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
-            //         "\n" +
-            //         "岗位福利：\n" +
-            //         "\n" +
-            //         "1.每个月到店客流保证300户以上.\n" +
-            //         "\n" +
-            //         "2.上班时间9:00-18:00午休2个小时。\n" +
-            //         "\n" +
-            //         "3.公司所有岗位提供住宿。\n" +
-            //         "\n" +
-            //         "4.每月举办员工生日会、部门团建、销冠奖励",
-            //     company: {
-            //         introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
-            //         business: '太子家居有限公司',
-            //         address: '中国上海',
-            //         logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
-            //         name: '北燕',
-            //         stage: '已上市',
-            //         scale: '10000人以上',
-            //         industry: '互联网',
-            //         net: 'http://chugang.net'
-            //
-            //     },
-            //     update_time: '2020-09-09'
-            // }
-
+export default {
+  name: 'JobDetail',
+  components: {Header, CityPopWindow, ReportPopWindow, PageFooter},
+  inject: ['reload'],
+  data() {
+    return {
+      job_id: 0,
+      // job: {},//必须定义初始化job数据，否则，在上面用到job的地方会导致报错，虽然不影响执行
+      job: {
+        job_id: 0,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '孙悟空2', title: '创意总监-CTO', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
 
         },
-        // vue 路由参数变化，页面不刷新（数据不更新）解决方法 start
-        watch: {
-            '$route'(to, from) { //监听路由是否变化
-                if (to.query.job_id != from.query.job_id) {
-                    this.job_id = to.query.job_id;
-                    this.getJobDetail();//重新加载数据
-                }
-            }
+        update_time: '2020-09-09',
+      },
+
+      job1: {
+        job_id: 1,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级1',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '猪八戒', title: 'CEO', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
+
         },
-        created() {
-            if (this.$route.query) {
-                this.job_id = this.$route.query.job_id;
-                this.getJobDetail();
-            }
-            // if (this.$route.query) {
-            //     this.job_id = this.$route.query.job_id;
-            //     this.getJobDetail();
-            // }
-            //
-            // // 保存"看过的职位"
-            // this.saveHistoryJobs()
-            // // 获取"看过的职位"
-            // this.getHistoryJobs()
-            // // 获取"推荐职位"
-            // this.getRecommend()
-            // // 获取相关工作列表
-            // this.getRelatedJobs()
+        update_time: '2020-09-09',
+      },
+      job2: {
+        job_id: 2,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级2',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
+
         },
-        // vue 路由参数变化，页面不刷新（数据不更新）解决方法 end
-        methods: {
-            // 获取"看过的职位"
-            getHistoryJobs() {
-                let history_jobs = JSON.parse(localStorage.getItem('history_jobs'))
-                // 只需要5条数据。
-                if (history_jobs != null) {
-                    this.history_jobs = history_jobs.slice(0, 5)
-                }
-            },
-            // 保存"看过的职位"
-            saveHistoryJobs() {
-                var history_jobs = JSON.parse(localStorage.getItem('history_jobs'))
-                if (history_jobs == null) {
-                    history_jobs = new Array()
-                    // history_jobs.push(this.job)
-                }
-                var isExist = false
-                var current_job_id = this.job.job_id        // 直接使用this.job_id可能会导致错误，有空再确定并分析原因
-                // // 保存重复的浏览记录
-                history_jobs.forEach(item => {
-                    // 这里导致过耗时许久的错误。历史记录中不知为何混入了null，于是报错：无法读取null的job_id属性。
-                    // 浏览器调试工具告知了错误行，我一直认为是this.job_id导致的问题。重复测试多次，期间还出现过
-                    // 原因不明错，调试方向几乎被带偏。
-                    // 其实，很简单。试了this.job_id，也应该试试item。如此，很容易就发现了错误啊。
-                    if (item == null) {
-                        history_jobs.remove(item)
-                        return
-                    }
-                    if (current_job_id == 0) {
-                        return
-                    }
-                    if (current_job_id != undefined && item.job_id == current_job_id) {
-                        isExist = true
-                    }
-                })
+        update_time: '2020-09-09',
+      },
+      job3: {
+        job_id: 3,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级3',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '孙悟空', title: '创意总监---CTO', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
 
-                if (this.job.job_id != 0 && isExist == false) {
-                    history_jobs.push(this.job)
-                }
+        },
+        update_time: '2020-09-09',
+      },
+      job4: {
+        job_id: 4,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级4',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
 
-                var jobsJson = JSON.stringify(history_jobs)
-                localStorage.setItem('history_jobs', jobsJson)
+        },
+        update_time: '2020-09-09',
+      },
+      job5: {
+        job_id: 5,
+        job_status: '招聘中',
+        title: 'C++工程师 初中级5',
+        salary: '7-10K',
+        salary_num: '13薪',
+        city: '武汉',
+        experience: '1-3年',
+        degree: '本科',
+        benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+        employee: {name: '孙悟空', title: '创意总监', status: '刚刚在线', avatar: '头像'},
+        job_description: '岗位职责：\n' +
+          '\n' +
+          '1、负责和客户沟通设计方案、促成签单。\n' +
+          '\n' +
+          '2、量房、效果图及整套施工图的绘制工作。\n' +
+          '\n' +
+          '3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n' +
+          '\n' +
+          '4、完成部门经理及公司领导交办的其他相关性工作。\n' +
+          '\n' +
+          '任职资格：\n' +
+          '\n' +
+          '1、室内设计、环境艺术设计等相关专业。\n' +
+          '\n' +
+          '2、二年以上家装设计师工作经验，独立完成设计项目。\n' +
+          '\n' +
+          '3、熟练运用绘图软件，有较强的实际操作能力。\n' +
+          '\n' +
+          '岗位福利：\n' +
+          '\n' +
+          '1.每个月到店客流保证300户以上.\n' +
+          '\n' +
+          '2.上班时间9:00-18:00午休2个小时。\n' +
+          '\n' +
+          '3.公司所有岗位提供住宿。\n' +
+          '\n' +
+          '4.每月举办员工生日会、部门团建、销冠奖励',
+        company: {
+          introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+          business: '太子家居有限公司',
+          address: '中国上海',
+          logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+          name: '北燕',
+          stage: '已上市',
+          scale: '10000人以上',
+          industry: '互联网',
+          net: 'http://chugang.net',
 
-                // 获取"看过的职位"
-                this.getHistoryJobs()
-            },
-            // 微信二维码
-            switchMiniAppBox: function () {
-                if (this.$refs.miniApp.style.display == 'none') {
-                    this.$refs.miniApp.style.display = 'block';
-                    this.$refs.qrBtn.style.cursor = 'default';
-                } else {
-                    this.$refs.miniApp.style.display = 'none';
-                    this.$refs.qrBtn.style.cursor = 'pointer';
-                }
-            },
-            // 显示举报组件，调用组件的方法，而不是直接设置组件的CSS样式
-            showReportComponent: function () {
-                this.$refs.reportPopWindow.showReportComponent()
-            },
-            hideReportListBox: function () {
-                this.$refs.reportTypeListBox.style.display = 'none';
-            },
-            goToReportFormBox: function () {
-                this.$refs.reportTypeListBox.style.display = 'none';
-                // 打开举报表单
-                this.$refs.reportForm.style.display = 'block';
-            },
-            // 关闭举报表单
-            hideReportForm: function () {
-                this.$refs.reportForm.style.display = 'none';
-            },
-            // 回到举报列表
-            returnReportList: function () {
-                this.$refs.reportForm.style.display = 'none';
-                this.$refs.reportTypeListBox.style.display = 'block';
-            },
-            // 搜索框地址
-            switchCityBox: function () {
-                this.$refs.cityPopWindow.switchCityBox()
-            },
-            // 立即沟通
-            chat: function () {
-                this.$router.push("/chat")
-            },
-            // 获取工作详情
-            getJobDetail: function () {
-                let job_id = this.$route.query.job_id
-                // 需与<router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">中的query一致
-                // 等待进一步验证
-                // let job_id = this.$route.params.job_id  // 不能用
-                // this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
-                // this.job = this.jobs[job_id - 1]
+        },
+        update_time: '2020-09-09',
+      },
+
+      jobs: [
+        // {
+        //     job_id: 1,
+        //     title: 'IOS高级开发工程师1',
+        //     salary: '13-25K',
+        //     salary_num: '14薪',
+        //     company: '今日头条',
+        //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+        //     city: '武汉'
+        // },
+        // {
+        //     job_id: 2,
+        //     title: 'IOS高级开发工程师2',
+        //     salary: '13-25K',
+        //     salary_num: '14薪',
+        //     company: '今日头条',
+        //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+        //     city: '武汉'
+        // },
+        // {
+        //     job_id: 3,
+        //     title: 'IOS高级开发工程师3',
+        //     salary: '13-25K',
+        //     salary_num: '14薪',
+        //     company: '今日头条',
+        //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+        //     city: '广州'
+        // },
+        // {
+        //     job_id: 4,
+        //     title: 'IOS高级开发工程师4',
+        //     salary: '13-25K',
+        //     salary_num: '14薪',
+        //     company: '今日头条',
+        //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+        //     city: '武汉'
+        // },
+        // {
+        //     job_id: 5,
+        //     title: 'IOS高级开发工程师5',
+        //     salary: '13-25K',
+        //     salary_num: '14薪',
+        //     company: '今日头条',
+        //     logo: 'http://127.0.0.1:8080/static/JobDetail/company-log.png',
+        //     city: '武汉'
+        // }
+      ],
+      related_jobs: [],
+      recommend_jobs: [],
+      history_jobs: [],
+      // 搜索框，城市，{city_code:1000,city_name:'北京'}
+      searchKeyWordCity: {city_code: '0000', city_name: '城市'},
+
+      // 接口地址
+      apiHostDev: 'http://boss.api-cg.com',
+      apiHostProd: 'http://boss-api.chugang.net',
+      apiHost: '',
+      searchFilterConfigApi: '/api/job/search-filter-config',
+      recommend_jobs_list_api: '/api/job/list/recommend',
+      getRelatedJobsApi : '/api/job/list/relate',
+      getJobDetailApi : '/api/job/detail',
+    };
+  },
+  mounted() {
+    let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
+    this.apiHost = apiHost;
+    // 保存"看过的职位"
+    // this.saveHistoryJobs()
+    // 获取"看过的职位"
+    this.getHistoryJobs();
+    // 获取"推荐职位"
+    this.getRecommend();
+    // 获取相关工作列表
+    this.getRelatedJobs();
+    // 保存"看过的职位"
+    // this.saveHistoryJobs()
+    // this.related_jobs = this.jobs
+    // this.recommend_jobs = this.jobs
+    // 获取"看过的职位"
+    // this.getHistoryJobs()
+    // 在data中赋值初始值，仍会导致页面初始化时报错未定义logo等。
+    // 放在这里初始化数据后，问题解决。
+    // 究竟需要在哪里初始化，有空再验证。
+    // this.job = {
+    //     job_id: 0,
+    //     job_status: '招聘中',
+    //     title: 'C++工程师 初中级',
+    //     salary: '7-10K',
+    //     salary_num: '13薪',
+    //     city: '武汉',
+    //     experience: '1-3年',
+    //     degree: '本科',
+    //     benefits: ['全屋定制设计', ' 装饰装修', ' 设计师', ' 整套施工图'],
+    //     employee: {name: '孙悟空2', title: '创意总监-CTO', status: '刚刚在线', avatar: '头像'},
+    //     job_description: "岗位职责：\n" +
+    //         "\n" +
+    //         "1、负责和客户沟通设计方案、促成签单。\n" +
+    //         "\n" +
+    //         "2、量房、效果图及整套施工图的绘制工作。\n" +
+    //         "\n" +
+    //         "3、维护和客户之间的关系，挖掘潜在客户，促进公司与客户的长期合作。\n" +
+    //         "\n" +
+    //         "4、完成部门经理及公司领导交办的其他相关性工作。\n" +
+    //         "\n" +
+    //         "任职资格：\n" +
+    //         "\n" +
+    //         "1、室内设计、环境艺术设计等相关专业。\n" +
+    //         "\n" +
+    //         "2、二年以上家装设计师工作经验，独立完成设计项目。\n" +
+    //         "\n" +
+    //         "3、熟练运用绘图软件，有较强的实际操作能力。\n" +
+    //         "\n" +
+    //         "岗位福利：\n" +
+    //         "\n" +
+    //         "1.每个月到店客流保证300户以上.\n" +
+    //         "\n" +
+    //         "2.上班时间9:00-18:00午休2个小时。\n" +
+    //         "\n" +
+    //         "3.公司所有岗位提供住宿。\n" +
+    //         "\n" +
+    //         "4.每月举办员工生日会、部门团建、销冠奖励",
+    //     company: {
+    //         introduce: '太子家居创始于1999年。在昆明起步，始终致力于打造具有国际视野的民族品牌。发展至今，公司在成都天邛工业园已拥有1300余亩家居智造基地，总部员工近3000人，1000多家专卖店遍布全国。多年来，太子家居全心投入创造舒适居家生活，以更加开阔的眼界，时刻洞悉未来“家”的趋势。现',
+    //         business: '太子家居有限公司',
+    //         address: '中国上海',
+    //         logo: 'https://www.baidu.com/img/flexible/logo/pc/result.png',
+    //         name: '北燕',
+    //         stage: '已上市',
+    //         scale: '10000人以上',
+    //         industry: '互联网',
+    //         net: 'http://chugang.net'
+    //
+    //     },
+    //     update_time: '2020-09-09'
+    // }
 
 
-                let getJobDetailApi = 'http://boss.api-cg.com/api/job/detail/' + job_id
-                this.$http.get((getJobDetailApi), {}).then(response => {
-                    this.job = response.body.data;
-                    // 保存"看过的职位"
-                    // 如果在其他地方执行保存浏览记录的方法，存储的是初始化的job数据。
-                    // 在这里保存浏览记录，能保证先获取job数据，再保存。二者是线性执行顺序。
-                    // 在created、mounted里，都不能保证先从API获取job数据后再保存数据。
-                    this.saveHistoryJobs()
-                    // console.log('==========this.job start')
-                    // console.log(this.job)
-                    // console.log('==========this.job end')
-                    // alert("提交成功")
-                }, response => {
-                    // console.log(response)
-                    // alert("出问题啦")
-                }).finally(
-                    response => {
-                        // alert('over')
-                        // this.reload()
-                    }
-                )
-            },
-            // 获取推荐工作列表
-            getRecommend: function () {
-                let recommend_jobs_list_api = 'http://boss.api-cg.com/api/job/list/recommend'
-                this.$http.get((recommend_jobs_list_api), {params: {id: 5}}).then(response => {
-                    this.recommend_jobs = response.body.data;
-                    // console.log('==========this.recommend_jobs start')
-                    // console.log(this.recommend_jobs)
-                    // console.log('==========this.recommend_jobs end')
-                    // alert("提交成功")
-                }, response => {
-                    // console.log(response)
-                    // alert("出问题啦")
-                }).finally(
-                    response => {
-                        // alert('over')
-                        // this.reload()
-                    }
-                )
-            },
-
-            // 获取相关工作列表
-            getRelatedJobs: function () {
-                let getRelatedJobsApi = 'http://boss.api-cg.com/api/job/list/relate'
-                this.$http.get((getRelatedJobsApi), {params: {}}).then(response => {
-                    this.related_jobs = response.body.data;
-                    // console.log('==========this.related_jobs start')
-                    // console.log(this.related_jobs)
-                    // console.log('==========this.related_jobs end')
-                    // alert("提交成功")
-                }, response => {
-                    // console.log(response)
-                    // alert("出问题啦")
-                }).finally(
-                    response => {
-                        // alert('over')
-                        // this.reload()
-                    }
-                )
-            },
-
-            // 设置搜索关键词，城市
-            setSearchKeyWordCity(e) {
-                // console.log(e)
-                var cityCode = e.city_code
-                var cityName = e.city_name
-                this.searchKeyWordCity = {city_code: cityCode, city_name: cityName}
-            },
-
-            // 获取工作列表搜索筛选配置
-            getSearchFilterConfig: function () {
-                let recommend_jobs_list_api = this.searchFilterConfigApi
-                this.$http.get((recommend_jobs_list_api), {}).then(response => {
-                    var config = response.body.data;
-                    // console.log('==========config start')
-                    // console.log(config)
-                    this.experienceCollection = config.experience
-                    // console.log(this.experienceCollection)
-                    this.degreeCollection = config.degree
-                    this.salaryCollection = config.salary
-                    this.stageCollection = config.financing_stage
-                    this.scaleCollection = config.company_scale
-                    // console.log('==========config end')
-                    // alert("提交成功")
-                }, response => {
-                    // console.log(response)
-                    // alert("出问题啦")
-                }).finally(
-                    response => {
-                        // alert('over')
-                        // this.reload()
-                    }
-                )
-            },
-        }
+  },
+  // vue 路由参数变化，页面不刷新（数据不更新）解决方法 start
+  watch: {
+    '$route'(to, from) { //监听路由是否变化
+      if (to.query.job_id != from.query.job_id) {
+        this.job_id = to.query.job_id;
+        this.getJobDetail();//重新加载数据
+      }
+    },
+  },
+  created() {
+    let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
+    this.apiHost = apiHost;
+    if (this.$route.query) {
+      this.job_id = this.$route.query.job_id;
+      this.getJobDetail();
     }
+    // if (this.$route.query) {
+    //     this.job_id = this.$route.query.job_id;
+    //     this.getJobDetail();
+    // }
+    //
+    // // 保存"看过的职位"
+    // this.saveHistoryJobs()
+    // // 获取"看过的职位"
+    // this.getHistoryJobs()
+    // // 获取"推荐职位"
+    // this.getRecommend()
+    // // 获取相关工作列表
+    // this.getRelatedJobs()
+  },
+  // vue 路由参数变化，页面不刷新（数据不更新）解决方法 end
+  methods: {
+    // 获取"看过的职位"
+    getHistoryJobs() {
+      let history_jobs = JSON.parse(localStorage.getItem('history_jobs'));
+      // 只需要5条数据。
+      if (history_jobs != null) {
+        this.history_jobs = history_jobs.slice(0, 5);
+      }
+    },
+    // 保存"看过的职位"
+    saveHistoryJobs() {
+      var history_jobs = JSON.parse(localStorage.getItem('history_jobs'));
+      if (history_jobs == null) {
+        history_jobs = new Array();
+        // history_jobs.push(this.job)
+      }
+      var isExist = false;
+      var current_job_id = this.job.job_id;        // 直接使用this.job_id可能会导致错误，有空再确定并分析原因
+      // // 保存重复的浏览记录
+      history_jobs.forEach(item => {
+        // 这里导致过耗时许久的错误。历史记录中不知为何混入了null，于是报错：无法读取null的job_id属性。
+        // 浏览器调试工具告知了错误行，我一直认为是this.job_id导致的问题。重复测试多次，期间还出现过
+        // 原因不明错，调试方向几乎被带偏。
+        // 其实，很简单。试了this.job_id，也应该试试item。如此，很容易就发现了错误啊。
+        if (item == null) {
+          history_jobs.remove(item);
+          return;
+        }
+        if (current_job_id == 0) {
+          return;
+        }
+        if (current_job_id != undefined && item.job_id == current_job_id) {
+          isExist = true;
+        }
+      });
+
+      if (this.job.job_id != 0 && isExist == false) {
+        history_jobs.push(this.job);
+      }
+
+      var jobsJson = JSON.stringify(history_jobs);
+      localStorage.setItem('history_jobs', jobsJson);
+
+      // 获取"看过的职位"
+      this.getHistoryJobs();
+    },
+    // 微信二维码
+    switchMiniAppBox: function () {
+      if (this.$refs.miniApp.style.display == 'none') {
+        this.$refs.miniApp.style.display = 'block';
+        this.$refs.qrBtn.style.cursor = 'default';
+      } else {
+        this.$refs.miniApp.style.display = 'none';
+        this.$refs.qrBtn.style.cursor = 'pointer';
+      }
+    },
+    // 显示举报组件，调用组件的方法，而不是直接设置组件的CSS样式
+    showReportComponent: function () {
+      this.$refs.reportPopWindow.showReportComponent();
+    },
+    hideReportListBox: function () {
+      this.$refs.reportTypeListBox.style.display = 'none';
+    },
+    goToReportFormBox: function () {
+      this.$refs.reportTypeListBox.style.display = 'none';
+      // 打开举报表单
+      this.$refs.reportForm.style.display = 'block';
+    },
+    // 关闭举报表单
+    hideReportForm: function () {
+      this.$refs.reportForm.style.display = 'none';
+    },
+    // 回到举报列表
+    returnReportList: function () {
+      this.$refs.reportForm.style.display = 'none';
+      this.$refs.reportTypeListBox.style.display = 'block';
+    },
+    // 搜索框地址
+    switchCityBox: function () {
+      this.$refs.cityPopWindow.switchCityBox();
+    },
+    // 立即沟通
+    chat: function () {
+      this.$router.push('/chat');
+    },
+    // 获取工作详情
+    getJobDetail: function () {
+      let job_id = this.$route.query.job_id;
+      // 需与<router-link :to="{path:'job-detail', query:{job_id:job.job_id}}">中的query一致
+      // 等待进一步验证
+      // let job_id = this.$route.params.job_id  // 不能用
+      // this.jobs = [this.job1, this.job2, this.job3, this.job4, this.job5]
+      // this.job = this.jobs[job_id - 1]
+
+
+      let getJobDetailApi = this.apiHost + this.getJobDetailApi + '/job_id';
+      this.$http.get((getJobDetailApi), {}).then(response => {
+        this.job = response.body.data;
+        // 保存"看过的职位"
+        // 如果在其他地方执行保存浏览记录的方法，存储的是初始化的job数据。
+        // 在这里保存浏览记录，能保证先获取job数据，再保存。二者是线性执行顺序。
+        // 在created、mounted里，都不能保证先从API获取job数据后再保存数据。
+        this.saveHistoryJobs();
+        // console.log('==========this.job start')
+        // console.log(this.job)
+        // console.log('==========this.job end')
+        // alert("提交成功")
+      }, response => {
+        // console.log(response)
+        // alert("出问题啦")
+      }).finally(
+        response => {
+          // alert('over')
+          // this.reload()
+        },
+      );
+    },
+    // 获取推荐工作列表
+    getRecommend: function () {
+      let recommend_jobs_list_api = this.apiHost + this.recommend_jobs_list_api;
+      this.$http.get((recommend_jobs_list_api), {params: {id: 5}}).then(response => {
+        this.recommend_jobs = response.body.data;
+        // console.log('==========this.recommend_jobs start')
+        // console.log(this.recommend_jobs)
+        // console.log('==========this.recommend_jobs end')
+        // alert("提交成功")
+      }, response => {
+        // console.log(response)
+        // alert("出问题啦")
+      }).finally(
+        response => {
+          // alert('over')
+          // this.reload()
+        },
+      );
+    },
+
+    // 获取相关工作列表
+    getRelatedJobs: function () {
+      let getRelatedJobsApi = this.apiHost + this.getRelatedJobsApi;
+      this.$http.get((getRelatedJobsApi), {params: {}}).then(response => {
+        this.related_jobs = response.body.data;
+        // console.log('==========this.related_jobs start')
+        // console.log(this.related_jobs)
+        // console.log('==========this.related_jobs end')
+        // alert("提交成功")
+      }, response => {
+        // console.log(response)
+        // alert("出问题啦")
+      }).finally(
+        response => {
+          // alert('over')
+          // this.reload()
+        },
+      );
+    },
+
+    // 设置搜索关键词，城市
+    setSearchKeyWordCity(e) {
+      // console.log(e)
+      var cityCode = e.city_code;
+      var cityName = e.city_name;
+      this.searchKeyWordCity = {city_code: cityCode, city_name: cityName};
+    },
+
+    // 获取工作列表搜索筛选配置
+    getSearchFilterConfig: function () {
+      let searchFilterConfigApi = this.apiHost + this.searchFilterConfigApi;
+      let recommend_jobs_list_api = this.searchFilterConfigApi;
+      this.$http.get((recommend_jobs_list_api), {}).then(response => {
+        var config = response.body.data;
+        // console.log('==========config start')
+        // console.log(config)
+        this.experienceCollection = config.experience;
+        // console.log(this.experienceCollection)
+        this.degreeCollection = config.degree;
+        this.salaryCollection = config.salary;
+        this.stageCollection = config.financing_stage;
+        this.scaleCollection = config.company_scale;
+        // console.log('==========config end')
+        // alert("提交成功")
+      }, response => {
+        // console.log(response)
+        // alert("出问题啦")
+      }).finally(
+        response => {
+          // alert('over')
+          // this.reload()
+        },
+      );
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    @import "../../static/JobDetail/index.css";
+@import "../../static/JobDetail/index.css";
 </style>
