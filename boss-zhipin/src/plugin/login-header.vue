@@ -34,6 +34,9 @@
             <span class="label-text">{{ username.username }}</span>
             <a href="#" class="avatar"><img src="/static/Chat/avatar_5.png"></a>
           </li>
+          <li>
+            <span class="logout" @click="logout">退出</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -42,15 +45,17 @@
 
 <script>
 export default {
+  inject: ['reload'],
   name: 'login-header',
   data() {
     return {
       // userObject:{},
+      logoutApi: '/api/auth/logout',
     };
   },
   // todo 不能传递对象？
   // props:['userObject'],
-  props: ['username'],
+  props: ['username', 'apiHost'],
 
   mounted() {
     // let userObject = this.$cookies.get('user');
@@ -63,6 +68,39 @@ export default {
   methods: {
     showUploadBox: function () {
       this.$emit('showUploadBoxEvent', 'hello');
+    },
+
+    logout: function () {
+      // 还是需要调用接口
+      let logoutApi = this.apiHost.apiHost + this.logoutApi;
+      console.log('================= logoutApi start');
+      console.log(logoutApi);
+      console.log('================= logoutApi end');
+      this.$cookies.remove('user');
+      // todo 不需要，本子组件加载即可重新加载整个页面。
+      // this.$emit('logout', {});
+      this.reload();
+      return;
+      // todo 暂不调用接口退出
+      let data = {};
+      this.$http.post((logoutApi), data, {emulateJSON: true}, {
+        headers: {
+          Authorization: 'Bearer ',
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then(response => {
+        let result = response.body;
+        console.log('退出成功 start');
+        console.log(result);
+        console.log('退出成功 提交成功 end');
+        this.$cookies.set('user', null);
+      }, response => {
+        console.log(response);
+        this.$message({
+          message: '出问题啦',
+          type: 'error',
+        });
+      });
     },
   },
 };

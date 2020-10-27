@@ -4,7 +4,7 @@
       <!--头部菜单-->
       <!--<router-view></router-view>-->
       <Header v-show="!isLogin"></Header>
-      <LoginHeader v-show="isLogin" :username={username}></LoginHeader>
+      <LoginHeader v-show="isLogin" :username={username} :apiHost={apiHost} @logout="logout"></LoginHeader>
       <div id="filter-box">
         <div class="inner home-inner">
           <div class="search-box">
@@ -546,7 +546,7 @@ export default {
       searchConditionCityAreaIsActive: false,
 
       // 反馈
-      username:'',
+      username: '',
       isLogin: false,
       feedBackAttitude: '0',   // 对搜索结果是否满意？
       feedBackDisabled: true,  // 反馈按钮是否可用
@@ -577,10 +577,21 @@ export default {
     console.log('==============userObject start');
     console.log(userObject);
     console.log('==============userObject end');
-    if (userObject != null) {
+    if (!userObject) {
+      this.isLogin = false;
+    } else {
       this.isLogin = true;
       this.username = userObject.name;
     }
+    // 错误的判断是不是等于null的方法
+    // if (userObject != null || userObject != 'null') {
+    //   alert(1)
+    //   this.isLogin = true;
+    //   this.username = userObject.name;
+    // } else {
+    //   this.isLogin = false;
+    //   alert('logout')
+    // }
 
     this.searchKeyWordCity = {city_code: '1000', city_name: '北京'};
 
@@ -773,6 +784,11 @@ export default {
     this.getJobList();
   },
   methods: {
+    logout() {
+      this.isLogin = false;
+      alert(2);
+      this.reload();
+    },
     // 操作路由的方法
     routerToolDemo() {
       // console.log(this.$route.path)

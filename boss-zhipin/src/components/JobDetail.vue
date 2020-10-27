@@ -3,7 +3,7 @@
     <div id="wrap">
       <!--头部菜单-->
       <Header v-show="!isLogin"></Header>
-      <LoginHeader v-show="isLogin" :username={username}></LoginHeader>
+      <LoginHeader v-show="isLogin" :username={username} :apiHost={apiHost}></LoginHeader>
       <div id="job-banner">
         <div class="inner">
           <div class="banner-job-detail">
@@ -28,8 +28,8 @@
             </div>
             <div class="job-op">
               <button class="contact" v-on:click="chat">立即沟通</button>
-              <a class="write-resume" href="#"><i></i>填写在线简历</a>
-              <a class="upload-resume" href="#"><i></i>上传简历附件</a>
+              <span class="write-resume" @click="goUserCenter"><i></i>填写在线简历</span>
+              <span class="upload-resume" @click="goUserCenter"><i></i>上传简历附件</span>
             </div>
           </div>
         </div>
@@ -888,7 +888,9 @@ export default {
     console.log('==============userObject start');
     console.log(userObject);
     console.log('==============userObject end');
-    if (userObject != null) {
+    if (!userObject) {
+      this.isLogin = false;
+    } else {
       this.isLogin = true;
       this.username = userObject.name;
     }
@@ -1094,7 +1096,15 @@ export default {
     },
     // 立即沟通
     chat: function () {
-      this.$router.push('/chat');
+      if (this.isLogin) {
+        this.$router.push('/chat');
+      } else {
+        this.$message({
+          message: '请先登录',
+          type: 'warning',
+        });
+        this.$router.push('/login');
+      }
     },
     // 获取工作详情
     getJobDetail: function () {
@@ -1204,6 +1214,17 @@ export default {
           // this.reload()
         },
       );
+    },
+    // 去求职者中心
+    goUserCenter() {
+      if (this.isLogin == false) {
+        this.$message({
+          message: '请先登录',
+          type: 'error',
+        });
+        return;
+      }
+      this.$router.push({path: 'user'});
     },
   },
 };

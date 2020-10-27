@@ -1,7 +1,8 @@
 <template>
   <div>
     <div id="wrap">
-      <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)" :username="{username}"></LoginHeader>
+      <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)" :username="{username}"
+                   :apiHost={apiHost}></LoginHeader>
       <div id="main-content" class="inner home-inner">
         <div class="chat-wrap">
           <div class="user-list">
@@ -341,6 +342,7 @@ import DragUploadFile from '../plugin/drag-upload-file';
 import LoginHeader from '../plugin/login-header';
 
 export default {
+  inject: ['reload'],
   name: 'HelloWorld',
   components: {
     LoginHeader: LoginHeader,
@@ -349,6 +351,7 @@ export default {
   data() {
     return {
       username: '',
+      apiHost: '',
       friends: [
         {
           user_id: 2,
@@ -456,10 +459,17 @@ export default {
     console.log('==============userObject start');
     console.log(userObject);
     console.log('==============userObject end');
-    if (userObject != null) {
+    if (!userObject) {
+      this.isLogin = false;
+    } else {
       this.isLogin = true;
       this.username = userObject.name;
     }
+
+    if (this.isLogin == false) {
+      this.$router.push({path: 'job-list'});
+    }
+
   },
   methods: {
     // 头部组件触发事件--》本父组件--》上传简历附件组件

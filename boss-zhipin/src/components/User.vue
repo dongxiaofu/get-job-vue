@@ -3,7 +3,7 @@
     <div id="wrap">
       <!--登录状态头部-->
       <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)"
-                   :username={username}></LoginHeader>
+                   :username={username} :apiHost={apiHost}></LoginHeader>
       <div id="main-content" class="inner home-inner">
         <div class="job-box">
           <div class="side-bar">
@@ -709,7 +709,7 @@ export default {
   data() {
     return {
       isLogin: false,   //是否登录
-      username:'',     // 用户名
+      username: '',     // 用户名
       item: {
         id: '',
         name: 'cg',
@@ -926,8 +926,11 @@ export default {
     console.log('==============userObject start');
     console.log(userObject);
     console.log('==============userObject end');
-    if (userObject != null) {
+    if (!userObject) {
+      this.isLogin = false;
+    } else {
       this.isLogin = true;
+      this.username = userObject.name;
     }
 
     if (this.isLogin == false) {
