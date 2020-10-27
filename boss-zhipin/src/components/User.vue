@@ -942,8 +942,8 @@ export default {
     this.getUserProfile(user_id);
     // 获取工作经验
     this.getExperienceList(user_id);
-    // var job_search_status_index = this.user_profile.job_search_status - 1
-    // var job_search_status = this.job_search_status_options[job_search_status_index]
+    // let job_search_status_index = this.user_profile.job_search_status - 1
+    // let job_search_status = this.job_search_status_options[job_search_status_index]
     // this.job_search_status_value = job_search_status.value
     // console.log("===========start============")
     // console.log(this.job_search_status_value)
@@ -957,11 +957,11 @@ export default {
     // 从API获取简历附件
     this.resume_attachments = [this.attachment1, this.attachment2, this.attachment3];
     this.birthday_year_options.push({key: 0, value: '请选择年份'});
-    for (var i = 1970; i <= 2000; i++) {
+    for (let i = 1970; i <= 2000; i++) {
       this.birthday_year_options.push({key: i, value: i});
     }
     this.birthday_month_options.push({key: 0, value: '请选择月份'});
-    for (var i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 12; i++) {
       if (i < 10) {
         i = '0' + i;
       }
@@ -977,7 +977,7 @@ export default {
     // 获取工作经验
     getExperienceList: function (userId) {
       let params = {'user_id': userId};
-      let experienceListApi = this.apiHost + this.experienceListApi
+      let experienceListApi = this.apiHost + this.experienceListApi;
       this.$http.get((experienceListApi), {params: params}, {emulateJSON: true}).then(response => {
         this.experiences = response.body.data;
         console.log('==========this.getExperienceList start');
@@ -1017,8 +1017,8 @@ export default {
         this.user_advantage.advantage = this.user_profile.advantage;
         this.user_advantage.user_id = this.user_profile.user_id;
 
-        // var job_search_status_index = this.user_profile.job_search_status - 1
-        // var job_search_status = this.job_search_status_options[job_search_status_index]
+        // let job_search_status_index = this.user_profile.job_search_status - 1
+        // let job_search_status = this.job_search_status_options[job_search_status_index]
         // this.job_search_status_value = job_search_status.value
         console.log('===========start============');
         console.log(this.job_search_status_value);
@@ -1040,10 +1040,10 @@ export default {
     // 调试tool start
     getDatabaseComment(collection, flag) {
       console.log('debug start');
-      var comment = '';
-      for (var i = 0; i < collection.length; i++) {
-        var salary = collection[i];
-        var key = flag ? salary.key : i;
+      let comment = '';
+      for (let i = 0; i < collection.length; i++) {
+        let salary = collection[i];
+        let key = flag ? salary.key : i;
         comment += key + '.' + salary.value + '；';
       }
       console.log(comment);
@@ -1060,10 +1060,10 @@ export default {
       if (this.user_profile.birthday_year * this.user_profile.birthday_month == 0) {
         console.log('请选择年份和月份');
       }
-      var birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month;
+      let birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month;
       this.user_profile.birthday = birthday;
       console.log(this.user_profile);
-      var data = this.user_profile;
+      let data = this.user_profile;
       console.log('data ========= start');
       data.job_search_status = data.job_search_status.code;
       console.log(data);
@@ -1132,16 +1132,16 @@ export default {
       console.log(this.experience);
       // this.experience.id =
       this.experience.user_id = this.user_profile.user_id;
-      if(this.experience.company_name == '' || this.experience.department == '' || this.experience.industry == ''
+      if (this.experience.company_name == '' || this.experience.department == '' || this.experience.industry == ''
         || this.experience.job_content == '' || this.experience.position_type == ''
-      ){
+      ) {
         this.$message({
           message: '请将工作经历填写完整',
           type: 'error',
         });
         return;
       }
-      var data = this.experience;
+      let data = this.experience;
 
       console.log('sub EditExperience start');
       console.log(this.experience);
@@ -1175,10 +1175,10 @@ export default {
       // 隐藏内容展示区
       // e.currentTarget.parentElement.parentElement.style.display = 'none'
       // 显示编辑框
-      var target = e.currentTarget.parentElement.parentElement.parentElement;
+      let target = e.currentTarget.parentElement.parentElement.parentElement;
       this.$refs.experienceForm.style.display = 'block';
       // 获取工作经验ID
-      var experienceId = target.getAttribute('li-index');
+      let experienceId = target.getAttribute('li-index');
       // 获取被编辑的工作经验数据
       this.experience = (this.experiences)[experienceId];
       // console.log(this.experience)
@@ -1186,13 +1186,13 @@ export default {
       // location.reload()    // 整个页面重新加载，闪屏
       // this.reload()
 
-      var curLiIndex = target.getAttribute('li-index');
+      let curLiIndex = target.getAttribute('li-index');
 
       // 隐藏所有经验，只显示编辑
       let lis = document.querySelectorAll('.experience');
       for (let i = 0; i < lis.length; i++) {
-        var li = lis[i];
-        var liType = li.getAttribute('li-type');
+        let li = lis[i];
+        let liType = li.getAttribute('li-type');
         if (liType == 1) {
           continue;
         }
@@ -1228,14 +1228,14 @@ export default {
       console.log('EditExperience end');
 
       // 隐藏当前经验，显示所有其他经验
-      // var lis = document.querySelectorAll('.experience')
-      // for (var i = 0; i < lis.length; i++) {
-      //     var li = lis[i]
-      //     var liType = li.getAttribute('li-type')
+      // let lis = document.querySelectorAll('.experience')
+      // for (let i = 0; i < lis.length; i++) {
+      //     let li = lis[i]
+      //     let liType = li.getAttribute('li-type')
       //     if (liType == 1) {
       //         continue
       //     }
-      //     var liIndex = li.getAttribute('li-index')
+      //     let liIndex = li.getAttribute('li-index')
       //     if (liIndex == curLiIndex) {
       //         li.style.display = 'none'
       //     } else {
@@ -1246,8 +1246,8 @@ export default {
 
     // 删除工作经验
     deleteExperience: function (e) {
-      var target = e.currentTarget.parentElement.parentElement.parentElement;
-      var experienceId = target.getAttribute('li-index');
+      let target = e.currentTarget.parentElement.parentElement.parentElement;
+      let experienceId = target.getAttribute('li-index');
       let data = {'id': experienceId};
       console.log('删除工作经验 data');
       console.log(target);
@@ -1283,6 +1283,8 @@ export default {
 
     // 编辑个人优势
     editAdvantage: function () {
+      let user_id = this.userObject.id;
+      this.getUserProfile(user_id);
       // 其他编辑消失
       // this.reload()
       this.$refs.advantage_text.style.display = 'none';
@@ -1291,10 +1293,10 @@ export default {
       this.$refs.user_profile_text.style.display = 'block';
       this.$refs.user_profile_form.style.display = 'none';
 
-      var lis = document.querySelectorAll('.experience');
-      for (var i = 0; i < lis.length; i++) {
-        var li = lis[i];
-        var liType = li.getAttribute('li-type');
+      let lis = document.querySelectorAll('.experience');
+      for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        let liType = li.getAttribute('li-type');
         if (liType == 1) {
           continue;
         }
@@ -1305,7 +1307,7 @@ export default {
     // 编辑个人资料
     editUserProfile: function () {
       let user_id = this.userObject.id;
-      this.getUserProfile(user_id)
+      this.getUserProfile(user_id);
       // // 其他编辑框消失 ===》 达不到预期效果，原因不明
       // this.reload()
       this.$refs.user_profile_text.style.display = 'none';
@@ -1314,10 +1316,10 @@ export default {
       this.$refs.advantage_text.style.display = 'block';
       this.$refs.advantage_form.style.display = 'none';
 
-      var lis = document.querySelectorAll('.experience');
-      for (var i = 0; i < lis.length; i++) {
-        var li = lis[i];
-        var liType = li.getAttribute('li-type');
+      let lis = document.querySelectorAll('.experience');
+      for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        let liType = li.getAttribute('li-type');
         if (liType == 1) {
           continue;
         }
@@ -1389,10 +1391,10 @@ export default {
 
     // 性别选中
     selectGender: function (e) {
-      var target = e.currentTarget;
+      let target = e.currentTarget;
       console.log(target);
       target.style.className = 'radio radio-checked2';
-      var genderValue = target.getAttribute('gender-value');
+      let genderValue = target.getAttribute('gender-value');
       console.log(genderValue);
       this.user_profile.gender = genderValue;
       console.log(this.user_profile);
@@ -1404,20 +1406,20 @@ export default {
     },
     // 简历附件显示
     showAnnexCard: function (e) {
-      var target = e.currentTarget;
+      let target = e.currentTarget;
       // console.log(target)
-      // var temp = e.currentTarget.firstElementChild
-      // var target = temp.nextElementSibling.nextElementSibling.nextElementSibling
-      // var annexCard = target.nextElementSibling
+      // let temp = e.currentTarget.firstElementChild
+      // let target = temp.nextElementSibling.nextElementSibling.nextElementSibling
+      // let annexCard = target.nextElementSibling
       // console.log(annexCard)
-      var current_index = target.getAttribute('current_index');
+      let current_index = target.getAttribute('current_index');
       console.log('current_index = ' + current_index);
       // 非当前附件框隐藏
-      var annexCards = document.querySelectorAll('.annex-card');
+      let annexCards = document.querySelectorAll('.annex-card');
       console.log(annexCards);
-      for (var i = 0; i < annexCards.length; i++) {
-        var annexCard = annexCards[i];
-        var index = annexCard.getAttribute('annex-card-index');
+      for (let i = 0; i < annexCards.length; i++) {
+        let annexCard = annexCards[i];
+        let index = annexCard.getAttribute('annex-card-index');
         console.log('index=' + index + ',cur = ' + current_index);
         if (index == current_index) {
           annexCard.style.display = 'block';
@@ -1428,26 +1430,26 @@ export default {
     },
     // 简历附件显示
     showCurrentAnnexCard: function (e) {
-      var target = e.currentTarget.parentElement;
+      let target = e.currentTarget.parentElement;
       target.style.display = 'block';
     },
     hideCurrentAnnexCard: function (e) {
-      var target = e.currentTarget;
+      let target = e.currentTarget;
       target.style.display = 'none';
     },
     hideCurrentAnnexCardLeaveAnnexItem: function (e) {
-      var target = e.currentTarget.firstElementChild;
-      var annexCard = target.nextElementSibling.nextElementSibling.nextElementSibling;
+      let target = e.currentTarget.firstElementChild;
+      let annexCard = target.nextElementSibling.nextElementSibling.nextElementSibling;
       console.log(annexCard);
       annexCard.style.display = 'none';
     },
     // 下载附件
     download: function (e) {
-      var target = e.currentTarget;
-      var attachmentId = target.getAttribute('attachment_id');
+      let target = e.currentTarget;
+      let attachmentId = target.getAttribute('attachment_id');
       console.log(attachmentId);
       // href是文件地址
-      var href = 'http://chugang.net';
+      let href = 'http://chugang.net';
       window.open(href, '_blank');
     },
     // 获取工作时间
@@ -1457,11 +1459,11 @@ export default {
     },
     // 检测工作时间是否合法
     checkWorkingHoursIsValid() {
-      var working_year_start = this.experience.working_year_start;
-      var working_month_start = this.experience.working_month_start;
+      let working_year_start = this.experience.working_year_start;
+      let working_month_start = this.experience.working_month_start;
 
-      var working_year_end = this.experience.working_year_end;
-      var working_month_end = this.experience.working_month_end;
+      let working_year_end = this.experience.working_year_end;
+      let working_month_end = this.experience.working_month_end;
 
       if (parseInt(working_year_start) > parseInt(working_year_end)) {
         // alert('开始时间必须小于结束时间')
