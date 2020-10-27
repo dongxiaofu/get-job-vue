@@ -23,12 +23,12 @@
           <li>
             <a href="#">消息</a>
           </li>
-          <li class="resume">
+          <li class="resume" @click="showUploadBox">
             <a>简历</a>
           </li>
           <li class="nav-dot">.</li>
           <li class="file" v-on:click="showUploadBox"><a href="javascript:;">上传</a></li>
-          <li class="user-info">
+          <li class="user-info" @click="showUploadBox">
             <!--                      todo 不能用prop传递对象-->
             <!--                        <span class="label-text">{{userObject.id}}</span>-->
             <span class="label-text">{{ username.username }}</span>
@@ -67,7 +67,9 @@ export default {
 
   methods: {
     showUploadBox: function () {
-      this.$emit('showUploadBoxEvent', 'hello');
+      // todo 改为跳转到求职者中心
+      // this.$emit('showUploadBoxEvent', 'hello');
+      this.$router.push({path: 'user'});
     },
 
     logout: function () {
