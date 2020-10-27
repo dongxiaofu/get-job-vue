@@ -1060,8 +1060,6 @@ export default {
       if (this.user_profile.birthday_year * this.user_profile.birthday_month == 0) {
         console.log('请选择年份和月份');
       }
-      let user_id = this.userObject.id;
-      this.getUserProfile(user_id)
       var birthday = this.user_profile.birthday_year + '-' + this.user_profile.birthday_month;
       this.user_profile.birthday = birthday;
       console.log(this.user_profile);
@@ -1306,6 +1304,8 @@ export default {
 
     // 编辑个人资料
     editUserProfile: function () {
+      let user_id = this.userObject.id;
+      this.getUserProfile(user_id)
       // // 其他编辑框消失 ===》 达不到预期效果，原因不明
       // this.reload()
       this.$refs.user_profile_text.style.display = 'none';
