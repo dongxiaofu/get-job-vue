@@ -3,7 +3,8 @@
     <div id="wrap">
       <!--头部菜单-->
       <!--<router-view></router-view>-->
-      <Header></Header>
+      <Header v-show="!isLogin"></Header>
+      <LoginHeader v-show="isLogin" :username={username}></LoginHeader>
       <div id="filter-box">
         <div class="inner home-inner">
           <div class="search-box">
@@ -411,6 +412,7 @@
 <script>
 import merge from 'webpack-merge';
 import Header from '../plugin/header';
+import LoginHeader from '../plugin/login-header';
 import CityPopWindow from '../plugin/city-pop-window';
 import PageFooter from '../plugin/page-footer';
 
@@ -419,6 +421,7 @@ export default {
   inject: ['reload'],
   components: {
     Header: Header,
+    LoginHeader: LoginHeader,
     CityPopWindow: CityPopWindow,
     PageFooter: PageFooter,
   },
@@ -543,7 +546,8 @@ export default {
       searchConditionCityAreaIsActive: false,
 
       // 反馈
-      isLogin: true,
+      username:'',
+      isLogin: false,
       feedBackAttitude: '0',   // 对搜索结果是否满意？
       feedBackDisabled: true,  // 反馈按钮是否可用
       feedBackContent: '',      // 反馈内容
@@ -568,10 +572,16 @@ export default {
   mounted() {
     let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
     this.apiHost = apiHost;
-    // console.log("===========start===========")
-    // console.log(this.$refs.industryBox.style.display)
-    // this.$refs.industryBox.style.display = 'block'
-    // console.log("===========end===========")
+
+    let userObject = this.$cookies.get('user');
+    console.log('==============userObject start');
+    console.log(userObject);
+    console.log('==============userObject end');
+    if (userObject != null) {
+      this.isLogin = true;
+      this.username = userObject.name;
+    }
+
     this.searchKeyWordCity = {city_code: '1000', city_name: '北京'};
 
     this.firstPositionTypes = [{code310000: 310000, name: '高级管理'},

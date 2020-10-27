@@ -2,7 +2,8 @@
   <div>
     <div id="wrap">
       <!--头部菜单-->
-      <Header></Header>
+      <Header v-show="!isLogin"></Header>
+      <LoginHeader v-show="isLogin" :username={username}></LoginHeader>
       <div id="job-banner">
         <div class="inner">
           <div class="banner-job-detail">
@@ -486,16 +487,20 @@
 
 <script>
 import Header from '../plugin/header';
+import LoginHeader from '../plugin/login-header';
 import CityPopWindow from '../plugin/city-pop-window';
 import ReportPopWindow from '../plugin/report-pop-window';
 import PageFooter from '../plugin/page-footer';
 
 export default {
   name: 'JobDetail',
-  components: {Header, CityPopWindow, ReportPopWindow, PageFooter},
+  components: {Header, LoginHeader, CityPopWindow, ReportPopWindow, PageFooter},
   inject: ['reload'],
   data() {
     return {
+      isLogin: false,
+      username: '',
+
       job_id: 0,
       // job: {},//必须定义初始化job数据，否则，在上面用到job的地方会导致报错，虽然不影响执行
       job: {
@@ -878,6 +883,16 @@ export default {
   mounted() {
     let apiHost = process.env.NODE_ENV == 'development' ? this.apiHostDev : this.apiHostProd;
     this.apiHost = apiHost;
+
+    let userObject = this.$cookies.get('user');
+    console.log('==============userObject start');
+    console.log(userObject);
+    console.log('==============userObject end');
+    if (userObject != null) {
+      this.isLogin = true;
+      this.username = userObject.name;
+    }
+
     if (this.$route.query) {
       this.job_id = this.$route.query.job_id;
       this.getJobDetail();
@@ -1094,9 +1109,9 @@ export default {
       let getJobDetailApi = this.apiHost + this.getJobDetailApi + '/' + job_id;
       this.$http.get((getJobDetailApi), {}).then(response => {
         this.job = response.body.data;
-        console.log('============ getJobDetail start')
-        console.log(this.job)
-        console.log('============ getJobDetail end')
+        console.log('============ getJobDetail start');
+        console.log(this.job);
+        console.log('============ getJobDetail end');
         // 保存"看过的职位"
         // 如果在其他地方执行保存浏览记录的方法，存储的是初始化的job数据。
         // 在这里保存浏览记录，能保证先获取job数据，再保存。二者是线性执行顺序。

@@ -2,7 +2,8 @@
   <div>
     <div id="wrap">
       <!--登录状态头部-->
-      <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)"></LoginHeader>
+      <LoginHeader ref="loginHeader" @showUploadBoxEvent="showUploadBox($event)"
+                   :username={username}></LoginHeader>
       <div id="main-content" class="inner home-inner">
         <div class="job-box">
           <div class="side-bar">
@@ -708,6 +709,7 @@ export default {
   data() {
     return {
       isLogin: false,   //是否登录
+      username:'',     // 用户名
       item: {
         id: '',
         name: 'cg',
@@ -934,6 +936,7 @@ export default {
     }
     this.userObject = userObject;
     let user_id = userObject.id;
+    this.username = userObject.name;
     console.log('================user_id start');
     console.log(user_id);
     console.log('================user_id end');
@@ -942,16 +945,6 @@ export default {
     this.getUserProfile(user_id);
     // 获取工作经验
     this.getExperienceList(user_id);
-    // let job_search_status_index = this.user_profile.job_search_status - 1
-    // let job_search_status = this.job_search_status_options[job_search_status_index]
-    // this.job_search_status_value = job_search_status.value
-    // console.log("===========start============")
-    // console.log(this.job_search_status_value)
-    // console.log("===========end============")
-    // this.item.user_name = 'hello'
-    // this.user_profile.email = 'chuganghong@qq.com'
-    // this.user_advantage.advantage = 'I am rich';
-    // this.experience.performance = 'well done!';
     // 从API获取工作经验数据
     this.experiences = [this.experience1, this.experience2, this.experience3];
     // 从API获取简历附件
@@ -1085,6 +1078,10 @@ export default {
         // 隐藏本编辑框
         this.$refs.user_profile_form.style.display = 'none';
         this.$refs.user_profile_text.style.display = 'block';
+
+        // this.$cookies.set('user', this.user_profile);
+        // this.username = this.user_profile.name;
+
       }, response => {
         console.log(response);
         this.$message({
@@ -1172,6 +1169,8 @@ export default {
 
     // 编辑工作经验
     EditExperience: function (e) {
+      let userId = this.userObject.id;
+      this.getExperienceList(userId);
       // 隐藏内容展示区
       // e.currentTarget.parentElement.parentElement.style.display = 'none'
       // 显示编辑框
@@ -1226,22 +1225,6 @@ export default {
       console.log('EditExperience start');
       console.log(this.experience);
       console.log('EditExperience end');
-
-      // 隐藏当前经验，显示所有其他经验
-      // let lis = document.querySelectorAll('.experience')
-      // for (let i = 0; i < lis.length; i++) {
-      //     let li = lis[i]
-      //     let liType = li.getAttribute('li-type')
-      //     if (liType == 1) {
-      //         continue
-      //     }
-      //     let liIndex = li.getAttribute('li-index')
-      //     if (liIndex == curLiIndex) {
-      //         li.style.display = 'none'
-      //     } else {
-      //         li.style.display = 'block'
-      //     }
-      // }
     },
 
     // 删除工作经验
