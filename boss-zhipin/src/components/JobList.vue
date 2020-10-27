@@ -209,8 +209,9 @@
                         </ul>
                     </div>
                 </span>
-            <!--<a class="last" href="javascript:;" @click="resetSearchCondition">清空筛选条件</a>-->
-            <router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>
+            <a class="last" href="javascript:;" @click="resetSearchCondition">清空筛选条件</a>
+            <!--            不能满足要求-->
+            <!--            <router-link :to="{path: 'job-list'}" class="last">清空筛选条件</router-link>-->
           </div>
         </div>
       </div>
@@ -1096,6 +1097,7 @@ export default {
       // this.$router.go(0)
       // window.open("http://chugang.net")    // 不管怎样，都会打开在新窗口打开页面
       // location.href = 'http://chugang.net'
+      this.$router.push({path: 'job-list'});
       this.reload();
     },
     // 反馈态度

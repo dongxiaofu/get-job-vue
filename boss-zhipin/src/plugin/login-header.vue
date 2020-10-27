@@ -69,6 +69,14 @@ export default {
     showUploadBox: function () {
       // todo 改为跳转到求职者中心
       // this.$emit('showUploadBoxEvent', 'hello');
+      console.log('============= showUploadBox start');
+      console.log('url--info', this.$route.path);
+      console.log('============= showUploadBox end');
+      // 当前页面跳转到当前页面会报错
+      let routePath = this.$route.path;
+      if (routePath == '/user') {
+        return;
+      }
       this.$router.push({path: 'user'});
     },
 

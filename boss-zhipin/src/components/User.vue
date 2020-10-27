@@ -1019,8 +1019,8 @@ export default {
         console.log('===========start============');
         console.log(this.job_search_status_value);
         console.log('===========end============');
-        this.item.user_name = 'hello';
-        this.user_profile.email = 'chuganghong@qq.com';
+        // this.item.user_name = 'hello';
+        // this.user_profile.email = 'chuganghong@qq.com';
         // this.user_profile.degree = this.user_profile.degree.name;
 
       }, response => {
