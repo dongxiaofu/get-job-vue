@@ -9,9 +9,9 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.config.productionTip = false
 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+// import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+// Vue.use(ElementUI);
 
 // cnpm install vue-cookies --save
 import VueCookies from 'vue-cookies'
