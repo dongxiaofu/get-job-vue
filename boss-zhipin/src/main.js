@@ -22,7 +22,7 @@ Vue.$cookies.set('hover-time', '10s');
 
 /* eslint-disable no-new */
 new Vue({
-    el: '#app2',
+    el: '#app',
     router,
     components: {App},
     template: '<App/>'
