@@ -1,3 +1,4 @@
+<!--有相关单元测试，所有暂时不删除-->
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
