@@ -356,7 +356,7 @@ export default {
         {
           user_id: 2,
           name: '大霞',
-          avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          avatar: this.Global.webHost + '/static/Chat/avatar1.jpeg',
           company: '小米公司',
           title: '软件工程师',
           last_chat_time: '昨天',
@@ -364,7 +364,7 @@ export default {
         {
           user_id: 2,
           name: '大霞',
-          avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
+          avatar: this.Global.webHost + '/static/Chat/avatar2.jpeg',
           company: '小米公司',
           title: '软件工程师',
           last_chat_time: '昨天',
@@ -372,7 +372,7 @@ export default {
         {
           user_id: 2,
           name: '大霞',
-          avatar: 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          avatar: this.Global.webHost + '/static/Chat/avatar1.jpeg',
           company: '小米公司',
           title: '软件工程师',
           last_chat_time: '昨天',
@@ -380,7 +380,7 @@ export default {
         {
           user_id: 2,
           name: '大霞',
-          avatar: 'http://localhost:8080/static/Chat/avatar2.jpeg',
+          avatar: this.Global.webHost + '/static/Chat/avatar2.jpeg',
           company: '小米公司',
           title: '软件工程师',
           last_chat_time: '昨天',
@@ -392,7 +392,7 @@ export default {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
         {
@@ -406,14 +406,14 @@ export default {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
         {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
         {
@@ -427,14 +427,14 @@ export default {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
         {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
         {
@@ -448,7 +448,7 @@ export default {
           'author': 1,
           'read_status': '已读',
           'user_id': 3,
-          'avatar': 'http://localhost:8080/static/Chat/avatar1.jpeg',
+          'avatar': this.Global.webHost + '/static/Chat/avatar1.jpeg',
           'words': '您好，可以聊聊吗？您这个职位我很有兴趣，希望进一步了解',
         },
       ],
