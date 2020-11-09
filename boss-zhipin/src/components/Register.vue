@@ -57,7 +57,7 @@
             <button class="btn-register" @click="register">注册</button>
           </div>
           <div class="text-tip">
-            <input type="checkbox">我已同意
+            <input type="checkbox" :value="1" v-model="checkedIds">我已同意
             <a href="" class="user-agreement">用户协议及隐私政策</a>
             <!--<a href="#" class="link-sign-in">直接登录</a>-->
             <router-link :to="{path:'login'}" class="link-sign-in">直接登录</router-link>
@@ -80,6 +80,7 @@ export default {
   data() {
     return {
       bodyBgImage: 'url(' + require('../../static/Register/newbg.png') + ')',
+      checkedIds:null,
       email: '',
       password: '',
       registerApi: 'http://boss.api-cg.com/api/auth/register',
@@ -139,6 +140,9 @@ export default {
 
     // 注册
     register() {
+      console.log('this.checkedIds start============================')
+      console.log(this.checkedIds)
+      console.log('this.checkedIds end============================')
       if (this.email == '' || this.password == '') {
         // 弹窗
         this.$message({
@@ -149,6 +153,14 @@ export default {
       }
       // 验证邮箱和密码
       if (!this.validateInput()) {
+        return;
+      }
+      if(this.checkedIds != true){
+        // 弹窗
+        this.$message({
+          message: '请勾选用户协议及隐私政策',
+          type: 'error',
+        });
         return;
       }
 
