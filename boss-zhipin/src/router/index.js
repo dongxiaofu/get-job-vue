@@ -6,7 +6,7 @@ import User from '@/components/User'
 import Chat from '@/components/Chat'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Test from '@/components/test'
+import Works from '@/components/test'
 
 Vue.use(Router)
 
@@ -48,9 +48,9 @@ export default new Router({
       component: Login
     },
     {
-      path: '/test',
-      name: 'Test',
-      component: Test
+      path: '/works',
+      name: 'Works',
+      component: Works
     }
   ]
 })
