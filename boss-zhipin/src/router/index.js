@@ -7,6 +7,7 @@ import Chat from '@/components/Chat'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Works from '@/components/test'
+import Video from '@/components/video'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/works',
       name: 'Works',
       component: Works
+    },
+    {
+      path: '/video',
+      name: 'Video',
+      component: Video
     }
   ]
 })

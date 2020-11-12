@@ -10,7 +10,7 @@
             <li class="item">
               <div class="picture" @mouseenter="showTipLayout($event)" @mouseleave="hideTipLayout($event)">
                 <img :src="boss.picture">
-                <div class="tip-layout"><span class="tip" @click="showPopWindow">点击查看大图</span></div>
+                <div class="tip-layout"><span class="tip" @click="showPopWindow" v-bind:dataType="1">点击查看大图</span></div>
               </div>
               <div class="introduce">
                 <div class="line">
@@ -22,7 +22,8 @@
                   <a :href="boss.bossHost" target="_blank">{{ boss.bossHost }}</a>
                 </div>
                 <div class="content">
-                  1.使用<span class="keywords">vue + laravel + mysql</span>开发，运行在<span class="keywords">linux + mysql + php + nginx</span> 架构上。
+                  1.使用<span class="keywords">vue + laravel + mysql</span>开发，运行在<span class="keywords">linux + mysql + php + nginx</span>
+                  架构上。
 
                   2.已完成功能：
 
@@ -37,7 +38,7 @@
             <li class="item">
               <div class="picture" @mouseenter="showTipLayout($event)" @mouseleave="hideTipLayout($event)">
                 <img :src="meeting.picture">
-                <div class="tip-layout"><span class="tip" @click="showPopWindow">点击查看大图</span></div>
+                <div class="tip-layout"><span class="tip" @click="showPopWindow" v-bind:dataType="2">点击查看大图</span></div>
               </div>
               <div class="introduce">
                 <div class="line">
@@ -66,7 +67,8 @@
             <li class="item">
               <div class="picture" @mouseenter="showTipLayout($event)" @mouseleave="hideTipLayout($event)">
                 <img :src="im.picture">
-                <div class="tip-layout"><span class="tip" @click="showPopWindow($event)">点击查看大图</span></div>
+                <div class="tip-layout"><span class="tip" @click="showPopWindow($event)"
+                                              v-bind:dataType="3">点击查看大图</span></div>
               </div>
               <div class="introduce">
                 <div class="line">
@@ -99,8 +101,12 @@
     <div id="pop-window" ref="popWindow">
       <div id="layout">
         <div id="window">
-          <img :src="picture" style="width: 1184px;height: auto;">
-          <span id="close" @click="closePopWindow">关闭</span>
+          <img :src="picture.imgSrc" :style="{width:picture.imgW,left:picture.positionLeft}" @load="setPictureSize"
+               ref="picture">
+          <div id="pop-window-btns" ref="popWindowBtns">
+            <span id="preview" @click="openNewTab">预览</span>
+            <span id="close" @click="closePopWindow">关闭</span>
+          </div>
         </div>
       </div>
     </div>
@@ -112,7 +118,9 @@ export default {
   name: "test",
   data() {
     return {
-      picture: this.GLOBAL.webHost + '/static/my-works/boss.png',
+      // picture: this.GLOBAL.webHost + '/static/my-works/boss.png',
+      // pictureSize: {imgH: 0, imgW: 0},
+      picture: {imgSrc: '', imgH: '', imgW: '', positionLeft: '', type: ''},
       boss: {
         bossHost: this.GLOBAL.webHost,
         bossTitle: '简化版的boss直聘',
@@ -124,9 +132,9 @@ export default {
         picture: this.GLOBAL.webHost + '/static/my-works/meeting.png',
       },
       im: {
-        host: '',
+        host: 'http://chugang.net/my-works/app-release.apk',
         title: '简化版微信',
-        picture: this.GLOBAL.webHost + '/static/my-works/boss.png',
+        picture: this.GLOBAL.webHost + '/static/my-works/WechatIMG45.jpeg',
       }
     }
   },
@@ -134,13 +142,112 @@ export default {
     closePopWindow() {
       this.$refs.popWindow.style.display = 'none';
     },
-    showPopWindow(e) {
+    openNewTab() {
+      // react native app，则打开视频页面
+      if (this.picture.type == 3) {
+        // todo 用 name 不行
+        let routeData = this.$router.resolve({
+          path: "video",
+          query: {},
+        });
+        window.open(routeData.href, '_blank');
+      } else {
+        window.open(this.picture.imgSrc);
+      }
+    },
+    // https://www.coder.work/article/1331070
+    setPictureSize() {
+      let picture = this.picture;
+      console.log('promise===============start')
+      console.log(picture)
+      console.log('promise===============end')
+      // this.pictureSize.imgH = picture.height;
+      // this.pictureSize.imgW = picture.width;
+      // this.pictureSizeX = picture.width;
+      // this.picture = picture.imgSrc;
+
+    },
+    async showPopWindow(e) {
+      // this.$refs.popWindow.style.display = 'block';
+
+      // return;
+
+      // let target = e.currentTarget.parentElement.parentElement.firstElementChild;
+      // console.log(target)
+      // let imgSrc = target.getAttribute('src');
+      // let realWidth = target.naturalWidth;//获取图片真实宽度
+      // let realHeight = target.naturalHeight;//获取图片真实高度
+      // console.log('img size==============start')
+      // console.log(realHeight,realWidth)
+      // console.log('img size==============end')
+      // let scale = realHeight/realWidth;
+      // target.width = realWidth * 0.8;
+      // console.log('target.width = ' + target.width)
+      // target.height = target.width * scale;
+      // console.log('target size==============start')
+      // console.log(target)
+      // console.log('target size==============end')
+
+      let picture = await new Promise(function (resolve) {
+        let dataType = e.currentTarget.getAttribute('dataType');
+        console.log('let dataType ===============start')
+        console.log(e.currentTarget)
+        console.log(dataType)
+        console.log('let dataType ===============end')
+        let target = e.currentTarget.parentElement.parentElement.firstElementChild;
+        console.log(target)
+        let imgSrc = target.getAttribute('src');
+        let realWidth = target.naturalWidth;//获取图片真实宽度
+        let realHeight = target.naturalHeight;//获取图片真实高度
+        console.log('img0 size==============start')
+        console.log(realHeight, realWidth)
+        console.log('img0 size==============end')
+        resolve({width: realWidth, height: realHeight, imgSrc: imgSrc, target: target, type: dataType})
+      }).then(function (value) {
+        let realHeight = value.height;
+        let realWidth = value.width;
+        let imgSrc = value.imgSrc;
+        let target = value.target;
+        let scale = Math.ceil(realHeight / realWidth);
+        let screenWidth = document.body.clientWidth;
+        let scale2 = Math.ceil(realWidth / screenWidth);
+        let newWidth = screenWidth;
+        let positionLeft = 0;
+        if (screenWidth > realWidth) {
+          newWidth = realWidth * 0.5;
+          positionLeft = screenWidth / 2.5;
+        }
+        let newHeight = realHeight * scale;
+        target.width = newWidth;
+        console.log('target.width = ' + target.width)
+        // target.height = newHeight;
+        console.log('target size==============start')
+        console.log(target)
+        console.log('target size==============end')
+        // positionLeft 的值，'px'不可少，否则，不能设置left属性。
+        let picture = {
+          imgSrc: imgSrc,
+          imgW: newWidth + 'px',
+          imgH: newHeight + 'px',
+          positionLeft: positionLeft + 'px',
+
+          imgWN: newWidth,
+          imgHN: newHeight,
+          positionLeftN: positionLeft,
+          type: value.type
+        };
+        // let picture = {imgSrc: imgSrc, imgW: newWidth + 'px', imgH: newHeight + 'px', positionLeft: positionLeft + 'px'};
+
+        console.log(picture)
+        return picture;
+      });
+      this.picture = picture;
       this.$refs.popWindow.style.display = 'block';
-      let target = e.currentTarget.parentElement.parentElement.firstElementChild;
-      console.log(target)
-      let imgSrc = target.getAttribute('src');
-      console.log(imgSrc)
-      this.picture = imgSrc
+      // return picture;
+      let closeButtonX = picture.positionLeftN + picture.imgWN - 90;
+      this.$refs.popWindowBtns.style.left = closeButtonX + 'px';
+      console.log('left=' + closeButtonX + 'px');
+      console.log('left-40=' + closeButtonX + 'px');
     },
     showTipLayout(e) {
       let target = e.currentTarget.firstElementChild.nextElementSibling;
@@ -153,6 +260,55 @@ export default {
       target.style.display = 'none';
     },
 
+  },
+
+  computed: {
+    pictureSizeX: {
+      get: function () {
+        return this.pictureSize.imgW;
+      },
+      set: async function () {
+        let picture = await new Promise(function (resolve) {
+          let e = this.$refs.picture;
+          let target = e;//e.currentTarget.parentElement.parentElement.firstElementChild;
+          console.log(target)
+          let imgSrc = target.getAttribute('src');
+          let realWidth = target.naturalWidth;//获取图片真实宽度
+          let realHeight = target.naturalHeight;//获取图片真实高度
+          console.log('img0 size==============start')
+          console.log(realHeight, realWidth)
+          console.log('img0 size==============end')
+          resolve({width: realWidth, height: realHeight, imgSrc: imgSrc, target: target})
+        }).then(function (value) {
+          let realHeight = value.height;
+          let realWidth = value.width;
+          let imgSrc = value.imgSrc;
+          let target = value.target;
+          let scale = Math.ceil(realHeight / realWidth);
+          let newWidth = realWidth * 0.8;
+          let newHeight = newWidth * scale;
+          target.width = newWidth;
+          console.log('target.width = ' + target.width)
+          // target.height = newHeight;
+          console.log('target size==============start')
+          console.log(target)
+          console.log('target size==============end')
+
+          let picture = {imgSrc: imgSrc, width: newWidth, height: newHeight};
+
+          console.log(picture)
+          return picture;
+        });
+        console.log('promise===============start')
+        console.log(picture)
+        console.log('promise===============end')
+        this.pictureSize.imgH = picture.height;
+        this.pictureSize.imgW = picture.width;
+        this.pictureSizeX = picture.width;
+        this.picture = picture.imgSrc;
+        this.$refs.popWindow.style.display = 'block';
+      },
+    },
   },
 }
 </script>
@@ -198,12 +354,16 @@ div {
 }
 
 .picture {
+  padding: 0;
+  margin: 0;
   float: left;
   width: 30%;
   position: relative;
 }
 
 .picture img {
+  padding: 0;
+  margin: 0;
   width: 300px;
   height: 450px;
 }
@@ -236,7 +396,7 @@ div {
   font-size: 18px;
 }
 
-.keywords{
+.keywords {
   font-weight: 500;
   font-family: "Arial Hebrew";
   margin: 0 10px;
@@ -256,12 +416,11 @@ ul li {
   line-height: 20px;
 }
 
-
 /*弹窗*/
 #pop-window {
   position: fixed;
   width: 100%;
-  /*height: 100%;*/
+  height: 100%;
   z-index: 1000;
   top: 0;
   left: 0;
@@ -281,21 +440,46 @@ ul li {
   background: rgba(37, 40, 48, .7); /*这组数值，效果更好*/
 
   opacity: 1.5;
+
 }
 
 #window {
-  position: absolute;
-  left: 15%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  /*left: 50%;*/
   /*height: 50%;*/
-  width: 1184px;
-  height: auto;
-  /*overflow-y: auto;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+
   /*height: 600px;*/
+  height: auto;
+  width: auto;
+  border: 1px solid green;
 }
 
 #window img {
-  margin: 0;
   padding: 0;
+  margin: 0;
+  position: fixed;
+  /*left: 50%;*/
+  /*width: 100%;*/
+  height: 100%;
+  /*width: auto;*/
+  /*height: 100%;*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*width: 80%;*/
+  /*height: 100%;*/
+  /*max-width: 50%;*/
+  /*max-height: 3000px;*/
+}
+
+#pop-window-btns {
+  position: absolute;
+  top: 20px;
+
+  /*border: 1px solid mediumspringgreen;*/
 }
 
 #close {
@@ -304,10 +488,23 @@ ul li {
   line-height: 40px;
   width: 40px;
   font-size: 20px;
-  color: #c10b35;
-  position: absolute;
+  color: red;
+  /*position: absolute;*/
   top: 20px;
-  right: 30px;
+  /*margin-left: 0;*/
+  cursor: pointer;
+}
+
+#preview {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  width: 40px;
+  font-size: 20px;
+  color: red;
+  /*position: absolute;*/
+  top: 20px;
+  /*margin-left: 0;*/
   cursor: pointer;
 }
 
